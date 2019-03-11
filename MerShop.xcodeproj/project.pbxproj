@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04F61DE722364E16004986E0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61DE622364E16004986E0 /* AppDelegate.m */; };
+		04F61DEA22364E16004986E0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61DE922364E16004986E0 /* ViewController.m */; };
+		04F61DED22364E16004986E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F61DEB22364E16004986E0 /* Main.storyboard */; };
+		04F61DEF22364E18004986E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F61DEE22364E18004986E0 /* Assets.xcassets */; };
+		04F61DF222364E18004986E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F61DF022364E18004986E0 /* LaunchScreen.storyboard */; };
+		04F61DF522364E18004986E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61DF422364E18004986E0 /* main.m */; };
+		04F61DFF22364E18004986E0 /* MerShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61DFE22364E18004986E0 /* MerShopTests.m */; };
+		04F61E0A22364E18004986E0 /* MerShopUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61E0922364E18004986E0 /* MerShopUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04F61DFB22364E18004986E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04F61DDA22364E16004986E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04F61DE122364E16004986E0;
+			remoteInfo = MerShop;
+		};
+		04F61E0622364E18004986E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04F61DDA22364E16004986E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04F61DE122364E16004986E0;
+			remoteInfo = MerShop;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04F61DE222364E16004986E0 /* MerShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MerShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F61DE522364E16004986E0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		04F61DE622364E16004986E0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		04F61DE822364E16004986E0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		04F61DE922364E16004986E0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		04F61DEC22364E16004986E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04F61DEE22364E18004986E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04F61DF122364E18004986E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04F61DF322364E18004986E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04F61DF422364E18004986E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		04F61DFA22364E18004986E0 /* MerShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MerShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F61DFE22364E18004986E0 /* MerShopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MerShopTests.m; sourceTree = "<group>"; };
+		04F61E0022364E18004986E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04F61E0522364E18004986E0 /* MerShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MerShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F61E0922364E18004986E0 /* MerShopUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MerShopUITests.m; sourceTree = "<group>"; };
+		04F61E0B22364E18004986E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04F61DDF22364E16004986E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F61DF722364E18004986E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F61E0222364E18004986E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04F61DD922364E16004986E0 = {
+			isa = PBXGroup;
+			children = (
+				04F61DE422364E16004986E0 /* MerShop */,
+				04F61DFD22364E18004986E0 /* MerShopTests */,
+				04F61E0822364E18004986E0 /* MerShopUITests */,
+				04F61DE322364E16004986E0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		04F61DE322364E16004986E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04F61DE222364E16004986E0 /* MerShop.app */,
+				04F61DFA22364E18004986E0 /* MerShopTests.xctest */,
+				04F61E0522364E18004986E0 /* MerShopUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04F61DE422364E16004986E0 /* MerShop */ = {
+			isa = PBXGroup;
+			children = (
+				04F61DE522364E16004986E0 /* AppDelegate.h */,
+				04F61DE622364E16004986E0 /* AppDelegate.m */,
+				04F61DE822364E16004986E0 /* ViewController.h */,
+				04F61DE922364E16004986E0 /* ViewController.m */,
+				04F61DEB22364E16004986E0 /* Main.storyboard */,
+				04F61DEE22364E18004986E0 /* Assets.xcassets */,
+				04F61DF022364E18004986E0 /* LaunchScreen.storyboard */,
+				04F61DF322364E18004986E0 /* Info.plist */,
+				04F61DF422364E18004986E0 /* main.m */,
+			);
+			path = MerShop;
+			sourceTree = "<group>";
+		};
+		04F61DFD22364E18004986E0 /* MerShopTests */ = {
+			isa = PBXGroup;
+			children = (
+				04F61DFE22364E18004986E0 /* MerShopTests.m */,
+				04F61E0022364E18004986E0 /* Info.plist */,
+			);
+			path = MerShopTests;
+			sourceTree = "<group>";
+		};
+		04F61E0822364E18004986E0 /* MerShopUITests */ = {
+			isa = PBXGroup;
+			children = (
+				04F61E0922364E18004986E0 /* MerShopUITests.m */,
+				04F61E0B22364E18004986E0 /* Info.plist */,
+			);
+			path = MerShopUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04F61DE122364E16004986E0 /* MerShop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F61E0E22364E18004986E0 /* Build configuration list for PBXNativeTarget "MerShop" */;
+			buildPhases = (
+				04F61DDE22364E16004986E0 /* Sources */,
+				04F61DDF22364E16004986E0 /* Frameworks */,
+				04F61DE022364E16004986E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MerShop;
+			productName = MerShop;
+			productReference = 04F61DE222364E16004986E0 /* MerShop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04F61DF922364E18004986E0 /* MerShopTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F61E1122364E18004986E0 /* Build configuration list for PBXNativeTarget "MerShopTests" */;
+			buildPhases = (
+				04F61DF622364E18004986E0 /* Sources */,
+				04F61DF722364E18004986E0 /* Frameworks */,
+				04F61DF822364E18004986E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04F61DFC22364E18004986E0 /* PBXTargetDependency */,
+			);
+			name = MerShopTests;
+			productName = MerShopTests;
+			productReference = 04F61DFA22364E18004986E0 /* MerShopTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		04F61E0422364E18004986E0 /* MerShopUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F61E1422364E18004986E0 /* Build configuration list for PBXNativeTarget "MerShopUITests" */;
+			buildPhases = (
+				04F61E0122364E18004986E0 /* Sources */,
+				04F61E0222364E18004986E0 /* Frameworks */,
+				04F61E0322364E18004986E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04F61E0722364E18004986E0 /* PBXTargetDependency */,
+			);
+			name = MerShopUITests;
+			productName = MerShopUITests;
+			productReference = 04F61E0522364E18004986E0 /* MerShopUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04F61DDA22364E16004986E0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = mac;
+				TargetAttributes = {
+					04F61DE122364E16004986E0 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					04F61DF922364E18004986E0 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 04F61DE122364E16004986E0;
+					};
+					04F61E0422364E18004986E0 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 04F61DE122364E16004986E0;
+					};
+				};
+			};
+			buildConfigurationList = 04F61DDD22364E16004986E0 /* Build configuration list for PBXProject "MerShop" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04F61DD922364E16004986E0;
+			productRefGroup = 04F61DE322364E16004986E0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04F61DE122364E16004986E0 /* MerShop */,
+				04F61DF922364E18004986E0 /* MerShopTests */,
+				04F61E0422364E18004986E0 /* MerShopUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04F61DE022364E16004986E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F61DF222364E18004986E0 /* LaunchScreen.storyboard in Resources */,
+				04F61DEF22364E18004986E0 /* Assets.xcassets in Resources */,
+				04F61DED22364E16004986E0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F61DF822364E18004986E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F61E0322364E18004986E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04F61DDE22364E16004986E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F61DEA22364E16004986E0 /* ViewController.m in Sources */,
+				04F61DF522364E18004986E0 /* main.m in Sources */,
+				04F61DE722364E16004986E0 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F61DF622364E18004986E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F61DFF22364E18004986E0 /* MerShopTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F61E0122364E18004986E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F61E0A22364E18004986E0 /* MerShopUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04F61DFC22364E18004986E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04F61DE122364E16004986E0 /* MerShop */;
+			targetProxy = 04F61DFB22364E18004986E0 /* PBXContainerItemProxy */;
+		};
+		04F61E0722364E18004986E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04F61DE122364E16004986E0 /* MerShop */;
+			targetProxy = 04F61E0622364E18004986E0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04F61DEB22364E16004986E0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04F61DEC22364E16004986E0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		04F61DF022364E18004986E0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04F61DF122364E18004986E0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04F61E0C22364E18004986E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		04F61E0D22364E18004986E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04F61E0F22364E18004986E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MerShop/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifhu.MerShop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04F61E1022364E18004986E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MerShop/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifhu.MerShop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		04F61E1222364E18004986E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MerShopTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifhu.MerShopTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MerShop.app/MerShop";
+			};
+			name = Debug;
+		};
+		04F61E1322364E18004986E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MerShopTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifhu.MerShopTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MerShop.app/MerShop";
+			};
+			name = Release;
+		};
+		04F61E1522364E18004986E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MerShopUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifhu.MerShopUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MerShop;
+			};
+			name = Debug;
+		};
+		04F61E1622364E18004986E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MerShopUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifhu.MerShopUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MerShop;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04F61DDD22364E16004986E0 /* Build configuration list for PBXProject "MerShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F61E0C22364E18004986E0 /* Debug */,
+				04F61E0D22364E18004986E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F61E0E22364E18004986E0 /* Build configuration list for PBXNativeTarget "MerShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F61E0F22364E18004986E0 /* Debug */,
+				04F61E1022364E18004986E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F61E1122364E18004986E0 /* Build configuration list for PBXNativeTarget "MerShopTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F61E1222364E18004986E0 /* Debug */,
+				04F61E1322364E18004986E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F61E1422364E18004986E0 /* Build configuration list for PBXNativeTarget "MerShopUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F61E1522364E18004986E0 /* Debug */,
+				04F61E1622364E18004986E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 04F61DDA22364E16004986E0 /* Project object */;
+}
