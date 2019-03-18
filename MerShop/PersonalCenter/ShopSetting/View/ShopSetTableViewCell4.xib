@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ShopSetTableViewCell4">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="84.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5o-4u-nkI">
+                        <rect key="frame" x="16" y="11" width="129" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="lYf-pt-vAr"/>
+                            <constraint firstAttribute="width" constant="129" id="otP-LY-fXs"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l52-fc-2Su">
+                        <rect key="frame" x="16" y="40" width="288" height="39"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tongyong_jinru" translatesAutoresizingMaskIntoConstraints="NO" id="8H4-bb-VuW">
+                        <rect key="frame" x="295" y="8" width="9" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="9" id="7LP-Zz-85O"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Y5o-4u-nkI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="34A-44-Tdx"/>
+                    <constraint firstItem="Y5o-4u-nkI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="62B-Sh-g2f"/>
+                    <constraint firstAttribute="trailing" secondItem="8H4-bb-VuW" secondAttribute="trailing" constant="16" id="7qJ-tJ-7gG"/>
+                    <constraint firstAttribute="bottom" secondItem="8H4-bb-VuW" secondAttribute="bottom" constant="61.5" id="8rw-XH-MSd"/>
+                    <constraint firstAttribute="bottom" secondItem="l52-fc-2Su" secondAttribute="bottom" constant="5.5" id="AOL-xI-MKl"/>
+                    <constraint firstAttribute="trailing" secondItem="l52-fc-2Su" secondAttribute="trailing" constant="16" id="Fot-bQ-Z8H"/>
+                    <constraint firstItem="8H4-bb-VuW" firstAttribute="centerY" secondItem="Y5o-4u-nkI" secondAttribute="centerY" constant="-6" id="QRl-bo-a95"/>
+                    <constraint firstItem="8H4-bb-VuW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="izu-qY-fdl"/>
+                    <constraint firstItem="l52-fc-2Su" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="nKO-8P-VTY"/>
+                    <constraint firstItem="l52-fc-2Su" firstAttribute="top" secondItem="Y5o-4u-nkI" secondAttribute="bottom" constant="8" id="ndb-dH-8ZX"/>
+                    <constraint firstItem="8H4-bb-VuW" firstAttribute="centerY" secondItem="Y5o-4u-nkI" secondAttribute="centerY" constant="-6" id="vEa-v2-TY4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="SubTitle" destination="l52-fc-2Su" id="IX2-1L-zqF"/>
+                <outlet property="Title" destination="Y5o-4u-nkI" id="dhx-Is-q6s"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="117.39130434782609"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="tongyong_jinru" width="8.5" height="14"/>
+    </resources>
+</document>

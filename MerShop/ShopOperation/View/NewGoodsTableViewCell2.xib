@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="NewGoodsTableViewCell2">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ia5-UL-Blq">
+                        <rect key="frame" x="15" y="11" width="99" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="99" id="P8G-Fh-siy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tongyong_jinru" translatesAutoresizingMaskIntoConstraints="NO" id="oa5-T9-Dhd">
+                        <rect key="frame" x="295" y="15" width="9" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="9" id="Q3C-wa-hQz"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYi-NY-bHW">
+                        <rect key="frame" x="172" y="10" width="115" height="23.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="115" id="1it-9t-3OF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="oa5-T9-Dhd" secondAttribute="trailing" constant="16" id="61l-yx-Dre"/>
+                    <constraint firstItem="oa5-T9-Dhd" firstAttribute="leading" secondItem="tYi-NY-bHW" secondAttribute="trailing" constant="8" id="Asz-ph-e4i"/>
+                    <constraint firstItem="oa5-T9-Dhd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="LAW-OT-NKL"/>
+                    <constraint firstAttribute="bottom" secondItem="oa5-T9-Dhd" secondAttribute="bottom" constant="14.5" id="bRl-13-Qss"/>
+                    <constraint firstItem="tYi-NY-bHW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="cve-x0-kbW"/>
+                    <constraint firstItem="Ia5-UL-Blq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="dJ3-pZ-Ofc"/>
+                    <constraint firstItem="Ia5-UL-Blq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ddm-hY-b6X"/>
+                    <constraint firstAttribute="bottom" secondItem="Ia5-UL-Blq" secondAttribute="bottom" constant="11.5" id="ear-La-u5y"/>
+                    <constraint firstAttribute="bottom" secondItem="tYi-NY-bHW" secondAttribute="bottom" constant="10" id="oOk-B3-dOa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="leftLabel" destination="Ia5-UL-Blq" id="cDn-ag-9pT"/>
+                <outlet property="rightLabel" destination="tYi-NY-bHW" id="fg8-Ia-aPO"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="136.73163418290855"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="tongyong_jinru" width="8.5" height="14"/>
+    </resources>
+</document>
