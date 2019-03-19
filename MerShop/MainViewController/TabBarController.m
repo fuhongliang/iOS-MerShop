@@ -60,7 +60,6 @@ static TabBarController *shareObj = nil;
     
     [self setViewControllers:tabarControllersArr animated:YES];
     NSArray *itemNameArr = [self getItemName];
-    NSLog(@"%@",itemNameArr);
     for (int i = 0; i < tabarControllersArr.count; i ++){
         UITabBarItem *item = [self.tabBar.items objectAtIndex:i];
         [item setTitle:[itemNameArr objectAtIndex:i]];

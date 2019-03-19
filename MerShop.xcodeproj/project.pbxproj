@@ -42,6 +42,10 @@
 		0446EB32223F8B0200A86F32 /* NewGoodsTableViewCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0446EB30223F8B0200A86F32 /* NewGoodsTableViewCell3.xib */; };
 		0446EB36223F9B8A00A86F32 /* NewGoodsTableViewCell4.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446EB34223F9B8A00A86F32 /* NewGoodsTableViewCell4.m */; };
 		0446EB37223F9B8A00A86F32 /* NewGoodsTableViewCell4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0446EB35223F9B8A00A86F32 /* NewGoodsTableViewCell4.xib */; };
+		0446EB46223FEE7F00A86F32 /* LogCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446EB42223FEE7F00A86F32 /* LogCategory.m */; };
+		0446EB4F224084D800A86F32 /* SortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446EB4E224084D800A86F32 /* SortViewController.m */; };
+		0446EB552240872800A86F32 /* SortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446EB532240872800A86F32 /* SortTableViewCell.m */; };
+		0446EB562240872800A86F32 /* SortTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0446EB542240872800A86F32 /* SortTableViewCell.xib */; };
 		04577960223908B100D968EA /* RingSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0457795F223908B100D968EA /* RingSettingViewController.m */; };
 		04C618482237874600773B7C /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C618472237874600773B7C /* MeViewController.m */; };
 		04C6184B2237876900773B7C /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C6184A2237876900773B7C /* ShopViewController.m */; };
@@ -154,6 +158,13 @@
 		0446EB33223F9B8A00A86F32 /* NewGoodsTableViewCell4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewGoodsTableViewCell4.h; sourceTree = "<group>"; };
 		0446EB34223F9B8A00A86F32 /* NewGoodsTableViewCell4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewGoodsTableViewCell4.m; sourceTree = "<group>"; };
 		0446EB35223F9B8A00A86F32 /* NewGoodsTableViewCell4.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewGoodsTableViewCell4.xib; sourceTree = "<group>"; };
+		0446EB41223FEE7F00A86F32 /* LogCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogCategory.h; sourceTree = "<group>"; };
+		0446EB42223FEE7F00A86F32 /* LogCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogCategory.m; sourceTree = "<group>"; };
+		0446EB4D224084D800A86F32 /* SortViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortViewController.h; sourceTree = "<group>"; };
+		0446EB4E224084D800A86F32 /* SortViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortViewController.m; sourceTree = "<group>"; };
+		0446EB522240872800A86F32 /* SortTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortTableViewCell.h; sourceTree = "<group>"; };
+		0446EB532240872800A86F32 /* SortTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortTableViewCell.m; sourceTree = "<group>"; };
+		0446EB542240872800A86F32 /* SortTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortTableViewCell.xib; sourceTree = "<group>"; };
 		0457795E223908B100D968EA /* RingSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingSettingViewController.h; sourceTree = "<group>"; };
 		0457795F223908B100D968EA /* RingSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RingSettingViewController.m; sourceTree = "<group>"; };
 		04C618462237874600773B7C /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
@@ -370,6 +381,7 @@
 		0446EAF8223E1B7500A86F32 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				0446EB40223FEE7F00A86F32 /* LogCategory */,
 				0446EAF9223E1B9D00A86F32 /* Http_url.h */,
 				0446EAFA223E1B9D00A86F32 /* Http_url.m */,
 				0446EB0E223E447600A86F32 /* IFUtils.h */,
@@ -393,6 +405,43 @@
 				0446EB00223E439D00A86F32 /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		0446EB40223FEE7F00A86F32 /* LogCategory */ = {
+			isa = PBXGroup;
+			children = (
+				0446EB41223FEE7F00A86F32 /* LogCategory.h */,
+				0446EB42223FEE7F00A86F32 /* LogCategory.m */,
+			);
+			path = LogCategory;
+			sourceTree = "<group>";
+		};
+		0446EB50224084EA00A86F32 /* ManageCatergory */ = {
+			isa = PBXGroup;
+			children = (
+				0446EB51224086F200A86F32 /* view */,
+				0446EAEA223B8B4A00A86F32 /* GoodsManagementViewController.h */,
+				0446EAEB223B8B4A00A86F32 /* GoodsManagementViewController.m */,
+				0446EB11223F3AE000A86F32 /* CreateGoodsViewController.h */,
+				0446EB12223F3AE000A86F32 /* CreateGoodsViewController.m */,
+				0446EB14223F4C1A00A86F32 /* ManageCatergoryViewController.h */,
+				0446EB15223F4C1A00A86F32 /* ManageCatergoryViewController.m */,
+				0446EB21223F86BC00A86F32 /* CreateNewGoodsViewController.h */,
+				0446EB22223F86BC00A86F32 /* CreateNewGoodsViewController.m */,
+				0446EB4D224084D800A86F32 /* SortViewController.h */,
+				0446EB4E224084D800A86F32 /* SortViewController.m */,
+			);
+			path = ManageCatergory;
+			sourceTree = "<group>";
+		};
+		0446EB51224086F200A86F32 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0446EB522240872800A86F32 /* SortTableViewCell.h */,
+				0446EB532240872800A86F32 /* SortTableViewCell.m */,
+				0446EB542240872800A86F32 /* SortTableViewCell.xib */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		04C6185522378B6A00773B7C /* MainViewController */ = {
@@ -515,17 +564,10 @@
 		04F61E1C2236633E004986E0 /* ShopOperation */ = {
 			isa = PBXGroup;
 			children = (
+				0446EB50224084EA00A86F32 /* ManageCatergory */,
 				0446EADF223B43EA00A86F32 /* View */,
 				04C618492237876900773B7C /* ShopViewController.h */,
 				04C6184A2237876900773B7C /* ShopViewController.m */,
-				0446EAEA223B8B4A00A86F32 /* GoodsManagementViewController.h */,
-				0446EAEB223B8B4A00A86F32 /* GoodsManagementViewController.m */,
-				0446EB11223F3AE000A86F32 /* CreateGoodsViewController.h */,
-				0446EB12223F3AE000A86F32 /* CreateGoodsViewController.m */,
-				0446EB14223F4C1A00A86F32 /* ManageCatergoryViewController.h */,
-				0446EB15223F4C1A00A86F32 /* ManageCatergoryViewController.m */,
-				0446EB21223F86BC00A86F32 /* CreateNewGoodsViewController.h */,
-				0446EB22223F86BC00A86F32 /* CreateNewGoodsViewController.m */,
 				0446EAF2223BB7E100A86F32 /* UserEvaluationViewController.h */,
 				0446EAF3223BB7E100A86F32 /* UserEvaluationViewController.m */,
 				0446EAF5223BB8CD00A86F32 /* ManageViewController.h */,
@@ -688,6 +730,7 @@
 				04C618792238DDE600773B7C /* ShopSetTableViewCell3.xib in Resources */,
 				0446EB2D223F88EF00A86F32 /* NewGoodsTableViewCell2.xib in Resources */,
 				04C618742238DC9E00773B7C /* ShopSetTableViewCell2.xib in Resources */,
+				0446EB562240872800A86F32 /* SortTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,7 +820,9 @@
 				0446EB0B223E439F00A86F32 /* SVProgressAnimatedView.m in Sources */,
 				04C61851223787A400773B7C /* WaitDealwithViewController.m in Sources */,
 				0446EB0A223E439F00A86F32 /* SVRadialGradientLayer.m in Sources */,
+				0446EB46223FEE7F00A86F32 /* LogCategory.m in Sources */,
 				04F61DF522364E18004986E0 /* main.m in Sources */,
+				0446EB4F224084D800A86F32 /* SortViewController.m in Sources */,
 				0446EAF0223B926D00A86F32 /* GoodsTableViewCell.m in Sources */,
 				0446EAB82239251100A86F32 /* BusinessStatusViewController.m in Sources */,
 				0446EAF4223BB7E100A86F32 /* UserEvaluationViewController.m in Sources */,
@@ -800,6 +845,7 @@
 				0446EB27223F874C00A86F32 /* NewGoodsTableViewCell1.m in Sources */,
 				04C618732238DC9E00773B7C /* ShopSetTableViewCell2.m in Sources */,
 				0446EB10223E447600A86F32 /* IFUtils.m in Sources */,
+				0446EB552240872800A86F32 /* SortTableViewCell.m in Sources */,
 				0446EB13223F3AE000A86F32 /* CreateGoodsViewController.m in Sources */,
 				04C61858223790B000773B7C /* NavigationViewController.m in Sources */,
 				04C6186A2238CFB000773B7C /* ShopSetViewController.m in Sources */,
@@ -981,6 +1027,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_PREFIX_HEADER = /Users/mac/Desktop/MerShop/MerShop/PrefixHeader.pch;
 				INFOPLIST_FILE = MerShop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -988,7 +1035,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ifhu.MerShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};
 			name = Debug;
@@ -1002,13 +1049,14 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_PREFIX_HEADER = /Users/mac/Desktop/MerShop/MerShop/PrefixHeader.pch;
 				INFOPLIST_FILE = MerShop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ifhu.MerShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};
 			name = Release;

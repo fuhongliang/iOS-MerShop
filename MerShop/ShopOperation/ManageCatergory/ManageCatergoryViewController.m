@@ -8,6 +8,8 @@
 
 #import "ManageCatergoryViewController.h"
 #import "ManageCatergoryTableViewCell.h"
+#import "SortViewController.h"
+#import "CreateNewGoodsViewController.h"
 
 @interface ManageCatergoryViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic ,strong)UITableView *tableview;
@@ -45,6 +47,7 @@
     [_bottomBtn1.titleLabel setFont:XFont(17)];
     [_bottomBtn1 setTitleColor:BlackColor forState:(UIControlStateNormal)];
     XViewLayerCB(_bottomBtn1, 3, 0.5, LineColor);
+    [_bottomBtn1 addTarget:self action:@selector(goSortVC) forControlEvents:(UIControlEventTouchUpInside)];
     [backgroundView addSubview:_bottomBtn1];
     
     _bottomBtn2  = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -54,7 +57,18 @@
     [_bottomBtn2.titleLabel setFont:XFont(17)];
     [_bottomBtn2 setTitleColor:BlackColor forState:(UIControlStateNormal)];
     XViewLayerCB(_bottomBtn2, 3, 0.5, LineColor);
+    [_bottomBtn2 addTarget:self action:@selector(goCreateNewGoodsVC) forControlEvents:(UIControlEventTouchUpInside)];
     [backgroundView addSubview:_bottomBtn2];
+}
+
+- (void)goSortVC{
+    SortViewController *vc = [[SortViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)goCreateNewGoodsVC{
+    CreateNewGoodsViewController *VC = [[CreateNewGoodsViewController alloc]init];
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

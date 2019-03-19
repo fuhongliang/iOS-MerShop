@@ -13,7 +13,8 @@
 
 
 @interface LoginInViewController ()<UITextViewDelegate>
-
+@property (nonatomic ,strong)UITextField *accountText;
+@property (nonatomic ,strong)UITextField *passWordText;
 @end
 
 @implementation LoginInViewController
@@ -44,11 +45,11 @@
     [accountLab setTextColor:toPCcolor(@"#000000")];
     [self.view addSubview:accountLab];
     
-    UITextField *accountText = [[UITextField alloc]initWithFrame:XFrame(CGRectGetMaxX(accountLab.frame)+IFAutoFitPx(20), CGRectGetMinY(accountLab.frame), Screen_W-IFAutoFitPx(186), IFAutoFitPx(32))];
-    [accountText setPlaceholder:@"请输入账号/手机号"];
+    _accountText = [[UITextField alloc]initWithFrame:XFrame(CGRectGetMaxX(accountLab.frame)+IFAutoFitPx(20), CGRectGetMinY(accountLab.frame), Screen_W-IFAutoFitPx(186), IFAutoFitPx(32))];
+    [_accountText setPlaceholder:@"请输入账号/手机号"];
     NSAttributedString *attributed1 = [[NSAttributedString alloc]initWithString:@"请输入账号/手机号" attributes:@{NSForegroundColorAttributeName:toPCcolor(@"#999999"), NSFontAttributeName:XFont(17)}];
-    accountText.attributedPlaceholder = attributed1;
-    [self.view addSubview:accountText];
+    _accountText.attributedPlaceholder = attributed1;
+    [self.view addSubview:_accountText];
     
     UIView *line1 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(accountLab.frame)+IFAutoFitPx(40), Screen_W-IFAutoFitPx(60), IFAutoFitPx(2))];
     [line1 setBackgroundColor:toPCcolor(@"#CCCCCC")];
@@ -60,11 +61,11 @@
     [passWord setTextColor:toPCcolor(@"#000000")];
     [self.view addSubview:passWord];
     
-    UITextField *passWordText = [[UITextField alloc]initWithFrame:XFrame(CGRectGetMaxX(passWord.frame)+IFAutoFitPx(20), CGRectGetMinY(line1.frame)+IFAutoFitPx(60), Screen_W-IFAutoFitPx(186), IFAutoFitPx(32))];
-    [passWordText setPlaceholder:@"请输入密码"];
+    _passWordText = [[UITextField alloc]initWithFrame:XFrame(CGRectGetMaxX(passWord.frame)+IFAutoFitPx(20), CGRectGetMinY(line1.frame)+IFAutoFitPx(60), Screen_W-IFAutoFitPx(186), IFAutoFitPx(32))];
+    [_passWordText setPlaceholder:@"请输入密码"];
     NSAttributedString *attribute2 = [[NSAttributedString alloc]initWithString:@"请输入密码" attributes:@{NSForegroundColorAttributeName:toPCcolor(@"#999999"), NSFontAttributeName:XFont(17)}];
-    passWordText.attributedPlaceholder = attribute2;
-    [self.view addSubview:passWordText];
+    _passWordText.attributedPlaceholder = attribute2;
+    [self.view addSubview:_passWordText];
     
     UIView *line2 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(passWord.frame)+IFAutoFitPx(40), Screen_W-IFAutoFitPx(60), IFAutoFitPx(2))];
     [line2 setBackgroundColor:toPCcolor(@"#CCCCCC")];
@@ -100,8 +101,15 @@
 }
 
 - (void)requestData{
-    NSDictionary *dic = @{@"member_name":@"test",
-                          @"member_passwd":@"000000"
+    if (self.accountText.text.length == 0){
+        [[IFUtils share]showErrorInfo:@"请输入账号或手机号"];
+        return;
+    }else if (self.passWordText.text.length == 0){
+        [[IFUtils share]showErrorInfo:@"请输入您的密码"];
+        return;
+    }
+    NSDictionary *dic = @{@"member_name":self.accountText.text,
+                          @"member_passwd":self.passWordText.text
                           };
     [Http_url POST:@"http://master.api.ifhu.cn/index.php/member_login" dict:dic showHUD:YES WithSuccessBlock:^(id data) {
         [self GotoMainTabBarVC];

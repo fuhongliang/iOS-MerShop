@@ -17,6 +17,7 @@
 #import "Http_url.h"
 #import "SVProgressHUD.h"
 #import "IFUtils.h"
+#import "LogCategory.h"
 #endif
 
 #endif /* PrefixHeader_pch */

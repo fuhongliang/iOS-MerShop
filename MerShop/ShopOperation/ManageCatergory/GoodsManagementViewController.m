@@ -8,6 +8,8 @@
 
 #import "GoodsManagementViewController.h"
 #import "GoodsTableViewCell.h"
+#import "ManageCatergoryViewController.h"
+#import "CreateNewGoodsViewController.h"
 
 
 #define ButtonWidth     IFAutoFitPx(194)
@@ -88,6 +90,7 @@
     [_bottomBtn1 setImage:[UIImage imageNamed:@"editmenu_glfl"] forState:(UIControlStateNormal)];
     [_bottomBtn1.titleLabel setFont:XFont(17)];
     [_bottomBtn1 setTitleColor:BlackColor forState:(UIControlStateNormal)];
+    [_bottomBtn1 addTarget:self action:@selector(goManage) forControlEvents:(UIControlEventTouchUpInside)];
     XViewLayerCB(_bottomBtn1, 3, 0.5, LineColor);
     [backgroundView addSubview:_bottomBtn1];
     
@@ -98,8 +101,19 @@
     [_bottomBtn2.titleLabel setFont:XFont(17)];
     [_bottomBtn2 setTitleColor:BlackColor forState:(UIControlStateNormal)];
     XViewLayerCB(_bottomBtn2, 3, 0.5, LineColor);
+    [_bottomBtn2 addTarget:self action:@selector(goCreateNewGoodsVC) forControlEvents:(UIControlEventTouchUpInside)];
     [backgroundView addSubview:_bottomBtn2];
     
+}
+
+- (void)goManage{
+    ManageCatergoryViewController *vc = [[ManageCatergoryViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)goCreateNewGoodsVC{
+    CreateNewGoodsViewController *VC = [[CreateNewGoodsViewController alloc]init];
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 - (void)clickBtn:(UIButton *)sender{

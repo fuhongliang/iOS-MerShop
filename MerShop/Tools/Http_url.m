@@ -8,6 +8,7 @@
 
 #import "Http_url.h"
 #import "AFNetworking.h"
+//#import "Foundation+Log /Foundation+Log.m"
 
 @implementation Http_url
 
@@ -23,16 +24,27 @@
 
 + (void)POST:(NSString *)httpUrl dict:(NSDictionary *)dict showHUD:(BOOL)show WithSuccessBlock:(void (^)(id))successBlock WithFailBlock:(void (^)(id))FailBlock{
     if (show){
-        NSLog(@"刷新");
+        [[IFUtils share]showLoadingView];
     }
     AFHTTPSessionManager *manager = [self getManager];
     [manager POST:httpUrl parameters:dict success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
         NSInteger code = [dic[@"code"] integerValue];
+        NSLog(@"%@",dic);
         if (code == 200){
+            if (show){
+                [SVProgressHUD dismiss];
+            }
             successBlock(dic);
+        }else{
+            if (show){
+                [SVProgressHUD dismiss];
+            }
+            [[IFUtils share]showErrorInfo:[NSString stringWithFormat:@"%@",dic[@"msg"]]];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[IFUtils share]showErrorInfo:@"加载失败,请稍后再试!"];
+        [SVProgressHUD dismiss];
         FailBlock(nil);
     }];
     

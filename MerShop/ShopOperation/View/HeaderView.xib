@@ -89,17 +89,17 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0q-0u-snu" customClass="ZJTopImageBottomTitleButton">
                             <rect key="frame" x="15" y="123.5" width="84" height="38.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="商品管理">
+                            <state key="normal" title="商品管理" image="find_ic_spgl">
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
                             <connections>
                                 <action selector="goodsManageBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="MAg-zt-S79"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPg-H8-eiq" customClass="ZJTopImageBottomTitleButton">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPg-H8-eiq" customClass="ZJTopImageBottomTitleButton">
                             <rect key="frame" x="135" y="123.5" width="84" height="38.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="用户评价">
+                            <state key="normal" title="用户评价" image="find_ic_yhpj">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
@@ -109,7 +109,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBV-wj-OZb" customClass="ZJTopImageBottomTitleButton">
                             <rect key="frame" x="255" y="123.5" width="84" height="38.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="经营数据">
+                            <state key="normal" title="经营数据" image="find_ic_jysj">
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
                             <connections>
@@ -258,4 +258,9 @@
             <point key="canvasLocation" x="53.600000000000001" y="77.811094452773617"/>
         </view>
     </objects>
+    <resources>
+        <image name="find_ic_jysj" width="23" height="23"/>
+        <image name="find_ic_spgl" width="23" height="23"/>
+        <image name="find_ic_yhpj" width="23" height="23"/>
+    </resources>
 </document>
