@@ -14,14 +14,34 @@
 #import "FeedbackViewController.h"
 #import "BackgroundView.h"
 #import "PhoneNumberView.h"
+#import "UIImageView+WebCache.h"
+#import "AppDelegate.h"
+#import "LoginInViewController.h"
+#import "NavigationViewController.h"
+
+
 
 @interface MeViewController ()<BackgroundViewDelegate,PhoneNumberViewDelegate>
 @property (nonatomic ,strong)UIView *clearView;
 @property (nonatomic ,strong)PhoneNumberView *upView;
 @property (nonatomic ,strong)UILabel *statusLab;
+@property (nonatomic ,strong)BackgroundView *bgView;
 @end
 
 @implementation MeViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear: animated];
+    NSDictionary *userDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+    NSInteger store_state = [[userDict objectForKey:@"store_state"] integerValue];
+    [self.bgView setMyInformation:[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]];
+    if (store_state == 1){
+        [_statusLab setText:@"正在营业"];
+    }else{
+        [_statusLab setText:@"已停止营业"];
+    }
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,10 +49,16 @@
     [self setNaviTitle:@"个人中心"];
     [self setHideBackBtn:YES];
     [self createNavigationbar];
-    BackgroundView *view = [[BackgroundView alloc]initWithFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y-Tabbar_H)];
-    view.delegate = self;
-    [view setBackgroundColor:IFThemeBlueColor];
-    [self.view addSubview:view];
+    self.bgView = [[BackgroundView alloc]initWithFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y-Tabbar_H)];
+    self.bgView.delegate = self;
+    NSString *imageStr = [[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_avatar"];
+    [self.bgView.headImage sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"moren_dianpu"]];
+    [self.bgView setMyInformation:[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]];
+    [self.bgView setBackgroundColor:IFThemeBlueColor];
+    [self.view addSubview:self.bgView];
+    
+    id data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+    NSLog(@"%@",data);
     
     _clearView = [[UIView alloc]initWithFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
     [_clearView setBackgroundColor:BlackColor];
@@ -53,14 +79,13 @@
 }
 
 - (void)createNavigationbar{
-    _statusLab = [[UILabel alloc]initWithFrame:XFrame(Screen_W-IFAutoFitPx(150)-IFAutoFitPx(30), StatusBar_H+IFAutoFitPx(15), IFAutoFitPx(150), Navagtion_H-IFAutoFitPx(30))];
-    [_statusLab setText:@"已停止营业"];
+    _statusLab = [[UILabel alloc]initWithFrame:XFrame(Screen_W-IFAutoFitPx(200)-IFAutoFitPx(30), StatusBar_H+IFAutoFitPx(15), IFAutoFitPx(200), Navagtion_H-IFAutoFitPx(30))];
     [_statusLab setFont:XFont(13)];
     [_statusLab setBackgroundColor:IFThemeBlueColor];
     [_statusLab setTextColor:[UIColor whiteColor]];
     [_statusLab setTextAlignment:(NSTextAlignmentCenter)];
     [self.navigationView addSubview:_statusLab];
-    XViewLayerCB(_statusLab, IFAutoFitPx(2), IFAutoFitPx(1), [UIColor whiteColor]);
+    XViewLayerCB(_statusLab, IFAutoFitPx(6), IFAutoFitPx(1), [UIColor whiteColor]);
     
 }
 
@@ -88,6 +113,15 @@
         FeedbackViewController *VC = [[FeedbackViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];
     }
+}
+
+- (void)SignOut{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
+    LoginInViewController *loginVC = [[LoginInViewController alloc]init];
+    NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:loginVC];
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.window.rootViewController = navi;
 }
 
 - (void)cancelCall:(UIButton *)sender{

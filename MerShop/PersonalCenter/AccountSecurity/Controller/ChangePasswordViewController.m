@@ -23,6 +23,8 @@
 @property (nonatomic ,strong)UILabel *placeHolder3;
 @property (nonatomic ,strong)UILabel *tipsLab;
 @property (nonatomic ,strong)UIButton *confirmBtn;
+@property (nonatomic ,assign)NSInteger phoneNumber;
+@property (nonatomic ,copy)NSString *passWord;
 @end
 
 @implementation ChangePasswordViewController
@@ -30,13 +32,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNaviTitle:@"修改密码"];
+    NSDictionary *dict = [self getUserInfo];
+    self.phoneNumber = [[dict objectForKey:@"store_phone"] integerValue];
+    self.passWord = [dict objectForKey:@""];
     [self setUI];
     [self setupPlaceHolder];
 }
 
+- (NSDictionary *)getUserInfo{
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    return [user objectForKey:@"userInfo"];
+}
+
 - (void)setUI{
     _phoneLab = [[UILabel alloc]initWithFrame:XFrame(IFAutoFitPx(32),ViewStart_Y+IFAutoFitPx(40), IFAutoFitPx(300), IFAutoFitPx(60))];
-    [_phoneLab setText:@"18888888"];
+    [_phoneLab setText:[NSString stringWithFormat:@"%ld",self.phoneNumber]];
     [self.view addSubview:_phoneLab];
     
     _codeBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -44,6 +54,7 @@
     [_codeBtn setTitle:@"获取验证码" forState:(UIControlStateNormal)];
     [_codeBtn setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
     [_codeBtn.titleLabel setFont:XFont(14)];
+    [_codeBtn addTarget:self action:@selector(getVerificationCode) forControlEvents:(UIControlEventTouchUpInside)];
     XViewLayerCB(_codeBtn, IFAutoFitPx(4), IFAutoFitPx(2), IFThemeBlueColor);
     [self.view addSubview:_codeBtn];
     
@@ -52,7 +63,6 @@
     [self.view addSubview:_line1];
     
     _codeText = [[UITextView alloc]initWithFrame:XFrame(IFAutoFitPx(32), CGRectGetMaxY(_line1.frame)+IFAutoFitPx(40), Screen_W-IFAutoFitPx(30), IFAutoFitPx(60))];
-//    [_codeText setText:@"请输入6位数验证码"];
     _codeText.delegate = self;
     [self.view addSubview:_codeText];
     
@@ -61,7 +71,6 @@
     [self.view addSubview:_line2];
     
     _passWordText1 = [[UITextView alloc]initWithFrame:XFrame(IFAutoFitPx(32), CGRectGetMaxY(_line2.frame)+IFAutoFitPx(40), Screen_W-IFAutoFitPx(30), IFAutoFitPx(60))];
-//    [_passWordText1 setText:@"请输入新密码"];
     _passWordText1.delegate = self;
     [self.view addSubview:_passWordText1];
     
@@ -70,7 +79,6 @@
     [self.view addSubview:_line3];
     
     _passWordText2 = [[UITextView alloc]initWithFrame:XFrame(IFAutoFitPx(32), CGRectGetMaxY(_line3.frame)+IFAutoFitPx(40), Screen_W-IFAutoFitPx(30), IFAutoFitPx(60))];
-//    [_passWordText2 setText:@"请再次输入密码"];
     _passWordText2.delegate = self;
     [self.view addSubview:_passWordText2];
     
@@ -79,7 +87,7 @@
     [self.view addSubview:_line4];
     
     _tipsLab = [[UILabel alloc]initWithFrame:XFrame(IFAutoFitPx(32), CGRectGetMaxY(_line4.frame)+IFAutoFitPx(20), Screen_W-IFAutoFitPx(30), IFAutoFitPx(40))];
-    [_tipsLab setText:@"新密码不能与原密码一样，密码：英文+数字+符号（大于6位）"];
+    [_tipsLab setText:@"新密码不能与原密码一致，密码长度至少6位"];
     [_tipsLab setTextColor:GrayColor];
     [_tipsLab setFont:XFont(12)];
     [self.view addSubview:_tipsLab];
@@ -90,6 +98,7 @@
     [_confirmBtn setBackgroundColor:IFThemeBlueColor];
     [_confirmBtn setTitle:@"确认修改" forState:(UIControlStateNormal)];
     [_confirmBtn.titleLabel setFont:XFont(17)];
+    [_confirmBtn addTarget:self action:@selector(ensureChange) forControlEvents:(UIControlEventTouchUpInside)];
     _confirmBtn.layer.cornerRadius = IFAutoFitPx(6);
     _confirmBtn.layer.masksToBounds = YES;
     [self.view addSubview:_confirmBtn];
@@ -148,6 +157,115 @@
             self.placeHolder3.alpha = 0;
         }
     }
+}
+
+- (void)ensureChange{
+    if (self.codeText.text.length != 4){
+        [[IFUtils share]showErrorInfo:@"验证码不正确"];
+    }else if (self.passWordText1.text.length <=6){
+        [[IFUtils share]showErrorInfo:@"密码格式不正确"];
+    }else if (![self.passWordText1.text isEqualToString:self.passWordText2.text]){
+        [[IFUtils share]showErrorInfo:@"两次输入的密码不一致"];
+    }
+    NSDictionary *user = [self getUserInfo];
+    NSString *memberid = [user objectForKey:@"member_id"];
+    NSString *phone = [user objectForKey:@"store_phone"];
+    NSDictionary *dic = @{@"member_id":memberid,
+                          @"phone_number":phone,
+                          @"verify_code":self.codeText.text,
+                          @"new_passwd":self.passWordText1.text,
+                          @"con_new_passwd":self.passWordText2.text
+                          };
+    [Http_url POST:@"edit_passwd" dict:dic showHUD:YES WithSuccessBlock:^(id data) {
+        NSInteger code = [[data objectForKey:@"code"] integerValue];
+        
+        if (code == 200){
+            [[IFUtils share]showErrorInfo:@"设置成功"];
+        }
+        
+    } WithFailBlock:^(id data) {
+        
+    }];
+}
+
+- (void)getVerificationCode{
+    [self requestVerificationCode];
+    [self createTimer];
+}
+
+- (void)requestVerificationCode{
+    [Http_url POST:@"get_sms" dict:@{@"phone_number":@(self.phoneNumber)} showHUD:YES WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] ==200){
+            NSLog(@"获取成功");
+        }
+    } WithFailBlock:^(id data) {
+        
+    }];
+}
+
+#pragma mark - 定时器 (GCD)
+- (void)createTimer {
+    
+    //设置倒计时时间
+    //__block 如果修饰指针时，指针相当于弱引用，指针对指向的对象不产生引用计数的影响
+    __block int timeout = 60;
+    
+    //获取全局队列
+    dispatch_queue_t global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    //创建一个定时器，并将定时器的任务交给全局队列执行(并行，不会造成主线程阻塞)
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, global);
+    
+    // 设置触发的间隔时间
+    dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
+    //1.0 * NSEC_PER_SEC  代表设置定时器触发的时间间隔为1s
+    //0 * NSEC_PER_SEC    代表时间允许的误差是 0s
+    
+    //block内部 如果对当前对象的强引用属性修改 应该使用__weak typeof(self)weakSelf 修饰  避免循环调用
+    __weak typeof(self)weakSelf = self;
+    //设置定时器的触发事件
+    dispatch_source_set_event_handler(timer, ^{
+        
+        //倒计时  刷新button上的title ，当倒计时时间为0时，结束倒计时
+        
+        //1. 每调用一次 时间-1s
+        timeout --;
+        
+        //2.对timeout进行判断时间是停止倒计时，还是修改button的title
+        if (timeout <= 0) {
+            
+            //停止倒计时，button打开交互，背景颜色还原，title还原
+            
+            //关闭定时器
+            dispatch_source_cancel(timer);
+            
+            //MRC下需要释放，这里不需要
+            //            dispatch_realse(timer);
+            
+            //button上的相关设置
+            //注意: button是属于UI，在iOS中多线程处理时，UI控件的操作必须是交给主线程(主队列)
+            //在主线程中对button进行修改操作
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                weakSelf.codeBtn.userInteractionEnabled = YES;
+                
+                [weakSelf.codeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+            });
+        }else {
+            
+            //处于正在倒计时，在主线程中刷新button上的title，时间-1秒
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                NSString * title = [NSString stringWithFormat:@"%d秒",timeout];
+                
+                [weakSelf.codeBtn setUserInteractionEnabled:NO];
+                
+                [weakSelf.codeBtn setTitle:title forState:UIControlStateNormal];
+            });
+        }
+    });
+    
+    dispatch_resume(timer);
 }
 
 @end

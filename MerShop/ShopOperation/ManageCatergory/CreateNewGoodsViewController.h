@@ -10,6 +10,6 @@
 
 
 @interface CreateNewGoodsViewController : BasicViewController
-
+@property (nonatomic ,assign)NSInteger switchStatus;
 @end
 

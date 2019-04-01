@@ -43,12 +43,7 @@ static TabBarController *shareObj = nil;
 {
     return [self share];
 }
-//
-//- (id) copyWithZone:(NSZone *) zone
-//{
-//    return self;
-//}
-//
+
 - (void)createTabar{
     tabarControllersArr = [[NSMutableArray alloc]init];
     NSArray *vcNameArr = [self getTabarListName];
@@ -63,7 +58,8 @@ static TabBarController *shareObj = nil;
     for (int i = 0; i < tabarControllersArr.count; i ++){
         UITabBarItem *item = [self.tabBar.items objectAtIndex:i];
         [item setTitle:[itemNameArr objectAtIndex:i]];
-        
+        NSDictionary *textTitleOptions = @{NSFontAttributeName:[UIFont boldSystemFontOfSize:11]};
+        [item setTitleTextAttributes:textTitleOptions forState:UIControlStateNormal];
         UIImage *imgNormal = [UIImage imageNamed:[self getTabarItemNormalIconString:i]];
         UIImage *selectImage = [UIImage imageNamed:[self getTabarItemSelectedIconString:i]];
         item.selectedImage = [selectImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -71,11 +67,6 @@ static TabBarController *shareObj = nil;
         self.tabBar.tintColor = IFThemeBlueColor;
         
     }
-    
-    //    for (int i =0;i<tabarControllersArr.count;i++){
-    //        UITabBarItem *item = [self.tabBar.items safeObjectAtIndex:i];
-    //
-    //    }
     
 }
 

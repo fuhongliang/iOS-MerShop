@@ -44,10 +44,7 @@
     [titleArr addObject:title2];
     [titleArr addObject:title3];
     
-    
-    
     CGFloat white_h = Screen_H-ViewStart_Y-IFAutoFitPx(126);
-    
     _whiteView = [[UIView alloc]init];
     [_whiteView setFrame:XFrame(0, IFAutoFitPx(100), Screen_W, white_h)];
     [_whiteView setBackgroundColor:[UIColor whiteColor]];
@@ -65,15 +62,9 @@
     
     _headImage = [[UIImageView alloc]init];
     [_headImage setFrame:XFrame(Screen_W/2-IFAutoFitPx(78), CGRectGetMinY(_whiteView.frame)-IFAutoFitPx(78), IFAutoFitPx(156), IFAutoFitPx(156))];
-    [_headImage setImage:[UIImage imageNamed:@"logo"]];
-    UIGraphicsBeginImageContextWithOptions(_headImage.bounds.size, NO, 1.0);
-    //使用贝塞尔曲线画出一个圆形图
-    [[UIBezierPath bezierPathWithRoundedRect:_headImage.bounds cornerRadius:_headImage.frame.size.width] addClip];
-    [_headImage drawRect:_headImage.bounds];
-    
-    _headImage.image = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
+    _headImage.layer.cornerRadius = IFAutoFitPx(78);
+    _headImage.layer.masksToBounds = YES;
+    _headImage.contentMode = UIViewContentModeScaleAspectFill;
     [self addSubview:_headImage];
     
     _userName = [[UILabel alloc]init];
@@ -119,12 +110,24 @@
                 [_quitBtn setTitle:@"退出登录" forState:(UIControlStateNormal)];
                 [_quitBtn setBackgroundColor:IFThemeBlueColor];
                 [_quitBtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+                [_quitBtn addTarget:self action:@selector(quit) forControlEvents:(UIControlEventTouchUpInside)];
                 _quitBtn.layer.cornerRadius = IFAutoFitPx(8);
                 _quitBtn.layer.masksToBounds = YES;
                 [self addSubview:_quitBtn];
             }
         }
     }
+}
+
+- (void)quit{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(SignOut)]){
+        [self.delegate performSelector:@selector(SignOut) withObject:nil];
+    }
+}
+
+- (void)setMyInformation:(NSDictionary *)userinfo{
+    self.userName.text = [userinfo objectForKey:@"store_name"];
+    self.describe.text = [userinfo objectForKey:@"store_description"];
 }
 
 - (void)touch:(UIButton *)sender{

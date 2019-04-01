@@ -21,4 +21,16 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)deleteBtn:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(deleteAction:)]){
+        [self.delegate performSelector:@selector(deleteAction:) withObject:self];
+    }
+}
+
+- (IBAction)topBtn:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(topAction:)]){
+        [self.delegate performSelector:@selector(topAction:) withObject:self];
+    }
+    
+}
 @end

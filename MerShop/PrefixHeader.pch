@@ -18,6 +18,24 @@
 #import "SVProgressHUD.h"
 #import "IFUtils.h"
 #import "LogCategory.h"
+#import "MJExtension.h"
+#import "MJRefresh.h"
+#import <JSONModel.h>
+#import "UIImageView+WebCache.h"
+
+
+
+
+
+
+#define MAS_SHORTHAND
+#define MAS_SHORTHAND_GLOBALS
+
+#define UserInfoDict   [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]
+#define StoreId        [UserInfoDict objectForKey:@"store_id"]
+
+
+#import <Masonry.h>
 #endif
 
 #endif /* PrefixHeader_pch */

@@ -10,6 +10,6 @@
 
 
 @interface ManageViewController : BasicViewController
-
+@property (nonatomic ,copy)NSString *url;
 @end
 

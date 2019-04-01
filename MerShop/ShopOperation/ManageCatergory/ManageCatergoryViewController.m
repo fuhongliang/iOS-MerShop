@@ -10,11 +10,13 @@
 #import "ManageCatergoryTableViewCell.h"
 #import "SortViewController.h"
 #import "CreateNewGoodsViewController.h"
+#import "NewCatergoryViewController.h"
 
-@interface ManageCatergoryViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ManageCatergoryViewController ()<UITableViewDelegate,UITableViewDataSource,ManageCatergoryTableViewCellDelegate>
 @property (nonatomic ,strong)UITableView *tableview;
 @property (nonatomic ,strong)UIButton *bottomBtn1;
 @property (nonatomic ,strong)UIButton *bottomBtn2;
+@property (nonatomic ,strong)NSMutableArray *dataSource;
 
 @end
 
@@ -23,7 +25,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNaviTitle:@"管理分类"];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSArray *arr = [user objectForKey:@"classArray"];
+    [self.dataSource addObjectsFromArray:arr];
+    [self.tableview reloadData];
     [self setUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
 
 - (void)setUI{
@@ -52,27 +62,17 @@
     
     _bottomBtn2  = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [_bottomBtn2 setFrame:XFrame(IFAutoFitPx(30)+CGRectGetMaxX(_bottomBtn1.frame), IFAutoFitPx(14), (Screen_W-IFAutoFitPx(90))/2, IFAutoFitPx(80))];
-    [_bottomBtn2 setTitle:@"新建商品" forState:(UIControlStateNormal)];
+    [_bottomBtn2 setTitle:@"新建分类" forState:(UIControlStateNormal)];
     [_bottomBtn2 setImage:[UIImage imageNamed:@"editmenu_add"] forState:(UIControlStateNormal)];
     [_bottomBtn2.titleLabel setFont:XFont(17)];
     [_bottomBtn2 setTitleColor:BlackColor forState:(UIControlStateNormal)];
     XViewLayerCB(_bottomBtn2, 3, 0.5, LineColor);
-    [_bottomBtn2 addTarget:self action:@selector(goCreateNewGoodsVC) forControlEvents:(UIControlEventTouchUpInside)];
+    [_bottomBtn2 addTarget:self action:@selector(goCreateNewClassVC) forControlEvents:(UIControlEventTouchUpInside)];
     [backgroundView addSubview:_bottomBtn2];
 }
 
-- (void)goSortVC{
-    SortViewController *vc = [[SortViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)goCreateNewGoodsVC{
-    CreateNewGoodsViewController *VC = [[CreateNewGoodsViewController alloc]init];
-    [self.navigationController pushViewController:VC animated:YES];
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return self.dataSource.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -85,7 +85,45 @@
         NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ManageCatergoryTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
+    NSString *className = [self.dataSource[indexPath.row] objectForKey:@"stc_name"];
+    cell.catergoryLab.text = className;
+    cell.tag = indexPath.row;
+    cell.delegate = self;
     return cell;
+}
+
+
+- (void)goSortVC{
+    SortViewController *vc = [[SortViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)goCreateNewClassVC{
+    NewCatergoryViewController *VC = [[NewCatergoryViewController alloc]init];
+    [self.navigationController pushViewController:VC animated:YES];
+}
+
+
+#pragma mark - ManageCatergoryTableViewCellDelegate
+- (void)edite:(id)sender{
+    ManageCatergoryTableViewCell *cell = (ManageCatergoryTableViewCell *)sender;
+    NewCatergoryViewController *vc = [[NewCatergoryViewController alloc]init];
+    vc.classId = [[self.dataSource[cell.tag] objectForKey:@"stc_id"] integerValue];
+    vc.className = [self.dataSource[cell.tag] objectForKey:@"stc_name"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)createNewGoods{
+    CreateNewGoodsViewController *vc = [[CreateNewGoodsViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - 懒加载
+- (NSMutableArray *)dataSource{
+    if (!_dataSource){
+        _dataSource = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _dataSource;
 }
 
 @end

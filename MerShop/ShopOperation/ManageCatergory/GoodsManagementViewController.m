@@ -10,6 +10,7 @@
 #import "GoodsTableViewCell.h"
 #import "ManageCatergoryViewController.h"
 #import "CreateNewGoodsViewController.h"
+#import "GoodsModel.h"
 
 
 #define ButtonWidth     IFAutoFitPx(194)
@@ -23,6 +24,9 @@
 @property (nonatomic ,assign)NSInteger index;
 @property (nonatomic ,strong)UIButton *bottomBtn1;
 @property (nonatomic ,strong)UIButton *bottomBtn2;
+@property (nonatomic ,assign)NSInteger storeId;
+@property (nonatomic ,strong)NSMutableArray *leftDataSource;
+@property (nonatomic ,strong)NSMutableArray *rightDataSource;
 
 @end
 
@@ -32,51 +36,62 @@
     [super viewDidLoad];
     [self setNaviTitle:@"商品管理"];
     self.titleArr = @[@"热销",@"特色套餐",@"单人套餐",@"米饭",@"主食类",@"精美小吃",@"汤类",@"饮料",@"其他"];
-    [self setUI];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *userInfo = [userDefaults objectForKey:@"userInfo"];
+    _storeId = [[userInfo objectForKey:@"store_id"] integerValue];
+    [self setRightUI];
     
 }
 
-- (void)setUI{
-    _btnArr = [NSMutableArray arrayWithCapacity:0];
-    
-    _leftScrollView = [[UIScrollView alloc]init];
-    [_leftScrollView setFrame:XFrame(0, ViewStart_Y, IFAutoFitPx(200), Screen_H-ViewStart_Y-IFAutoFitPx(108))];
-    [_leftScrollView setContentSize:CGSizeMake(IFAutoFitPx(200), IFAutoFitPx(96)*_titleArr.count)];
-    [_leftScrollView setBackgroundColor:LineColor];
-    [_leftScrollView setDelegate:self];
-    [_leftScrollView setScrollEnabled:YES];
-    [self.view addSubview:_leftScrollView];
-    
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self requestCatergory];
+    [self requestGoods:0];
+}
+
+- (void)requestCatergory{
+    [self.leftDataSource removeAllObjects];
+    [Http_url POST:@"goods_class_list" dict:@{@"store_id":@(_storeId)} showHUD:YES WithSuccessBlock:^(id data) {
+        NSLog(@"获取成功");
+        NSArray *arr = [data objectForKey:@"data"];
+        [self.leftDataSource addObjectsFromArray:arr];
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        [user setObject:arr forKey:@"classArray"];
+        [user synchronize];
+        [self setLeftUI];
+    } WithFailBlock:^(id data) {
+        
+    }];
+}
+
+- (void)requestGoods:(NSInteger )classId{
+    [self.rightDataSource removeAllObjects];
+    [Http_url POST:@"goods_list" dict:@{@"store_id":@(_storeId),@"class_id":@(classId)} showHUD:YES WithSuccessBlock:^(id data) {
+        NSLog(@"获取成功");
+        NSArray *arr = [[data objectForKey:@"data"] objectForKey:@"goods_list"];
+        if (![arr isKindOfClass:[NSNull class]]){
+            for (NSDictionary *dict in arr){
+                GoodsModel *model = [[GoodsModel alloc]initWithDictionary:dict error:nil];
+                [self.rightDataSource addObject:model];
+            }
+            [self.mainTable reloadData];
+        }else{
+            
+        }
+        
+    } WithFailBlock:^(id data) {
+        
+    }];
+}
+
+- (void)setRightUI{
     _mainTable = [[UITableView alloc]init];
-    [_mainTable setFrame:XFrame(CGRectGetMaxX(_leftScrollView.frame), ViewStart_Y, Screen_W-IFAutoFitPx(200), Screen_H-ViewStart_Y-IFAutoFitPx(108))];
+    [_mainTable setFrame:XFrame(IFAutoFitPx(200), ViewStart_Y, Screen_W-IFAutoFitPx(200), Screen_H-ViewStart_Y-IFAutoFitPx(108))];
     [_mainTable setBackgroundColor:[UIColor whiteColor]];
     [_mainTable setTableFooterView:[[UIView alloc]init]];
     [_mainTable setDelegate:self];
     [_mainTable setDataSource:self];
     [self.view addSubview:_mainTable];
-    
-    for (NSInteger i = 0;i <_titleArr.count; i++){
-        UIButton *leftBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        [leftBtn setTag:i];
-        [leftBtn.titleLabel setFont:XFont(16)];
-        [leftBtn setFrame:XFrame(IFAutoFitPx(6), i*IFAutoFitPx(96), ButtonWidth, IFAutoFitPx(96))];
-        [leftBtn setTitle:[_titleArr objectAtIndex:i] forState:(UIControlStateNormal)];
-        [leftBtn setTitleColor:GrayColor forState:(UIControlStateNormal)];
-        [leftBtn.titleLabel setTextAlignment:(NSTextAlignmentCenter)];
-        [leftBtn addTarget:self action:@selector(clickBtn:) forControlEvents:(UIControlEventTouchUpInside)];
-        if(i == 0){
-            [leftBtn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
-            [leftBtn setBackgroundColor:[UIColor whiteColor]];
-            _leftView = [[UIView alloc]init];
-            [_leftView setFrame:XFrame(0, 0, IFAutoFitPx(6), IFAutoFitPx(96))];
-            [_leftView setBackgroundColor:IFThemeBlueColor];
-            [_leftScrollView addSubview:_leftView];
-            
-        }
-        
-        [_btnArr addObject:leftBtn];
-        [_leftScrollView addSubview:leftBtn];
-    }
     
     UIView *backgroundView = [[UIView alloc]initWithFrame:XFrame(0, CGRectGetMaxY(_mainTable.frame), Screen_W, IFAutoFitPx(108))];
     [backgroundView setBackgroundColor:[UIColor whiteColor]];
@@ -106,6 +121,42 @@
     
 }
 
+- (void)setLeftUI{
+    _btnArr = [NSMutableArray arrayWithCapacity:0];
+    
+    _leftScrollView = [[UIScrollView alloc]init];
+    [_leftScrollView setFrame:XFrame(0, ViewStart_Y, IFAutoFitPx(200), Screen_H-ViewStart_Y-IFAutoFitPx(108))];
+    [_leftScrollView setContentSize:CGSizeMake(IFAutoFitPx(200), IFAutoFitPx(96)*_leftDataSource.count)];
+    [_leftScrollView setBackgroundColor:LineColor];
+    [_leftScrollView setDelegate:self];
+    [_leftScrollView setScrollEnabled:YES];
+    [self.view addSubview:_leftScrollView];
+    
+    
+    for (NSInteger i = 0;i <_leftDataSource.count; i++){
+        UIButton *leftBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        [leftBtn setTag:i];
+        [leftBtn.titleLabel setFont:XFont(16)];
+        [leftBtn setFrame:XFrame(IFAutoFitPx(6), i*IFAutoFitPx(96), ButtonWidth, IFAutoFitPx(96))];
+        NSString *title = [[_leftDataSource objectAtIndex:i] objectForKey:@"stc_name"];
+        [leftBtn setTitle:title forState:(UIControlStateNormal)];
+        [leftBtn setTitleColor:GrayColor forState:(UIControlStateNormal)];
+        [leftBtn.titleLabel setTextAlignment:(NSTextAlignmentCenter)];
+        [leftBtn addTarget:self action:@selector(clickBtn:) forControlEvents:(UIControlEventTouchUpInside)];
+        if(i == 0){
+            [leftBtn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+            [leftBtn setBackgroundColor:[UIColor whiteColor]];
+            _leftView = [[UIView alloc]init];
+            [_leftView setFrame:XFrame(0, 0, IFAutoFitPx(6), IFAutoFitPx(96))];
+            [_leftView setBackgroundColor:IFThemeBlueColor];
+            [_leftScrollView addSubview:_leftView];
+            
+        }
+        [_btnArr addObject:leftBtn];
+        [_leftScrollView addSubview:leftBtn];
+    }
+}
+
 - (void)goManage{
     ManageCatergoryViewController *vc = [[ManageCatergoryViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
@@ -128,10 +179,15 @@
             [btn setBackgroundColor:LineColor];
         }
     }
+    NSDictionary *classDict = self.leftDataSource[_index];
+    if(classDict != nil){
+        NSInteger classID = [[classDict objectForKey:@"stc_id"] integerValue];
+        [self requestGoods:classID];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return self.rightDataSource.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -144,7 +200,23 @@
         NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"GoodsTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
+    GoodsModel *model = self.rightDataSource[indexPath.row];
+    [cell setDataWithModel:model];
     return cell;
+}
+
+- (NSMutableArray *)leftDataSource{
+    if (!_leftDataSource){
+        _leftDataSource = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _leftDataSource;
+}
+
+- (NSMutableArray *)rightDataSource{
+    if (!_rightDataSource){
+        _rightDataSource = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _rightDataSource;
 }
 
 @end

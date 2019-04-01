@@ -36,7 +36,7 @@
     
     backBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [backBtn setFrame:XFrame(0, StatusBar_H, Navagtion_H, Navagtion_H)];
-    [backBtn setImage:[UIImage imageNamed:@"navBack"] forState:(UIControlStateNormal)];
+    [backBtn setImage:[UIImage imageNamed:@"tongyong_fanhiui"] forState:(UIControlStateNormal)];
     [backBtn addTarget:self action:@selector(popViewController) forControlEvents:(UIControlEventTouchUpInside)];
     [xphNavgationBar addSubview:backBtn];
     

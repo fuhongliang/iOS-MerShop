@@ -23,12 +23,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalGoods;
 @property (weak, nonatomic) IBOutlet UILabel *oneMonthOrder;
 @property (weak, nonatomic) IBOutlet UILabel *oneMonthIncome;
+@property (weak, nonatomic) id<HeaderViewDelegate>delegate;
+
 - (IBAction)goodsManageBtn:(id)sender;
 
 - (IBAction)userEvaluationBtn:(id)sender;
 
 - (IBAction)managementDataBtn:(id)sender;
 
-@property (weak, nonatomic) id<HeaderViewDelegate>delegate;
+- (void)addStoreInfo:(NSDictionary *)data;
 @end
 

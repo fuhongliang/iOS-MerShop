@@ -111,7 +111,21 @@
     NSDictionary *dic = @{@"member_name":self.accountText.text,
                           @"member_passwd":self.passWordText.text
                           };
-    [Http_url POST:@"http://master.api.ifhu.cn/index.php/member_login" dict:dic showHUD:YES WithSuccessBlock:^(id data) {
+    [Http_url POST:@"member_login" dict:dic showHUD:YES WithSuccessBlock:^(id data) {
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        NSMutableDictionary *userInfoDict = [[NSMutableDictionary alloc]initWithDictionary:[data objectForKey:@"data"]];
+//        [userInfoDict setObject:@"199" forKey:@"store_phone"];
+        NSArray *arr = [userInfoDict allKeys];
+        for (NSString *key in arr){
+            if ([[userInfoDict objectForKey:key] isKindOfClass:[NSNull class]]){
+                [userInfoDict setObject:@"" forKey:key];
+            }
+        }
+        NSLog(@"%@",userInfoDict);
+        if (userInfoDict){
+            [user setObject:userInfoDict forKey:@"userInfo"];
+            [user synchronize];
+        }
         [self GotoMainTabBarVC];
     } WithFailBlock:^(id data) {
         
@@ -122,9 +136,9 @@
 
 - (void)GotoMainTabBarVC{
     TabBarController *tabbar = [[TabBarController alloc]init];
+    [tabbar setSelectedIndex:0];
     NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:tabbar];
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//    [navi.navigationBar setHidden:YES];
     delegate.window.rootViewController = navi;
 }
 

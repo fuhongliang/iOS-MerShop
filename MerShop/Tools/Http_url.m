@@ -19,6 +19,11 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain",@"text/html",nil];
     [manager.requestSerializer setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+    NSString *token = [dict objectForKey:@"token"];
+    if (token.length){
+        [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    }
     return manager;
 }
 
@@ -27,10 +32,10 @@
         [[IFUtils share]showLoadingView];
     }
     AFHTTPSessionManager *manager = [self getManager];
-    [manager POST:httpUrl parameters:dict success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSString *url = [NSString stringWithFormat:@"http://47.111.27.189/api/public/index.php/v1/%@",httpUrl];
+    [manager POST:url parameters:dict success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
         NSInteger code = [dic[@"code"] integerValue];
-        NSLog(@"%@",dic);
         if (code == 200){
             if (show){
                 [SVProgressHUD dismiss];
@@ -43,10 +48,11 @@
             [[IFUtils share]showErrorInfo:[NSString stringWithFormat:@"%@",dic[@"msg"]]];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [[IFUtils share]showErrorInfo:@"加载失败,请稍后再试!"];
+        [[IFUtils share]showErrorInfo:@"发送失败,请稍后再试!"];
         [SVProgressHUD dismiss];
-        FailBlock(nil);
+        FailBlock(error);
     }];
+    
     
 }
 

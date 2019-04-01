@@ -14,6 +14,9 @@
 @property (nonatomic ,strong)UILabel *timeLab;
 @property (nonatomic ,strong)UIButton *stop;
 @property (nonatomic ,strong)UILabel *bottomLab;
+@property (nonatomic ,copy)NSString *startTime;
+@property (nonatomic ,copy)NSString *endTime;
+@property (nonatomic ,assign)BOOL close;
 
 @end
 
@@ -23,86 +26,103 @@
     [super viewDidLoad];
     [self setNaviTitle:@"营业状态"];
     [self.navigationController.navigationBar setHidden:YES];
+    NSDictionary *userDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+    NSInteger store_state = [[userDict objectForKey:@"store_state"] integerValue];
+    _startTime = [userDict objectForKey:@"work_start_time"];
+    _endTime = [userDict objectForKey:@"work_end_time"];
+    if (store_state == 0){
+        self.close = YES;
+    }else{
+        self.close = NO;
+    }
     [self setUI];
 }
 
 - (void)setUI{
     _status = [[UIImageView alloc]init];
     [_status setFrame:XFrame(IFAutoFitPx(30),ViewStart_Y+IFAutoFitPx(40), IFAutoFitPx(120), IFAutoFitPx(120))];
-    [_status setImage:[UIImage imageNamed:@"logo"]];
+    [_status setImage:[UIImage imageNamed:@"personal_ic_yyzt"]];
+    _status.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:self.status];
     
     _waitStartLab = [[UILabel alloc]init];
     [_waitStartLab setFrame:XFrame(CGRectGetMaxX(_status.frame)+IFAutoFitPx(26), CGRectGetMinY(_status.frame)+IFAutoFitPx(18), IFAutoFitPx(400), IFAutoFitPx(32))];
-    [_waitStartLab setText:@"待开始营业"];
     [_waitStartLab setFont:XFont(17)];
     [self.view addSubview:self.waitStartLab];
     
     _timeLab = [[UILabel alloc]init];
     [_timeLab setFrame:XFrame(CGRectGetMaxX(_status.frame)+IFAutoFitPx(26), CGRectGetMaxY(_waitStartLab.frame)+IFAutoFitPx(26), IFAutoFitPx(600), IFAutoFitPx(28))];
-    [_timeLab setText:@"营业时间：09:00～22:00"];
+    [_timeLab setText:[NSString stringWithFormat:@"%@~%@",_startTime,_endTime]];
     [_timeLab setTextColor:toPCcolor(@"#666666")];
     [_timeLab setFont:XFont(15)];
     [self.view addSubview:self.timeLab];
     
     _stop = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [_stop setFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(_status.frame)+IFAutoFitPx(82), Screen_W-IFAutoFitPx(60), IFAutoFitPx(88))];
-    [_stop setTitle:@"停止营业" forState:(UIControlStateNormal)];
     [_stop setBackgroundColor:IFThemeBlueColor];
     [_stop addTarget:self action:@selector(CloseDoor) forControlEvents:(UIControlEventTouchUpInside)];
     [_stop.titleLabel setFont:XFont(17)];
+    
     _stop.layer.cornerRadius = IFAutoFitPx(6);
     _stop.layer.masksToBounds = YES;
     [self.view addSubview:self.stop];
     
     _bottomLab = [[UILabel alloc]init];
     [_bottomLab setFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(_stop.frame)+IFAutoFitPx(32), Screen_W-IFAutoFitPx(60), IFAutoFitPx(78))];
-    [_bottomLab setText:@"当您希望长时间不再接受订单时m，请点击上方按钮停止营业，开启后需要手动恢复"];
-    [_bottomLab setFont:XFont(14)];
+    [_bottomLab setText:@"当您希望长时间不再接受订单时，请点击上方按钮停止营业，开启后需要手动恢复"];
+    [_bottomLab setFont:XFont(11)];
     [_bottomLab setTextColor:toPCcolor(@"#666666")];
     [_bottomLab setNumberOfLines:2];
     [self.view addSubview:self.bottomLab];
+    
+    NSDictionary *userDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+    NSInteger store_state = [[userDict objectForKey:@"store_state"] integerValue];
+    if (store_state == 0){
+        [_waitStartLab setText:@"已停止营业"];
+        [_stop setTitle:@"开始营业" forState:(UIControlStateNormal)];
+    }else{
+        [_waitStartLab setText:@"正在营业"];
+        [_stop setTitle:@"停止营业" forState:(UIControlStateNormal)];
+    }
 }
 
 - (void)CloseDoor{
     NSLog(@"关门");
+    _close = !_close;
+    if (_close == YES){
+        [self setStoreState:0];
+    }else{
+        [self setStoreState:1];
+    }
 }
 
-//- (UIImageView *)status{
-//    if (!_status){
-//        _status = [[UIImageView alloc]init];
-//    }
-//    return _status;
-//}
-//
-//- (UILabel *)waitStartLab{
-//    if (!_waitStartLab){
-//        _waitStartLab = [[UILabel alloc]init];
-//
-//    }
-//    return _waitStartLab;
-//}
-//
-//- (UILabel *)timeLab{
-//    if (!_timeLab){
-//        _timeLab = [[UILabel alloc]init];
-//
-//    }
-//    return _timeLab;
-//}
-//
-//- (UIButton *)stop{
-//    if (!_stop){
-//        _stop = [UIButton buttonWithType:(UIButtonTypeCustom)];
-//    }
-//    return _stop;
-//}
-//
-//- (UILabel *)bottomLab{
-//    if (!_bottomLab){
-//        _bottomLab = [[UILabel alloc]init];
-//    }
-//    return _bottomLab;
-//}
+- (void)setStoreState:(NSInteger )number{
+    NSDictionary *userDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+    NSInteger storeID = [[userDict objectForKey:@"store_id"] integerValue];
+    __weak typeof(self) weakSelf = self;
+    [Http_url POST:@"store_set_workstate" dict:@{@"store_id":@(storeID),@"store_state":@(number)} showHUD:YES WithSuccessBlock:^(id data) {
+        if (data){
+            if (number == 0){
+                NSMutableDictionary *userDict1 = [[NSMutableDictionary alloc]initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]];
+                [userDict1 setValue:@"0" forKey:@"store_state"];
+                NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+                [user setObject:userDict1 forKey:@"userInfo"];
+                [weakSelf.waitStartLab setText:@"已停止营业"];
+                [weakSelf.stop setTitle:@"开始营业" forState:(UIControlStateNormal)];
+            }else{
+                NSMutableDictionary *userDict1 = [[NSMutableDictionary alloc]initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]];
+                [userDict1 setValue:@"1" forKey:@"store_state"];
+                NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+                [user setObject:userDict1 forKey:@"userInfo"];
+                [weakSelf.waitStartLab setText:@"正在营业"];
+                [weakSelf.stop setTitle:@"停止营业" forState:(UIControlStateNormal)];
+            }
+
+        }
+        
+    } WithFailBlock:^(id data) {
+        
+    }];
+}
 
 @end

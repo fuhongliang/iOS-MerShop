@@ -12,6 +12,8 @@
 
 - (void)JumpToShopset:(UIButton *)button;
 
+- (void)SignOut;
+
 @end
 
 
@@ -22,5 +24,8 @@
 @property (nonatomic ,strong)UILabel *describe;
 @property (nonatomic ,strong)UIButton *quitBtn;
 @property (nonatomic ,weak)id<BackgroundViewDelegate>delegate;
+
+- (void)setMyInformation:(NSDictionary *)userinfo;
+
 @end
 

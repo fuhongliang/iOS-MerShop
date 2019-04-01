@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ManageCatergoryTableViewCellDelegate <NSObject>
+
+- (void)edite:(id)sender;
+- (void)createNewGoods;
+
+@end
+
 
 @interface ManageCatergoryTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *catergoryLab;
+@property (weak, nonatomic)id<ManageCatergoryTableViewCellDelegate>delegate;
 - (IBAction)editBtn:(id)sender;
 - (IBAction)addGoodsBtn:(id)sender;
 

@@ -21,7 +21,7 @@
 - (void)createUI{
     
     _titleLab = [[UILabel alloc]init];
-    [_titleLab setFrame:XFrame(IFAutoFitPx(210), IFAutoFitPx(58), IFAutoFitPx(140), IFAutoFitPx(34))];
+    [_titleLab setFrame:XFrame(IFAutoFitPx(10), IFAutoFitPx(58), IFAutoFitPx(540), IFAutoFitPx(34))];
     [_titleLab setFont:XFont(18)];
     [_titleLab setText:@"客服电话"];
     [_titleLab setTextAlignment:(NSTextAlignmentCenter)];

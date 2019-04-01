@@ -18,9 +18,17 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
-- (IBAction)switch:(id)sender {
+- (IBAction)openOrclose:(id)sender {
+    if (self.kaiguan.isOn){
+        if (self.delegate && [self.delegate respondsToSelector:@selector(open:)]){
+            [self.delegate performSelector:@selector(open:) withObject:@"99999999"];
+        }
+    }else{
+        if (self.delegate && [self.delegate respondsToSelector:@selector(open:)]){
+            [self.delegate performSelector:@selector(open:) withObject:@"0"];
+        }
+    }
 }
 @end

@@ -13,12 +13,13 @@
 
 #define IFThemeBlueColor toPCcolor(@"#1C98F6")   //APP主题色
 
-#define GrayColor toPCcolor(@"#666666")
+#define GrayColor    toPCcolor(@"#666666")
 
-#define BlackColor toPCcolor(@"#000000")
+#define BlackColor   toPCcolor(@"#000000")
 
-#define LineColor   toPCcolor(@"#E5E5E5")
+#define LineColor    toPCcolor(@"#E5E5E5")
 
+#define WhiteColor   toPCcolor(@"#FFFFFF")
 
 #define XFrame(xmx,xmy,xw,xh) CGRectMake(xmx,xmy,xw,xh)  //创建控件大小
 
@@ -60,12 +61,6 @@
 
 #define ViewStart_Y         (Navagtion_H+StatusBar_H)
 
-#define SelfView_H          (Screen_H-ViewStart_Y)
-
-#define DefaultRow_H         44.0
-
-#define RightView_W         (Screen_W-60.0)
-
 //设置圆角视图
 #define XViewLayerCB(viewName,lcR,lbW,lbC)\
 [viewName.layer setCornerRadius:lcR];\
@@ -73,6 +68,20 @@
 [viewName.layer setBorderColor:lbC.CGColor];\
 [viewName.layer setMasksToBounds:YES];
 
+////弱引用
+//#define kWeakSelf(type)  __weak typeof(type) weak##type = type
+//
+////字符串是否为空
+//#define kISNullString(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] < 1 ? YES : NO )
+////数组是否为空
+//#define kISNullArray(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0 ||[array isEqual:[NSNull null]])
+////字典是否为空
+//#define kISNullDict(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0 || [dic isEqual:[NSNull null]])
+////是否是空对象
+//#define kISNullObject(_object) (_object == nil \
+//|| [_object isKindOfClass:[NSNull class]] \
+//|| ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) \
+//|| ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
 
 #define UIKIT_STATIC_INLINE    static inline
 UIKIT_STATIC_INLINE UIColor *toPCcolor(NSString *pcColorstr)

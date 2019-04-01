@@ -10,7 +10,6 @@
 
 
 @interface NewsSettingview : UIView
-@property (weak, nonatomic) IBOutlet UIButton *SaveBtn;
 @property (weak, nonatomic) IBOutlet UISwitch *switch1;
 @property (weak, nonatomic) IBOutlet UISwitch *switch2;
 

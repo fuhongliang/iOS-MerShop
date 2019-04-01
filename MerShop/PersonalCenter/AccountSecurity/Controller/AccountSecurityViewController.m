@@ -13,6 +13,7 @@
 
 @interface AccountSecurityViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic ,strong)UITableView *tableview;
+@property (nonatomic ,copy)NSDictionary *userInfoDict;
 @end
 
 @implementation AccountSecurityViewController
@@ -21,6 +22,7 @@
     [super viewDidLoad];
     [self setNaviTitle:@"账户安全"];
     [self setUI];
+    _userInfoDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
     
 }
 
@@ -43,6 +45,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *phoneStr = _userInfoDict[@"store_phone"];
+    NSString *accountStr = _userInfoDict[@"member_name"];
     if (indexPath.row ==2){
         ShopSetTableViewCell1 *cell = (ShopSetTableViewCell1 *)[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"ShopSetTableViewCell1"];
         if (!cell){
@@ -62,10 +66,11 @@
         }
         if (indexPath.row == 0){
             cell.Title.text = @"绑定手机";
-            cell.SubTitle.text = @"188****1234";
+            cell.SubTitle.text = phoneStr;
+            
         }else{
             cell.Title.text = @"登录账号";
-            cell.SubTitle.text = @"Sofia****8686";
+            cell.SubTitle.text = accountStr;
         }
         cell.Title.textColor = BlackColor;
         cell.SubTitle.textColor = GrayColor;

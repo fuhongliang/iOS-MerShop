@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface NewGoodsTableViewCell4 : UITableViewCell
+@interface NewGoodsTableViewCell4 : UITableViewCell<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;
 @property (weak, nonatomic) IBOutlet UITextField *text;
 

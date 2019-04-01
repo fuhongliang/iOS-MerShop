@@ -57,25 +57,25 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="18" id="qex-M4-UcO"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店铺商品总数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fz1-Pa-g0Z">
                             <rect key="frame" x="94" y="79" width="93.5" height="18"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30天下单量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXz-lG-luA">
                             <rect key="frame" x="187.5" y="79" width="94" height="18"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30天销售金额" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsA-aI-K5r">
                             <rect key="frame" x="281.5" y="79" width="93.5" height="18"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -87,7 +87,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0q-0u-snu" customClass="ZJTopImageBottomTitleButton">
-                            <rect key="frame" x="15" y="123.5" width="84" height="38.5"/>
+                            <rect key="frame" x="20" y="123.5" width="87.5" height="38.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="商品管理" image="find_ic_spgl">
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -97,7 +97,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPg-H8-eiq" customClass="ZJTopImageBottomTitleButton">
-                            <rect key="frame" x="135" y="123.5" width="84" height="38.5"/>
+                            <rect key="frame" x="143.5" y="123.5" width="88" height="38.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="用户评价" image="find_ic_yhpj">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -107,7 +107,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBV-wj-OZb" customClass="ZJTopImageBottomTitleButton">
-                            <rect key="frame" x="255" y="123.5" width="84" height="38.5"/>
+                            <rect key="frame" x="267.5" y="123.5" width="87.5" height="38.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="经营数据" image="find_ic_jysj">
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -131,14 +131,14 @@
                         <constraint firstItem="Olv-yE-HBF" firstAttribute="leading" secondItem="1Wc-Rk-fDl" secondAttribute="leading" id="5e1-4c-VFp"/>
                         <constraint firstItem="SPg-H8-eiq" firstAttribute="height" secondItem="U0q-0u-snu" secondAttribute="height" id="5pQ-CP-CSb"/>
                         <constraint firstItem="SPg-H8-eiq" firstAttribute="top" secondItem="STd-w2-6Ap" secondAttribute="bottom" constant="18" id="Ad0-oA-NYN"/>
-                        <constraint firstItem="U0q-0u-snu" firstAttribute="leading" secondItem="1Wc-Rk-fDl" secondAttribute="leading" constant="15" id="Ca2-gw-Yjh"/>
+                        <constraint firstItem="U0q-0u-snu" firstAttribute="leading" secondItem="1Wc-Rk-fDl" secondAttribute="leading" constant="20" id="Ca2-gw-Yjh"/>
                         <constraint firstAttribute="bottom" secondItem="VUO-X1-YkR" secondAttribute="bottom" constant="143" id="FGF-cZ-4AW"/>
                         <constraint firstItem="lEu-7g-uuK" firstAttribute="leading" secondItem="Olv-yE-HBF" secondAttribute="trailing" id="GB9-RQ-BTp"/>
                         <constraint firstItem="vBV-wj-OZb" firstAttribute="height" secondItem="U0q-0u-snu" secondAttribute="height" id="GwH-Fq-PSe"/>
                         <constraint firstAttribute="trailing" secondItem="STd-w2-6Ap" secondAttribute="trailing" constant="15" id="JfK-W3-j3P"/>
                         <constraint firstItem="U0q-0u-snu" firstAttribute="top" secondItem="STd-w2-6Ap" secondAttribute="bottom" constant="18" id="Kmg-38-lJI"/>
                         <constraint firstItem="kvU-ZQ-wix" firstAttribute="height" secondItem="Olv-yE-HBF" secondAttribute="height" id="L39-It-vkB"/>
-                        <constraint firstAttribute="trailing" secondItem="vBV-wj-OZb" secondAttribute="trailing" constant="36" id="MRA-KW-ysL"/>
+                        <constraint firstAttribute="trailing" secondItem="vBV-wj-OZb" secondAttribute="trailing" constant="20" id="MRA-KW-ysL"/>
                         <constraint firstAttribute="bottom" secondItem="U0q-0u-snu" secondAttribute="bottom" constant="15" id="PlS-qn-oTF"/>
                         <constraint firstAttribute="trailing" secondItem="VUO-X1-YkR" secondAttribute="trailing" constant="204" id="RLM-xi-bbe"/>
                         <constraint firstItem="fz1-Pa-g0Z" firstAttribute="leading" secondItem="7lA-GE-YB3" secondAttribute="trailing" id="RMC-9g-gBW"/>

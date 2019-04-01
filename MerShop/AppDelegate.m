@@ -21,7 +21,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     LoginInViewController *login = [[LoginInViewController alloc]init];
+//    TabBarController *vc = [TabBarController share];
     NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:login];
     [navi.navigationBar setHidden:YES];
 //    TabBarController *startVc = [TabBarController share];

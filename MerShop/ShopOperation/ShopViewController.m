@@ -18,6 +18,8 @@
 @property (nonatomic ,strong)UITableView *tableview;
 @property (nonatomic ,copy)NSArray *iconArr;
 @property (nonatomic ,copy)NSArray *titleArr;
+@property (nonatomic ,copy)NSDictionary *storeData;
+@property (nonatomic ,copy)NSString *DataUrl;
 @end
 
 @implementation ShopViewController
@@ -28,7 +30,24 @@
     [self setHideBackBtn:YES];
     self.iconArr = @[@"find_ic_xszk",@"find_ic_mlj",@"find_ic_yhtc",@"find_ic_djq"];
     self.titleArr = @[@"限时折扣",@"满立减",@"优惠套餐",@"代金券管理"];
-    [self setUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self requestData];
+}
+
+- (void)requestData{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSInteger storeId = [[[userDefaults objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];
+    [Http_url POST:@"store_yunying" dict:@{@"store_id":@(storeId)} showHUD:NO WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            self.storeData = [[data objectForKey:@"data"] copy];
+            [self setUI];
+        }
+    } WithFailBlock:^(id data) {
+        
+    }];
 }
 
 - (void)setUI{
@@ -37,7 +56,7 @@
     [view setBackgroundColor:IFThemeBlueColor];
     view.delegate = self;
     [view setFrame:XFrame(0, 0, Screen_W, 290)];
-
+    [view addStoreInfo:self.storeData];
     _tableview = [[UITableView alloc]init];
     [_tableview setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
     [_tableview setDelegate:self];
@@ -81,6 +100,7 @@
 
 - (void)managementData:(UIButton *)sender{
     ManageViewController *vc = [[ManageViewController alloc]init];
+    vc.url = [NSString stringWithFormat:@"%@",[self.storeData objectForKey:@"jingying_url"]];
     [self.navigationController pushViewController:vc animated:NO];
 }
 
