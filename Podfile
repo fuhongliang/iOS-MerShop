@@ -7,4 +7,5 @@ pod 'MJRefresh', '~> 1.1.0'
 pod 'IQKeyboardManager'
 pod 'Masonry'
 pod 'MJExtension'
+pod 'Bugtags'
 end

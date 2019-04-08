@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;
 @property (weak, nonatomic) IBOutlet UITextField *text;
 
+- (void)setAttributeText:(NSString *)string;
+
 @end
 

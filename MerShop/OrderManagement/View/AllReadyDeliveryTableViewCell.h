@@ -23,8 +23,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *incomeFee;
 @property (weak, nonatomic) IBOutlet UILabel *orderTime;
 @property (weak, nonatomic) IBOutlet UILabel *orderNumber;
+@property (weak, nonatomic) IBOutlet UIButton *printfBtn;
 
 - (void)addProduct:(NewOrderModel *)model;
+- (IBAction)printf:(id)sender;
 
 @end
 

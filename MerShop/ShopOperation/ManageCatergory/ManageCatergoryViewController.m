@@ -16,6 +16,7 @@
 @property (nonatomic ,strong)UITableView *tableview;
 @property (nonatomic ,strong)UIButton *bottomBtn1;
 @property (nonatomic ,strong)UIButton *bottomBtn2;
+@property (nonatomic ,assign)NSInteger storeId;
 @property (nonatomic ,strong)NSMutableArray *dataSource;
 
 @end
@@ -26,14 +27,29 @@
     [super viewDidLoad];
     [self setNaviTitle:@"管理分类"];
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSArray *arr = [user objectForKey:@"classArray"];
-    [self.dataSource addObjectsFromArray:arr];
-    [self.tableview reloadData];
+    NSDictionary *userInfo = [user objectForKey:@"userInfo"];
+    _storeId = [[userInfo objectForKey:@"store_id"] integerValue];
     [self setUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self requestCatergory];
+}
+
+- (void)requestCatergory{
+    [self.dataSource removeAllObjects];
+    [Http_url POST:@"goods_class_list" dict:@{@"store_id":@(_storeId)} showHUD:YES WithSuccessBlock:^(id data) {
+        NSLog(@"获取成功");
+        NSArray *arr = [data objectForKey:@"data"];
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            [self.dataSource addObjectsFromArray:arr];
+        }
+        [self.tableview reloadData];
+        
+    } WithFailBlock:^(id data) {
+        
+    }];
 }
 
 - (void)setUI{
@@ -57,6 +73,7 @@
     [_bottomBtn1.titleLabel setFont:XFont(17)];
     [_bottomBtn1 setTitleColor:BlackColor forState:(UIControlStateNormal)];
     XViewLayerCB(_bottomBtn1, 3, 0.5, LineColor);
+    _bottomBtn1.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     [_bottomBtn1 addTarget:self action:@selector(goSortVC) forControlEvents:(UIControlEventTouchUpInside)];
     [backgroundView addSubview:_bottomBtn1];
     
@@ -67,6 +84,7 @@
     [_bottomBtn2.titleLabel setFont:XFont(17)];
     [_bottomBtn2 setTitleColor:BlackColor forState:(UIControlStateNormal)];
     XViewLayerCB(_bottomBtn2, 3, 0.5, LineColor);
+    _bottomBtn2.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     [_bottomBtn2 addTarget:self action:@selector(goCreateNewClassVC) forControlEvents:(UIControlEventTouchUpInside)];
     [backgroundView addSubview:_bottomBtn2];
 }
@@ -113,8 +131,11 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)createNewGoods{
+- (void)createNewGoods:(id)sender{
+    ManageCatergoryTableViewCell *cell = (ManageCatergoryTableViewCell *)sender;
     CreateNewGoodsViewController *vc = [[CreateNewGoodsViewController alloc]init];
+    vc.className = [self.dataSource[cell.tag] objectForKey:@"stc_name"];
+    vc.classId = [[self.dataSource[cell.tag] objectForKey:@"stc_id"] integerValue];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

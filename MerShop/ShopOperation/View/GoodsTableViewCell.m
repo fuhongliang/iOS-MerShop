@@ -25,7 +25,11 @@
 - (void)setDataWithModel:(GoodsModel *)model{
     self.goodsTitle.text = model.goods_name;
     self.currentPrice.text = [NSString stringWithFormat:@"¥%@",model.goods_price];
-    self.oldPrice.text = [NSString stringWithFormat:@"¥%@",model.goods_marketprice];
+    
+    //中划线
+    NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"¥%@",model.goods_marketprice] attributes:attribtDic];
+    self.oldPrice.attributedText = attribtStr;
 }
 
 @end

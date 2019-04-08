@@ -12,13 +12,18 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+}
+
+- (void)setAttributeText:(NSString *)string{
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc]initWithString:string];
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(string.length-1, 1)];
+    self.leftLabel.attributedText = str;
 }
 
 @end

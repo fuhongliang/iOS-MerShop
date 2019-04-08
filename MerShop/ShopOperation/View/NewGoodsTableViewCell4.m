@@ -20,4 +20,10 @@
 
 }
 
+- (void)setAttributeText:(NSString *)string{
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc]initWithString:string];
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(string.length-1, 1)];
+    self.leftLabel.attributedText = str;
+}
+
 @end

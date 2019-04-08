@@ -161,14 +161,15 @@
     
     UILabel *goodCommentRate = [[UILabel alloc]init];
     [goodCommentRate setFrame:XFrame(IFAutoFitPx(20), 0, IFAutoFitPx(250), IFAutoFitPx(95))];
-    [goodCommentRate setText:[NSString stringWithFormat:@"好评率：%@ %%",[dict objectForKey:@"rate"]]];
+    [goodCommentRate setText:[NSString stringWithFormat:@"好评率：%ld %%",[[dict objectForKey:@"rate"] integerValue]*100]];
+    [goodCommentRate setFont:XFont(14)];
     [view addSubview:goodCommentRate];
     
     UIButton *btn2 = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [btn2 setFrame:XFrame(CGRectGetMaxX(goodCommentRate.frame), 0, (Screen_W-IFAutoFitPx(330))/3, IFAutoFitPx(95))];
     [btn2 setTitle:[NSString stringWithFormat:@"好评(%@)",[dict objectForKey:@"haoping"]] forState:(UIControlStateNormal)];
     [btn2 setTitleColor:BlackColor forState:(UIControlStateNormal)];
-    [btn2.titleLabel setFont:XFont(12)];
+    [btn2.titleLabel setFont:XFont(14)];
 //    XViewLayerCB(btn2, IFAutoFitPx(25), 0.5, BlackColor);
     [view addSubview:btn2];
     
@@ -176,14 +177,14 @@
     [btn3 setFrame:XFrame(IFAutoFitPx(20)+CGRectGetMaxX(btn2.frame), 0, (Screen_W-IFAutoFitPx(330))/3, IFAutoFitPx(95))];
     [btn3 setTitle:[NSString stringWithFormat:@"中评(%@)",[dict objectForKey:@"zhongping"]] forState:(UIControlStateNormal)];
     [btn3 setTitleColor:BlackColor forState:(UIControlStateNormal)];
-    [btn3.titleLabel setFont:XFont(12)];
+    [btn3.titleLabel setFont:XFont(14)];
 //    XViewLayerCB(btn3, IFAutoFitPx(25), 0.5, BlackColor);
     [view addSubview:btn3];
     
     UIButton *btn4 = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [btn4 setFrame:XFrame(IFAutoFitPx(20)+CGRectGetMaxX(btn3.frame), 0, (Screen_W-IFAutoFitPx(330))/3, IFAutoFitPx(95))];
     [btn4 setTitle:[NSString stringWithFormat:@"差评(%@)",[dict objectForKey:@"chaping"]] forState:(UIControlStateNormal)];
-    [btn4.titleLabel setFont:XFont(12)];
+    [btn4.titleLabel setFont:XFont(14)];
 //    XViewLayerCB(btn4, IFAutoFitPx(25), 0.5, BlackColor);
     [btn4 setTitleColor:BlackColor forState:(UIControlStateNormal)];
     [view addSubview:btn4];
@@ -269,14 +270,6 @@
     return self.dataSource.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSString *replayStr = [[self.dataSource objectAtIndex:indexPath.row] objectForKey:@"replay"];
-//    if ([replayStr isKindOfClass:[NSNull class]]){
-//        return 168;
-//    }
-//    return 246;
-//}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
 //    UserEvaluationTableViewCell1 *cell = (UserEvaluationTableViewCell1 *)[tableView dequeueReusableCellWithIdentifier:@"UserEvaluationTableViewCell1"];
@@ -290,7 +283,7 @@
             NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"NoImageTableViewCell" owner:self options:nil];
             cell2 = [nib objectAtIndex:0];
         }
-        [cell2 addCommentData:commentData Index:[NSString stringWithFormat:@"%ld",indexPath.row]];
+        [cell2 addCommentData:commentData Index:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
         cell2.delegate = self;
         cell2.tag = indexPath.row;
         return cell2;

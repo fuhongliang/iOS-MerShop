@@ -28,7 +28,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tongyong_jinru" translatesAutoresizingMaskIntoConstraints="NO" id="oa5-T9-Dhd">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="oa5-T9-Dhd">
                         <rect key="frame" x="295" y="15" width="9" height="14"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="9" id="Q3C-wa-hQz"/>
@@ -65,6 +65,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="tongyong_jinru" width="8.5" height="14"/>
+        <image name="arrow" width="8.5" height="14"/>
     </resources>
 </document>

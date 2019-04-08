@@ -12,5 +12,6 @@
 @interface NewCatergoryViewController : BasicViewController
 @property (nonatomic ,assign)NSInteger classId;
 @property (nonatomic ,copy)NSString *className;
+@property (nonatomic ,assign)NSInteger index;
 @end
 

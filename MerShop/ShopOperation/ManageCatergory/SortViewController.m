@@ -9,13 +9,17 @@
 #import "SortViewController.h"
 #import "SortTableViewCell.h"
 #import "JXMovableCellTableView.h"
+#import "PhoneNumberView.h"
 
-@interface SortViewController ()<UITableViewDelegate,UITableViewDataSource,JXMovableCellTableViewDelegate,JXMovableCellTableViewDataSource,SortTableViewCellDelegate>
+@interface SortViewController ()<UITableViewDelegate,UITableViewDataSource,JXMovableCellTableViewDelegate,JXMovableCellTableViewDataSource,SortTableViewCellDelegate,PhoneNumberViewDelegate>
 @property (nonatomic ,strong)JXMovableCellTableView *mainTableview;
 @property (nonatomic ,strong)NSMutableArray *dataSource;
 @property (nonatomic ,copy)NSDictionary *removeCurrentDict;
 @property (nonatomic ,assign)NSInteger currentIndex;
 @property (nonatomic ,assign)NSInteger storeID;
+@property (nonatomic ,strong)UIView *clearView;
+@property (nonatomic ,strong)PhoneNumberView *upView;
+@property (nonatomic ,assign)NSInteger deleteIndex;
 @end
 
 @implementation SortViewController
@@ -26,6 +30,7 @@
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSArray *arr = [user objectForKey:@"classArray"];
     _storeID = [[[user objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];
+
     [self.dataSource addObjectsFromArray:arr];
     NSLog(@"%@",self.dataSource);
     [self.mainTableview reloadData];
@@ -41,6 +46,23 @@
     _mainTableview.tableFooterView = [[UIView alloc]init];
     [self.view addSubview:_mainTableview];
     _mainTableview.longPressGesture.minimumPressDuration = 1.0;
+    
+    _clearView = [[UIView alloc]initWithFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
+    [_clearView setBackgroundColor:BlackColor];
+    [_clearView setAlpha:0.5];
+    [_clearView setHidden:YES];
+    [self.view addSubview:_clearView];
+    
+    _upView = [[PhoneNumberView alloc]init];
+    [_upView setFrame:XFrame(IFAutoFitPx(96), IFAutoFitPx(456)+ViewStart_Y, IFAutoFitPx(560), IFAutoFitPx(292))];
+    _upView.layer.cornerRadius = IFAutoFitPx(8);
+    [_upView setViewTitle:@"是否删除此分类" subTitle:@"该分类所有商品将会被删除" cancel:@"取消" ensure:@"确定"];
+    _upView.layer.masksToBounds = YES;
+    _upView.delegate = self;
+    [_upView setBackgroundColor:[UIColor whiteColor]];
+    [_upView setHidden:YES];
+    [self.view addSubview:_upView];
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -72,20 +94,35 @@
 
 #pragma mark - SortTableViewCellDelegate
 - (void)deleteAction:(id)data{
+    [_clearView setHidden:NO];
+    [_upView setHidden:NO];
     SortTableViewCell *cell = (SortTableViewCell *)data;
-    NSInteger classID = [[[self.dataSource objectAtIndex:cell.tag] objectForKey:@"stc_id"] integerValue];
-    [self.dataSource removeObjectAtIndex:cell.tag];
+    _deleteIndex = cell.tag;
+}
+
+- (void)cancelCall:(UIButton *)sender{
+    [_clearView setHidden:YES];
+    [_upView setHidden:YES];
+}
+
+- (void)playCall:(UIButton *)sender{
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSInteger classID = [[[self.dataSource objectAtIndex:_deleteIndex] objectForKey:@"stc_id"] integerValue];
     NSInteger storeID = [[[user objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];;
-    [user setObject:self.dataSource forKey:@"classArray"];
+
     __weak typeof(self) weakself = self;
     [Http_url POST:@"del_goods_class" dict:@{@"class_id":@(classID),@"store_id":@(storeID)} showHUD:YES WithSuccessBlock:^(id data) {
         if ([[data objectForKey:@"code"] integerValue] == 200){
+            [weakself.dataSource removeObjectAtIndex:weakself.deleteIndex];
+            [user setObject:weakself.dataSource forKey:@"classArray"];
             [weakself.mainTableview reloadData];
+            [weakself.clearView setHidden:YES];
+            [weakself.upView setHidden:YES];
         }
     } WithFailBlock:^(id data) {
         
     }];
+
 }
 
 
@@ -132,9 +169,6 @@
     }
 }
 
-//- (NSMutableArray *)dataSourceArrayInTableView:(JXMovableCellTableView *)tableView{
-//    return _dataSource;
-//}
 
 #pragma mark - JXMovableCellTableViewDelegate
 

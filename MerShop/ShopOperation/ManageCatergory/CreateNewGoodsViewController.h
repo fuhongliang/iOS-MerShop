@@ -11,5 +11,7 @@
 
 @interface CreateNewGoodsViewController : BasicViewController
 @property (nonatomic ,assign)NSInteger switchStatus;
+@property (nonatomic ,copy)NSString *className;
+@property (nonatomic ,assign)NSInteger classId;
 @end
 

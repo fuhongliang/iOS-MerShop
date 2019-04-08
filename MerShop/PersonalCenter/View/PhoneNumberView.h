@@ -21,5 +21,10 @@
 @property (nonatomic ,strong)UIButton *cancelBtn;
 @property (nonatomic ,strong)UIButton *confirmBtn;
 @property (nonatomic ,weak)id<PhoneNumberViewDelegate>delegate;
+
+- (void)setViewTitle:(NSString *)title
+            subTitle:(NSString *)str
+              cancel:(NSString *)cancel
+              ensure:(NSString *)ensure;
 @end
 

@@ -10,6 +10,7 @@
 
 @interface NewCatergoryViewController ()
 @property (nonatomic ,strong)UITextField *text;
+@property (nonatomic ,strong)NSMutableArray *classArr;
 @end
 
 @implementation NewCatergoryViewController
@@ -46,6 +47,8 @@
     [saveBtn setFrame:XFrame(IFAutoFitPx(20), CGRectGetMaxY(view.frame)+IFAutoFitPx(60), Screen_W-IFAutoFitPx(40), IFAutoFitPx(88))];
     [saveBtn setTitle:@"保存" forState:(UIControlStateNormal)];
     [saveBtn setBackgroundColor:IFThemeBlueColor];
+    [saveBtn.layer setCornerRadius:3];
+    [saveBtn.layer setMasksToBounds:YES];
     [saveBtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     [saveBtn addTarget:self action:@selector(save) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:saveBtn];
@@ -55,16 +58,33 @@
     NSUserDefaults *UserDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *userinfo = [UserDefaults objectForKey:@"userInfo"];
     NSInteger storeID = [[ userinfo objectForKey:@"store_id"] integerValue];
-    
+    [self.classArr addObjectsFromArray:[UserDefaults objectForKey:@"classArray"]];
     NSDictionary *dict = @{@"class_id":@(_classId),
                            @"store_id":@(storeID),
                            @"class_name":self.text.text
                            };
     [Http_url POST:@"add_goods_class" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
         NSLog(@"新建成功");
+        if ([[data objectForKey:@"code"] integerValue] ==200){
+            if (self.className == nil){
+                [self.classArr addObject:self.text.text];
+                [UserDefaults setValue:self.classArr forKey:@"classArray"];
+            }else{
+                [self.classArr replaceObjectAtIndex:self.index withObject:self.text.text];
+                [UserDefaults setValue:self.classArr forKey:@"classArray"];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     } WithFailBlock:^(id data) {
         
     }];
+}
+
+- (NSMutableArray *)classArr{
+    if (!_classArr){
+        _classArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _classArr;
 }
 
 @end

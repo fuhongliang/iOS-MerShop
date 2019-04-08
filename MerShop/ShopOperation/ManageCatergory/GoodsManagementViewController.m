@@ -11,22 +11,26 @@
 #import "ManageCatergoryViewController.h"
 #import "CreateNewGoodsViewController.h"
 #import "GoodsModel.h"
+#import "PhoneNumberView.h"
+#import "CreateGoodsViewController.h"
+#import "NewCatergoryViewController.h"
 
 
 #define ButtonWidth     IFAutoFitPx(194)
 
-@interface GoodsManagementViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface GoodsManagementViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,PhoneNumberViewDelegate>
 @property (nonatomic ,strong)UIScrollView *leftScrollView;
 @property (nonatomic ,strong)UITableView *mainTable;
 @property (nonatomic ,strong)UIView *leftView;
 @property (nonatomic ,strong)NSMutableArray *btnArr;
-@property (nonatomic ,strong)NSArray *titleArr;
 @property (nonatomic ,assign)NSInteger index;
 @property (nonatomic ,strong)UIButton *bottomBtn1;
 @property (nonatomic ,strong)UIButton *bottomBtn2;
 @property (nonatomic ,assign)NSInteger storeId;
 @property (nonatomic ,strong)NSMutableArray *leftDataSource;
 @property (nonatomic ,strong)NSMutableArray *rightDataSource;
+@property (nonatomic ,strong)UIView *clearView;
+@property (nonatomic ,strong)PhoneNumberView *upView;
 
 @end
 
@@ -35,7 +39,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNaviTitle:@"商品管理"];
-    self.titleArr = @[@"热销",@"特色套餐",@"单人套餐",@"米饭",@"主食类",@"精美小吃",@"汤类",@"饮料",@"其他"];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *userInfo = [userDefaults objectForKey:@"userInfo"];
     _storeId = [[userInfo objectForKey:@"store_id"] integerValue];
@@ -54,14 +57,41 @@
     [Http_url POST:@"goods_class_list" dict:@{@"store_id":@(_storeId)} showHUD:YES WithSuccessBlock:^(id data) {
         NSLog(@"获取成功");
         NSArray *arr = [data objectForKey:@"data"];
-        [self.leftDataSource addObjectsFromArray:arr];
-        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-        [user setObject:arr forKey:@"classArray"];
-        [user synchronize];
-        [self setLeftUI];
+        if (arr.count == 0){
+            [self.leftScrollView setHidden:YES];
+            [self.mainTable setHidden:YES];
+            [self addClassView];
+        }else{
+            [self.leftScrollView setHidden:NO];
+            [self.mainTable setHidden:NO];
+            [self.leftDataSource addObjectsFromArray:arr];
+            NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+            [user setObject:arr forKey:@"classArray"];
+            [user synchronize];
+            [self setLeftUI];
+        }
+        
     } WithFailBlock:^(id data) {
         
     }];
+}
+
+- (void)addClassView{
+    _clearView = [[UIView alloc]initWithFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
+    [_clearView setBackgroundColor:BlackColor];
+    [_clearView setAlpha:0.5];
+    [_clearView setHidden:NO];
+    [self.view addSubview:_clearView];
+    
+    _upView = [[PhoneNumberView alloc]init];
+    [_upView setFrame:XFrame(IFAutoFitPx(96), IFAutoFitPx(456)+ViewStart_Y, IFAutoFitPx(560), IFAutoFitPx(292))];
+    _upView.layer.cornerRadius = IFAutoFitPx(8);
+    [_upView setViewTitle:@"温馨提示" subTitle:@"是否新建商品分类？" cancel:@"否" ensure:@"是"];
+    _upView.layer.masksToBounds = YES;
+    _upView.delegate = self;
+    [_upView setBackgroundColor:[UIColor whiteColor]];
+    [_upView setHidden:NO];
+    [self.view addSubview:_upView];
 }
 
 - (void)requestGoods:(NSInteger )classId{
@@ -91,6 +121,7 @@
     [_mainTable setTableFooterView:[[UIView alloc]init]];
     [_mainTable setDelegate:self];
     [_mainTable setDataSource:self];
+    [_mainTable setRowHeight:UITableViewAutomaticDimension];
     [self.view addSubview:_mainTable];
     
     UIView *backgroundView = [[UIView alloc]initWithFrame:XFrame(0, CGRectGetMaxY(_mainTable.frame), Screen_W, IFAutoFitPx(108))];
@@ -106,6 +137,7 @@
     [_bottomBtn1.titleLabel setFont:XFont(17)];
     [_bottomBtn1 setTitleColor:BlackColor forState:(UIControlStateNormal)];
     [_bottomBtn1 addTarget:self action:@selector(goManage) forControlEvents:(UIControlEventTouchUpInside)];
+    _bottomBtn1.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     XViewLayerCB(_bottomBtn1, 3, 0.5, LineColor);
     [backgroundView addSubview:_bottomBtn1];
     
@@ -115,6 +147,7 @@
     [_bottomBtn2 setImage:[UIImage imageNamed:@"editmenu_add"] forState:(UIControlStateNormal)];
     [_bottomBtn2.titleLabel setFont:XFont(17)];
     [_bottomBtn2 setTitleColor:BlackColor forState:(UIControlStateNormal)];
+    _bottomBtn2.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     XViewLayerCB(_bottomBtn2, 3, 0.5, LineColor);
     [_bottomBtn2 addTarget:self action:@selector(goCreateNewGoodsVC) forControlEvents:(UIControlEventTouchUpInside)];
     [backgroundView addSubview:_bottomBtn2];
@@ -167,6 +200,17 @@
     [self.navigationController pushViewController:VC animated:YES];
 }
 
+- (void)cancelCall:(UIButton *)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)playCall:(UIButton *)sender{
+    NewCatergoryViewController *vc = [[NewCatergoryViewController alloc]init];
+    [_clearView setHidden:YES];
+    [_upView setHidden:YES];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)clickBtn:(UIButton *)sender{
     _index = sender.tag;
     for (UIButton *btn in _btnArr){
@@ -190,9 +234,9 @@
     return self.rightDataSource.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 106;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return 106;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GoodsTableViewCell *cell = (GoodsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"GoodsTableViewCell"];

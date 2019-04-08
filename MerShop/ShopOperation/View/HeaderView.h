@@ -17,6 +17,7 @@
 @end
 
 @interface HeaderView : UIView
+@property (weak, nonatomic) IBOutlet UIView *whiteView;
 @property (weak, nonatomic) IBOutlet UILabel *todayIncome;
 @property (weak, nonatomic) IBOutlet UILabel *todayOrder;
 @property (weak, nonatomic) IBOutlet UILabel *collectNumber;

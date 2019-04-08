@@ -24,17 +24,22 @@
 }
 
 - (void)setUI{
+    UIView *whiteView = [[UIView alloc]init];
+    [whiteView setBackgroundColor:[UIColor whiteColor]];
+    [whiteView setFrame:XFrame(0, IFAutoFitPx(20)+ViewStart_Y, Screen_W, IFAutoFitPx(88))];
+    [self.view addSubview:whiteView];
+    
     _text = [[UITextField alloc]init];
-    [_text setFrame:XFrame(0, IFAutoFitPx(20)+ViewStart_Y, Screen_W, IFAutoFitPx(88))];
+    [_text setFrame:XFrame(IFAutoFitPx(30), 0, Screen_W-IFAutoFitPx(30), IFAutoFitPx(88))];
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     _phoneNumber = [[user objectForKey:@"userInfo"] objectForKey:@"store_phone"];
     [_text setText:_phoneNumber];
     [_text setBackgroundColor:[UIColor whiteColor]];
-    _text.keyboardType = UIKeyboardTypeNumberPad;
-    [self.view addSubview:_text];
+    _text.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    [whiteView addSubview:_text];
     
     _save = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [_save setFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(_text.frame)+IFAutoFitPx(60), Screen_W-IFAutoFitPx(60), IFAutoFitPx(88))];
+    [_save setFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(whiteView.frame)+IFAutoFitPx(60), Screen_W-IFAutoFitPx(60), IFAutoFitPx(88))];
     [_save setTitle:@"保存" forState:(UIControlStateNormal)];
     [_save setBackgroundColor:IFThemeBlueColor];
     [_save addTarget:self action:@selector(savePhoneNumber) forControlEvents:(UIControlEventTouchUpInside)];

@@ -13,6 +13,7 @@
 //@property (nonatomic ,strong)UITextView *text2;
 @property (nonatomic ,strong)UIButton *feedBack;
 @property (nonatomic ,strong)UILabel *placeHolder1;
+@property (nonatomic ,strong)NSString *content;
 //@property (nonatomic ,strong)UILabel *placeHolder2;
 @end
 
@@ -32,7 +33,7 @@
     _text1 = [[UITextView alloc]init];
     [_text1 setFrame:XFrame(0,ViewStart_Y+IFAutoFitPx(22), Screen_W, IFAutoFitPx(320))];
     [_text1 setFont:XFont(15)];
-    [_text1 setTextColor:toPCcolor(@"#999999")];
+    [_text1 setTextColor:toPCcolor(@"#333333")];
     [_text1 setBackgroundColor:[UIColor whiteColor]];
     [_text1 setDelegate:self];
     [self.view addSubview:_text1];
@@ -61,9 +62,14 @@
     NSUserDefaults *userinfo = [NSUserDefaults standardUserDefaults];
     NSDictionary *dict = [userinfo objectForKey:@"userInfo"];
     NSInteger store_id = [[dict objectForKey:@"store_id"] integerValue];
-    NSString *content = self.text1.text;
+    _content = self.text1.text;
+    NSLog(@"-------------%ld",_content.length);
+    if (_content.length == 0){
+        [[IFUtils share]showErrorInfo:@"请输入您将反馈的内容!"];
+        return;
+    }
     NSDictionary *requestDict = @{@"store_id":@(store_id),
-                                  @"content":content,
+                                  @"content":_content,
                                   @"type":@(2)
                                   };
     [Http_url POST:@"store_msg_feedback" dict:requestDict showHUD:YES WithSuccessBlock:^(id data) {

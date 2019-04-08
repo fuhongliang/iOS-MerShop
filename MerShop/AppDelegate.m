@@ -10,6 +10,7 @@
 #import "LoginInViewController.h"
 #import "TabBarController.h"
 #import "NavigationViewController.h"
+#import <Bugtags/Bugtags.h>
 
 @interface AppDelegate ()
 
@@ -19,16 +20,27 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    //集成bugtags
+    [Bugtags startWithAppKey:@"a9f3371df352d637e15d5cd13955a61c" invocationEvent:BTGInvocationEventBubble];
+    
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    LoginInViewController *login = [[LoginInViewController alloc]init];
-//    TabBarController *vc = [TabBarController share];
-    NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:login];
-    [navi.navigationBar setHidden:YES];
-//    TabBarController *startVc = [TabBarController share];
-//    NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:startVc];
-    [self.window setRootViewController:navi];
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+    NSString *token = [dict objectForKey:@"token"];
+    if (token != nil){
+        TabBarController *startVc = [TabBarController share];
+        NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:startVc];
+        [navi.navigationBar setHidden:YES];
+        [self.window setRootViewController:navi];
+    }else{
+        LoginInViewController *login = [[LoginInViewController alloc]init];
+        NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:login];
+        [navi.navigationBar setHidden:YES];
+        [self.window setRootViewController:navi];
+    }
+    
     return YES;
 }
 

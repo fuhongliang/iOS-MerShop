@@ -11,6 +11,7 @@
 #import "refuseView.h"
 #import "MJRefresh.h"
 #import "OrderModel.h"
+#import "EmptyOrderView.h"
 
 @interface WaitDealwithViewController ()<UITableViewDelegate,UITableViewDataSource,NewOrderTableViewCell1Delegate,refuseViewDelegate>
 @property (nonatomic ,strong)UITableView *mainTableview;
@@ -19,6 +20,7 @@
 @property (nonatomic ,assign)NSInteger orderID;
 @property (nonatomic ,strong)refuseView *refuseView;
 @property (nonatomic ,assign)NSInteger refuseIndex;
+@property (nonatomic ,strong)EmptyOrderView *emptyView;
 @end
 
 @implementation WaitDealwithViewController
@@ -28,8 +30,13 @@
     [self setNaviTitle:@"新订单"];
     [self setHideBackBtn:YES];
     [self setUI];
-//    [self requestData];
     [self refreshHeader];
+    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"EmptyOrderView" owner:self options:nil];
+    _emptyView = [nib objectAtIndex:0];
+    [_emptyView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y-Tabbar_H)];
+    [_emptyView setBackgroundColor:toPCcolor(@"#f5f5f5")];
+//    [self.mainTableview setTableHeaderView:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -52,8 +59,9 @@
     [Http_url POST:@"get_neworder" dict:@{@"store_id":@(storeId)} showHUD:NO WithSuccessBlock:^(id data) {
         NSArray *arr = [data objectForKey:@"data"];
         if ([[data objectForKey:@"data"] isKindOfClass:[NSNull class]]){
-            
+            [self.mainTableview setTableHeaderView:self.emptyView];
         }else{
+            [self.mainTableview setTableHeaderView:[[UIView alloc] init]];
             for (NSDictionary *dict in arr){
                 OrderModel *model = [[OrderModel alloc]initWithDictionary:dict error:nil];
                 [self.dataArr addObject:model];

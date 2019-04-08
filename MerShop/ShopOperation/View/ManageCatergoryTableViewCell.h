@@ -11,7 +11,7 @@
 @protocol ManageCatergoryTableViewCellDelegate <NSObject>
 
 - (void)edite:(id)sender;
-- (void)createNewGoods;
+- (void)createNewGoods:(id)sender;
 
 @end
 

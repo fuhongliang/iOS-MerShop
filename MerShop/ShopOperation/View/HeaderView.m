@@ -16,14 +16,18 @@
     }
     return self;
 }
-//@property (weak, nonatomic) IBOutlet UILabel *todayIncome;
-//@property (weak, nonatomic) IBOutlet UILabel *todayOrder;
-//@property (weak, nonatomic) IBOutlet UILabel *collectNumber;
-//@property (weak, nonatomic) IBOutlet UILabel *totalGoods;
-//@property (weak, nonatomic) IBOutlet UILabel *oneMonthOrder;
-//@property (weak, nonatomic) IBOutlet UILabel *oneMonthIncome;
 
 - (void)addStoreInfo:(NSDictionary *)data{
+//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.whiteView.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:CGSizeMake(17, 17)];
+//
+//    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+//
+//    maskLayer.frame = self.whiteView.bounds;
+//
+//    maskLayer.path = maskPath.CGPath;
+//
+//    self.whiteView.layer.mask = maskLayer;
+
     self.todayIncome.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"today_orderamount"]];
     self.todayOrder.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"today_ordernum"]];
     self.collectNumber.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"store_collect"]];

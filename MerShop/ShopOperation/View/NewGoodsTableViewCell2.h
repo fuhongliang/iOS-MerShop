@@ -12,6 +12,6 @@
 @interface NewGoodsTableViewCell2 : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightLabel;
-
+- (void)setAttributeText:(NSString *)string;
 @end
 

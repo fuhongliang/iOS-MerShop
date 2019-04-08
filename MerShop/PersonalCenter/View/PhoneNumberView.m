@@ -28,7 +28,7 @@
     [self addSubview:_titleLab];
     
     _numberLab = [[UILabel alloc]init];
-    [_numberLab setFrame:XFrame(IFAutoFitPx(173), CGRectGetMaxY(_titleLab.frame)+IFAutoFitPx(36), IFAutoFitPx(216), IFAutoFitPx(24))];
+    [_numberLab setFrame:XFrame(IFAutoFitPx(10), CGRectGetMaxY(_titleLab.frame)+IFAutoFitPx(36), IFAutoFitPx(540), IFAutoFitPx(24))];
     [_numberLab setFont:XFont(15)];
     [_numberLab setText:@"110-1234567"];
     [_numberLab setTextColor:GrayColor];
@@ -51,6 +51,13 @@
     [_confirmBtn addTarget:self action:@selector(call) forControlEvents:(UIControlEventTouchUpInside)];
     [self addSubview:_confirmBtn];
     
+}
+
+- (void)setViewTitle:(NSString *)title subTitle:(NSString *)str cancel:(NSString *)cancel ensure:(NSString *)ensure{
+    self.titleLab.text = title;
+    self.numberLab.text = str;
+    [self.cancelBtn setTitle:cancel forState:(UIControlStateNormal)];
+    [self.confirmBtn setTitle:ensure forState:(UIControlStateNormal)];
 }
 
 - (void)cancel{

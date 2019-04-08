@@ -12,6 +12,7 @@
 #import "NewOrderTableViewCell1.h"
 #import "NewOrderModel.h"
 #import <MJRefresh.h>
+#import "EmptyOrderView.h"
 
 @interface OrderManagementViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic ,strong)UITableView *mainTableview;
@@ -24,6 +25,7 @@
 @property (nonatomic ,assign)NSInteger currentIndex;
 @property (nonatomic ,strong)UIView *lineView;
 @property (nonatomic ,copy)NSArray *indexArr;
+@property (nonatomic ,strong)EmptyOrderView *emptyView;
 @end
 
 @implementation OrderManagementViewController
@@ -36,6 +38,14 @@
     [self setUI];
     [self requet:25];
     [self refreshHeader];
+    
+    //空页面
+    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"EmptyOrderView" owner:self options:nil];
+    _emptyView = [nib objectAtIndex:0];
+    [_emptyView setFrame:XFrame(0, ViewStart_Y+IFAutoFitPx(88), Screen_W, Screen_H-ViewStart_Y-Tabbar_H)];
+    [_emptyView setBackgroundColor:toPCcolor(@"#f5f5f5")];
+    [self.mainTableview setTableHeaderView:_emptyView];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -44,14 +54,6 @@
 
 - (void)refreshHeader{
     __weak typeof(self)weakself = self;
-    
-    if (_currentIndex == 0){
-        
-    }else if (_currentIndex == 1){
-        
-    }else if (_currentIndex == 2){
-        
-    }
     [self.mainTableview addLegendHeaderWithRefreshingBlock:^{
         [weakself.dataSource removeAllObjects];
         if (weakself.currentIndex == 0){
@@ -70,8 +72,9 @@
     [Http_url POST:@"order_list" dict:@{@"order_state":@(stateId),@"store_id":@(storeId)} showHUD:YES WithSuccessBlock:^(id data) {
         NSArray *arr = [data objectForKey:@"data"];
         if ([[data objectForKey:@"data"] isKindOfClass:[NSNull class]]){
-            
+            [self.mainTableview setTableHeaderView:self.emptyView ];
         }else{
+            [self.mainTableview setTableHeaderView:[[UIView alloc] init] ];
             for (NSDictionary *dict in arr){
                 NewOrderModel *model = [[NewOrderModel alloc]initWithDictionary:dict error:nil];
                 [self.dataSource addObject:model];
@@ -82,73 +85,6 @@
         
     }];
 }
-
-//- (void)requestData{
-//    NSInteger storeId = [[[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];
-//
-//    //创建全局并行
-//    dispatch_group_t group = dispatch_group_create();
-//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    //网络请求三
-//    dispatch_group_async(group, queue, ^{
-//        [Http_url POST:@"http://master.api.ifhu.cn/index.php/order_list" dict:@{@"order_state":@(40),@"store_id":@(storeId)} showHUD:YES WithSuccessBlock:^(id data) {
-//            NSLog(@"完成-----%@",data);
-//            NSArray *arr = [data objectForKey:@"data"];
-//            if ([[data objectForKey:@"data"] isKindOfClass:[NSNull class]]){
-//
-//            }else{
-//                for (NSDictionary *dict in arr){
-//                    NewOrderModel *model = [[NewOrderModel alloc]initWithDictionary:dict error:nil];
-//                    [self.finishedArr addObject:model];
-//                }
-//            }
-//        } WithFailBlock:^(id data) {
-//
-//        }];
-//    });
-//    //网络请求一
-//    dispatch_group_async(group, queue, ^{
-//        [Http_url POST:@"http://master.api.ifhu.cn/index.php/order_list" dict:@{@"order_state":@(0),@"store_id":@(storeId)} showHUD:YES WithSuccessBlock:^(id data) {
-//            NSLog(@"取消------%@",data);
-//            NSArray *arr = [data objectForKey:@"data"];
-//            if ([[data objectForKey:@"data"] isKindOfClass:[NSNull class]]){
-//
-//            }else{
-//                for (NSDictionary *dict in arr){
-//                    NewOrderModel *model = [[NewOrderModel alloc]initWithDictionary:dict error:nil];
-//                    [self.cancelArr addObject:model];
-//                }
-//            }
-//
-//        } WithFailBlock:^(id data) {
-//
-//        }];
-//    });
-//    //网络请求二
-//    dispatch_group_async(group, queue, ^{
-//        [Http_url POST:@"http://master.api.ifhu.cn/index.php/order_list" dict:@{@"order_state":@(30),@"store_id":@(storeId)} showHUD:YES WithSuccessBlock:^(id data) {
-//            NSLog(@"发货-----%@",data);
-//            NSArray *arr = [data objectForKey:@"data"];
-//            if ([[data objectForKey:@"data"] isKindOfClass:[NSNull class]]){
-//
-//            }else{
-//                for (NSDictionary *dict in arr){
-//                    NewOrderModel *model = [[NewOrderModel alloc]initWithDictionary:dict error:nil];
-//                    [self.onGoingArr addObject:model];
-//                }
-//            }
-//        } WithFailBlock:^(id data) {
-//
-//        }];
-//    });
-//
-//
-//    dispatch_group_notify(group, queue, ^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.mainTableview reloadData];
-//        });
-//    });
-//}
 
 - (void)setUI{
     _topBackgroundView = [[UIView alloc]init];

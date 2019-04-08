@@ -34,8 +34,8 @@
 }
 
 - (IBAction)addGoodsBtn:(id)sender {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(createNewGoods)]){
-        [self.delegate performSelector:@selector(createNewGoods) withObject:nil];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(createNewGoods:)]){
+        [self.delegate performSelector:@selector(createNewGoods:) withObject:self];
     }
 }
 @end

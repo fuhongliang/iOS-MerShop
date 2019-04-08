@@ -33,8 +33,9 @@
     [super viewDidLoad];
     [self setNaviTitle:@"修改密码"];
     NSDictionary *dict = [self getUserInfo];
-    self.phoneNumber = [[dict objectForKey:@"store_phone"] integerValue];
+    self.phoneNumber = [[dict objectForKey:@"member_mobile"] integerValue];
     self.passWord = [dict objectForKey:@""];
+    [self.view setBackgroundColor:toPCcolor(@"#f5f5f5")];
     [self setUI];
     [self setupPlaceHolder];
 }
@@ -45,51 +46,60 @@
 }
 
 - (void)setUI{
-    _phoneLab = [[UILabel alloc]initWithFrame:XFrame(IFAutoFitPx(32),ViewStart_Y+IFAutoFitPx(40), IFAutoFitPx(300), IFAutoFitPx(60))];
+    UIView *whiteBackGroundView = [[UIView alloc]init];
+    [whiteBackGroundView setFrame:XFrame(0, ViewStart_Y, Screen_W, IFAutoFitPx(463))];
+    [whiteBackGroundView setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:whiteBackGroundView];
+    
+    _phoneLab = [[UILabel alloc]initWithFrame:XFrame(IFAutoFitPx(30),IFAutoFitPx(30), IFAutoFitPx(300), IFAutoFitPx(55))];
     [_phoneLab setText:[NSString stringWithFormat:@"%ld",self.phoneNumber]];
-    [self.view addSubview:_phoneLab];
+    [whiteBackGroundView addSubview:_phoneLab];
     
     _codeBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [_codeBtn setFrame:XFrame(Screen_W-IFAutoFitPx(204),ViewStart_Y+IFAutoFitPx(40), IFAutoFitPx(174), IFAutoFitPx(60))];
+    [_codeBtn setFrame:XFrame(Screen_W-IFAutoFitPx(204),IFAutoFitPx(30), IFAutoFitPx(174), IFAutoFitPx(55))];
     [_codeBtn setTitle:@"获取验证码" forState:(UIControlStateNormal)];
     [_codeBtn setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
     [_codeBtn.titleLabel setFont:XFont(14)];
     [_codeBtn addTarget:self action:@selector(getVerificationCode) forControlEvents:(UIControlEventTouchUpInside)];
     XViewLayerCB(_codeBtn, IFAutoFitPx(4), IFAutoFitPx(2), IFThemeBlueColor);
-    [self.view addSubview:_codeBtn];
+    [whiteBackGroundView addSubview:_codeBtn];
     
-    _line1 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(32),CGRectGetMaxY(_phoneLab.frame)+IFAutoFitPx(40), Screen_W-IFAutoFitPx(30), IFAutoFitPx(2))];
+    _line1 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(30),CGRectGetMaxY(_phoneLab.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(1))];
     [_line1 setBackgroundColor:LineColor];
-    [self.view addSubview:_line1];
+    [whiteBackGroundView addSubview:_line1];
     
-    _codeText = [[UITextView alloc]initWithFrame:XFrame(IFAutoFitPx(32), CGRectGetMaxY(_line1.frame)+IFAutoFitPx(40), Screen_W-IFAutoFitPx(30), IFAutoFitPx(60))];
+    _codeText = [[UITextView alloc]initWithFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(_line1.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(55))];
+    _codeText.keyboardType = UIKeyboardTypeNumberPad;
+    _codeText.font = XFont(17);
     _codeText.delegate = self;
-    [self.view addSubview:_codeText];
+    [whiteBackGroundView addSubview:_codeText];
     
-    _line2 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(32),CGRectGetMaxY(_codeText.frame)+IFAutoFitPx(40), Screen_W-IFAutoFitPx(30), IFAutoFitPx(2))];
+    _line2 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(30),CGRectGetMaxY(_codeText.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(1))];
     [_line2 setBackgroundColor:LineColor];
-    [self.view addSubview:_line2];
+    [whiteBackGroundView addSubview:_line2];
     
-    _passWordText1 = [[UITextView alloc]initWithFrame:XFrame(IFAutoFitPx(32), CGRectGetMaxY(_line2.frame)+IFAutoFitPx(40), Screen_W-IFAutoFitPx(30), IFAutoFitPx(60))];
+    _passWordText1 = [[UITextView alloc]initWithFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(_line2.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(55))];
+    _passWordText1.font = XFont(17);
     _passWordText1.delegate = self;
-    [self.view addSubview:_passWordText1];
+    [whiteBackGroundView addSubview:_passWordText1];
     
-    _line3 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(32),CGRectGetMaxY(_passWordText1.frame)+IFAutoFitPx(40), Screen_W-IFAutoFitPx(30), IFAutoFitPx(2))];
+    _line3 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(30),CGRectGetMaxY(_passWordText1.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(1))];
     [_line3 setBackgroundColor:LineColor];
-    [self.view addSubview:_line3];
+    [whiteBackGroundView addSubview:_line3];
     
-    _passWordText2 = [[UITextView alloc]initWithFrame:XFrame(IFAutoFitPx(32), CGRectGetMaxY(_line3.frame)+IFAutoFitPx(40), Screen_W-IFAutoFitPx(30), IFAutoFitPx(60))];
+    _passWordText2 = [[UITextView alloc]initWithFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(_line3.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(55))];
+    _passWordText2.font = XFont(17);
     _passWordText2.delegate = self;
-    [self.view addSubview:_passWordText2];
+    [whiteBackGroundView addSubview:_passWordText2];
     
-    _line4 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(32),CGRectGetMaxY(_passWordText2.frame)+IFAutoFitPx(40), Screen_W-IFAutoFitPx(30), IFAutoFitPx(2))];
-    [_line4 setBackgroundColor:LineColor];
-    [self.view addSubview:_line4];
+//    _line4 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(30),CGRectGetMaxY(_passWordText2.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(1))];
+//    [_line4 setBackgroundColor:LineColor];
+//    [whiteBackGroundView addSubview:_line4];
     
-    _tipsLab = [[UILabel alloc]initWithFrame:XFrame(IFAutoFitPx(32), CGRectGetMaxY(_line4.frame)+IFAutoFitPx(20), Screen_W-IFAutoFitPx(30), IFAutoFitPx(40))];
+    _tipsLab = [[UILabel alloc]initWithFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(whiteBackGroundView.frame)+IFAutoFitPx(20), Screen_W-IFAutoFitPx(30), IFAutoFitPx(40))];
     [_tipsLab setText:@"新密码不能与原密码一致，密码长度至少6位"];
     [_tipsLab setTextColor:GrayColor];
-    [_tipsLab setFont:XFont(12)];
+    [_tipsLab setFont:XFont(13)];
     [self.view addSubview:_tipsLab];
     
     _confirmBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -108,8 +118,8 @@
 
 - (void)setupPlaceHolder
 {
-    UILabel *placeHolder1 = [[UILabel alloc] initWithFrame:XFrame(IFAutoFitPx(15), 0, Screen_W-IFAutoFitPx(60), IFAutoFitPx(60))];
-    placeHolder1.text = @"请输入6位数验证码";
+    UILabel *placeHolder1 = [[UILabel alloc] initWithFrame:XFrame(0, 0, Screen_W-IFAutoFitPx(60), IFAutoFitPx(60))];
+    placeHolder1.text = @"请输入验证码";
     placeHolder1.textColor = toPCcolor(@"#999999");
     self.placeHolder1 = placeHolder1;
     placeHolder1.font = XFont(17);
@@ -117,7 +127,7 @@
     placeHolder1.contentMode = UIViewContentModeTop;
     [self.codeText addSubview:placeHolder1];
     
-    UILabel *placeHolder2 = [[UILabel alloc] initWithFrame:XFrame(IFAutoFitPx(15), 0, Screen_W-IFAutoFitPx(60), IFAutoFitPx(60))];
+    UILabel *placeHolder2 = [[UILabel alloc] initWithFrame:XFrame(0, 0, Screen_W-IFAutoFitPx(60), IFAutoFitPx(60))];
     placeHolder2.text = @"请输入密码";
     placeHolder2.textColor = toPCcolor(@"#999999");
     self.placeHolder2 = placeHolder2;
@@ -126,7 +136,7 @@
     placeHolder2.contentMode = UIViewContentModeTop;
     [self.passWordText1 addSubview:placeHolder2];
     
-    UILabel *placeHolder3 = [[UILabel alloc] initWithFrame:XFrame(IFAutoFitPx(15), 0, Screen_W-IFAutoFitPx(60), IFAutoFitPx(60))];
+    UILabel *placeHolder3 = [[UILabel alloc] initWithFrame:XFrame(0, 0, Screen_W-IFAutoFitPx(60), IFAutoFitPx(60))];
     placeHolder3.text = @"请再次输入密码";
     placeHolder3.textColor = toPCcolor(@"#999999");
     self.placeHolder3 = placeHolder3;
@@ -160,16 +170,19 @@
 }
 
 - (void)ensureChange{
-    if (self.codeText.text.length != 4){
+    if (self.codeText.text.length != 4 || self.codeText.text.length == 0){
         [[IFUtils share]showErrorInfo:@"验证码不正确"];
-    }else if (self.passWordText1.text.length <=6){
+        return;
+    }else if (self.passWordText1.text.length <6 || self.passWordText1.text.length == 0){
         [[IFUtils share]showErrorInfo:@"密码格式不正确"];
-    }else if (![self.passWordText1.text isEqualToString:self.passWordText2.text]){
+        return;
+    }else if (![self.passWordText1.text isEqualToString:self.passWordText2.text] || self.passWordText2.text.length == 0){
         [[IFUtils share]showErrorInfo:@"两次输入的密码不一致"];
+        return;
     }
     NSDictionary *user = [self getUserInfo];
     NSString *memberid = [user objectForKey:@"member_id"];
-    NSString *phone = [user objectForKey:@"store_phone"];
+    NSString *phone = [user objectForKey:@"member_mobile"];
     NSDictionary *dic = @{@"member_id":memberid,
                           @"phone_number":phone,
                           @"verify_code":self.codeText.text,
@@ -180,7 +193,7 @@
         NSInteger code = [[data objectForKey:@"code"] integerValue];
         
         if (code == 200){
-            [[IFUtils share]showErrorInfo:@"设置成功"];
+            [[IFUtils share]showErrorInfo:@"修改成功"];
         }
         
     } WithFailBlock:^(id data) {

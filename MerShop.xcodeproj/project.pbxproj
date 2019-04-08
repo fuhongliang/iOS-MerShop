@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04235E51225352E200B2FC40 /* EmptyOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04235E50225352E200B2FC40 /* EmptyOrderView.m */; };
+		04235E532253531500B2FC40 /* EmptyOrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04235E522253531500B2FC40 /* EmptyOrderView.xib */; };
 		042B181F2240CB76004D372A /* UserEvaluationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B181D2240CB76004D372A /* UserEvaluationTableViewCell.m */; };
 		042B18202240CB76004D372A /* UserEvaluationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042B181E2240CB76004D372A /* UserEvaluationTableViewCell.xib */; };
 		042B18292240EA3E004D372A /* UserEvaluationTableViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B18272240EA3E004D372A /* UserEvaluationTableViewCell1.m */; };
@@ -124,6 +126,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04235E4F225352E200B2FC40 /* EmptyOrderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyOrderView.h; sourceTree = "<group>"; };
+		04235E50225352E200B2FC40 /* EmptyOrderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyOrderView.m; sourceTree = "<group>"; };
+		04235E522253531500B2FC40 /* EmptyOrderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyOrderView.xib; sourceTree = "<group>"; };
 		042B181C2240CB76004D372A /* UserEvaluationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserEvaluationTableViewCell.h; sourceTree = "<group>"; };
 		042B181D2240CB76004D372A /* UserEvaluationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserEvaluationTableViewCell.m; sourceTree = "<group>"; };
 		042B181E2240CB76004D372A /* UserEvaluationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserEvaluationTableViewCell.xib; sourceTree = "<group>"; };
@@ -326,6 +331,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04235E4E2253524C00B2FC40 /* EmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				04235E4F225352E200B2FC40 /* EmptyOrderView.h */,
+				04235E50225352E200B2FC40 /* EmptyOrderView.m */,
+				04235E522253531500B2FC40 /* EmptyOrderView.xib */,
+			);
+			path = EmptyView;
+			sourceTree = "<group>";
+		};
 		042B181A2240CA78004D372A /* UserEvaluation */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,6 +671,7 @@
 		04F61DE422364E16004986E0 /* MerShop */ = {
 			isa = PBXGroup;
 			children = (
+				04235E4E2253524C00B2FC40 /* EmptyView */,
 				0446EAF8223E1B7500A86F32 /* Tools */,
 				04C6185522378B6A00773B7C /* MainViewController */,
 				04F61E1D22366343004986E0 /* PersonalCenter */,
@@ -908,6 +924,7 @@
 				0446EAE9223B7A3800A86F32 /* TableViewCell.xib in Resources */,
 				04F61DF222364E18004986E0 /* LaunchScreen.storyboard in Resources */,
 				042B182F2240F704004D372A /* HeaderView1.xib in Resources */,
+				04235E532253531500B2FC40 /* EmptyOrderView.xib in Resources */,
 				04F5B7DA22390B0500E36E3C /* NewsSettingview.xib in Resources */,
 				0446EB1B223F6BFF00A86F32 /* ManageCatergoryTableViewCell.xib in Resources */,
 				04C6187E2238FC2600773B7C /* ShopSetTableViewCell4.xib in Resources */,
@@ -977,6 +994,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MerShop/Pods-MerShop-resources.sh",
+				"${PODS_ROOT}/Bugtags/Bugtags.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefreshExample/MJRefreshExample/MJRefresh/MJRefresh.bundle",
 			);
@@ -984,6 +1002,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Bugtags.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
@@ -1008,6 +1027,7 @@
 				04C618672238A24C00773B7C /* ZJTopImageBottomTitleButton.m in Sources */,
 				04C6185F2237B6CE00773B7C /* BackgroundView.m in Sources */,
 				0446EB0D223E439F00A86F32 /* SVProgressHUD.m in Sources */,
+				04235E51225352E200B2FC40 /* EmptyOrderView.m in Sources */,
 				0446EB16223F4C1A00A86F32 /* ManageCatergoryViewController.m in Sources */,
 				0446EB0C223E439F00A86F32 /* SVIndefiniteAnimatedView.m in Sources */,
 				04C6184E2237878800773B7C /* OrderManagementViewController.m in Sources */,
@@ -1237,6 +1257,7 @@
 			baseConfigurationReference = C6774E492B8F8E4A9E075F1A /* Pods-MerShop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6L4S78C444;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1250,7 +1271,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ifhu.MerShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "ifu_iOS Development";
+				PROVISIONING_PROFILE_SPECIFIER = ifu_iOS_Development;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};

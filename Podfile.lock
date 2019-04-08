@@ -20,6 +20,9 @@ PODS:
   - AFNetworking/UIKit (2.7.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Bugtags (3.1.1):
+    - Bugtags/Core (= 3.1.1)
+  - Bugtags/Core (3.1.1)
   - IQKeyboardManager (6.2.0)
   - JSONModel (1.8.0)
   - Masonry (1.1.0)
@@ -31,6 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6)
+  - Bugtags
   - IQKeyboardManager
   - JSONModel
   - Masonry
@@ -41,6 +45,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - Bugtags
     - IQKeyboardManager
     - JSONModel
     - Masonry
@@ -50,6 +55,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 8dd5f9b9691e09186393069a12cc3b5ed7c8b511
+  Bugtags: 7fe8938867b57cd2b5b04683f8a680a44d998a0c
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -57,6 +63,6 @@ SPEC CHECKSUMS:
   MJRefresh: d7bf87f0d63aa69409235f6d76eb9ec505465a7b
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
 
-PODFILE CHECKSUM: 686199d309529e06521164a8130de0a1a2bad1aa
+PODFILE CHECKSUM: dcbf48f290efac7d6871b9e89cb2049ebd0abdfe
 
 COCOAPODS: 1.6.1

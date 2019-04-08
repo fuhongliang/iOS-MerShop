@@ -44,8 +44,17 @@
     [self.view setBackgroundColor:LineColor];
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     [self.pickerDatasource addObjectsFromArray:[user objectForKey:@"classArray"]];
-    _chooseClassName = [[self.pickerDatasource objectAtIndex:0] objectForKey:@"stc_name"];
-    _catergoryId = [[[self.pickerDatasource objectAtIndex:0] objectForKey:@"stc_id"] integerValue];
+    if (_className){//判断是否从管理分类进来新建商品
+        _chooseClassName = _className;
+        _catergoryId = _classId;
+    }else{
+        if (self.pickerDatasource.count == 0){
+            
+        }else{
+            _chooseClassName = [[self.pickerDatasource objectAtIndex:0] objectForKey:@"stc_name"];
+            _catergoryId = [[[self.pickerDatasource objectAtIndex:0] objectForKey:@"stc_id"] integerValue];
+        }
+    }
     [self setUI];
 }
 
@@ -77,7 +86,7 @@
     [view1 addSubview:des];
     
     _textview = [[UITextView alloc]init];
-    [_textview setFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(des.frame)+IFAutoFitPx(20), Screen_W-IFAutoFitPx(60), IFAutoFitPx(160))];
+    [_textview setFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(des.frame)+IFAutoFitPx(20), Screen_W-IFAutoFitPx(40), IFAutoFitPx(160))];
     _textview.delegate = self;
     _textview.font = XFont(15);
     [view1 addSubview:_textview];
@@ -213,10 +222,10 @@
                 NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"NewGoodsTableViewCell4" owner:self options:nil];
                 cell4 = [nib objectAtIndex:0];
             }
-            cell4.text.placeholder = @"限30字以内";
+            cell4.text.placeholder = @"限20字以内";
             cell4.text.delegate = self;
             cell4.text.tag = 2;
-            cell4.leftLabel.text = _dataArr[indexPath.section][indexPath.row];
+            [cell4 setAttributeText:_dataArr[indexPath.section][indexPath.row]];
             return cell4;
         }else{
             if (!cell2){
@@ -224,7 +233,7 @@
                 cell2 = [nib objectAtIndex:0];
                 
             }
-            cell2.leftLabel.text = _dataArr[indexPath.section][indexPath.row];
+            [cell2 setAttributeText:_dataArr[indexPath.section][indexPath.row]];
             cell2.rightLabel.text = _chooseClassName;
             return cell2;
         }
@@ -262,7 +271,8 @@
             cell4.text.placeholder = @"请填写价格";
             cell4.text.delegate = self;
             cell4.text.tag = indexPath.row;
-            cell4.leftLabel.text = _dataArr[indexPath.section][indexPath.row];
+            cell4.text.keyboardType = UIKeyboardTypeDecimalPad ;
+            [cell4 setAttributeText:_dataArr[indexPath.section][indexPath.row]];
             return cell4;
         }
     }
@@ -312,16 +322,19 @@
     
     NSInteger storeid = [[[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];
     if(_goodsName == nil){
-        [[IFUtils share]showErrorInfo:@"商品名称画不能为空"];
+        [[IFUtils share]showErrorInfo:@"商品名称不能为空"];
         return;
     }else if (_oldPrice == nil){
-        [[IFUtils share]showErrorInfo:@"原来价格不能为空"];
+        [[IFUtils share]showErrorInfo:@"原价不能为空"];
         return;
     }else if (_currentPrice == nil){
-        [[IFUtils share]showErrorInfo:@"价格不能为空"];
+        [[IFUtils share]showErrorInfo:@"现价不能为空"];
         return;
     }else if (_chooseClassName == nil){
         [[IFUtils share]showErrorInfo:@"分类名称不能为空"];
+        return;
+    }else if (_goodsName.length>20){
+        [[IFUtils share]showErrorInfo:@"商品名称不能超过20字"];
         return;
     }
     NSDictionary *sell_timeDict = @{@"start_time":@"00:00",@"end_time":@"23:99"};
@@ -336,7 +349,9 @@
                            };
     NSLog(@"%@%@%@%ld",_goodsName,_oldPrice,_currentPrice,self.switchStatus);
     [Http_url POST:@"add_goods" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
-        
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            [[IFUtils share]showErrorInfo:@"添加成功"];
+        }
         
     } WithFailBlock:^(id data) {
         

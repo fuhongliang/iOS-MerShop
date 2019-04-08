@@ -30,10 +30,10 @@
     [self.view addSubview:_bgView];
     
     _licenseImg = [[UIImageView alloc]init];
-    [_licenseImg setContentMode:(UIViewContentModeScaleToFill)];
+    [_licenseImg setContentMode:(UIViewContentModeScaleAspectFill)];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *licenseStr = [[userDefaults objectForKey:@"userInfo"] objectForKey:@"business_licence_number_electronic"];
-    [_licenseImg sd_setImageWithURL:[NSURL URLWithString:licenseStr] placeholderImage:[UIImage imageNamed:@""]];
+    [_licenseImg sd_setImageWithURL:[NSURL URLWithString:licenseStr] placeholderImage:[UIImage imageNamed:@"photo_zhizhao"]];
     [_bgView addSubview:_licenseImg];
     [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left).offset(0);

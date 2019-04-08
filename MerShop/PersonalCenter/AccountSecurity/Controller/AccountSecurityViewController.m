@@ -45,7 +45,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *phoneStr = _userInfoDict[@"store_phone"];
+    NSString *phoneStr = _userInfoDict[@"member_mobile"];
     NSString *accountStr = _userInfoDict[@"member_name"];
     if (indexPath.row ==2){
         ShopSetTableViewCell1 *cell = (ShopSetTableViewCell1 *)[tableView dequeueReusableHeaderFooterViewWithIdentifier:@"ShopSetTableViewCell1"];

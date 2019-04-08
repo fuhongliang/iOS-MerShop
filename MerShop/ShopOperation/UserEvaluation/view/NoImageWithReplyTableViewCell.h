@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *packing;
 @property (weak, nonatomic) IBOutlet UILabel *delivery;
 @property (weak, nonatomic) IBOutlet UILabel *comment;
+@property (weak, nonatomic) IBOutlet UIImageView *triangleImage;
 @property (weak, nonatomic) IBOutlet UILabel *replyContent;
 @property (weak, nonatomic) IBOutlet UIImageView *star1;
 @property (weak, nonatomic) IBOutlet UIImageView *star2;

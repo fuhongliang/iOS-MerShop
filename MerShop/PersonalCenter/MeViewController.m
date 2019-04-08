@@ -79,8 +79,8 @@
 }
 
 - (void)createNavigationbar{
-    _statusLab = [[UILabel alloc]initWithFrame:XFrame(Screen_W-IFAutoFitPx(200)-IFAutoFitPx(30), StatusBar_H+IFAutoFitPx(15), IFAutoFitPx(200), Navagtion_H-IFAutoFitPx(30))];
-    [_statusLab setFont:XFont(13)];
+    _statusLab = [[UILabel alloc]initWithFrame:XFrame(Screen_W-IFAutoFitPx(148)-IFAutoFitPx(30), StatusBar_H+IFAutoFitPx(15), IFAutoFitPx(148), Navagtion_H-IFAutoFitPx(30))];
+    [_statusLab setFont:XFont(12)];
     [_statusLab setBackgroundColor:IFThemeBlueColor];
     [_statusLab setTextColor:[UIColor whiteColor]];
     [_statusLab setTextAlignment:(NSTextAlignmentCenter)];
@@ -95,7 +95,7 @@
         [self.navigationController pushViewController:VC animated:YES];
     }else if (button.tag == 1002){
         BusinessStatusViewController *VC = [[BusinessStatusViewController alloc]init];
-        [self.navigationController pushViewController:VC animated:NO];
+        [self.navigationController pushViewController:VC animated:YES];
     }else if (button.tag == 1003){
         
     }else if (button.tag == 1004){

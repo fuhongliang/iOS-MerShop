@@ -55,15 +55,16 @@
     HeaderView *view = [nib objectAtIndex:0];
     [view setBackgroundColor:IFThemeBlueColor];
     view.delegate = self;
-    [view setFrame:XFrame(0, 0, Screen_W, 290)];
+    [view setFrame:XFrame(0, 0, Screen_W, 273)];
     [view addStoreInfo:self.storeData];
     _tableview = [[UITableView alloc]init];
     [_tableview setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
     [_tableview setDelegate:self];
     [_tableview setDataSource:self];
     [_tableview setBackgroundColor:LineColor];
+    _tableview.scrollEnabled = NO;
     _tableview.tableHeaderView = view;
-    _tableview.tableFooterView = [[UIView alloc]init];
+    _tableview.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 1)];;
     [self.view addSubview:_tableview];
 
 }
@@ -84,6 +85,11 @@
     }
     [cell.icon setImage:[UIImage imageNamed:self.iconArr[indexPath.row]]];
     [cell.title setText:self.titleArr[indexPath.row]];
+//    if (indexPath.row == _titleArr.count-1) {
+//        cell.separatorInset = UIEdgeInsetsMake(0, Screen_W, 0, 0);
+//    }else{
+//        cell.separatorInset = UIEdgeInsetsMake(0, FTDefaultMenuTextMargin, 0, 10+FTDefaultMenuTextMargin);
+//    }
     return cell;
     
 }

@@ -73,7 +73,7 @@
     if (str.length == 0 || [str isKindOfClass:[NSNull class]]){
         [placeHolder setText:@"设置一条您的餐厅公告(200字以内)"];
     }else{
-        [placeHolder setText:[dict objectForKey:@"store_description"]];
+        self.text.text = str;
     }
     [placeHolder setFont:XFont(17)];
     [placeHolder setTextColor:GrayColor];
