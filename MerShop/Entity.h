@@ -68,21 +68,6 @@
 [viewName.layer setBorderColor:lbC.CGColor];\
 [viewName.layer setMasksToBounds:YES];
 
-////弱引用
-//#define kWeakSelf(type)  __weak typeof(type) weak##type = type
-//
-////字符串是否为空
-//#define kISNullString(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] < 1 ? YES : NO )
-////数组是否为空
-//#define kISNullArray(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0 ||[array isEqual:[NSNull null]])
-////字典是否为空
-//#define kISNullDict(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0 || [dic isEqual:[NSNull null]])
-////是否是空对象
-//#define kISNullObject(_object) (_object == nil \
-//|| [_object isKindOfClass:[NSNull class]] \
-//|| ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) \
-//|| ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
-
 #define UIKIT_STATIC_INLINE    static inline
 UIKIT_STATIC_INLINE UIColor *toPCcolor(NSString *pcColorstr)
 {

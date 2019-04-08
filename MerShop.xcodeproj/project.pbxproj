@@ -341,14 +341,42 @@
 			path = EmptyView;
 			sourceTree = "<group>";
 		};
-		042B181A2240CA78004D372A /* UserEvaluation */ = {
+		04235E54225B47D900B2FC40 /* Discount（限时折扣） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Discount（限时折扣）";
+			sourceTree = "<group>";
+		};
+		04235E55225B47EB00B2FC40 /* Full reduction（满减） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Full reduction（满减）";
+			sourceTree = "<group>";
+		};
+		04235E56225B481400B2FC40 /* Discount package（优惠套餐） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Discount package（优惠套餐）";
+			sourceTree = "<group>";
+		};
+		04235E57225B483B00B2FC40 /* Cash coupon（代金券） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Cash coupon（代金券）";
+			sourceTree = "<group>";
+		};
+		042B181A2240CA78004D372A /* UserEvaluation（用户评价） */ = {
 			isa = PBXGroup;
 			children = (
 				042B181B2240CB5C004D372A /* view */,
 				0446EAF2223BB7E100A86F32 /* UserEvaluationViewController.h */,
 				0446EAF3223BB7E100A86F32 /* UserEvaluationViewController.m */,
 			);
-			path = UserEvaluation;
+			path = "UserEvaluation（用户评价）";
 			sourceTree = "<group>";
 		};
 		042B181B2240CB5C004D372A /* view */ = {
@@ -510,18 +538,6 @@
 				0446EB17223F6BFF00A86F32 /* ManageCatergoryTableViewCell.h */,
 				0446EB18223F6BFF00A86F32 /* ManageCatergoryTableViewCell.m */,
 				0446EB19223F6BFF00A86F32 /* ManageCatergoryTableViewCell.xib */,
-				0446EB24223F874C00A86F32 /* NewGoodsTableViewCell1.h */,
-				0446EB25223F874C00A86F32 /* NewGoodsTableViewCell1.m */,
-				0446EB26223F874C00A86F32 /* NewGoodsTableViewCell1.xib */,
-				0446EB29223F88EF00A86F32 /* NewGoodsTableViewCell2.h */,
-				0446EB2A223F88EF00A86F32 /* NewGoodsTableViewCell2.m */,
-				0446EB2B223F88EF00A86F32 /* NewGoodsTableViewCell2.xib */,
-				0446EB2E223F8B0200A86F32 /* NewGoodsTableViewCell3.h */,
-				0446EB2F223F8B0200A86F32 /* NewGoodsTableViewCell3.m */,
-				0446EB30223F8B0200A86F32 /* NewGoodsTableViewCell3.xib */,
-				0446EB33223F9B8A00A86F32 /* NewGoodsTableViewCell4.h */,
-				0446EB34223F9B8A00A86F32 /* NewGoodsTableViewCell4.m */,
-				0446EB35223F9B8A00A86F32 /* NewGoodsTableViewCell4.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -570,7 +586,7 @@
 			path = LogCategory;
 			sourceTree = "<group>";
 		};
-		0446EB50224084EA00A86F32 /* ManageCatergory */ = {
+		0446EB50224084EA00A86F32 /* ManageCatergory（商品管理） */ = {
 			isa = PBXGroup;
 			children = (
 				04FB8807224A1A86008BEFCB /* model */,
@@ -588,12 +604,24 @@
 				04F212AD224B566B00611664 /* NewCatergoryViewController.h */,
 				04F212AE224B566B00611664 /* NewCatergoryViewController.m */,
 			);
-			path = ManageCatergory;
+			path = "ManageCatergory（商品管理）";
 			sourceTree = "<group>";
 		};
 		0446EB51224086F200A86F32 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				0446EB24223F874C00A86F32 /* NewGoodsTableViewCell1.h */,
+				0446EB25223F874C00A86F32 /* NewGoodsTableViewCell1.m */,
+				0446EB26223F874C00A86F32 /* NewGoodsTableViewCell1.xib */,
+				0446EB29223F88EF00A86F32 /* NewGoodsTableViewCell2.h */,
+				0446EB2A223F88EF00A86F32 /* NewGoodsTableViewCell2.m */,
+				0446EB2B223F88EF00A86F32 /* NewGoodsTableViewCell2.xib */,
+				0446EB2E223F8B0200A86F32 /* NewGoodsTableViewCell3.h */,
+				0446EB2F223F8B0200A86F32 /* NewGoodsTableViewCell3.m */,
+				0446EB30223F8B0200A86F32 /* NewGoodsTableViewCell3.xib */,
+				0446EB33223F9B8A00A86F32 /* NewGoodsTableViewCell4.h */,
+				0446EB34223F9B8A00A86F32 /* NewGoodsTableViewCell4.m */,
+				0446EB35223F9B8A00A86F32 /* NewGoodsTableViewCell4.xib */,
 				0446EB522240872800A86F32 /* SortTableViewCell.h */,
 				0446EB532240872800A86F32 /* SortTableViewCell.m */,
 				0446EB542240872800A86F32 /* SortTableViewCell.xib */,
@@ -636,13 +664,13 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		04F212C1224DC86000611664 /* DataVC */ = {
+		04F212C1224DC86000611664 /* DataVC（经营数据） */ = {
 			isa = PBXGroup;
 			children = (
 				0446EAF5223BB8CD00A86F32 /* ManageViewController.h */,
 				0446EAF6223BB8CD00A86F32 /* ManageViewController.m */,
 			);
-			path = DataVC;
+			path = "DataVC（经营数据）";
 			sourceTree = "<group>";
 		};
 		04F61DD922364E16004986E0 = {
@@ -746,9 +774,13 @@
 		04F61E1C2236633E004986E0 /* ShopOperation */ = {
 			isa = PBXGroup;
 			children = (
-				04F212C1224DC86000611664 /* DataVC */,
-				0446EB50224084EA00A86F32 /* ManageCatergory */,
-				042B181A2240CA78004D372A /* UserEvaluation */,
+				04235E57225B483B00B2FC40 /* Cash coupon（代金券） */,
+				04235E56225B481400B2FC40 /* Discount package（优惠套餐） */,
+				04235E55225B47EB00B2FC40 /* Full reduction（满减） */,
+				04235E54225B47D900B2FC40 /* Discount（限时折扣） */,
+				04F212C1224DC86000611664 /* DataVC（经营数据） */,
+				0446EB50224084EA00A86F32 /* ManageCatergory（商品管理） */,
+				042B181A2240CA78004D372A /* UserEvaluation（用户评价） */,
 				0446EADF223B43EA00A86F32 /* View */,
 				04C618492237876900773B7C /* ShopViewController.h */,
 				04C6184A2237876900773B7C /* ShopViewController.m */,

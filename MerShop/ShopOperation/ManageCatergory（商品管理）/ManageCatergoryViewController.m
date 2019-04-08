@@ -39,7 +39,7 @@
 
 - (void)requestCatergory{
     [self.dataSource removeAllObjects];
-    [Http_url POST:@"goods_class_list" dict:@{@"store_id":@(_storeId)} showHUD:YES WithSuccessBlock:^(id data) {
+    [Http_url POST:@"goods_class_list" dict:@{@"store_id":@(_storeId)} showHUD:NO WithSuccessBlock:^(id data) {
         NSLog(@"获取成功");
         NSArray *arr = [data objectForKey:@"data"];
         if ([[data objectForKey:@"code"] integerValue] == 200){

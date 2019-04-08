@@ -55,7 +55,7 @@
     HeaderView *view = [nib objectAtIndex:0];
     [view setBackgroundColor:IFThemeBlueColor];
     view.delegate = self;
-    [view setFrame:XFrame(0, 0, Screen_W, 273)];
+    [view setFrame:XFrame(0, 0, Screen_W, 278)];
     [view addStoreInfo:self.storeData];
     _tableview = [[UITableView alloc]init];
     [_tableview setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
