@@ -33,7 +33,6 @@
 
 #define IFAutoFitPx(xPx)        (((xPx)/2.0)/(375.0/320.0)*XScreenScale)
 
-
 #define getWidth(view) CGRectGetWidth(view.frame)   //获取宽度
 
 #define getHeight(view)  CGRectGetHeight(view.frame)    //获取高度

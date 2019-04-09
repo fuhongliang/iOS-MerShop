@@ -27,7 +27,7 @@
 //    maskLayer.path = maskPath.CGPath;
 //
 //    self.whiteView.layer.mask = maskLayer;
-
+    [self.cuxiaoView setHidden:YES];
     self.todayIncome.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"today_orderamount"]];
     self.todayOrder.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"today_ordernum"]];
     self.collectNumber.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"store_collect"]];

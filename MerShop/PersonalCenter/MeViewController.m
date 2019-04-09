@@ -18,6 +18,8 @@
 #import "AppDelegate.h"
 #import "LoginInViewController.h"
 #import "NavigationViewController.h"
+#import "AddActivityGoodsViewController.h"
+#import "DiscountViewController.h"
 
 
 
@@ -104,8 +106,12 @@
         AccountSecurityViewController *VC = [[AccountSecurityViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];
     }else if (button.tag == 1006){
-        [self.clearView setHidden:NO];
-        [self.upView setHidden:NO];
+//        [self.clearView setHidden:NO];
+//        [self.upView setHidden:NO];
+//        AddActivityGoodsViewController *vc = [[AddActivityGoodsViewController alloc]init];
+//        [self.navigationController pushViewController:vc animated:YES];
+        DiscountViewController *vc = [[DiscountViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (button.tag == 1007){
         RingSettingViewController *VC = [[RingSettingViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];

@@ -267,6 +267,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="collectNumber" destination="eC5-ZB-rFy" id="0dd-4A-6Kf"/>
+                <outlet property="cuxiaoView" destination="Tmw-eh-Mjh" id="i6k-3q-Xaw"/>
                 <outlet property="oneMonthIncome" destination="OL0-am-l99" id="khg-R3-dlt"/>
                 <outlet property="oneMonthOrder" destination="KA7-ZB-cHz" id="IUh-0Y-C7Y"/>
                 <outlet property="todayIncome" destination="HSn-hU-bsi" id="jpE-iK-4ZA"/>

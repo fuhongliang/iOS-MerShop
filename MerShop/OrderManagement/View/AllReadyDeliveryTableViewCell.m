@@ -24,6 +24,7 @@
 }
 
 - (void)addProduct:(NewOrderModel *)model{
+    [self.printfBtn setHidden:YES];
     self.number.text = [NSString stringWithFormat:@"#%ld",(long)model.order_id];
     self.customerName.text = [NSString stringWithFormat:@"%@  %@",model.extend_order_common[@"reciver_name"],model.extend_order_common[@"phone"]];
     self.address.text = [NSString stringWithFormat:@"地址：%@",model.extend_order_common[@"address"]];

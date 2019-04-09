@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalGoods;
 @property (weak, nonatomic) IBOutlet UILabel *oneMonthOrder;
 @property (weak, nonatomic) IBOutlet UILabel *oneMonthIncome;
+@property (weak, nonatomic) IBOutlet UIView *cuxiaoView;
 @property (weak, nonatomic) id<HeaderViewDelegate>delegate;
 
 - (IBAction)goodsManageBtn:(id)sender;
