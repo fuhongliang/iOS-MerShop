@@ -18,6 +18,8 @@
 }
 
 - (void)addStoreInfo:(NSDictionary *)data{
+    
+    [self.cuxiaoView setHidden:YES];
 //    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.whiteView.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:CGSizeMake(17, 17)];
 //
 //    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];

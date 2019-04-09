@@ -104,8 +104,8 @@
         AccountSecurityViewController *VC = [[AccountSecurityViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];
     }else if (button.tag == 1006){
-        [self.clearView setHidden:NO];
-        [self.upView setHidden:NO];
+//        [self.clearView setHidden:NO];
+//        [self.upView setHidden:NO];
     }else if (button.tag == 1007){
         RingSettingViewController *VC = [[RingSettingViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];

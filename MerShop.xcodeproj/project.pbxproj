@@ -348,27 +348,6 @@
 			path = "Discount（限时折扣）";
 			sourceTree = "<group>";
 		};
-		04235E55225B47EB00B2FC40 /* Full reduction（满减） */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Full reduction（满减）";
-			sourceTree = "<group>";
-		};
-		04235E56225B481400B2FC40 /* Discount package（优惠套餐） */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Discount package（优惠套餐）";
-			sourceTree = "<group>";
-		};
-		04235E57225B483B00B2FC40 /* Cash coupon（代金券） */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Cash coupon（代金券）";
-			sourceTree = "<group>";
-		};
 		042B181A2240CA78004D372A /* UserEvaluation（用户评价） */ = {
 			isa = PBXGroup;
 			children = (
@@ -774,9 +753,6 @@
 		04F61E1C2236633E004986E0 /* ShopOperation */ = {
 			isa = PBXGroup;
 			children = (
-				04235E57225B483B00B2FC40 /* Cash coupon（代金券） */,
-				04235E56225B481400B2FC40 /* Discount package（优惠套餐） */,
-				04235E55225B47EB00B2FC40 /* Full reduction（满减） */,
 				04235E54225B47D900B2FC40 /* Discount（限时折扣） */,
 				04F212C1224DC86000611664 /* DataVC（经营数据） */,
 				0446EB50224084EA00A86F32 /* ManageCatergory（商品管理） */,
