@@ -21,7 +21,7 @@
 
 
 
-@interface MeViewController ()<BackgroundViewDelegate,PhoneNumberViewDelegate>
+@interface MeViewController ()<BackgroundViewDelegate>
 @property (nonatomic ,strong)UIView *clearView;
 @property (nonatomic ,strong)PhoneNumberView *upView;
 @property (nonatomic ,strong)UILabel *statusLab;
@@ -60,22 +60,6 @@
     id data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
     NSLog(@"%@",data);
     
-    _clearView = [[UIView alloc]initWithFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
-    [_clearView setBackgroundColor:BlackColor];
-    [_clearView setAlpha:0.5];
-    [_clearView setHidden:YES];
-    [self.view addSubview:_clearView];
-    
-    _upView = [[PhoneNumberView alloc]init];
-    [_upView setFrame:XFrame(IFAutoFitPx(96), IFAutoFitPx(456)+ViewStart_Y, IFAutoFitPx(560), IFAutoFitPx(292))];
-    _upView.layer.cornerRadius = IFAutoFitPx(8);
-    _upView.layer.masksToBounds = YES;
-    _upView.delegate = self;
-    [_upView setBackgroundColor:[UIColor whiteColor]];
-    [_upView setHidden:YES];
-    [self.view addSubview:_upView];
-    
-    
 }
 
 - (void)createNavigationbar{
@@ -104,8 +88,7 @@
         AccountSecurityViewController *VC = [[AccountSecurityViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];
     }else if (button.tag == 1006){
-//        [self.clearView setHidden:NO];
-//        [self.upView setHidden:NO];
+        [self showAlertView];
     }else if (button.tag == 1007){
         RingSettingViewController *VC = [[RingSettingViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];
@@ -115,23 +98,54 @@
     }
 }
 
+- (void)showAlertView{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"客服电话" message:@"18825110997" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"联系客服" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",@"18825110997"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        
+    }];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alertController addAction:action1];
+    [alertController addAction:action2];
+    
+    //修改title字体
+    NSMutableAttributedString *alertControllerStr = [[NSMutableAttributedString alloc] initWithString:@"客服电话"];
+    [alertControllerStr addAttribute:NSForegroundColorAttributeName value:toPCcolor(@"#000000") range:NSMakeRange(0, 4)];
+    [alertControllerStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:NSMakeRange(0, 4)];
+    [alertController setValue:alertControllerStr forKey:@"attributedTitle"];
+    
+    //修改message
+    NSMutableAttributedString *alertControllerMessageStr = [[NSMutableAttributedString alloc] initWithString:@"18825110997"];
+    [alertControllerMessageStr addAttribute:NSForegroundColorAttributeName value:toPCcolor(@"#999999") range:NSMakeRange(0, 11)];
+    [alertControllerMessageStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, 11)];
+    [alertController setValue:alertControllerMessageStr forKey:@"attributedMessage"];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 - (void)SignOut{
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
-    LoginInViewController *loginVC = [[LoginInViewController alloc]init];
-    NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:loginVC];
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    delegate.window.rootViewController = navi;
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确认退出吗？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
+        LoginInViewController *loginVC = [[LoginInViewController alloc]init];
+        NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:loginVC];
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        delegate.window.rootViewController = navi;
+    }];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertController addAction:action1];
+    [alertController addAction:action2];
+    [self presentViewController:alertController animated:YES completion:nil];
+
 }
 
-- (void)cancelCall:(UIButton *)sender{
-    [_clearView setHidden:YES];
-    [_upView setHidden:YES];
-}
-
-- (void)playCall:(UIButton *)sender{
-    [_clearView setHidden:YES];
-    [_upView setHidden:YES];
-}
 
 @end
