@@ -8,7 +8,7 @@
 
 #import "Http_url.h"
 #import "AFNetworking.h"
-//#import "Foundation+Log /Foundation+Log.m"
+
 
 @implementation Http_url
 
@@ -32,7 +32,7 @@
         [[IFUtils share]showLoadingView];
     }
     AFHTTPSessionManager *manager = [self getManager];
-    NSString *url = [NSString stringWithFormat:@"http://47.111.27.189/api/public/index.php/v1/%@",httpUrl];
+    NSString *url = [NSString stringWithFormat:@"%@%@",http_urlString,httpUrl];
     [manager POST:url parameters:dict success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
         NSInteger code = [dic[@"code"] integerValue];

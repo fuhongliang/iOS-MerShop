@@ -1461,7 +1461,8 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6L4S78C444;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_PREFIX_HEADER = /Users/mac/Desktop/MerShop/MerShop/PrefixHeader.pch;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "/Users/mac/iOS-MerShop/MerShop/PrefixHeader.pch";
 				INFOPLIST_FILE = MerShop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1486,7 +1487,8 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6L4S78C444;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_PREFIX_HEADER = /Users/mac/Desktop/MerShop/MerShop/PrefixHeader.pch;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "/Users/mac/iOS-MerShop/MerShop/PrefixHeader.pch";
 				INFOPLIST_FILE = MerShop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -9,6 +9,8 @@
 #ifndef Entity_h
 #define Entity_h
 
+#define http_urlString          @"http://47.92.244.60:88/v1/"
+
 #define BtnTag      1000
 
 #define IFThemeBlueColor toPCcolor(@"#1C98F6")   //APP主题色
