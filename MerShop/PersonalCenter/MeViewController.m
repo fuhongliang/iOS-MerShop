@@ -20,6 +20,7 @@
 #import "NavigationViewController.h"
 #import "AddActivityGoodsViewController.h"
 #import "DiscountViewController.h"
+#import "PrintSettingViewController.h"
 
 
 
@@ -101,7 +102,8 @@
     }else if (button.tag == 1003){
         
     }else if (button.tag == 1004){
-        
+        PrintSettingViewController *vc = [[PrintSettingViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (button.tag == 1005){
         AccountSecurityViewController *VC = [[AccountSecurityViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];

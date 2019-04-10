@@ -69,6 +69,15 @@
 		04A46A5A225C768800511C79 /* ActivityHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A46A59225C768700511C79 /* ActivityHeaderView.xib */; };
 		04A46A5E225C8A1200511C79 /* EditeActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A46A5C225C8A1200511C79 /* EditeActivityTableViewCell.m */; };
 		04A46A5F225C8A1200511C79 /* EditeActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A46A5D225C8A1200511C79 /* EditeActivityTableViewCell.xib */; };
+		04A46A63225C9C0100511C79 /* ChangePriceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A46A62225C9C0100511C79 /* ChangePriceView.m */; };
+		04A46A65225C9C2200511C79 /* ChangePriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A46A64225C9C2200511C79 /* ChangePriceView.xib */; };
+		04A46A6B225CC3C700511C79 /* PrintSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A46A6A225CC3C700511C79 /* PrintSettingViewController.m */; };
+		04A46A6E225CC40E00511C79 /* PrintSettringHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A46A6D225CC40E00511C79 /* PrintSettringHeaderView.m */; };
+		04A46A70225CC41E00511C79 /* PrintSettringHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A46A6F225CC41E00511C79 /* PrintSettringHeaderView.xib */; };
+		04A46A7B225D8DF400511C79 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A46A75225D8DF400511C79 /* image.png */; };
+		04A46A7C225D8DF400511C79 /* UIView+JHDrawCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A46A78225D8DF400511C79 /* UIView+JHDrawCategory.m */; };
+		04A46A7D225D8DF400511C79 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 04A46A79225D8DF400511C79 /* LICENSE */; };
+		04A46A7E225D8DF400511C79 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 04A46A7A225D8DF400511C79 /* README.md */; };
 		04C618482237874600773B7C /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C618472237874600773B7C /* MeViewController.m */; };
 		04C6184B2237876900773B7C /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C6184A2237876900773B7C /* ShopViewController.m */; };
 		04C6184E2237878800773B7C /* OrderManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C6184D2237878800773B7C /* OrderManagementViewController.m */; };
@@ -242,6 +251,19 @@
 		04A46A5B225C8A1200511C79 /* EditeActivityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditeActivityTableViewCell.h; sourceTree = "<group>"; };
 		04A46A5C225C8A1200511C79 /* EditeActivityTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditeActivityTableViewCell.m; sourceTree = "<group>"; };
 		04A46A5D225C8A1200511C79 /* EditeActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditeActivityTableViewCell.xib; sourceTree = "<group>"; };
+		04A46A61225C9C0100511C79 /* ChangePriceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePriceView.h; sourceTree = "<group>"; };
+		04A46A62225C9C0100511C79 /* ChangePriceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePriceView.m; sourceTree = "<group>"; };
+		04A46A64225C9C2200511C79 /* ChangePriceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePriceView.xib; sourceTree = "<group>"; };
+		04A46A69225CC3C700511C79 /* PrintSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintSettingViewController.h; sourceTree = "<group>"; };
+		04A46A6A225CC3C700511C79 /* PrintSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrintSettingViewController.m; sourceTree = "<group>"; };
+		04A46A6C225CC40E00511C79 /* PrintSettringHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintSettringHeaderView.h; sourceTree = "<group>"; };
+		04A46A6D225CC40E00511C79 /* PrintSettringHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrintSettringHeaderView.m; sourceTree = "<group>"; };
+		04A46A6F225CC41E00511C79 /* PrintSettringHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrintSettringHeaderView.xib; sourceTree = "<group>"; };
+		04A46A75225D8DF400511C79 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
+		04A46A77225D8DF400511C79 /* UIView+JHDrawCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JHDrawCategory.h"; sourceTree = "<group>"; };
+		04A46A78225D8DF400511C79 /* UIView+JHDrawCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JHDrawCategory.m"; sourceTree = "<group>"; };
+		04A46A79225D8DF400511C79 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		04A46A7A225D8DF400511C79 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		04C618462237874600773B7C /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		04C618472237874600773B7C /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		04C618492237876900773B7C /* ShopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
@@ -373,6 +395,7 @@
 		04235E54225B47D900B2FC40 /* Discount（限时折扣） */ = {
 			isa = PBXGroup;
 			children = (
+				04A46A60225C9B6A00511C79 /* WindowView(弹窗) */,
 				04A46A48225C39F600511C79 /* View */,
 				04A46A47225C39EE00511C79 /* Model */,
 				04A46A46225C39DF00511C79 /* Controller */,
@@ -695,6 +718,64 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		04A46A60225C9B6A00511C79 /* WindowView(弹窗) */ = {
+			isa = PBXGroup;
+			children = (
+				04A46A61225C9C0100511C79 /* ChangePriceView.h */,
+				04A46A62225C9C0100511C79 /* ChangePriceView.m */,
+				04A46A64225C9C2200511C79 /* ChangePriceView.xib */,
+			);
+			path = "WindowView(弹窗)";
+			sourceTree = "<group>";
+		};
+		04A46A66225CC2B500511C79 /* PrintSetteing（打印） */ = {
+			isa = PBXGroup;
+			children = (
+				04A46A68225CC3A700511C79 /* View */,
+				04A46A67225CC39C00511C79 /* Controller */,
+			);
+			path = "PrintSetteing（打印）";
+			sourceTree = "<group>";
+		};
+		04A46A67225CC39C00511C79 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04A46A69225CC3C700511C79 /* PrintSettingViewController.h */,
+				04A46A6A225CC3C700511C79 /* PrintSettingViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04A46A68225CC3A700511C79 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04A46A6C225CC40E00511C79 /* PrintSettringHeaderView.h */,
+				04A46A6D225CC40E00511C79 /* PrintSettringHeaderView.m */,
+				04A46A6F225CC41E00511C79 /* PrintSettringHeaderView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04A46A74225D8DF400511C79 /* JHDraw */ = {
+			isa = PBXGroup;
+			children = (
+				04A46A75225D8DF400511C79 /* image.png */,
+				04A46A76225D8DF400511C79 /* JHDraw */,
+				04A46A79225D8DF400511C79 /* LICENSE */,
+				04A46A7A225D8DF400511C79 /* README.md */,
+			);
+			path = JHDraw;
+			sourceTree = "<group>";
+		};
+		04A46A76225D8DF400511C79 /* JHDraw */ = {
+			isa = PBXGroup;
+			children = (
+				04A46A77225D8DF400511C79 /* UIView+JHDrawCategory.h */,
+				04A46A78225D8DF400511C79 /* UIView+JHDrawCategory.m */,
+			);
+			path = JHDraw;
+			sourceTree = "<group>";
+		};
 		04C6185522378B6A00773B7C /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -806,6 +887,7 @@
 		04F61E1922366285004986E0 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				04A46A74225D8DF400511C79 /* JHDraw */,
 				0446EAFE223E438900A86F32 /* SVProgressHUD */,
 				04C618652238A24C00773B7C /* ZJTopImageBottomTitleButton.h */,
 				04C618662238A24C00773B7C /* ZJTopImageBottomTitleButton.m */,
@@ -859,6 +941,7 @@
 			children = (
 				04C618462237874600773B7C /* MeViewController.h */,
 				04C618472237874600773B7C /* MeViewController.m */,
+				04A46A66225CC2B500511C79 /* PrintSetteing（打印） */,
 				0446EAD8223A5A5800A86F32 /* RingSetting */,
 				0446EAD7223A5A4100A86F32 /* FeedBack */,
 				0446EAD6223A5A1D00A86F32 /* BusinessStatus */,
@@ -1017,13 +1100,16 @@
 				042B182A2240EA3E004D372A /* UserEvaluationTableViewCell1.xib in Resources */,
 				04F212BC224CAAC900611664 /* NoImageWithReplyTableViewCell.xib in Resources */,
 				04C6186F2238D04B00773B7C /* ShopSetTableViewCell1.xib in Resources */,
+				04A46A7B225D8DF400511C79 /* image.png in Resources */,
 				04A46A5A225C768800511C79 /* ActivityHeaderView.xib in Resources */,
+				04A46A7D225D8DF400511C79 /* LICENSE in Resources */,
 				0446EAF1223B926D00A86F32 /* GoodsTableViewCell.xib in Resources */,
 				04F212B7224CA7F100611664 /* NoImageTableViewCell.xib in Resources */,
 				0446EB37223F9B8A00A86F32 /* NewGoodsTableViewCell4.xib in Resources */,
 				0446EAE9223B7A3800A86F32 /* TableViewCell.xib in Resources */,
 				04F61DF222364E18004986E0 /* LaunchScreen.storyboard in Resources */,
 				04A46A5F225C8A1200511C79 /* EditeActivityTableViewCell.xib in Resources */,
+				04A46A70225CC41E00511C79 /* PrintSettringHeaderView.xib in Resources */,
 				042B182F2240F704004D372A /* HeaderView1.xib in Resources */,
 				04A46A45225B550600511C79 /* EmptyDiscountView.xib in Resources */,
 				04235E532253531500B2FC40 /* EmptyOrderView.xib in Resources */,
@@ -1034,10 +1120,12 @@
 				0446EB32223F8B0200A86F32 /* NewGoodsTableViewCell3.xib in Resources */,
 				0446EAE4223B441F00A86F32 /* HeaderView.xib in Resources */,
 				0446EB09223E439F00A86F32 /* SVProgressHUD.bundle in Resources */,
+				04A46A65225C9C2200511C79 /* ChangePriceView.xib in Resources */,
 				04FD40C522436402000C9311 /* WaitDeliveryTableViewCell.xib in Resources */,
 				04F61DEF22364E18004986E0 /* Assets.xcassets in Resources */,
 				04F61DED22364E16004986E0 /* Main.storyboard in Resources */,
 				0446EB28223F874C00A86F32 /* NewGoodsTableViewCell1.xib in Resources */,
+				04A46A7E225D8DF400511C79 /* README.md in Resources */,
 				04FD40BF22432708000C9311 /* refuseView.xib in Resources */,
 				04C618792238DDE600773B7C /* ShopSetTableViewCell3.xib in Resources */,
 				042B18202240CB76004D372A /* UserEvaluationTableViewCell.xib in Resources */,
@@ -1122,6 +1210,7 @@
 			files = (
 				04C618482237874600773B7C /* MeViewController.m in Sources */,
 				04F212C72251B75200611664 /* UIView+LC.m in Sources */,
+				04A46A6E225CC40E00511C79 /* PrintSettringHeaderView.m in Sources */,
 				04F5B7D822390AE100E36E3C /* NewsSettingview.m in Sources */,
 				04FD40C922436EA2000C9311 /* AllReadyDeliveryTableViewCell.m in Sources */,
 				04FD40C422436402000C9311 /* WaitDeliveryTableViewCell.m in Sources */,
@@ -1154,12 +1243,14 @@
 				04F212CA2251B77600611664 /* CALayer+BorderColor.m in Sources */,
 				0446EAB82239251100A86F32 /* BusinessStatusViewController.m in Sources */,
 				0446EAF4223BB7E100A86F32 /* UserEvaluationViewController.m in Sources */,
+				04A46A63225C9C0100511C79 /* ChangePriceView.m in Sources */,
 				04C6187D2238FC2600773B7C /* ShopSetTableViewCell4.m in Sources */,
 				0446EAE2223B441200A86F32 /* HeaderView.m in Sources */,
 				04F212B2224B79C000611664 /* JXMovableCellTableView.m in Sources */,
 				042B182D2240F6F2004D372A /* HeaderView1.m in Sources */,
 				04C6185422378B5700773B7C /* TabBarController.m in Sources */,
 				04F61DE722364E16004986E0 /* AppDelegate.m in Sources */,
+				04A46A6B225CC3C700511C79 /* PrintSettingViewController.m in Sources */,
 				0446EB31223F8B0200A86F32 /* NewGoodsTableViewCell3.m in Sources */,
 				04FB88022249C7FC008BEFCB /* PhoneNumberSettingViewController.m in Sources */,
 				0446EB23223F86BC00A86F32 /* CreateNewGoodsViewController.m in Sources */,
@@ -1189,6 +1280,7 @@
 				0446EB13223F3AE000A86F32 /* CreateGoodsViewController.m in Sources */,
 				04F212BB224CAAC900611664 /* NoImageWithReplyTableViewCell.m in Sources */,
 				04C61858223790B000773B7C /* NavigationViewController.m in Sources */,
+				04A46A7C225D8DF400511C79 /* UIView+JHDrawCategory.m in Sources */,
 				04C6186A2238CFB000773B7C /* ShopSetViewController.m in Sources */,
 				0446EB1A223F6BFF00A86F32 /* ManageCatergoryTableViewCell.m in Sources */,
 				04577960223908B100D968EA /* RingSettingViewController.m in Sources */,

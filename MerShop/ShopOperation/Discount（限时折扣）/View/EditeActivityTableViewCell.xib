@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="EditeActivityTableViewCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="EditeActivityTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -41,16 +41,16 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥33.33" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsd-Eg-3Ok">
-                        <rect key="frame" x="107" y="69" width="83" height="22"/>
+                        <rect key="frame" x="107" y="69" width="73" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="83" id="29X-fr-AEz"/>
+                            <constraint firstAttribute="width" constant="73" id="29X-fr-AEz"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="0.92549019610000005" green="0.094117647060000004" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥44.44" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9w-4P-VZs">
-                        <rect key="frame" x="190" y="75" width="83" height="16"/>
+                        <rect key="frame" x="180" y="75" width="73" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -64,6 +64,22 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lds-j2-PVc">
+                        <rect key="frame" x="292" y="45.5" width="13" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="13" id="14j-Pa-JKc"/>
+                            <constraint firstAttribute="height" constant="15" id="lsL-Lp-1ZO"/>
+                        </constraints>
+                        <state key="normal" image="xiangqing_ic_shanchu"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcY-25-fdf">
+                        <rect key="frame" x="257" y="45.5" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="BoT-AC-G6g"/>
+                            <constraint firstAttribute="width" constant="15" id="QIB-Wq-7P0"/>
+                        </constraints>
+                        <state key="normal" image="xiangqing_ic_bianji"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="6Sd-fK-LLo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="1pX-Kd-QmA"/>
@@ -75,10 +91,14 @@
                     <constraint firstItem="G8O-nB-AA1" firstAttribute="leading" secondItem="6Sd-fK-LLo" secondAttribute="trailing" constant="15" id="MNI-2g-BR6"/>
                     <constraint firstItem="6Iz-FP-Wof" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="V2a-vU-bXA"/>
                     <constraint firstItem="6Sd-fK-LLo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Wa9-6G-oWk"/>
+                    <constraint firstItem="KcY-25-fdf" firstAttribute="centerY" secondItem="You-ha-0w5" secondAttribute="centerY" id="X6M-Mt-YMF"/>
+                    <constraint firstAttribute="trailing" secondItem="Lds-j2-PVc" secondAttribute="trailing" constant="15" id="cuq-96-DAR"/>
                     <constraint firstItem="f9w-4P-VZs" firstAttribute="bottom" secondItem="qsd-Eg-3Ok" secondAttribute="bottom" id="g5h-G3-Rht"/>
                     <constraint firstItem="You-ha-0w5" firstAttribute="centerY" secondItem="6Sd-fK-LLo" secondAttribute="centerY" id="hxC-QE-ihC"/>
                     <constraint firstItem="qsd-Eg-3Ok" firstAttribute="bottom" secondItem="6Sd-fK-LLo" secondAttribute="bottom" id="jrg-9L-mjQ"/>
                     <constraint firstItem="f9w-4P-VZs" firstAttribute="leading" secondItem="qsd-Eg-3Ok" secondAttribute="trailing" id="kEd-Co-2fN"/>
+                    <constraint firstItem="Lds-j2-PVc" firstAttribute="centerY" secondItem="You-ha-0w5" secondAttribute="centerY" id="kt9-g8-Jll"/>
+                    <constraint firstItem="Lds-j2-PVc" firstAttribute="leading" secondItem="KcY-25-fdf" secondAttribute="trailing" constant="20" id="lYI-hU-TWI"/>
                     <constraint firstAttribute="bottom" secondItem="6Sd-fK-LLo" secondAttribute="bottom" constant="15.5" id="zbF-JJ-iOH"/>
                 </constraints>
             </tableViewCellContentView>
@@ -86,6 +106,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="xiangqing_ic_bianji" width="16" height="16"/>
+        <image name="xiangqing_ic_shanchu" width="16" height="16"/>
         <image name="yhq_icon_zhekou" width="15" height="15"/>
     </resources>
 </document>

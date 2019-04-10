@@ -56,8 +56,7 @@
     HeaderView *view = [nib objectAtIndex:0];
     [view setBackgroundColor:IFThemeBlueColor];
     view.delegate = self;
-    [view setFrame:XFrame(0, 0, Screen_W, 278-43)];
-//    [view setFrame:XFrame(0, ViewStart_Y, Screen_W, 278)];
+    [view setFrame:XFrame(0, ViewStart_Y, Screen_W, 278)];
     [view addStoreInfo:self.storeData];
     _tableview = [[UITableView alloc]init];
     [_tableview setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
@@ -68,12 +67,11 @@
     _tableview.tableHeaderView = view;
     _tableview.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 1)];;
     [self.view addSubview:_tableview];
-//    [self.view addSubview:view];
 
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 0;
+    return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -25,6 +25,7 @@ PODS:
   - Bugtags/Core (3.1.1)
   - IQKeyboardManager (6.2.0)
   - JSONModel (1.8.0)
+  - JWBluetoothPrinte (1.0.0)
   - Masonry (1.1.0)
   - MJExtension (3.0.15.1)
   - MJRefresh (1.1.0)
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - Bugtags
   - IQKeyboardManager
   - JSONModel
+  - JWBluetoothPrinte
   - Masonry
   - MJExtension
   - MJRefresh (~> 1.1.0)
@@ -48,6 +50,7 @@ SPEC REPOS:
     - Bugtags
     - IQKeyboardManager
     - JSONModel
+    - JWBluetoothPrinte
     - Masonry
     - MJExtension
     - MJRefresh
@@ -58,11 +61,12 @@ SPEC CHECKSUMS:
   Bugtags: 7fe8938867b57cd2b5b04683f8a680a44d998a0c
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
+  JWBluetoothPrinte: 3ddf7bc1128dac97c8e29de15e905441da35a6fa
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   MJRefresh: d7bf87f0d63aa69409235f6d76eb9ec505465a7b
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
 
-PODFILE CHECKSUM: dcbf48f290efac7d6871b9e89cb2049ebd0abdfe
+PODFILE CHECKSUM: f88c4c2b0d37043be1b419e2d39213d6a89949bb
 
 COCOAPODS: 1.6.1

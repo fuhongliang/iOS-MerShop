@@ -9,6 +9,7 @@
 #import "AddActivityGoodsViewController.h"
 #import "GoodsModel.h"
 #import "AddGoodsTableViewCell.h"
+#import "ChangePriceView.h"
 
 #define ButtonWidth     IFAutoFitPx(194)
 
@@ -21,6 +22,8 @@
 @property (nonatomic ,strong)UIView *leftView;
 @property (nonatomic ,assign)NSInteger storeId;
 @property (nonatomic ,assign)NSInteger index;
+@property (nonatomic ,strong)UIView *upView;
+@property (nonatomic ,strong)ChangePriceView *changePrice;
 
 
 @end
@@ -68,6 +71,7 @@
     [finishBtn setTitle:@"完成" forState:(UIControlStateNormal)];
     [self.view addSubview:finishBtn];
     
+    
 }
 - (void)setLeftUI{
     _btnArr = [NSMutableArray arrayWithCapacity:0];
@@ -103,6 +107,30 @@
         [_btnArr addObject:leftBtn];
         [_leftScrollView addSubview:leftBtn];
     }
+    _upView = [[UIView alloc]init];
+    [_upView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
+    [_upView setBackgroundColor:[UIColor blackColor]];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]init];
+    [tap addTarget:self action:@selector(finish)];
+    [_upView addGestureRecognizer:tap];
+    [_upView setAlpha:0.4];
+    [self.view addSubview:_upView];
+    
+    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ChangePriceView" owner:self options:nil];
+    _changePrice = [nib objectAtIndex:0];
+    [_changePrice setFrame:XFrame(0, 0, Screen_W-IFAutoFitPx(200), 205)];
+    [_changePrice setBackgroundColor:[UIColor whiteColor]];
+    _changePrice.layer.cornerRadius = 3;
+    _changePrice.layer.masksToBounds = YES;
+    [_changePrice setCenter:self.view.center];
+    [self.view addSubview:_changePrice];
+    [self.view bringSubviewToFront:_changePrice];
+
+}
+
+- (void)finish{
+    [self.upView setHidden:YES];
+    [self.changePrice setHidden:YES];
 }
 
 - (void)requestCatergory{

@@ -8,4 +8,5 @@ pod 'IQKeyboardManager'
 pod 'Masonry'
 pod 'MJExtension'
 pod 'Bugtags'
+pod 'JWBluetoothPrinte'
 end
