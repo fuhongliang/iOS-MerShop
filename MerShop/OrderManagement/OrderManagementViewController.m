@@ -44,7 +44,7 @@
     _emptyView = [nib objectAtIndex:0];
     [_emptyView setFrame:XFrame(0, ViewStart_Y+IFAutoFitPx(88), Screen_W, Screen_H-ViewStart_Y-Tabbar_H)];
     [_emptyView setBackgroundColor:toPCcolor(@"#f5f5f5")];
-    [self.mainTableview setTableHeaderView:_emptyView];
+//    [self.mainTableview setTableHeaderView:_emptyView];
     
 }
 
@@ -131,7 +131,7 @@
     [_mainTableview setFrame:XFrame(0, ViewStart_Y+IFAutoFitPx(88), Screen_W, Screen_H-ViewStart_Y-IFAutoFitPx(88)-Tabbar_H)];
     [_mainTableview setRowHeight:UITableViewAutomaticDimension];
     [_mainTableview setSeparatorStyle:(UITableViewCellSeparatorStyleNone)];
-    [_mainTableview setBackgroundColor:toPCcolor(@"#E5E5E5")];
+    [_mainTableview setBackgroundColor:toPCcolor(@"#f5f5f5")];
     _mainTableview.delegate = self;
     _mainTableview.dataSource = self;
     [self.view addSubview:_mainTableview];

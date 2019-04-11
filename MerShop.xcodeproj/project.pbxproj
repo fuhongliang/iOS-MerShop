@@ -96,6 +96,7 @@
 		04F61DFF22364E18004986E0 /* MerShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61DFE22364E18004986E0 /* MerShopTests.m */; };
 		04F61E0A22364E18004986E0 /* MerShopUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61E0922364E18004986E0 /* MerShopUITests.m */; };
 		04F61E2022366583004986E0 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61E1F22366583004986E0 /* BasicViewController.m */; };
+		04F741E6225DF79900A57E49 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F741E5225DF79900A57E49 /* Images.xcassets */; };
 		04FB88022249C7FC008BEFCB /* PhoneNumberSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB88012249C7FC008BEFCB /* PhoneNumberSettingViewController.m */; };
 		04FB88052249CE5A008BEFCB /* BusinessLicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB88042249CE5A008BEFCB /* BusinessLicenseViewController.m */; };
 		04FB880A224A1AC0008BEFCB /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB8809224A1AC0008BEFCB /* GoodsModel.m */; };
@@ -285,6 +286,7 @@
 		04F61E1822365797004986E0 /* Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		04F61E1E22366583004986E0 /* BasicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicViewController.h; sourceTree = "<group>"; };
 		04F61E1F22366583004986E0 /* BasicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
+		04F741E5225DF79900A57E49 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		04FB88002249C7FC008BEFCB /* PhoneNumberSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneNumberSettingViewController.h; sourceTree = "<group>"; };
 		04FB88012249C7FC008BEFCB /* PhoneNumberSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberSettingViewController.m; sourceTree = "<group>"; };
 		04FB88032249CE5A008BEFCB /* BusinessLicenseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusinessLicenseViewController.h; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 				04F61DF422364E18004986E0 /* main.m */,
 				04F61E172236561D004986E0 /* PrefixHeader.pch */,
 				04F61E1822365797004986E0 /* Entity.h */,
+				04F741E5225DF79900A57E49 /* Images.xcassets */,
 			);
 			path = MerShop;
 			sourceTree = "<group>";
@@ -949,6 +952,7 @@
 				042B18202240CB76004D372A /* UserEvaluationTableViewCell.xib in Resources */,
 				0446EB2D223F88EF00A86F32 /* NewGoodsTableViewCell2.xib in Resources */,
 				042B192A2241D05F004D372A /* NewOrderTableViewCell1.xib in Resources */,
+				04F741E6225DF79900A57E49 /* Images.xcassets in Resources */,
 				04C618742238DC9E00773B7C /* ShopSetTableViewCell2.xib in Resources */,
 				0446EB562240872800A86F32 /* SortTableViewCell.xib in Resources */,
 			);
@@ -1265,6 +1269,7 @@
 			baseConfigurationReference = C6774E492B8F8E4A9E075F1A /* Pods-MerShop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6L4S78C444;
@@ -1290,6 +1295,7 @@
 			baseConfigurationReference = 2A64BC8AA121C02E47419A4D /* Pods-MerShop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6L4S78C444;

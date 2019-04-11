@@ -80,7 +80,7 @@
     [_mainTableview setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
     [_mainTableview setDelegate:self];
     [_mainTableview setDataSource:self];
-    [_mainTableview setBackgroundColor:toPCcolor(@"#E5E5E5")];
+    [_mainTableview setBackgroundColor:toPCcolor(@"#f5f5f5")];
     [_mainTableview setRowHeight:UITableViewAutomaticDimension];
     [_mainTableview setSeparatorStyle:(UITableViewCellSeparatorStyleNone)];
     [self.view addSubview:_mainTableview];
