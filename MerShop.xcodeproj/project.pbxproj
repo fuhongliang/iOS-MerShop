@@ -95,6 +95,8 @@
 		04C618792238DDE600773B7C /* ShopSetTableViewCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C618772238DDE600773B7C /* ShopSetTableViewCell3.xib */; };
 		04C6187D2238FC2600773B7C /* ShopSetTableViewCell4.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C6187B2238FC2600773B7C /* ShopSetTableViewCell4.m */; };
 		04C6187E2238FC2600773B7C /* ShopSetTableViewCell4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C6187C2238FC2600773B7C /* ShopSetTableViewCell4.xib */; };
+		04EBC276225F32E10035BD29 /* DiscountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EBC274225F32E10035BD29 /* DiscountTableViewCell.m */; };
+		04EBC277225F32E10035BD29 /* DiscountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EBC275225F32E10035BD29 /* DiscountTableViewCell.xib */; };
 		04F212AF224B566B00611664 /* NewCatergoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F212AE224B566B00611664 /* NewCatergoryViewController.m */; };
 		04F212B2224B79C000611664 /* JXMovableCellTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F212B1224B79C000611664 /* JXMovableCellTableView.m */; };
 		04F212B6224CA7F100611664 /* NoImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F212B4224CA7F100611664 /* NoImageTableViewCell.m */; };
@@ -104,6 +106,19 @@
 		04F212C0224DB82400611664 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F212BF224DB82400611664 /* OrderModel.m */; };
 		04F212C72251B75200611664 /* UIView+LC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F212C62251B75200611664 /* UIView+LC.m */; };
 		04F212CA2251B77600611664 /* CALayer+BorderColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F212C92251B77600611664 /* CALayer+BorderColor.m */; };
+		04F54B78225F408700DE81E4 /* DiscountListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54B77225F408700DE81E4 /* DiscountListViewController.m */; };
+		04F54B86225F461D00DE81E4 /* CashCouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54B84225F461D00DE81E4 /* CashCouponTableViewCell.m */; };
+		04F54B87225F461D00DE81E4 /* CashCouponTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54B85225F461D00DE81E4 /* CashCouponTableViewCell.xib */; };
+		04F54B8C225F480300DE81E4 /* FullReductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54B8B225F480300DE81E4 /* FullReductionViewController.m */; };
+		04F54B90225F500300DE81E4 /* DiscountPackageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54B8E225F500300DE81E4 /* DiscountPackageTableViewCell.m */; };
+		04F54B91225F500300DE81E4 /* DiscountPackageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54B8F225F500300DE81E4 /* DiscountPackageTableViewCell.xib */; };
+		04F54B98225F5ACE00DE81E4 /* DiscountPackageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54B97225F5ACE00DE81E4 /* DiscountPackageViewController.m */; };
+		04F54B9B225F5AE900DE81E4 /* CashCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54B9A225F5AE900DE81E4 /* CashCouponViewController.m */; };
+		04F54B9F22603AFC00DE81E4 /* FullReduceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54B9D22603AFC00DE81E4 /* FullReduceTableViewCell.m */; };
+		04F54BA022603AFC00DE81E4 /* FullReduceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54B9E22603AFC00DE81E4 /* FullReduceTableViewCell.xib */; };
+		04F54BA322607E0500DE81E4 /* EditeCashCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BA222607E0500DE81E4 /* EditeCashCouponView.m */; };
+		04F54BA522607E1100DE81E4 /* EditeCashCouponView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54BA422607E1100DE81E4 /* EditeCashCouponView.xib */; };
+		04F54BA8226092C500DE81E4 /* EditeCashCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BA7226092C500DE81E4 /* EditeCashCouponViewController.m */; };
 		04F5B7D822390AE100E36E3C /* NewsSettingview.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5B7D722390AE100E36E3C /* NewsSettingview.m */; };
 		04F5B7DA22390B0500E36E3C /* NewsSettingview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5B7D922390B0500E36E3C /* NewsSettingview.xib */; };
 		04F61DE722364E16004986E0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61DE622364E16004986E0 /* AppDelegate.m */; };
@@ -294,6 +309,9 @@
 		04C6187A2238FC2600773B7C /* ShopSetTableViewCell4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopSetTableViewCell4.h; sourceTree = "<group>"; };
 		04C6187B2238FC2600773B7C /* ShopSetTableViewCell4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopSetTableViewCell4.m; sourceTree = "<group>"; };
 		04C6187C2238FC2600773B7C /* ShopSetTableViewCell4.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopSetTableViewCell4.xib; sourceTree = "<group>"; };
+		04EBC273225F32E10035BD29 /* DiscountTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscountTableViewCell.h; sourceTree = "<group>"; };
+		04EBC274225F32E10035BD29 /* DiscountTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscountTableViewCell.m; sourceTree = "<group>"; };
+		04EBC275225F32E10035BD29 /* DiscountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountTableViewCell.xib; sourceTree = "<group>"; };
 		04F212AD224B566B00611664 /* NewCatergoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewCatergoryViewController.h; sourceTree = "<group>"; };
 		04F212AE224B566B00611664 /* NewCatergoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewCatergoryViewController.m; sourceTree = "<group>"; };
 		04F212B0224B79C000611664 /* JXMovableCellTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXMovableCellTableView.h; sourceTree = "<group>"; };
@@ -310,6 +328,28 @@
 		04F212C62251B75200611664 /* UIView+LC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+LC.m"; sourceTree = "<group>"; };
 		04F212C82251B77600611664 /* CALayer+BorderColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+BorderColor.h"; sourceTree = "<group>"; };
 		04F212C92251B77600611664 /* CALayer+BorderColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+BorderColor.m"; sourceTree = "<group>"; };
+		04F54B76225F408700DE81E4 /* DiscountListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscountListViewController.h; sourceTree = "<group>"; };
+		04F54B77225F408700DE81E4 /* DiscountListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscountListViewController.m; sourceTree = "<group>"; };
+		04F54B83225F461D00DE81E4 /* CashCouponTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CashCouponTableViewCell.h; path = "MerShop/ShopOperation/Cash coupon（代金券）/View/CashCouponTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		04F54B84225F461D00DE81E4 /* CashCouponTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CashCouponTableViewCell.m; path = "MerShop/ShopOperation/Cash coupon（代金券）/View/CashCouponTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		04F54B85225F461D00DE81E4 /* CashCouponTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CashCouponTableViewCell.xib; path = "MerShop/ShopOperation/Cash coupon（代金券）/View/CashCouponTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
+		04F54B8A225F480300DE81E4 /* FullReductionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullReductionViewController.h; sourceTree = "<group>"; };
+		04F54B8B225F480300DE81E4 /* FullReductionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullReductionViewController.m; sourceTree = "<group>"; };
+		04F54B8D225F500300DE81E4 /* DiscountPackageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscountPackageTableViewCell.h; sourceTree = "<group>"; };
+		04F54B8E225F500300DE81E4 /* DiscountPackageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscountPackageTableViewCell.m; sourceTree = "<group>"; };
+		04F54B8F225F500300DE81E4 /* DiscountPackageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountPackageTableViewCell.xib; sourceTree = "<group>"; };
+		04F54B96225F5ACE00DE81E4 /* DiscountPackageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscountPackageViewController.h; sourceTree = "<group>"; };
+		04F54B97225F5ACE00DE81E4 /* DiscountPackageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscountPackageViewController.m; sourceTree = "<group>"; };
+		04F54B99225F5AE900DE81E4 /* CashCouponViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CashCouponViewController.h; sourceTree = "<group>"; };
+		04F54B9A225F5AE900DE81E4 /* CashCouponViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CashCouponViewController.m; sourceTree = "<group>"; };
+		04F54B9C22603AFC00DE81E4 /* FullReduceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullReduceTableViewCell.h; sourceTree = "<group>"; };
+		04F54B9D22603AFC00DE81E4 /* FullReduceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullReduceTableViewCell.m; sourceTree = "<group>"; };
+		04F54B9E22603AFC00DE81E4 /* FullReduceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullReduceTableViewCell.xib; sourceTree = "<group>"; };
+		04F54BA122607E0500DE81E4 /* EditeCashCouponView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditeCashCouponView.h; sourceTree = "<group>"; };
+		04F54BA222607E0500DE81E4 /* EditeCashCouponView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditeCashCouponView.m; sourceTree = "<group>"; };
+		04F54BA422607E1100DE81E4 /* EditeCashCouponView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditeCashCouponView.xib; sourceTree = "<group>"; };
+		04F54BA6226092C500DE81E4 /* EditeCashCouponViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditeCashCouponViewController.h; sourceTree = "<group>"; };
+		04F54BA7226092C500DE81E4 /* EditeCashCouponViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditeCashCouponViewController.m; sourceTree = "<group>"; };
 		04F5B7D622390AE100E36E3C /* NewsSettingview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsSettingview.h; sourceTree = "<group>"; };
 		04F5B7D722390AE100E36E3C /* NewsSettingview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsSettingview.m; sourceTree = "<group>"; };
 		04F5B7D922390B0500E36E3C /* NewsSettingview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsSettingview.xib; sourceTree = "<group>"; };
@@ -403,23 +443,29 @@
 			path = "Discount（限时折扣）";
 			sourceTree = "<group>";
 		};
-		04235E55225B47EB00B2FC40 /* Full reduction（满减） */ = {
+		04235E55225B47EB00B2FC40 /* FullReduction */ = {
 			isa = PBXGroup;
 			children = (
+				04F54B89225F47DF00DE81E4 /* View */,
+				04F54B88225F47D300DE81E4 /* Controller */,
 			);
-			path = "Full reduction（满减）";
+			path = FullReduction;
 			sourceTree = "<group>";
 		};
-		04235E56225B481400B2FC40 /* Discount package（优惠套餐） */ = {
+		04235E56225B481400B2FC40 /* DiscountPackage */ = {
 			isa = PBXGroup;
 			children = (
+				04F54B93225F501100DE81E4 /* Controller */,
+				04F54B92225F500A00DE81E4 /* View */,
 			);
-			path = "Discount package（优惠套餐）";
+			path = DiscountPackage;
 			sourceTree = "<group>";
 		};
 		04235E57225B483B00B2FC40 /* Cash coupon（代金券） */ = {
 			isa = PBXGroup;
 			children = (
+				04F54B95225F502700DE81E4 /* Controller */,
+				04F54B94225F501F00DE81E4 /* View */,
 			);
 			path = "Cash coupon（代金券）";
 			sourceTree = "<group>";
@@ -687,6 +733,8 @@
 		04A46A46225C39DF00511C79 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				04F54B76225F408700DE81E4 /* DiscountListViewController.h */,
+				04F54B77225F408700DE81E4 /* DiscountListViewController.m */,
 				04A46A3E225B4E6D00511C79 /* DiscountViewController.h */,
 				04A46A3F225B4E6D00511C79 /* DiscountViewController.m */,
 				04A46A49225C3A4F00511C79 /* AddActivityGoodsViewController.h */,
@@ -714,6 +762,9 @@
 				04A46A5B225C8A1200511C79 /* EditeActivityTableViewCell.h */,
 				04A46A5C225C8A1200511C79 /* EditeActivityTableViewCell.m */,
 				04A46A5D225C8A1200511C79 /* EditeActivityTableViewCell.xib */,
+				04EBC273225F32E10035BD29 /* DiscountTableViewCell.h */,
+				04EBC274225F32E10035BD29 /* DiscountTableViewCell.m */,
+				04EBC275225F32E10035BD29 /* DiscountTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -820,6 +871,68 @@
 			path = "DataVC（经营数据）";
 			sourceTree = "<group>";
 		};
+		04F54B88225F47D300DE81E4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04F54B8A225F480300DE81E4 /* FullReductionViewController.h */,
+				04F54B8B225F480300DE81E4 /* FullReductionViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04F54B89225F47DF00DE81E4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04F54B9C22603AFC00DE81E4 /* FullReduceTableViewCell.h */,
+				04F54B9D22603AFC00DE81E4 /* FullReduceTableViewCell.m */,
+				04F54B9E22603AFC00DE81E4 /* FullReduceTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04F54B92225F500A00DE81E4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04F54B8D225F500300DE81E4 /* DiscountPackageTableViewCell.h */,
+				04F54B8E225F500300DE81E4 /* DiscountPackageTableViewCell.m */,
+				04F54B8F225F500300DE81E4 /* DiscountPackageTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04F54B93225F501100DE81E4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04F54B96225F5ACE00DE81E4 /* DiscountPackageViewController.h */,
+				04F54B97225F5ACE00DE81E4 /* DiscountPackageViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04F54B94225F501F00DE81E4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04F54B83225F461D00DE81E4 /* CashCouponTableViewCell.h */,
+				04F54B84225F461D00DE81E4 /* CashCouponTableViewCell.m */,
+				04F54B85225F461D00DE81E4 /* CashCouponTableViewCell.xib */,
+				04F54BA122607E0500DE81E4 /* EditeCashCouponView.h */,
+				04F54BA222607E0500DE81E4 /* EditeCashCouponView.m */,
+				04F54BA422607E1100DE81E4 /* EditeCashCouponView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04F54B95225F502700DE81E4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04F54B99225F5AE900DE81E4 /* CashCouponViewController.h */,
+				04F54B9A225F5AE900DE81E4 /* CashCouponViewController.m */,
+				04F54BA6226092C500DE81E4 /* EditeCashCouponViewController.h */,
+				04F54BA7226092C500DE81E4 /* EditeCashCouponViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		04F61DD922364E16004986E0 = {
 			isa = PBXGroup;
 			children = (
@@ -923,8 +1036,8 @@
 			isa = PBXGroup;
 			children = (
 				04235E57225B483B00B2FC40 /* Cash coupon（代金券） */,
-				04235E56225B481400B2FC40 /* Discount package（优惠套餐） */,
-				04235E55225B47EB00B2FC40 /* Full reduction（满减） */,
+				04235E56225B481400B2FC40 /* DiscountPackage */,
+				04235E55225B47EB00B2FC40 /* FullReduction */,
 				04235E54225B47D900B2FC40 /* Discount（限时折扣） */,
 				04F212C1224DC86000611664 /* DataVC（经营数据） */,
 				0446EB50224084EA00A86F32 /* ManageCatergory（商品管理） */,
@@ -1097,7 +1210,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				04A46A55225C41FD00511C79 /* AddGoodsTableViewCell.xib in Resources */,
+				04F54BA522607E1100DE81E4 /* EditeCashCouponView.xib in Resources */,
+				04F54B87225F461D00DE81E4 /* CashCouponTableViewCell.xib in Resources */,
 				042B182A2240EA3E004D372A /* UserEvaluationTableViewCell1.xib in Resources */,
+				04F54BA022603AFC00DE81E4 /* FullReduceTableViewCell.xib in Resources */,
 				04F212BC224CAAC900611664 /* NoImageWithReplyTableViewCell.xib in Resources */,
 				04C6186F2238D04B00773B7C /* ShopSetTableViewCell1.xib in Resources */,
 				04A46A7B225D8DF400511C79 /* image.png in Resources */,
@@ -1106,6 +1222,8 @@
 				0446EAF1223B926D00A86F32 /* GoodsTableViewCell.xib in Resources */,
 				04F212B7224CA7F100611664 /* NoImageTableViewCell.xib in Resources */,
 				0446EB37223F9B8A00A86F32 /* NewGoodsTableViewCell4.xib in Resources */,
+				04EBC277225F32E10035BD29 /* DiscountTableViewCell.xib in Resources */,
+				04F54B91225F500300DE81E4 /* DiscountPackageTableViewCell.xib in Resources */,
 				0446EAE9223B7A3800A86F32 /* TableViewCell.xib in Resources */,
 				04F61DF222364E18004986E0 /* LaunchScreen.storyboard in Resources */,
 				04A46A5F225C8A1200511C79 /* EditeActivityTableViewCell.xib in Resources */,
@@ -1209,6 +1327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04C618482237874600773B7C /* MeViewController.m in Sources */,
+				04F54B90225F500300DE81E4 /* DiscountPackageTableViewCell.m in Sources */,
 				04F212C72251B75200611664 /* UIView+LC.m in Sources */,
 				04A46A6E225CC40E00511C79 /* PrintSettringHeaderView.m in Sources */,
 				04F5B7D822390AE100E36E3C /* NewsSettingview.m in Sources */,
@@ -1220,6 +1339,7 @@
 				04C6185F2237B6CE00773B7C /* BackgroundView.m in Sources */,
 				0446EB0D223E439F00A86F32 /* SVProgressHUD.m in Sources */,
 				04235E51225352E200B2FC40 /* EmptyOrderView.m in Sources */,
+				04F54B86225F461D00DE81E4 /* CashCouponTableViewCell.m in Sources */,
 				0446EB16223F4C1A00A86F32 /* ManageCatergoryViewController.m in Sources */,
 				04A46A4B225C3A4F00511C79 /* AddActivityGoodsViewController.m in Sources */,
 				0446EB0C223E439F00A86F32 /* SVIndefiniteAnimatedView.m in Sources */,
@@ -1236,6 +1356,7 @@
 				042B181F2240CB76004D372A /* UserEvaluationTableViewCell.m in Sources */,
 				0446EB46223FEE7F00A86F32 /* LogCategory.m in Sources */,
 				04FB88052249CE5A008BEFCB /* BusinessLicenseViewController.m in Sources */,
+				04F54B9B225F5AE900DE81E4 /* CashCouponViewController.m in Sources */,
 				04F61DF522364E18004986E0 /* main.m in Sources */,
 				0446EB4F224084D800A86F32 /* SortViewController.m in Sources */,
 				0446EAF0223B926D00A86F32 /* GoodsTableViewCell.m in Sources */,
@@ -1248,11 +1369,14 @@
 				0446EAE2223B441200A86F32 /* HeaderView.m in Sources */,
 				04F212B2224B79C000611664 /* JXMovableCellTableView.m in Sources */,
 				042B182D2240F6F2004D372A /* HeaderView1.m in Sources */,
+				04F54BA322607E0500DE81E4 /* EditeCashCouponView.m in Sources */,
 				04C6185422378B5700773B7C /* TabBarController.m in Sources */,
 				04F61DE722364E16004986E0 /* AppDelegate.m in Sources */,
 				04A46A6B225CC3C700511C79 /* PrintSettingViewController.m in Sources */,
+				04F54B78225F408700DE81E4 /* DiscountListViewController.m in Sources */,
 				0446EB31223F8B0200A86F32 /* NewGoodsTableViewCell3.m in Sources */,
 				04FB88022249C7FC008BEFCB /* PhoneNumberSettingViewController.m in Sources */,
+				04F54B9F22603AFC00DE81E4 /* FullReduceTableViewCell.m in Sources */,
 				0446EB23223F86BC00A86F32 /* CreateNewGoodsViewController.m in Sources */,
 				04A46A54225C41FD00511C79 /* AddGoodsTableViewCell.m in Sources */,
 				04C6186E2238D04B00773B7C /* ShopSetTableViewCell1.m in Sources */,
@@ -1262,8 +1386,10 @@
 				0446EABB2239319900A86F32 /* FeedbackViewController.m in Sources */,
 				0446EB2C223F88EF00A86F32 /* NewGoodsTableViewCell2.m in Sources */,
 				04FD40BD224326F4000C9311 /* refuseView.m in Sources */,
+				04EBC276225F32E10035BD29 /* DiscountTableViewCell.m in Sources */,
 				0446EABE2239EDD400A86F32 /* AccountSecurityViewController.m in Sources */,
 				04FB880A224A1AC0008BEFCB /* GoodsModel.m in Sources */,
+				04F54BA8226092C500DE81E4 /* EditeCashCouponViewController.m in Sources */,
 				0446EAFB223E1B9D00A86F32 /* Http_url.m in Sources */,
 				04A46A5E225C8A1200511C79 /* EditeActivityTableViewCell.m in Sources */,
 				04C6184B2237876900773B7C /* ShopViewController.m in Sources */,
@@ -1278,10 +1404,12 @@
 				04F212C0224DB82400611664 /* OrderModel.m in Sources */,
 				042B19382242383D004D372A /* NewOrderModel.m in Sources */,
 				0446EB13223F3AE000A86F32 /* CreateGoodsViewController.m in Sources */,
+				04F54B8C225F480300DE81E4 /* FullReductionViewController.m in Sources */,
 				04F212BB224CAAC900611664 /* NoImageWithReplyTableViewCell.m in Sources */,
 				04C61858223790B000773B7C /* NavigationViewController.m in Sources */,
 				04A46A7C225D8DF400511C79 /* UIView+JHDrawCategory.m in Sources */,
 				04C6186A2238CFB000773B7C /* ShopSetViewController.m in Sources */,
+				04F54B98225F5ACE00DE81E4 /* DiscountPackageViewController.m in Sources */,
 				0446EB1A223F6BFF00A86F32 /* ManageCatergoryTableViewCell.m in Sources */,
 				04577960223908B100D968EA /* RingSettingViewController.m in Sources */,
 				04F212AF224B566B00611664 /* NewCatergoryViewController.m in Sources */,

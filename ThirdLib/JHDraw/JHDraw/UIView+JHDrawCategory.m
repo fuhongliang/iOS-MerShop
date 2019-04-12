@@ -59,12 +59,12 @@
     //设置虚线颜色为blackColor
     [dotteShapeLayer setStrokeColor:[toPCcolor(@"#E5E5E5") CGColor]];
     //设置虚线宽度
-    dotteShapeLayer.lineWidth = 1.0f ;
+    dotteShapeLayer.lineWidth = 0.5f ;
     //10=线的宽度 5=每条线的间距
-    NSArray *dotteShapeArr = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:4],[NSNumber numberWithInt:2], nil];
+    NSArray *dotteShapeArr = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:2],[NSNumber numberWithInt:2], nil];
     [dotteShapeLayer setLineDashPattern:dotteShapeArr];
     CGPathMoveToPoint(dotteShapePath, NULL, 0 ,0);
-    CGPathAddLineToPoint(dotteShapePath, NULL, Screen_W, 0);
+    CGPathAddLineToPoint(dotteShapePath, NULL, Screen_W-38, 0);
     [dotteShapeLayer setPath:dotteShapePath];
     CGPathRelease(dotteShapePath);
     //把绘制好的虚线添加上来

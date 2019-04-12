@@ -22,6 +22,12 @@
 #import "MJRefresh.h"
 #import <JSONModel.h>
 #import "UIImageView+WebCache.h"
+#import "PhoneNumberView.h"
+#import "JWBluetoothManage.h"
+#import "UIView+JHDrawCategory.h"
+#import "ZJTopImageBottomTitleButton.h"
+
+
 
 
 

@@ -13,16 +13,12 @@
 #import "RingSettingViewController.h"
 #import "FeedbackViewController.h"
 #import "BackgroundView.h"
-#import "PhoneNumberView.h"
-#import "UIImageView+WebCache.h"
 #import "AppDelegate.h"
 #import "LoginInViewController.h"
 #import "NavigationViewController.h"
 #import "AddActivityGoodsViewController.h"
 #import "DiscountViewController.h"
 #import "PrintSettingViewController.h"
-
-
 
 @interface MeViewController ()<BackgroundViewDelegate,PhoneNumberViewDelegate>
 @property (nonatomic ,strong)UIView *clearView;

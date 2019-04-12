@@ -83,7 +83,7 @@
     [_describe setFont:XFont(15)];
     [self addSubview:_describe];
     
-    index = BtnTag;
+    index = 1000;
     CGFloat width_w =  (Screen_W-IFAutoFitPx(30)*4)/3;
     CGFloat point_y =  CGRectGetMaxY(_describe.frame)+IFAutoFitPx(72);
     for (NSInteger i=0; i<3; i++){

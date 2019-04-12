@@ -12,6 +12,10 @@
 #import "GoodsManagementViewController.h"
 #import "UserEvaluationViewController.h"
 #import "ManageViewController.h"
+#import "DiscountListViewController.h"
+#import "FullReductionViewController.h"
+#import "DiscountPackageViewController.h"
+#import "CashCouponViewController.h"
 
 @interface ShopViewController ()<UITableViewDelegate,UITableViewDataSource,HeaderViewDelegate>
 @property (nonatomic ,strong)HeaderView *headView;
@@ -93,6 +97,22 @@
 //    }
     return cell;
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0){
+        DiscountListViewController *vc = [[DiscountListViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.row == 1){
+        FullReductionViewController *vc = [[FullReductionViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.row == 2){
+        DiscountPackageViewController *vc = [[DiscountPackageViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        CashCouponViewController *vc = [[CashCouponViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (void)category:(UIButton *)sender{
