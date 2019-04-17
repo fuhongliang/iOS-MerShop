@@ -1,14 +1,14 @@
 //
-//  EditeCashCouponView.m
+//  FullReductionHeadView.m
 //  MerShop
 //
-//  Created by mac on 2019/4/12.
+//  Created by mac on 2019/4/15.
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-#import "EditeCashCouponView.h"
+#import "FullReductionHeadView.h"
 
-@implementation EditeCashCouponView
+@implementation FullReductionHeadView
 
 /*
 // Only override drawRect: if you perform custom drawing.

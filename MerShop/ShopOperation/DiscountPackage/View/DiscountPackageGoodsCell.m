@@ -1,18 +1,18 @@
 //
-//  DiscountPackageTableViewCell.m
+//  DiscountPackageGoodsCell.m
 //  MerShop
 //
-//  Created by mac on 2019/4/11.
+//  Created by mac on 2019/4/15.
 //  Copyright © 2019 mac. All rights reserved.
 //
 
-#import "DiscountPackageTableViewCell.h"
+#import "DiscountPackageGoodsCell.h"
 
-@implementation DiscountPackageTableViewCell
+@implementation DiscountPackageGoodsCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -21,7 +21,4 @@
     // Configure the view for the selected state
 }
 
-- (void)setDataWithModel{
-    [self.line drawDottedLine];
-}
 @end

@@ -8,6 +8,7 @@
 
 #import "DiscountPackageViewController.h"
 #import "DiscountPackageTableViewCell.h"
+#import "AddDiscountViewController.h"
 
 @interface DiscountPackageViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic ,strong)UITableView *mainTableView;
@@ -41,6 +42,7 @@
     [btn setTitle:@"添加活动" forState:(UIControlStateNormal)];
     [btn setImage:[UIImage imageNamed:@"yhq_addhuodong"] forState:(UIControlStateNormal)];
     [btn setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
+    [btn addTarget:self action:@selector(addActivity) forControlEvents:(UIControlEventTouchUpInside)];
     [btn setBackgroundColor:WhiteColor];
     [btn.titleLabel setFont:XFont(11)];
     [view addSubview:btn];
@@ -60,6 +62,11 @@
     }
     [cell setDataWithModel];
     return cell;
+}
+
+- (void)addActivity{
+    AddDiscountViewController *vc = [[AddDiscountViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 懒加载

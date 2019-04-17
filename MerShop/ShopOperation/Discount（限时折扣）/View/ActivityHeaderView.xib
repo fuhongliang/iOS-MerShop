@@ -136,7 +136,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KiS-9w-PIk">
-                                    <rect key="frame" x="8" y="44" width="367" height="0.5"/>
+                                    <rect key="frame" x="15" y="44" width="360" height="0.5"/>
                                     <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="e52-yy-Y0R"/>
@@ -173,7 +173,7 @@
                             <constraints>
                                 <constraint firstItem="kgy-hF-4jo" firstAttribute="centerY" secondItem="fSj-Ik-rML" secondAttribute="centerY" id="2Zv-SO-Fa5"/>
                                 <constraint firstItem="KiS-9w-PIk" firstAttribute="top" secondItem="E2m-GD-1ab" secondAttribute="bottom" constant="7" id="2ra-3m-yFH"/>
-                                <constraint firstItem="KiS-9w-PIk" firstAttribute="leading" secondItem="mvc-hu-dw1" secondAttribute="leading" constant="8" id="6MU-Iy-790"/>
+                                <constraint firstItem="KiS-9w-PIk" firstAttribute="leading" secondItem="mvc-hu-dw1" secondAttribute="leading" constant="15" id="6MU-Iy-790"/>
                                 <constraint firstItem="ycJ-Os-Nof" firstAttribute="top" secondItem="mvc-hu-dw1" secondAttribute="top" constant="14" id="7bl-Ya-TRl"/>
                                 <constraint firstItem="KiS-9w-PIk" firstAttribute="top" secondItem="ycJ-Os-Nof" secondAttribute="bottom" constant="14" id="8SK-ws-7vY"/>
                                 <constraint firstItem="u8T-4Y-cec" firstAttribute="centerY" secondItem="ycJ-Os-Nof" secondAttribute="centerY" id="9CB-29-bGs"/>

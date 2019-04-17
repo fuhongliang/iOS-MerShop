@@ -7,7 +7,7 @@
 //
 
 #import "BasicViewController.h"
-#import "EditeCashCouponView.h"
+#import "EditeCouponView.h"
 
 
 @interface EditeCashCouponViewController : BasicViewController

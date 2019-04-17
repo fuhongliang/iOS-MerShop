@@ -39,7 +39,7 @@
 #define MAS_SHORTHAND_GLOBALS
 
 #define UserInfoDict   [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]
-#define StoreId        [UserInfoDict objectForKey:@"store_id"]
+#define StoreId        [[UserInfoDict objectForKey:@"store_id"] integerValue]
 
 
 #import <Masonry.h>

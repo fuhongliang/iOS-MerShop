@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041668C72265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041668C62265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m */; };
+		041668C92265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041668C82265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib */; };
 		04235E51225352E200B2FC40 /* EmptyOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04235E50225352E200B2FC40 /* EmptyOrderView.m */; };
 		04235E532253531500B2FC40 /* EmptyOrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04235E522253531500B2FC40 /* EmptyOrderView.xib */; };
 		042B181F2240CB76004D372A /* UserEvaluationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B181D2240CB76004D372A /* UserEvaluationTableViewCell.m */; };
@@ -116,9 +118,23 @@
 		04F54B9B225F5AE900DE81E4 /* CashCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54B9A225F5AE900DE81E4 /* CashCouponViewController.m */; };
 		04F54B9F22603AFC00DE81E4 /* FullReduceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54B9D22603AFC00DE81E4 /* FullReduceTableViewCell.m */; };
 		04F54BA022603AFC00DE81E4 /* FullReduceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54B9E22603AFC00DE81E4 /* FullReduceTableViewCell.xib */; };
-		04F54BA322607E0500DE81E4 /* EditeCashCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BA222607E0500DE81E4 /* EditeCashCouponView.m */; };
-		04F54BA522607E1100DE81E4 /* EditeCashCouponView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54BA422607E1100DE81E4 /* EditeCashCouponView.xib */; };
+		04F54BA322607E0500DE81E4 /* EditeCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BA222607E0500DE81E4 /* EditeCouponView.m */; };
+		04F54BA522607E1100DE81E4 /* EditeCouponView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54BA422607E1100DE81E4 /* EditeCouponView.xib */; };
 		04F54BA8226092C500DE81E4 /* EditeCashCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BA7226092C500DE81E4 /* EditeCashCouponViewController.m */; };
+		04F54BAC22642CF000DE81E4 /* DiscountPackageGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BAA22642CF000DE81E4 /* DiscountPackageGoodsCell.m */; };
+		04F54BAD22642CF000DE81E4 /* DiscountPackageGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54BAB22642CF000DE81E4 /* DiscountPackageGoodsCell.xib */; };
+		04F54BB02264315F00DE81E4 /* AddDiscountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BAF2264315F00DE81E4 /* AddDiscountViewController.m */; };
+		04F54BB82264372200DE81E4 /* FooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BB72264372200DE81E4 /* FooterView.m */; };
+		04F54BBA2264373E00DE81E4 /* FooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54BB92264373E00DE81E4 /* FooterView.xib */; };
+		04F54BBD2264613600DE81E4 /* PackageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BBC2264613600DE81E4 /* PackageView.m */; };
+		04F54BBF2264619900DE81E4 /* PackageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54BBE2264619900DE81E4 /* PackageView.xib */; };
+		04F54BC2226471FF00DE81E4 /* AddFullReductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BC1226471FF00DE81E4 /* AddFullReductionViewController.m */; };
+		04F54BC5226472B100DE81E4 /* FullReductionHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BC4226472B100DE81E4 /* FullReductionHeadView.m */; };
+		04F54BC7226472BE00DE81E4 /* FullReductionHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54BC6226472BE00DE81E4 /* FullReductionHeadView.xib */; };
+		04F54BCA226472EE00DE81E4 /* FullReductionFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BC9226472EE00DE81E4 /* FullReductionFootView.m */; };
+		04F54BCC2264730900DE81E4 /* FullReductionFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54BCB2264730900DE81E4 /* FullReductionFootView.xib */; };
+		04F54BD022647B6D00DE81E4 /* FullReductionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BCE22647B6D00DE81E4 /* FullReductionCell.m */; };
+		04F54BD122647B6D00DE81E4 /* FullReductionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54BCF22647B6D00DE81E4 /* FullReductionCell.xib */; };
 		04F5B7D822390AE100E36E3C /* NewsSettingview.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5B7D722390AE100E36E3C /* NewsSettingview.m */; };
 		04F5B7DA22390B0500E36E3C /* NewsSettingview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5B7D922390B0500E36E3C /* NewsSettingview.xib */; };
 		04F61DE722364E16004986E0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61DE622364E16004986E0 /* AppDelegate.m */; };
@@ -160,6 +176,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041668C52265B03F00A3D2E1 /* CreateNewGoodsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateNewGoodsHeaderView.h; sourceTree = "<group>"; };
+		041668C62265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateNewGoodsHeaderView.m; sourceTree = "<group>"; };
+		041668C82265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateNewGoodsHeaderView.xib; sourceTree = "<group>"; };
 		04235E4F225352E200B2FC40 /* EmptyOrderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyOrderView.h; sourceTree = "<group>"; };
 		04235E50225352E200B2FC40 /* EmptyOrderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyOrderView.m; sourceTree = "<group>"; };
 		04235E522253531500B2FC40 /* EmptyOrderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyOrderView.xib; sourceTree = "<group>"; };
@@ -345,11 +364,33 @@
 		04F54B9C22603AFC00DE81E4 /* FullReduceTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullReduceTableViewCell.h; sourceTree = "<group>"; };
 		04F54B9D22603AFC00DE81E4 /* FullReduceTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullReduceTableViewCell.m; sourceTree = "<group>"; };
 		04F54B9E22603AFC00DE81E4 /* FullReduceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullReduceTableViewCell.xib; sourceTree = "<group>"; };
-		04F54BA122607E0500DE81E4 /* EditeCashCouponView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditeCashCouponView.h; sourceTree = "<group>"; };
-		04F54BA222607E0500DE81E4 /* EditeCashCouponView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditeCashCouponView.m; sourceTree = "<group>"; };
-		04F54BA422607E1100DE81E4 /* EditeCashCouponView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditeCashCouponView.xib; sourceTree = "<group>"; };
+		04F54BA122607E0500DE81E4 /* EditeCouponView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditeCouponView.h; sourceTree = "<group>"; };
+		04F54BA222607E0500DE81E4 /* EditeCouponView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditeCouponView.m; sourceTree = "<group>"; };
+		04F54BA422607E1100DE81E4 /* EditeCouponView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditeCouponView.xib; sourceTree = "<group>"; };
 		04F54BA6226092C500DE81E4 /* EditeCashCouponViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditeCashCouponViewController.h; sourceTree = "<group>"; };
 		04F54BA7226092C500DE81E4 /* EditeCashCouponViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditeCashCouponViewController.m; sourceTree = "<group>"; };
+		04F54BA922642CF000DE81E4 /* DiscountPackageGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscountPackageGoodsCell.h; sourceTree = "<group>"; };
+		04F54BAA22642CF000DE81E4 /* DiscountPackageGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscountPackageGoodsCell.m; sourceTree = "<group>"; };
+		04F54BAB22642CF000DE81E4 /* DiscountPackageGoodsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountPackageGoodsCell.xib; sourceTree = "<group>"; };
+		04F54BAE2264315F00DE81E4 /* AddDiscountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddDiscountViewController.h; sourceTree = "<group>"; };
+		04F54BAF2264315F00DE81E4 /* AddDiscountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddDiscountViewController.m; sourceTree = "<group>"; };
+		04F54BB62264372200DE81E4 /* FooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FooterView.h; sourceTree = "<group>"; };
+		04F54BB72264372200DE81E4 /* FooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FooterView.m; sourceTree = "<group>"; };
+		04F54BB92264373E00DE81E4 /* FooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterView.xib; sourceTree = "<group>"; };
+		04F54BBB2264613600DE81E4 /* PackageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PackageView.h; sourceTree = "<group>"; };
+		04F54BBC2264613600DE81E4 /* PackageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PackageView.m; sourceTree = "<group>"; };
+		04F54BBE2264619900DE81E4 /* PackageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageView.xib; sourceTree = "<group>"; };
+		04F54BC0226471FF00DE81E4 /* AddFullReductionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddFullReductionViewController.h; sourceTree = "<group>"; };
+		04F54BC1226471FF00DE81E4 /* AddFullReductionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddFullReductionViewController.m; sourceTree = "<group>"; };
+		04F54BC3226472B100DE81E4 /* FullReductionHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullReductionHeadView.h; sourceTree = "<group>"; };
+		04F54BC4226472B100DE81E4 /* FullReductionHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullReductionHeadView.m; sourceTree = "<group>"; };
+		04F54BC6226472BE00DE81E4 /* FullReductionHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullReductionHeadView.xib; sourceTree = "<group>"; };
+		04F54BC8226472EE00DE81E4 /* FullReductionFootView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullReductionFootView.h; sourceTree = "<group>"; };
+		04F54BC9226472EE00DE81E4 /* FullReductionFootView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullReductionFootView.m; sourceTree = "<group>"; };
+		04F54BCB2264730900DE81E4 /* FullReductionFootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullReductionFootView.xib; sourceTree = "<group>"; };
+		04F54BCD22647B6D00DE81E4 /* FullReductionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullReductionCell.h; sourceTree = "<group>"; };
+		04F54BCE22647B6D00DE81E4 /* FullReductionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullReductionCell.m; sourceTree = "<group>"; };
+		04F54BCF22647B6D00DE81E4 /* FullReductionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullReductionCell.xib; sourceTree = "<group>"; };
 		04F5B7D622390AE100E36E3C /* NewsSettingview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsSettingview.h; sourceTree = "<group>"; };
 		04F5B7D722390AE100E36E3C /* NewsSettingview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsSettingview.m; sourceTree = "<group>"; };
 		04F5B7D922390B0500E36E3C /* NewsSettingview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsSettingview.xib; sourceTree = "<group>"; };
@@ -726,6 +767,9 @@
 				0446EB522240872800A86F32 /* SortTableViewCell.h */,
 				0446EB532240872800A86F32 /* SortTableViewCell.m */,
 				0446EB542240872800A86F32 /* SortTableViewCell.xib */,
+				041668C52265B03F00A3D2E1 /* CreateNewGoodsHeaderView.h */,
+				041668C62265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m */,
+				041668C82265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -876,6 +920,8 @@
 			children = (
 				04F54B8A225F480300DE81E4 /* FullReductionViewController.h */,
 				04F54B8B225F480300DE81E4 /* FullReductionViewController.m */,
+				04F54BC0226471FF00DE81E4 /* AddFullReductionViewController.h */,
+				04F54BC1226471FF00DE81E4 /* AddFullReductionViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -886,6 +932,15 @@
 				04F54B9C22603AFC00DE81E4 /* FullReduceTableViewCell.h */,
 				04F54B9D22603AFC00DE81E4 /* FullReduceTableViewCell.m */,
 				04F54B9E22603AFC00DE81E4 /* FullReduceTableViewCell.xib */,
+				04F54BC3226472B100DE81E4 /* FullReductionHeadView.h */,
+				04F54BC4226472B100DE81E4 /* FullReductionHeadView.m */,
+				04F54BC6226472BE00DE81E4 /* FullReductionHeadView.xib */,
+				04F54BC8226472EE00DE81E4 /* FullReductionFootView.h */,
+				04F54BC9226472EE00DE81E4 /* FullReductionFootView.m */,
+				04F54BCB2264730900DE81E4 /* FullReductionFootView.xib */,
+				04F54BCD22647B6D00DE81E4 /* FullReductionCell.h */,
+				04F54BCE22647B6D00DE81E4 /* FullReductionCell.m */,
+				04F54BCF22647B6D00DE81E4 /* FullReductionCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -896,6 +951,15 @@
 				04F54B8D225F500300DE81E4 /* DiscountPackageTableViewCell.h */,
 				04F54B8E225F500300DE81E4 /* DiscountPackageTableViewCell.m */,
 				04F54B8F225F500300DE81E4 /* DiscountPackageTableViewCell.xib */,
+				04F54BA922642CF000DE81E4 /* DiscountPackageGoodsCell.h */,
+				04F54BAA22642CF000DE81E4 /* DiscountPackageGoodsCell.m */,
+				04F54BAB22642CF000DE81E4 /* DiscountPackageGoodsCell.xib */,
+				04F54BB62264372200DE81E4 /* FooterView.h */,
+				04F54BB72264372200DE81E4 /* FooterView.m */,
+				04F54BB92264373E00DE81E4 /* FooterView.xib */,
+				04F54BBB2264613600DE81E4 /* PackageView.h */,
+				04F54BBC2264613600DE81E4 /* PackageView.m */,
+				04F54BBE2264619900DE81E4 /* PackageView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -905,6 +969,8 @@
 			children = (
 				04F54B96225F5ACE00DE81E4 /* DiscountPackageViewController.h */,
 				04F54B97225F5ACE00DE81E4 /* DiscountPackageViewController.m */,
+				04F54BAE2264315F00DE81E4 /* AddDiscountViewController.h */,
+				04F54BAF2264315F00DE81E4 /* AddDiscountViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -915,9 +981,9 @@
 				04F54B83225F461D00DE81E4 /* CashCouponTableViewCell.h */,
 				04F54B84225F461D00DE81E4 /* CashCouponTableViewCell.m */,
 				04F54B85225F461D00DE81E4 /* CashCouponTableViewCell.xib */,
-				04F54BA122607E0500DE81E4 /* EditeCashCouponView.h */,
-				04F54BA222607E0500DE81E4 /* EditeCashCouponView.m */,
-				04F54BA422607E1100DE81E4 /* EditeCashCouponView.xib */,
+				04F54BA122607E0500DE81E4 /* EditeCouponView.h */,
+				04F54BA222607E0500DE81E4 /* EditeCouponView.m */,
+				04F54BA422607E1100DE81E4 /* EditeCouponView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1210,10 +1276,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				04A46A55225C41FD00511C79 /* AddGoodsTableViewCell.xib in Resources */,
-				04F54BA522607E1100DE81E4 /* EditeCashCouponView.xib in Resources */,
+				04F54BA522607E1100DE81E4 /* EditeCouponView.xib in Resources */,
 				04F54B87225F461D00DE81E4 /* CashCouponTableViewCell.xib in Resources */,
 				042B182A2240EA3E004D372A /* UserEvaluationTableViewCell1.xib in Resources */,
 				04F54BA022603AFC00DE81E4 /* FullReduceTableViewCell.xib in Resources */,
+				04F54BCC2264730900DE81E4 /* FullReductionFootView.xib in Resources */,
 				04F212BC224CAAC900611664 /* NoImageWithReplyTableViewCell.xib in Resources */,
 				04C6186F2238D04B00773B7C /* ShopSetTableViewCell1.xib in Resources */,
 				04A46A7B225D8DF400511C79 /* image.png in Resources */,
@@ -1221,14 +1288,17 @@
 				04A46A7D225D8DF400511C79 /* LICENSE in Resources */,
 				0446EAF1223B926D00A86F32 /* GoodsTableViewCell.xib in Resources */,
 				04F212B7224CA7F100611664 /* NoImageTableViewCell.xib in Resources */,
+				04F54BBA2264373E00DE81E4 /* FooterView.xib in Resources */,
 				0446EB37223F9B8A00A86F32 /* NewGoodsTableViewCell4.xib in Resources */,
 				04EBC277225F32E10035BD29 /* DiscountTableViewCell.xib in Resources */,
 				04F54B91225F500300DE81E4 /* DiscountPackageTableViewCell.xib in Resources */,
 				0446EAE9223B7A3800A86F32 /* TableViewCell.xib in Resources */,
 				04F61DF222364E18004986E0 /* LaunchScreen.storyboard in Resources */,
+				041668C92265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib in Resources */,
 				04A46A5F225C8A1200511C79 /* EditeActivityTableViewCell.xib in Resources */,
 				04A46A70225CC41E00511C79 /* PrintSettringHeaderView.xib in Resources */,
 				042B182F2240F704004D372A /* HeaderView1.xib in Resources */,
+				04F54BD122647B6D00DE81E4 /* FullReductionCell.xib in Resources */,
 				04A46A45225B550600511C79 /* EmptyDiscountView.xib in Resources */,
 				04235E532253531500B2FC40 /* EmptyOrderView.xib in Resources */,
 				04F5B7DA22390B0500E36E3C /* NewsSettingview.xib in Resources */,
@@ -1240,17 +1310,20 @@
 				0446EB09223E439F00A86F32 /* SVProgressHUD.bundle in Resources */,
 				04A46A65225C9C2200511C79 /* ChangePriceView.xib in Resources */,
 				04FD40C522436402000C9311 /* WaitDeliveryTableViewCell.xib in Resources */,
+				04F54BAD22642CF000DE81E4 /* DiscountPackageGoodsCell.xib in Resources */,
 				04F61DEF22364E18004986E0 /* Assets.xcassets in Resources */,
 				04F61DED22364E16004986E0 /* Main.storyboard in Resources */,
 				0446EB28223F874C00A86F32 /* NewGoodsTableViewCell1.xib in Resources */,
 				04A46A7E225D8DF400511C79 /* README.md in Resources */,
 				04FD40BF22432708000C9311 /* refuseView.xib in Resources */,
 				04C618792238DDE600773B7C /* ShopSetTableViewCell3.xib in Resources */,
+				04F54BBF2264619900DE81E4 /* PackageView.xib in Resources */,
 				042B18202240CB76004D372A /* UserEvaluationTableViewCell.xib in Resources */,
 				0446EB2D223F88EF00A86F32 /* NewGoodsTableViewCell2.xib in Resources */,
 				042B192A2241D05F004D372A /* NewOrderTableViewCell1.xib in Resources */,
 				04C618742238DC9E00773B7C /* ShopSetTableViewCell2.xib in Resources */,
 				0446EB562240872800A86F32 /* SortTableViewCell.xib in Resources */,
+				04F54BC7226472BE00DE81E4 /* FullReductionHeadView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1329,12 +1402,15 @@
 				04C618482237874600773B7C /* MeViewController.m in Sources */,
 				04F54B90225F500300DE81E4 /* DiscountPackageTableViewCell.m in Sources */,
 				04F212C72251B75200611664 /* UIView+LC.m in Sources */,
+				04F54BC2226471FF00DE81E4 /* AddFullReductionViewController.m in Sources */,
 				04A46A6E225CC40E00511C79 /* PrintSettringHeaderView.m in Sources */,
+				04F54BC5226472B100DE81E4 /* FullReductionHeadView.m in Sources */,
 				04F5B7D822390AE100E36E3C /* NewsSettingview.m in Sources */,
 				04FD40C922436EA2000C9311 /* AllReadyDeliveryTableViewCell.m in Sources */,
 				04FD40C422436402000C9311 /* WaitDeliveryTableViewCell.m in Sources */,
 				04A46A43225B54F400511C79 /* EmptyDiscountView.m in Sources */,
 				0446EAD4223A36DC00A86F32 /* PhoneNumberView.m in Sources */,
+				04F54BB02264315F00DE81E4 /* AddDiscountViewController.m in Sources */,
 				04C618672238A24C00773B7C /* ZJTopImageBottomTitleButton.m in Sources */,
 				04C6185F2237B6CE00773B7C /* BackgroundView.m in Sources */,
 				0446EB0D223E439F00A86F32 /* SVProgressHUD.m in Sources */,
@@ -1365,15 +1441,19 @@
 				0446EAB82239251100A86F32 /* BusinessStatusViewController.m in Sources */,
 				0446EAF4223BB7E100A86F32 /* UserEvaluationViewController.m in Sources */,
 				04A46A63225C9C0100511C79 /* ChangePriceView.m in Sources */,
+				041668C72265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m in Sources */,
 				04C6187D2238FC2600773B7C /* ShopSetTableViewCell4.m in Sources */,
 				0446EAE2223B441200A86F32 /* HeaderView.m in Sources */,
 				04F212B2224B79C000611664 /* JXMovableCellTableView.m in Sources */,
 				042B182D2240F6F2004D372A /* HeaderView1.m in Sources */,
-				04F54BA322607E0500DE81E4 /* EditeCashCouponView.m in Sources */,
+				04F54BBD2264613600DE81E4 /* PackageView.m in Sources */,
+				04F54BA322607E0500DE81E4 /* EditeCouponView.m in Sources */,
 				04C6185422378B5700773B7C /* TabBarController.m in Sources */,
 				04F61DE722364E16004986E0 /* AppDelegate.m in Sources */,
+				04F54BAC22642CF000DE81E4 /* DiscountPackageGoodsCell.m in Sources */,
 				04A46A6B225CC3C700511C79 /* PrintSettingViewController.m in Sources */,
 				04F54B78225F408700DE81E4 /* DiscountListViewController.m in Sources */,
+				04F54BCA226472EE00DE81E4 /* FullReductionFootView.m in Sources */,
 				0446EB31223F8B0200A86F32 /* NewGoodsTableViewCell3.m in Sources */,
 				04FB88022249C7FC008BEFCB /* PhoneNumberSettingViewController.m in Sources */,
 				04F54B9F22603AFC00DE81E4 /* FullReduceTableViewCell.m in Sources */,
@@ -1398,12 +1478,14 @@
 				04A46A40225B4E6D00511C79 /* DiscountViewController.m in Sources */,
 				0446EB27223F874C00A86F32 /* NewGoodsTableViewCell1.m in Sources */,
 				042B18292240EA3E004D372A /* UserEvaluationTableViewCell1.m in Sources */,
+				04F54BD022647B6D00DE81E4 /* FullReductionCell.m in Sources */,
 				04C618732238DC9E00773B7C /* ShopSetTableViewCell2.m in Sources */,
 				0446EB10223E447600A86F32 /* IFUtils.m in Sources */,
 				0446EB552240872800A86F32 /* SortTableViewCell.m in Sources */,
 				04F212C0224DB82400611664 /* OrderModel.m in Sources */,
 				042B19382242383D004D372A /* NewOrderModel.m in Sources */,
 				0446EB13223F3AE000A86F32 /* CreateGoodsViewController.m in Sources */,
+				04F54BB82264372200DE81E4 /* FooterView.m in Sources */,
 				04F54B8C225F480300DE81E4 /* FullReductionViewController.m in Sources */,
 				04F212BB224CAAC900611664 /* NoImageWithReplyTableViewCell.m in Sources */,
 				04C61858223790B000773B7C /* NavigationViewController.m in Sources */,

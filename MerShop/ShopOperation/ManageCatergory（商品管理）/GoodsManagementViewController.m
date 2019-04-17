@@ -18,7 +18,7 @@
 
 #define ButtonWidth     IFAutoFitPx(194)
 
-@interface GoodsManagementViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,PhoneNumberViewDelegate>
+@interface GoodsManagementViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,PhoneNumberViewDelegate,GoodsTableViewCellDelegate>
 @property (nonatomic ,strong)UIScrollView *leftScrollView;
 @property (nonatomic ,strong)UITableView *mainTable;
 @property (nonatomic ,strong)UIView *leftView;
@@ -190,20 +190,20 @@
     }
 }
 
+//底部按钮Action
 - (void)goManage{
     ManageCatergoryViewController *vc = [[ManageCatergoryViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
-
 - (void)goCreateNewGoodsVC{
     CreateNewGoodsViewController *VC = [[CreateNewGoodsViewController alloc]init];
     [self.navigationController pushViewController:VC animated:YES];
 }
 
+//当没有分类的时候，弹窗是否创建新的分类
 - (void)cancelCall:(UIButton *)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 - (void)playCall:(UIButton *)sender{
     NewCatergoryViewController *vc = [[NewCatergoryViewController alloc]init];
     [_clearView setHidden:YES];
@@ -230,13 +230,10 @@
     }
 }
 
+#pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.rightDataSource.count;
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 106;
-//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     GoodsTableViewCell *cell = (GoodsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"GoodsTableViewCell"];
@@ -245,17 +242,78 @@
         cell = [nib objectAtIndex:0];
     }
     GoodsModel *model = self.rightDataSource[indexPath.row];
+    cell.delegate = self;
+    cell.tag = indexPath.row;
     [cell setDataWithModel:model];
     return cell;
 }
 
+//商品上下架
+- (void)upShelfAction:(id)data{
+    GoodsTableViewCell *cell = (GoodsTableViewCell *)data;
+    GoodsModel *model = self.rightDataSource[cell.tag];
+    NSInteger goods_Id = model.goods_id;
+    NSDictionary *dict = @{@"goods_id":@(goods_Id),
+                           @"store_id":@(StoreId)
+                           };
+    [Http_url POST:@"chgoods_state" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            [[IFUtils share]showErrorInfo:[data objectForKey:@"msg"]];
+            if (model.goods_state == 1){
+                NSLog(@"已下架");
+                [cell.orangeView setHidden:NO];
+                [cell.upShelf setTitle:@"上架" forState:(UIControlStateNormal)];
+            }else if (model.goods_state == 0){
+                NSLog(@"已上架");
+                [cell.orangeView setHidden:YES];
+                [cell.upShelf setTitle:@"下架" forState:(UIControlStateNormal)];
+            }
+            [self.mainTable reloadData];
+        }
+    } WithFailBlock:^(id data) {
+        
+    }];
+}
+
+//编辑商品
+- (void)edite:(id)data{
+    
+}
+
+//删除商品
+- (void)deleteGoods:(id)data{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确定删除该商品吗？" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"让我再想想吧！");
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        
+        GoodsTableViewCell *cell = (GoodsTableViewCell *)data;
+        GoodsModel *model = self.rightDataSource[cell.tag];
+        NSInteger goods_Id = model.goods_id;
+        NSDictionary *dict = @{@"goods_id":@(goods_Id),
+                               @"store_id":@(StoreId)
+                               };
+        [Http_url POST:@"del_goods" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
+            if ([[data objectForKey:@"code"] integerValue] == 200){
+                [self.rightDataSource removeObjectAtIndex:cell.tag];
+                [self.mainTable reloadData];
+            }
+        } WithFailBlock:^(id data) {
+            
+        }];
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
+#pragma mark - 懒加载
 - (NSMutableArray *)leftDataSource{
     if (!_leftDataSource){
         _leftDataSource = [NSMutableArray arrayWithCapacity:0];
     }
     return _leftDataSource;
 }
-
 - (NSMutableArray *)rightDataSource{
     if (!_rightDataSource){
         _rightDataSource = [NSMutableArray arrayWithCapacity:0];

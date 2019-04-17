@@ -11,10 +11,13 @@
 #import "NewGoodsTableViewCell2.h"
 #import "NewGoodsTableViewCell3.h"
 #import "NewGoodsTableViewCell4.h"
+#import "CreateNewGoodsHeaderView.h"
 
 
-@interface CreateNewGoodsViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,NewGoodsTableViewCell3Delegate>
+
+@interface CreateNewGoodsViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,NewGoodsTableViewCell3Delegate,UIImagePickerControllerDelegate,CreateNewGoodsHeaderViewDelegate>
 @property (nonatomic ,strong)UITableView *mainTableview;
+@property (nonatomic ,strong)CreateNewGoodsHeaderView *headerview;
 @property (nonatomic ,strong)UIPickerView *pickerView;
 @property (nonatomic ,strong)UIView *BackgroundView;
 @property (nonatomic ,strong)UIView *pickerBgView;
@@ -22,12 +25,12 @@
 @property (nonatomic ,strong)UITextView *textview;
 @property (nonatomic ,strong)UILabel *placeHolder;
 @property (nonatomic ,strong)NSMutableArray *pickerDatasource;
-
 @property (nonatomic ,copy)NSString *chooseClassName;
 @property (nonatomic ,assign)NSInteger catergoryId;
 @property (nonatomic ,copy)NSString *goodsName;
 @property (nonatomic ,copy)NSString *currentPrice;
 @property (nonatomic ,copy)NSString *oldPrice;
+@property (nonatomic ,copy)NSString *image_path;
 
 @end
 
@@ -114,6 +117,11 @@
     _mainTableview.tableFooterView = view;
     [self.view addSubview:_mainTableview];
     
+    _headerview = [[[NSBundle mainBundle]loadNibNamed:@"CreateNewGoodsHeaderView" owner:self options:nil] objectAtIndex:0];
+    _headerview.delegate = self;
+    [_headerview setFrame:XFrame(0, 0, Screen_W, 175)];
+    [_mainTableview setTableHeaderView:_headerview];
+    
     _BackgroundView = [[UIView alloc]init];
     [_BackgroundView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
     [_BackgroundView setBackgroundColor:BlackColor];
@@ -154,6 +162,80 @@
     [_pickerBgView addSubview:_pickerView];
 }
 
+- (void)goAlbum{
+    UIAlertController *alert = [[UIAlertController alloc]init];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"取消");
+    }];
+    UIAlertAction *cameral = [UIAlertAction actionWithTitle:@"相机" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"打开相机");
+        [self openCameral];
+    }];
+    UIAlertAction *album = [UIAlertAction actionWithTitle:@"相册" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [self openPhotoLibrary];
+    }];
+    [alert addAction:cancel];
+    [alert addAction:cameral];
+    [alert addAction:album];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+//打开相机
+- (void)openCameral{
+    if ([UIImagePickerController isSourceTypeAvailable:(UIImagePickerControllerSourceTypeCamera)]){
+        //摄像头
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+        imagePicker.allowsEditing = YES;
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }else{
+        NSLog(@"无摄像头");
+    }
+}
+
+//打开相册
+- (void)openPhotoLibrary{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:^{
+        NSLog(@"打开相册");
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"取消");
+    }];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera){
+        //图片存入相册
+        UIImageWriteToSavedPhotosAlbum(info[UIImagePickerControllerEditedImage], nil, nil, nil);
+    }
+    _headerview.goodsImage.image = info[UIImagePickerControllerEditedImage];
+    [self.headerview.btnImg setHidden:YES];
+    [self.headerview.btnText setHidden:YES];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (NSString *)toJsonData:(id)theData{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:theData options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    if (jsonData.length > 0) {
+        return jsonStr;
+    }else{
+        return nil;
+    }
+}
+
+#pragma mark - UIPickerView
 - (void)ensureClass{
     [_BackgroundView setHidden:YES];
     [_pickerBgView setHidden:YES];
@@ -165,6 +247,7 @@
     [_pickerBgView setHidden:YES];
 }
 
+#pragma mark - textviewDelegate
 - (void)textViewDidChange:(UITextView *)textView{
     if (textView == self.textview){
         if (!_textview.text.length){
@@ -309,8 +392,6 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     NSString *title = [[self.pickerDatasource objectAtIndex:row] objectForKey:@"stc_name"];
-//    _chooseClassName = title;
-//    _catergoryId = [[[self.pickerDatasource objectAtIndex:row] objectForKey:@"stc_id"] integerValue];
     return title;
 }
 
@@ -318,9 +399,47 @@
     self.switchStatus = [data integerValue];
 }
 
-- (void)save{
+//上传照片
+- (void)uploadImage{
+    LCWeakSelf(self)
+//    NSArray *sell_time = @[@{@"start_time":@"00:00",@"end_time":@"23:99"},@{@"start_time":@"00:00",@"end_time":@"23:99"}];
     
-    NSInteger storeid = [[[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];
+    [Http_url POST:@"image_upload/goods_img" image:_headerview.goodsImage.image showHUD:NO WithSuccessBlock:^(id data) {
+        
+//        weakself.image_path = [NSString stringWithFormat:@"%@/%@",
+//                                [[data objectForKey:@"data"] objectForKey:@"img_path"],
+//                                [[data objectForKey:@"data"] objectForKey:@"img_name"]];
+        weakself.image_path = [[data objectForKey:@"data"] objectForKey:@"img_name"];
+
+    } WithFailBlock:^(id data) {
+        
+    }];
+    
+    if (self.image_path.length != 0){
+        NSDictionary *pramadict = @{@"store_id":@(StoreId),
+                                    @"class_id":@(self.catergoryId),
+                                    @"goods_name":self.goodsName,
+                                    @"goods_price":@([_currentPrice floatValue]),
+                                    @"origin_price":@([_oldPrice floatValue]),
+                                    @"goods_storage":@(self.switchStatus),
+//                                    @"sell_time":[self toJSONString:sell_time],
+                                    @"goods_desc":self.textview.text,
+                                    @"img_name":self.image_path
+                                    };
+        
+        [Http_url POST:@"add_goods" dict:pramadict showHUD:YES WithSuccessBlock:^(id data) {
+            if ([[data objectForKey:@"code"] integerValue] == 200){
+                [[IFUtils share]showErrorInfo:@"添加成功"];
+            }
+        } WithFailBlock:^(id data) {
+            
+        }];
+
+    }
+}
+
+//新建商品保存Action
+- (void)save{
     if(_goodsName == nil){
         [[IFUtils share]showErrorInfo:@"商品名称不能为空"];
         return;
@@ -336,33 +455,18 @@
     }else if (_goodsName.length>20){
         [[IFUtils share]showErrorInfo:@"商品名称不能超过20字"];
         return;
+    }else if (UIImageJPEGRepresentation(_headerview.goodsImage.image,1.0) == nil){
+        [[IFUtils share]showErrorInfo:@"商品图片还未添加"];
+        return;
     }
-    NSDictionary *sell_timeDict = @{@"start_time":@"00:00",@"end_time":@"23:99"};
-    NSDictionary *dict = @{@"store_id":@(storeid),
-                           @"class_id":@(_catergoryId),
-                           @"goods_name":_goodsName,
-                           @"goods_price":@([_currentPrice doubleValue]),
-                           @"origin_price":@([_oldPrice doubleValue]),
-                           @"goods_storage":@(self.switchStatus),
-                           @"sell_time":[self toJSONString:sell_timeDict],
-                           @"goods_desc":self.textview.text
-                           };
-    NSLog(@"%@%@%@%ld",_goodsName,_oldPrice,_currentPrice,self.switchStatus);
-    [Http_url POST:@"add_goods" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
-        if ([[data objectForKey:@"code"] integerValue] == 200){
-            [[IFUtils share]showErrorInfo:@"添加成功"];
-        }
-        
-    } WithFailBlock:^(id data) {
-        
-    }];
+    [self uploadImage];
 }
 
 //转换成json
--(NSString*)toJSONString:(NSDictionary*)dict
+-(NSString*)toJSONString:(NSArray *)arr
 {
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:&error];
     NSString *str = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
     str = [NSString stringWithFormat:@"%@",str];
     return str;

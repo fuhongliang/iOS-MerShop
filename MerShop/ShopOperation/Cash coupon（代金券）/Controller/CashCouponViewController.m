@@ -8,6 +8,7 @@
 
 #import "CashCouponViewController.h"
 #import "CashCouponTableViewCell.h"
+#import "EditeCashCouponViewController.h"
 
 
 @interface CashCouponViewController ()<UITableViewDelegate ,UITableViewDataSource>
@@ -18,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNaviTitle:@"限时折扣"];
+    [self setNaviTitle:@"代金券管理"];
     [self.view setBackgroundColor:WhiteColor];
     [self setUI];
 }
@@ -41,6 +42,7 @@
     [btn setTitle:@"添加活动" forState:(UIControlStateNormal)];
     [btn setImage:[UIImage imageNamed:@"yhq_addhuodong"] forState:(UIControlStateNormal)];
     [btn setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
+    [btn addTarget:self action:@selector(addActivity) forControlEvents:(UIControlEventTouchUpInside)];
     [btn setBackgroundColor:WhiteColor];
     [btn.titleLabel setFont:XFont(11)];
     [view addSubview:btn];
@@ -60,6 +62,11 @@
     }
     [cell setDataWithModel];
     return cell;
+}
+
+- (void)addActivity{
+    EditeCashCouponViewController *vc = [[EditeCashCouponViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 懒加载

@@ -1,15 +1,15 @@
 //
-//  EditeCashCouponView.h
+//  DiscountPackageView.h
 //  MerShop
 //
-//  Created by mac on 2019/4/12.
+//  Created by mac on 2019/4/15.
 //  Copyright © 2019 mac. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 
-@interface EditeCashCouponView : UIView
+@interface PackageView : UIView
 
 @end
 
