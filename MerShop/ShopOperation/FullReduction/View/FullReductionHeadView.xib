@@ -28,7 +28,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="最多可输入20个字" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymS-qD-hSm">
+                                <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="最多可输入20个字" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymS-qD-hSm">
                                     <rect key="frame" x="101.5" y="6" width="258.5" height="33"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -80,6 +80,9 @@
                                     <state key="normal" title="请选择">
                                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="startClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="39f-aM-WgZ"/>
+                                    </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="koU-qw-Upa">
                                     <rect key="frame" x="352" y="66.5" width="8" height="12"/>
@@ -93,6 +96,9 @@
                                     <state key="normal" title="请选择">
                                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="endClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="pIz-cY-dQn"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -168,6 +174,11 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6sO-k0-Atw" secondAttribute="trailing" id="QV7-gc-PyN"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="activityText" destination="ymS-qD-hSm" id="JnA-XE-dwD"/>
+                <outlet property="endTimeBtn" destination="EOY-cC-6Mv" id="ZpS-15-Ycb"/>
+                <outlet property="startTimeBtn" destination="VKw-Hs-VDC" id="vAt-UY-12D"/>
+            </connections>
             <point key="canvasLocation" x="53.600000000000001" y="118.29085457271366"/>
         </view>
     </objects>

@@ -18,4 +18,15 @@
 }
 */
 
+- (IBAction)startClick:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(showDatePickerView:)]){
+        [self.delegate performSelector:@selector(showDatePickerView:) withObject:@"开始"];
+    }
+}
+
+- (IBAction)endClick:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(showDatePickerView:)]){
+        [self.delegate performSelector:@selector(showDatePickerView:) withObject:@"结束"];
+    }
+}
 @end

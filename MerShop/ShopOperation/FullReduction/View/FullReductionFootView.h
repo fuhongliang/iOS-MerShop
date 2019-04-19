@@ -11,6 +11,7 @@
 @protocol FullReductionFootViewDelegate <NSObject>
 
 - (void)addFullReduction;
+- (void)submit;
 
 @end
 
@@ -19,8 +20,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *priceText2;
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;
 @property (weak, nonatomic) IBOutlet UITextField *remarkText;
+@property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 @property (weak, nonatomic)id<FullReductionFootViewDelegate>delegate;
 - (IBAction)addAction:(id)sender;
+- (IBAction)submitAction:(id)sender;
 
 @end
 

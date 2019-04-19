@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		041668C72265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041668C62265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m */; };
 		041668C92265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041668C82265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib */; };
+		041668CD22672CAA00A3D2E1 /* NewGoodsTableViewCell5.m in Sources */ = {isa = PBXBuildFile; fileRef = 041668CB22672CAA00A3D2E1 /* NewGoodsTableViewCell5.m */; };
+		041668CE22672CAA00A3D2E1 /* NewGoodsTableViewCell5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041668CC22672CAA00A3D2E1 /* NewGoodsTableViewCell5.xib */; };
+		041668D12268104400A3D2E1 /* TimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041668D02268104400A3D2E1 /* TimePickerView.m */; };
+		041668D32268115C00A3D2E1 /* TimePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041668D22268115C00A3D2E1 /* TimePickerView.xib */; };
+		041669032268160700A3D2E1 /* THDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041669012268160700A3D2E1 /* THDatePickerView.m */; };
+		0416690722684DDA00A3D2E1 /* FullReductionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0416690622684DDA00A3D2E1 /* FullReductionModel.m */; };
 		04235E51225352E200B2FC40 /* EmptyOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04235E50225352E200B2FC40 /* EmptyOrderView.m */; };
 		04235E532253531500B2FC40 /* EmptyOrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04235E522253531500B2FC40 /* EmptyOrderView.xib */; };
 		042B181F2240CB76004D372A /* UserEvaluationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B181D2240CB76004D372A /* UserEvaluationTableViewCell.m */; };
@@ -146,6 +152,7 @@
 		04F61DFF22364E18004986E0 /* MerShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61DFE22364E18004986E0 /* MerShopTests.m */; };
 		04F61E0A22364E18004986E0 /* MerShopUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61E0922364E18004986E0 /* MerShopUITests.m */; };
 		04F61E2022366583004986E0 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61E1F22366583004986E0 /* BasicViewController.m */; };
+		04F68EB12269ADE400F4DFC3 /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F68EB02269ADE400F4DFC3 /* CouponModel.m */; };
 		04FB88022249C7FC008BEFCB /* PhoneNumberSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB88012249C7FC008BEFCB /* PhoneNumberSettingViewController.m */; };
 		04FB88052249CE5A008BEFCB /* BusinessLicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB88042249CE5A008BEFCB /* BusinessLicenseViewController.m */; };
 		04FB880A224A1AC0008BEFCB /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB8809224A1AC0008BEFCB /* GoodsModel.m */; };
@@ -179,6 +186,16 @@
 		041668C52265B03F00A3D2E1 /* CreateNewGoodsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateNewGoodsHeaderView.h; sourceTree = "<group>"; };
 		041668C62265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateNewGoodsHeaderView.m; sourceTree = "<group>"; };
 		041668C82265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateNewGoodsHeaderView.xib; sourceTree = "<group>"; };
+		041668CA22672CAA00A3D2E1 /* NewGoodsTableViewCell5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewGoodsTableViewCell5.h; sourceTree = "<group>"; };
+		041668CB22672CAA00A3D2E1 /* NewGoodsTableViewCell5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewGoodsTableViewCell5.m; sourceTree = "<group>"; };
+		041668CC22672CAA00A3D2E1 /* NewGoodsTableViewCell5.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewGoodsTableViewCell5.xib; sourceTree = "<group>"; };
+		041668CF2268104400A3D2E1 /* TimePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimePickerView.h; sourceTree = "<group>"; };
+		041668D02268104400A3D2E1 /* TimePickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimePickerView.m; sourceTree = "<group>"; };
+		041668D22268115C00A3D2E1 /* TimePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimePickerView.xib; sourceTree = "<group>"; };
+		041669012268160700A3D2E1 /* THDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THDatePickerView.m; sourceTree = "<group>"; };
+		041669022268160700A3D2E1 /* THDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THDatePickerView.h; sourceTree = "<group>"; };
+		0416690522684DDA00A3D2E1 /* FullReductionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullReductionModel.h; sourceTree = "<group>"; };
+		0416690622684DDA00A3D2E1 /* FullReductionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullReductionModel.m; sourceTree = "<group>"; };
 		04235E4F225352E200B2FC40 /* EmptyOrderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyOrderView.h; sourceTree = "<group>"; };
 		04235E50225352E200B2FC40 /* EmptyOrderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyOrderView.m; sourceTree = "<group>"; };
 		04235E522253531500B2FC40 /* EmptyOrderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyOrderView.xib; sourceTree = "<group>"; };
@@ -414,6 +431,8 @@
 		04F61E1822365797004986E0 /* Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		04F61E1E22366583004986E0 /* BasicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicViewController.h; sourceTree = "<group>"; };
 		04F61E1F22366583004986E0 /* BasicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
+		04F68EAF2269ADE400F4DFC3 /* CouponModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponModel.h; sourceTree = "<group>"; };
+		04F68EB02269ADE400F4DFC3 /* CouponModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponModel.m; sourceTree = "<group>"; };
 		04FB88002249C7FC008BEFCB /* PhoneNumberSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneNumberSettingViewController.h; sourceTree = "<group>"; };
 		04FB88012249C7FC008BEFCB /* PhoneNumberSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberSettingViewController.m; sourceTree = "<group>"; };
 		04FB88032249CE5A008BEFCB /* BusinessLicenseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusinessLicenseViewController.h; sourceTree = "<group>"; };
@@ -460,6 +479,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0416690422684DB000A3D2E1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0416690522684DDA00A3D2E1 /* FullReductionModel.h */,
+				0416690622684DDA00A3D2E1 /* FullReductionModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		04235E4E2253524C00B2FC40 /* EmptyView */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +515,7 @@
 		04235E55225B47EB00B2FC40 /* FullReduction */ = {
 			isa = PBXGroup;
 			children = (
+				0416690422684DB000A3D2E1 /* Model */,
 				04F54B89225F47DF00DE81E4 /* View */,
 				04F54B88225F47D300DE81E4 /* Controller */,
 			);
@@ -505,6 +534,7 @@
 		04235E57225B483B00B2FC40 /* Cash coupon（代金券） */ = {
 			isa = PBXGroup;
 			children = (
+				04F68EAE2269ADCB00F4DFC3 /* Model */,
 				04F54B95225F502700DE81E4 /* Controller */,
 				04F54B94225F501F00DE81E4 /* View */,
 			);
@@ -770,6 +800,9 @@
 				041668C52265B03F00A3D2E1 /* CreateNewGoodsHeaderView.h */,
 				041668C62265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m */,
 				041668C82265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib */,
+				041668CA22672CAA00A3D2E1 /* NewGoodsTableViewCell5.h */,
+				041668CB22672CAA00A3D2E1 /* NewGoodsTableViewCell5.m */,
+				041668CC22672CAA00A3D2E1 /* NewGoodsTableViewCell5.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -978,6 +1011,9 @@
 		04F54B94225F501F00DE81E4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				041668CF2268104400A3D2E1 /* TimePickerView.h */,
+				041668D02268104400A3D2E1 /* TimePickerView.m */,
+				041668D22268115C00A3D2E1 /* TimePickerView.xib */,
 				04F54B83225F461D00DE81E4 /* CashCouponTableViewCell.h */,
 				04F54B84225F461D00DE81E4 /* CashCouponTableViewCell.m */,
 				04F54B85225F461D00DE81E4 /* CashCouponTableViewCell.xib */,
@@ -1072,6 +1108,8 @@
 				04C618662238A24C00773B7C /* ZJTopImageBottomTitleButton.m */,
 				04F212B0224B79C000611664 /* JXMovableCellTableView.h */,
 				04F212B1224B79C000611664 /* JXMovableCellTableView.m */,
+				041669022268160700A3D2E1 /* THDatePickerView.h */,
+				041669012268160700A3D2E1 /* THDatePickerView.m */,
 			);
 			path = ThirdLib;
 			sourceTree = "<group>";
@@ -1129,6 +1167,15 @@
 				04C618592237AD7800773B7C /* View */,
 			);
 			path = PersonalCenter;
+			sourceTree = "<group>";
+		};
+		04F68EAE2269ADCB00F4DFC3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04F68EAF2269ADE400F4DFC3 /* CouponModel.h */,
+				04F68EB02269ADE400F4DFC3 /* CouponModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		04FB8807224A1A86008BEFCB /* model */ = {
@@ -1298,6 +1345,7 @@
 				04A46A5F225C8A1200511C79 /* EditeActivityTableViewCell.xib in Resources */,
 				04A46A70225CC41E00511C79 /* PrintSettringHeaderView.xib in Resources */,
 				042B182F2240F704004D372A /* HeaderView1.xib in Resources */,
+				041668CE22672CAA00A3D2E1 /* NewGoodsTableViewCell5.xib in Resources */,
 				04F54BD122647B6D00DE81E4 /* FullReductionCell.xib in Resources */,
 				04A46A45225B550600511C79 /* EmptyDiscountView.xib in Resources */,
 				04235E532253531500B2FC40 /* EmptyOrderView.xib in Resources */,
@@ -1312,6 +1360,7 @@
 				04FD40C522436402000C9311 /* WaitDeliveryTableViewCell.xib in Resources */,
 				04F54BAD22642CF000DE81E4 /* DiscountPackageGoodsCell.xib in Resources */,
 				04F61DEF22364E18004986E0 /* Assets.xcassets in Resources */,
+				041668D32268115C00A3D2E1 /* TimePickerView.xib in Resources */,
 				04F61DED22364E16004986E0 /* Main.storyboard in Resources */,
 				0446EB28223F874C00A86F32 /* NewGoodsTableViewCell1.xib in Resources */,
 				04A46A7E225D8DF400511C79 /* README.md in Resources */,
@@ -1402,18 +1451,21 @@
 				04C618482237874600773B7C /* MeViewController.m in Sources */,
 				04F54B90225F500300DE81E4 /* DiscountPackageTableViewCell.m in Sources */,
 				04F212C72251B75200611664 /* UIView+LC.m in Sources */,
+				0416690722684DDA00A3D2E1 /* FullReductionModel.m in Sources */,
 				04F54BC2226471FF00DE81E4 /* AddFullReductionViewController.m in Sources */,
 				04A46A6E225CC40E00511C79 /* PrintSettringHeaderView.m in Sources */,
 				04F54BC5226472B100DE81E4 /* FullReductionHeadView.m in Sources */,
 				04F5B7D822390AE100E36E3C /* NewsSettingview.m in Sources */,
 				04FD40C922436EA2000C9311 /* AllReadyDeliveryTableViewCell.m in Sources */,
 				04FD40C422436402000C9311 /* WaitDeliveryTableViewCell.m in Sources */,
+				041668CD22672CAA00A3D2E1 /* NewGoodsTableViewCell5.m in Sources */,
 				04A46A43225B54F400511C79 /* EmptyDiscountView.m in Sources */,
 				0446EAD4223A36DC00A86F32 /* PhoneNumberView.m in Sources */,
 				04F54BB02264315F00DE81E4 /* AddDiscountViewController.m in Sources */,
 				04C618672238A24C00773B7C /* ZJTopImageBottomTitleButton.m in Sources */,
 				04C6185F2237B6CE00773B7C /* BackgroundView.m in Sources */,
 				0446EB0D223E439F00A86F32 /* SVProgressHUD.m in Sources */,
+				041669032268160700A3D2E1 /* THDatePickerView.m in Sources */,
 				04235E51225352E200B2FC40 /* EmptyOrderView.m in Sources */,
 				04F54B86225F461D00DE81E4 /* CashCouponTableViewCell.m in Sources */,
 				0446EB16223F4C1A00A86F32 /* ManageCatergoryViewController.m in Sources */,
@@ -1440,6 +1492,7 @@
 				04F212CA2251B77600611664 /* CALayer+BorderColor.m in Sources */,
 				0446EAB82239251100A86F32 /* BusinessStatusViewController.m in Sources */,
 				0446EAF4223BB7E100A86F32 /* UserEvaluationViewController.m in Sources */,
+				041668D12268104400A3D2E1 /* TimePickerView.m in Sources */,
 				04A46A63225C9C0100511C79 /* ChangePriceView.m in Sources */,
 				041668C72265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m in Sources */,
 				04C6187D2238FC2600773B7C /* ShopSetTableViewCell4.m in Sources */,
@@ -1468,6 +1521,7 @@
 				04FD40BD224326F4000C9311 /* refuseView.m in Sources */,
 				04EBC276225F32E10035BD29 /* DiscountTableViewCell.m in Sources */,
 				0446EABE2239EDD400A86F32 /* AccountSecurityViewController.m in Sources */,
+				04F68EB12269ADE400F4DFC3 /* CouponModel.m in Sources */,
 				04FB880A224A1AC0008BEFCB /* GoodsModel.m in Sources */,
 				04F54BA8226092C500DE81E4 /* EditeCashCouponViewController.m in Sources */,
 				0446EAFB223E1B9D00A86F32 /* Http_url.m in Sources */,

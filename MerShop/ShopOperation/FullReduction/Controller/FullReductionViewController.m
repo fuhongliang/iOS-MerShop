@@ -10,9 +10,11 @@
 //#import "FullReductionTableViewCell.h"
 #import "FullReduceTableViewCell.h"
 #import "AddFullReductionViewController.h"
+#import "FullReductionModel.h"
 
-@interface FullReductionViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface FullReductionViewController ()<UITableViewDataSource,UITableViewDelegate,FullReduceTableViewCellDelegate>
 @property (nonatomic ,strong)UITableView *mainTableView;
+@property (nonatomic ,strong)NSMutableArray *dataSource;
 @end
 
 @implementation FullReductionViewController
@@ -22,7 +24,30 @@
     [self setNaviTitle:@"满立减"];
     [self.view setBackgroundColor:toPCcolor(@"#f5f5f5")];
     [self setUI];
-    
+
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self reloadListData];
+}
+
+- (void)reloadListData{
+    NSDictionary *dict = @{@"store_id":StoreIdString};
+    [Http_url POST:@"mamsong_list" dict:dict showHUD:NO WithSuccessBlock:^(id data) {
+        NSLog(@"%@",[data objectForKey:@"data"]);
+        NSArray *arr = [data objectForKey:@"data"];
+        if (arr){
+            [self.dataSource removeAllObjects];
+            for (NSDictionary *dict in arr){
+                FullReductionModel *model = [[FullReductionModel alloc]initWithDictionary:dict error:nil];
+                [self.dataSource addObject:model];
+            }
+            [self.mainTableView reloadData];
+        }
+    } WithFailBlock:^(id data) {
+        
+    }];
 }
 
 - (void)setUI{
@@ -52,7 +77,7 @@
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -61,8 +86,28 @@
         NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FullReduceTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    [cell setDataWithModel];
+    FullReductionModel *model = self.dataSource[indexPath.row];
+    cell.delegate = self;
+    cell.tag = indexPath.row;
+    [cell setDataWithModel:model];
     return cell;
+}
+
+#pragma mark - 删除活动接口
+- (void)deleteActivity:(id)data{
+    FullReduceTableViewCell *cell = (FullReduceTableViewCell *)data;
+    FullReductionModel *model = self.dataSource[cell.tag];
+    NSDictionary *dict = @{@"mansong_id":[NSString stringWithFormat:@"%ld",model.mansong_id],
+                           @"store_id":StoreIdString
+                           };
+    [Http_url POST:@"mamsong_del" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            [self.dataSource removeObjectAtIndex:cell.tag];
+            [self.mainTableView reloadData];
+        }
+    } WithFailBlock:^(id data) {
+        
+    }];
 }
 
 - (void)addActivity{
@@ -83,5 +128,10 @@
     }
     return _mainTableView;
 }
-
+- (NSMutableArray *)dataSource{
+    if (!_dataSource){
+        _dataSource = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _dataSource;
+}
 @end

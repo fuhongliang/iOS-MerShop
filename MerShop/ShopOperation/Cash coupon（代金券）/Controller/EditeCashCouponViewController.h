@@ -11,6 +11,6 @@
 
 
 @interface EditeCashCouponViewController : BasicViewController
-
+@property (nonatomic ,copy)NSDictionary *lastVCDict;
 @end
 

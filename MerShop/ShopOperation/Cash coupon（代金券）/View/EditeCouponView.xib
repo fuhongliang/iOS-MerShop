@@ -89,6 +89,9 @@
                                     <state key="normal" title="请选择">
                                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="selectNumAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="dlg-ht-uyz"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bv-Pa-veG">
                                     <rect key="frame" x="342" y="63" width="18" height="21"/>
@@ -96,11 +99,11 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用券最低订单金额" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3a5-GA-Dci">
+                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用券最低订单金额" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3a5-GA-Dci">
                                     <rect key="frame" x="215.5" y="57.5" width="118.5" height="32"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -150,6 +153,9 @@
                                     <state key="normal" title="请选择">
                                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="selectTimeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="NT5-Os-MVP"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -192,14 +198,14 @@
                                         <constraint firstAttribute="height" constant="0.5" id="Cgs-hA-iMp"/>
                                     </constraints>
                                 </view>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8LO-es-y2Q">
+                                <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8LO-es-y2Q">
                                     <rect key="frame" x="313" y="14" width="47" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="7dd-Ah-Go4"/>
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPw-08-4En">
                                     <rect key="frame" x="342" y="69" width="18" height="18"/>
@@ -263,7 +269,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5cl-FU-gxa">
+                                <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5cl-FU-gxa">
                                     <rect key="frame" x="15" y="37" width="345" height="43"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -339,9 +345,11 @@
                 <outlet property="cashCouponLab" destination="J2I-dm-Nsn" id="h4L-jk-ka0"/>
                 <outlet property="cashCouponNameText" destination="p7X-qA-Iud" id="jEo-Eg-RrY"/>
                 <outlet property="couponDescription" destination="5cl-FU-gxa" id="82Y-Bn-qUw"/>
-                <outlet property="couponNumber" destination="8LO-es-y2Q" id="Vne-mp-JCd"/>
+                <outlet property="couponNumberText" destination="8LO-es-y2Q" id="v3g-Ws-gyx"/>
                 <outlet property="limitLab" destination="JCe-eb-fnG" id="UJI-OO-cYE"/>
                 <outlet property="reduceBtn" destination="S2Y-5s-8Vm" id="9Pb-Hs-VIN"/>
+                <outlet property="selectNumber" destination="W0o-du-7Yd" id="Cob-3r-VHr"/>
+                <outlet property="selectTime" destination="14t-NF-t4X" id="eNJ-I5-utS"/>
                 <outlet property="serviceConditionText" destination="3a5-GA-Dci" id="7BH-JA-XK7"/>
             </connections>
             <point key="canvasLocation" x="53.600000000000001" y="116.49175412293854"/>

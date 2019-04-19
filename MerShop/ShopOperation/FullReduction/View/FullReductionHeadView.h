@@ -8,10 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+@protocol FullReductionHeadViewDelegate <NSObject>
 
-@interface FullReductionHeadView : UIView
+- (void)showDatePickerView:(NSString *)data;
 
 @end
 
-NS_ASSUME_NONNULL_END
+@interface FullReductionHeadView : UIView
+@property (weak, nonatomic) IBOutlet UITextField *activityText;
+@property (weak, nonatomic) IBOutlet UIButton *startTimeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *endTimeBtn;
+@property (weak, nonatomic)id<FullReductionHeadViewDelegate>delegate;
+- (IBAction)startClick:(id)sender;
+- (IBAction)endClick:(id)sender;
+
+@end
+

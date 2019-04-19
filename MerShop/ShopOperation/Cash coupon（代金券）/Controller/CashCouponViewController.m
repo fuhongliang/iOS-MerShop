@@ -9,10 +9,13 @@
 #import "CashCouponViewController.h"
 #import "CashCouponTableViewCell.h"
 #import "EditeCashCouponViewController.h"
+#import "CouponModel.h"
 
 
-@interface CashCouponViewController ()<UITableViewDelegate ,UITableViewDataSource>
+@interface CashCouponViewController ()<UITableViewDelegate ,UITableViewDataSource,CashCouponTableViewCellDelegate>
 @property (nonatomic ,strong)UITableView *mainTableView;
+@property (nonatomic ,strong)NSMutableArray *dataSource;
+@property (nonatomic ,copy)NSArray *dataArr;
 @end
 
 @implementation CashCouponViewController
@@ -22,6 +25,28 @@
     [self setNaviTitle:@"代金券管理"];
     [self.view setBackgroundColor:WhiteColor];
     [self setUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear: animated];
+    [self requestListData];
+}
+
+- (void)requestListData{
+    [Http_url POST:@"voucher_list" dict:@{@"store_id":StoreIdString} showHUD:NO WithSuccessBlock:^(id data) {
+        self.dataArr = [data objectForKey:@"data"];
+        [self.dataSource removeAllObjects];
+        if (self.dataArr.count>0){
+            for (NSDictionary *dict in self.dataArr){
+                CouponModel *model = [[CouponModel alloc]initWithDictionary:dict error:nil];
+                [self.dataSource addObject:model];
+            }
+            [self.mainTableView reloadData];
+        }
+        
+    } WithFailBlock:^(id data) {
+        
+    }];
 }
 
 - (void)setUI{
@@ -51,7 +76,7 @@
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -60,7 +85,10 @@
         NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"CashCouponTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    [cell setDataWithModel];
+    CouponModel *model = self.dataSource[indexPath.row];
+    cell.delegate = self;
+    cell.tag = indexPath.row;
+    [cell setDataWithModel:model];
     return cell;
 }
 
@@ -69,6 +97,35 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+#pragma mark - CashCouponTableViewCellDelegate 删除 & 编辑
+/**
+ 编辑按钮代理方法
+ */
+- (void)editeAction:(id)data{
+    CashCouponTableViewCell *cell = (CashCouponTableViewCell *)data;
+    EditeCashCouponViewController *vc = [[EditeCashCouponViewController alloc]init];
+    vc.lastVCDict = self.dataArr[cell.tag];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+/**
+ 删除按钮代理方法
+ */
+- (void)deleteAction:(id)data{
+    CashCouponTableViewCell *cell = (CashCouponTableViewCell *)data;
+    CouponModel *model = self.dataSource[cell.tag];
+    NSDictionary *dict = @{@"store_id":@(StoreId),
+                           @"voucher_id":@(model.voucher_id)
+                           };
+    [Http_url POST:@"voucher_del" dict:dict showHUD:NO WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            [[IFUtils share]showErrorInfo:@"删除成功"];
+            [self.dataSource removeObjectAtIndex:cell.tag];
+            [self.mainTableView reloadData];
+        }
+    } WithFailBlock:^(id data) {
+        
+    }];
+}
 #pragma mark - 懒加载
 - (UITableView *)mainTableView{
     if (!_mainTableView){
@@ -86,5 +143,10 @@
     }
     return _mainTableView;
 }
-
+- (NSMutableArray *)dataSource{
+    if (!_dataSource){
+        _dataSource = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _dataSource;
+}
 @end

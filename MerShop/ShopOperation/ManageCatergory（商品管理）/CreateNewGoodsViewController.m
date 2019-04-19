@@ -11,6 +11,7 @@
 #import "NewGoodsTableViewCell2.h"
 #import "NewGoodsTableViewCell3.h"
 #import "NewGoodsTableViewCell4.h"
+#import "NewGoodsTableViewCell5.h"
 #import "CreateNewGoodsHeaderView.h"
 
 
@@ -27,10 +28,6 @@
 @property (nonatomic ,strong)NSMutableArray *pickerDatasource;
 @property (nonatomic ,copy)NSString *chooseClassName;
 @property (nonatomic ,assign)NSInteger catergoryId;
-@property (nonatomic ,copy)NSString *goodsName;
-@property (nonatomic ,copy)NSString *currentPrice;
-@property (nonatomic ,copy)NSString *oldPrice;
-@property (nonatomic ,copy)NSString *image_path;
 
 @end
 
@@ -38,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.switchStatus = 99999999;
+    self.switchStatus = self.storage;
     [self setNaviTitle:@"新建商品"];
     self.dataArr = @[@[@"商品名称*",@"商品分类*"],@[@"价格*",@"原价*",@"库存无限",
 //                                            ,@"可售时间"
@@ -119,6 +116,8 @@
     
     _headerview = [[[NSBundle mainBundle]loadNibNamed:@"CreateNewGoodsHeaderView" owner:self options:nil] objectAtIndex:0];
     _headerview.delegate = self;
+    UIImage * result = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.image_path]]];
+    _headerview.goodsImage.image = result;
     [_headerview setFrame:XFrame(0, 0, Screen_W, 175)];
     [_mainTableview setTableHeaderView:_headerview];
     
@@ -268,7 +267,11 @@
     if (section == 0){
         return 2;
     }else{
-        return 3;
+        if (self.switchStatus != 999999999){
+            return 4;
+        }else{
+            return 3;
+        }
     }
 }
 
@@ -295,10 +298,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NewGoodsTableViewCell1 *cell1 = (NewGoodsTableViewCell1 *)[tableView dequeueReusableCellWithIdentifier:@"NewGoodsTableViewCell1"];
     NewGoodsTableViewCell2 *cell2 = (NewGoodsTableViewCell2 *)[tableView dequeueReusableCellWithIdentifier:@"NewGoodsTableViewCell2"];
     NewGoodsTableViewCell3 *cell3 = (NewGoodsTableViewCell3 *)[tableView dequeueReusableCellWithIdentifier:@"NewGoodsTableViewCell3"];
     NewGoodsTableViewCell4 *cell4 = (NewGoodsTableViewCell4 *)[tableView dequeueReusableCellWithIdentifier:@"NewGoodsTableViewCell4"];
+    NewGoodsTableViewCell5 *cell5 = (NewGoodsTableViewCell5 *)[tableView dequeueReusableCellWithIdentifier:@"NewGoodsTableViewCell5"];
     if (indexPath.section == 0){
         if (indexPath.row == 0){
             if (!cell4){
@@ -308,6 +311,7 @@
             cell4.text.placeholder = @"限20字以内";
             cell4.text.delegate = self;
             cell4.text.tag = 2;
+            cell4.text.text = _goodsName;
             [cell4 setAttributeText:_dataArr[indexPath.section][indexPath.row]];
             return cell4;
         }else{
@@ -326,6 +330,11 @@
                 NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"NewGoodsTableViewCell3" owner:self options:nil];
                 cell3 = [nib objectAtIndex:0];
             }
+            if (_switchStatus == 999999999){
+                [cell3.kaiguan setOn: YES];
+            }else{
+                [cell3.kaiguan setOn: NO];
+            }
             cell3.leftLabel.text = _dataArr[indexPath.section][indexPath.row];
             cell3.delegate = self;
             return cell3;
@@ -339,13 +348,14 @@
 //            return cell2;
 //        }
         else if (indexPath.row == 3){
-            if (!cell1){
-                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"NewGoodsTableViewCell1" owner:self options:nil];
-                cell1 = [nib objectAtIndex:0];
+            if (!cell5){
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"NewGoodsTableViewCell5" owner:self options:nil];
+                cell5 = [nib objectAtIndex:0];
             }
-            cell1.leftLabel.text = _dataArr[indexPath.section][indexPath.row];
-            cell1.rightLabel.text = @"份";
-            return cell1;
+            cell5.numberText.tag = indexPath.row;
+            cell5.numberText.delegate = self;
+            cell5.numberText.text = [NSString stringWithFormat:@"%ld",(long)self.storage];
+            return cell5;
         }else{
             if (!cell4){
                 NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"NewGoodsTableViewCell4" owner:self options:nil];
@@ -355,6 +365,11 @@
             cell4.text.delegate = self;
             cell4.text.tag = indexPath.row;
             cell4.text.keyboardType = UIKeyboardTypeDecimalPad ;
+            if (indexPath.row == 0){//库存开关打开或关闭，防止原先输入的文本刷新清空
+                cell4.text.text = _currentPrice;
+            }else{
+                cell4.text.text = _oldPrice;
+            }
             [cell4 setAttributeText:_dataArr[indexPath.section][indexPath.row]];
             return cell4;
         }
@@ -395,47 +410,80 @@
     return title;
 }
 
+#pragma mark - 开关代理方法
 - (void)open:(NSString *)data{
     self.switchStatus = [data integerValue];
+    [self.mainTableview reloadData];
 }
 
-//上传照片
+#pragma mark - 上传图片
 - (void)uploadImage{
     LCWeakSelf(self)
+    UIImage *uploadImg = _headerview.goodsImage.image;
+    NSString *descStr = self.textview.text;
 //    NSArray *sell_time = @[@{@"start_time":@"00:00",@"end_time":@"23:99"},@{@"start_time":@"00:00",@"end_time":@"23:99"}];
     
-    [Http_url POST:@"image_upload/goods_img" image:_headerview.goodsImage.image showHUD:NO WithSuccessBlock:^(id data) {
-        
-//        weakself.image_path = [NSString stringWithFormat:@"%@/%@",
-//                                [[data objectForKey:@"data"] objectForKey:@"img_path"],
-//                                [[data objectForKey:@"data"] objectForKey:@"img_name"]];
-        weakself.image_path = [[data objectForKey:@"data"] objectForKey:@"img_name"];
+    //1.任务一：上传图片
+    NSBlockOperation *operation1 = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"下载图片 - %@", [NSThread currentThread]);
+        [NSThread sleepForTimeInterval:1.0];
+        [Http_url POST:@"image_upload/goods_img" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
+            
+            weakself.image_path = [[data objectForKey:@"data"] objectForKey:@"img_name"];
+            
+            
+        } WithFailBlock:^(id data) {
+            
+        }];
 
-    } WithFailBlock:^(id data) {
-        
     }];
-    
-    if (self.image_path.length != 0){
-        NSDictionary *pramadict = @{@"store_id":@(StoreId),
-                                    @"class_id":@(self.catergoryId),
-                                    @"goods_name":self.goodsName,
-                                    @"goods_price":@([_currentPrice floatValue]),
-                                    @"origin_price":@([_oldPrice floatValue]),
-                                    @"goods_storage":@(self.switchStatus),
-//                                    @"sell_time":[self toJSONString:sell_time],
-                                    @"goods_desc":self.textview.text,
-                                    @"img_name":self.image_path
-                                    };
-        
-        [Http_url POST:@"add_goods" dict:pramadict showHUD:YES WithSuccessBlock:^(id data) {
+    //1.任务二：提交图片
+    NSBlockOperation *operation2 = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"下载图片 - %@", [NSThread currentThread]);
+        [NSThread sleepForTimeInterval:1.0];
+        NSString *postUrl;
+        NSDictionary *pramadict;
+        if ([self.tempStr isEqualToString:@"编辑"]){
+            postUrl = @"edit_goods";
+            pramadict = @{@"store_id":@(StoreId),
+                          @"class_id":@(weakself.catergoryId),
+                          @"goods_name":weakself.goodsName,
+                          @"goods_price":@([weakself.currentPrice floatValue]),
+                          @"origin_price":@([weakself.oldPrice floatValue]),
+                          @"goods_storage":@(weakself.switchStatus),
+                          //@"sell_time":[self toJSONString:sell_time],
+                          @"goods_desc":descStr,
+                          @"img_name":weakself.image_path,
+                          @"goods_id":@(weakself.goodsId)
+                          };
+        }else{
+            postUrl = @"add_goods";
+            pramadict = @{@"store_id":@(StoreId),
+                          @"class_id":@(weakself.catergoryId),
+                          @"goods_name":weakself.goodsName,
+                          @"goods_price":@([weakself.currentPrice floatValue]),
+                          @"origin_price":@([weakself.oldPrice floatValue]),
+                          @"goods_storage":@(weakself.switchStatus),
+                          //@"sell_time":[self toJSONString:sell_time],
+                          @"goods_desc":descStr,
+                          @"img_name":weakself.image_path
+                          };
+            
+        }
+        [Http_url POST:postUrl dict:pramadict showHUD:YES WithSuccessBlock:^(id data) {
             if ([[data objectForKey:@"code"] integerValue] == 200){
                 [[IFUtils share]showErrorInfo:@"添加成功"];
             }
         } WithFailBlock:^(id data) {
             
         }];
-
-    }
+    }];
+    
+    [operation2 addDependency:operation1];
+    //5.创建队列并加入任务
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperations:@[ operation2, operation1] waitUntilFinished:NO];
+    
 }
 
 //新建商品保存Action
@@ -473,11 +521,14 @@
 }
 
 
+#pragma mark - text代理方法
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     if (textField.tag == 0){
         _currentPrice = textField.text;
     }else if (textField.tag == 1){
         _oldPrice = textField.text;
+    }else if (textField.tag == 3){
+        self.switchStatus = [textField.text integerValue];
     }else{
         _goodsName = textField.text;
     }

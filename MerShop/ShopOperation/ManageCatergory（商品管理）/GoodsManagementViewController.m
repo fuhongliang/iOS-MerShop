@@ -31,6 +31,8 @@
 @property (nonatomic ,strong)NSMutableArray *rightDataSource;
 @property (nonatomic ,strong)UIView *clearView;
 @property (nonatomic ,strong)PhoneNumberView *upView;
+@property (nonatomic ,strong)NSString *catergoryName;
+@property (nonatomic ,assign)NSInteger *catergoryId;
 
 @end
 
@@ -211,6 +213,8 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+
+//点击左侧分类，刷新商品数据
 - (void)clickBtn:(UIButton *)sender{
     _index = sender.tag;
     for (UIButton *btn in _btnArr){
@@ -277,7 +281,20 @@
 
 //编辑商品
 - (void)edite:(id)data{
-    
+    GoodsTableViewCell *cell = (GoodsTableViewCell *)data;
+    GoodsModel *model = self.rightDataSource[cell.tag];
+    CreateNewGoodsViewController *vc = [[CreateNewGoodsViewController alloc]init];
+    vc.className = [self.leftDataSource[_index] objectForKey:@"stc_name"];
+    vc.classId = [[self.leftDataSource[_index] objectForKey:@"stc_id"] integerValue];
+    vc.image_path = [NSString stringWithFormat:@"%@/%@",model.img_path,model.img_name];
+    vc.goodsName = model.goods_name;
+    vc.currentPrice = model.goods_price;
+    vc.oldPrice = model.goods_marketprice;
+    vc.storage = model.goods_storage;
+    vc.desc = model.goods_desc;
+    vc.goodsId = model.goods_id;
+    vc.tempStr = @"编辑";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //删除商品

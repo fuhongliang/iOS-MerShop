@@ -23,7 +23,7 @@
 - (IBAction)openOrclose:(id)sender {
     if (self.kaiguan.isOn){
         if (self.delegate && [self.delegate respondsToSelector:@selector(open:)]){
-            [self.delegate performSelector:@selector(open:) withObject:@"99999999"];
+            [self.delegate performSelector:@selector(open:) withObject:@"999999999"];
         }
     }else{
         if (self.delegate && [self.delegate respondsToSelector:@selector(open:)]){

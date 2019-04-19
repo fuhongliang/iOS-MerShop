@@ -12,6 +12,9 @@
 
 
 - (IBAction)submitAction:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(submit)]){
+        [self.delegate performSelector:@selector(submit) withObject:nil];
+    }
 }
 
 - (IBAction)addAction:(id)sender {
@@ -23,6 +26,18 @@
 - (IBAction)reduceAction:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(reduceNumber)]){
         [self.delegate performSelector:@selector(reduceNumber) withObject:nil];
+    }
+}
+
+- (IBAction)selectNumAction:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(showPickerView:)]){
+        [self.delegate performSelector:@selector(showPickerView:) withObject:@"金额"];
+    }
+}
+
+- (IBAction)selectTimeAction:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(showPickerView:)]){
+        [self.delegate performSelector:@selector(showPickerView:) withObject:@"时间"];
     }
 }
 @end

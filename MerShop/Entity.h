@@ -17,15 +17,20 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 }\
 (isPhoneX);})
 
-#define http_devUrlString       @"http://47.111.27.189:2000/v2/"
+//#define http_devUrlString       @"http://47.111.27.189:2000/v2/"
+
+#define http_devUrlString          @"http://192.168.5.15/api/public/index.php/v2/"
 
 #define http_urlString          @"http://47.92.244.60:88/v1/"
 
 #define IFUserDefaults   [NSUserDefaults standardUserDefaults]
 
-#define IFUserInfo  [IFUserDefaults objectForKey:@"userInfo"]
+#define UserInfoDict   [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]
 
-#define IFStoreID   [[IFUserInfo objectForKey:@"store_id"] integerValue]
+#define StoreId        [[UserInfoDict objectForKey:@"store_id"] integerValue]//商店ID
+
+#define StoreIdString   [UserInfoDict objectForKey:@"store_id"]
+
 
 #define IFThemeBlueColor toPCcolor(@"#1C98F6")   //APP主题色
 

@@ -11,13 +11,22 @@
 #import "FullReductionHeadView.h"
 #import "FullReductionFootView.h"
 
-@interface AddFullReductionViewController ()<UITableViewDelegate,UITableViewDataSource,FullReductionFootViewDelegate,UITextFieldDelegate,FullReductionCellDelegate>
+@interface AddFullReductionViewController ()<UITableViewDelegate,UITableViewDataSource,FullReductionHeadViewDelegate,FullReductionFootViewDelegate,UITextFieldDelegate,FullReductionCellDelegate,THDatePickerViewDelegate>
 @property (nonatomic ,strong)UITableView *mainTableView;
 @property (nonatomic ,strong)FullReductionHeadView *headerView;
 @property (nonatomic ,strong)FullReductionFootView *footerView;
+@property (nonatomic ,weak) THDatePickerView *dateView;
+@property (nonatomic ,strong)UIView *dateBgview;
 @property (nonatomic ,copy)NSString *fullStr;
 @property (nonatomic ,copy)NSString *reduceStr;
 @property (nonatomic ,strong)NSMutableArray *dataSource;
+
+@property (nonatomic ,copy)NSString *startOrEnd;//判断点击开始时间还是结束时间
+
+@property (nonatomic ,copy)NSString *activityName;
+@property (nonatomic ,copy)NSString *startTime;
+@property (nonatomic ,copy)NSString *endTime;
+@property (nonatomic ,copy)NSString *remarkStr;
 @end
 
 @implementation AddFullReductionViewController
@@ -34,12 +43,30 @@
     
     _headerView = [[[NSBundle mainBundle]loadNibNamed:@"FullReductionHeadView" owner:self options:nil] objectAtIndex:0];
     [_headerView setFrame:XFrame(0, 0, Screen_W, 220)];
+    _headerView.delegate = self;
+    _headerView.activityText.delegate = self;
     [self.mainTableView setTableHeaderView:_headerView];
     
     _footerView = [[[NSBundle mainBundle]loadNibNamed:@"FullReductionFootView" owner:self options:nil] objectAtIndex:0];
     _footerView.delegate = self;
+    _footerView.priceText1.delegate = self;
+    _footerView.priceText2.delegate = self;
+    _footerView.remarkText.delegate = self;
     [_footerView setFrame:XFrame(0, 1, Screen_W, 354)];
     [self.mainTableView setTableFooterView:_footerView];
+    
+    _dateBgview = [[UIView alloc]init];
+    [_dateBgview setFrame:XFrame(0, 0, Screen_W, Screen_H)];
+    [_dateBgview setBackgroundColor:[UIColor blackColor]];
+    [_dateBgview setAlpha:0.4];
+    [_dateBgview setHidden:YES];
+    [self.view addSubview:_dateBgview];
+    
+    THDatePickerView *dateView = [[THDatePickerView alloc] initWithFrame:CGRectMake(0, Screen_H, Screen_W, 300)];
+    dateView.delegate = self;
+    dateView.title = @"请选择时间";
+    [self.view addSubview:dateView];
+    self.dateView = dateView;
 }
 
 #pragma mark - TableViewDelegate && TableViewDataSource
@@ -55,12 +82,12 @@
     }
     cell.delegate = self;
     cell.tag = indexPath.row;
-    cell.fullStr.text = [self.dataSource[indexPath.row] objectForKey:@"full"];
-    cell.reduceStr.text = [self.dataSource[indexPath.row] objectForKey:@"reduce"];
+    cell.fullStr.text = [self.dataSource[indexPath.row] objectForKey:@"price"];
+    cell.reduceStr.text = [self.dataSource[indexPath.row] objectForKey:@"discount"];
     return cell;
 }
 
-
+#pragma mark - footerView添加,提交代理方法
 - (void)addFullReduction{
     _fullStr = [NSString stringWithFormat:@"%@",_footerView.priceText1.text];
     _reduceStr = [NSString stringWithFormat:@"%@",_footerView.priceText2.text];
@@ -68,8 +95,8 @@
         [[IFUtils share]showErrorInfo:@"请添加满减价格"];
         return;
     }else{
-        NSDictionary *dict = @{@"full":_fullStr,
-                               @"reduce":_reduceStr
+        NSDictionary *dict = @{@"price":_fullStr,
+                               @"discount":_reduceStr
                                };
         [self.dataSource addObject:dict];
         [self.mainTableView reloadData];
@@ -78,14 +105,96 @@
     }
 }
 
+- (void)submit{
+    if (_activityName == nil){
+        [[IFUtils share]showErrorInfo:@"请输入活动名称！"];
+        return;
+    }
+    if (_startTime == nil){
+        [[IFUtils share]showErrorInfo:@"请输入开始时间！"];
+        return;
+    }
+    if (_endTime == nil){
+        [[IFUtils share]showErrorInfo:@"请输入结束时间！"];
+        return;
+    }
+    if (self.dataSource.count == 0){
+        [[IFUtils share]showErrorInfo:@"请输入满减金额！"];
+        return;
+    }
+    NSDictionary *dict = @{@"store_id":[UserInfoDict objectForKey:@"store_id"],
+                           @"mansong_name":_activityName,
+                           @"start_time":_startTime,
+                           @"end_time":_endTime,
+                           @"remark":_remarkStr,
+                           @"rules":self.dataSource
+                           };
+    [Http_url POST:@"mamsong_edit" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
+        
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+    } WithFailBlock:^(id data) {
+        
+    }];
+}
+
 #pragma mark - TextFieldDelegate
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     if (textField.tag == 0){
         _fullStr = textField.text;
     }else if (textField.tag == 1){
         _reduceStr = textField.text;
+    }else if (textField.tag == 2){
+        _remarkStr = textField.text;
+    }else if (textField.tag == 3){
+        _activityName = textField.text;
     }
     
+}
+
+- (void)showDatePickerView:(NSString *)data{
+    self.startOrEnd = data;
+    [self.dateBgview setHidden:NO];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.dateView.frame = CGRectMake(0, Screen_H - 300, Screen_W, 300);
+        [self.dateView show];
+    }];
+
+}
+
+#pragma mark - THDatePickerViewDelegate
+/**
+ 保存按钮代理方法
+
+ @param timer 选择的数据
+ */
+- (void)datePickerViewSaveBtnClickDelegate:(NSString *)timer {
+    NSLog(@"保存点击");
+    if ([self.startOrEnd isEqualToString:@"开始"]){
+        [self.headerView.startTimeBtn setTitle:timer forState:(UIControlStateNormal)];
+        self.startTime = timer;
+    }else{
+        [self.headerView.endTimeBtn setTitle:timer forState:(UIControlStateNormal)];
+        self.endTime = timer;
+    }
+    [UIView animateWithDuration:0.3 animations:^{
+        self.dateView.frame = CGRectMake(0, Screen_H, Screen_W, 300);
+        [self.dateBgview setHidden:YES];
+    }];
+    
+}
+
+/**
+ 取消按钮代理方法
+ */
+- (void)datePickerViewCancelBtnClickDelegate {
+    NSLog(@"取消点击");
+    [UIView animateWithDuration:0.3 animations:^{
+        self.dateView.frame = CGRectMake(0, Screen_H, Screen_W, 300);
+        [self.dateBgview setHidden:YES];
+    }];
 }
 
 #pragma mark - FullReductionCellDelegate

@@ -44,7 +44,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019.03.24～2019.04.24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BU-le-PLU">
-                                        <rect key="frame" x="95" y="64" width="138" height="16"/>
+                                        <rect key="frame" x="95" y="64" width="149.5" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eI2-59-pGM">
-                                        <rect key="frame" x="15" y="126.5" width="51" height="13.5"/>
+                                        <rect key="frame" x="15" y="129.5" width="51" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -97,7 +97,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="领取数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoJ-Of-Zj5">
-                                        <rect key="frame" x="83" y="126.5" width="51" height="14"/>
+                                        <rect key="frame" x="83" y="129.5" width="51" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -109,7 +109,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjI-Sa-Bfb">
-                                        <rect key="frame" x="156" y="126.5" width="51" height="14"/>
+                                        <rect key="frame" x="156" y="129.5" width="51" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -121,7 +121,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用券订单金额" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMf-i6-BUr">
-                                        <rect key="frame" x="224" y="126.5" width="51" height="14"/>
+                                        <rect key="frame" x="224" y="129.5" width="51" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -154,6 +154,9 @@
                                         <state key="normal" title="删除" image="yhq_bnt_shanchu">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deleteAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H1q-Ha-skE"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="di0-e5-MKI">
                                         <rect key="frame" x="153" y="166.5" width="46" height="17"/>
@@ -161,6 +164,9 @@
                                         <state key="normal" title="编辑" image="yhq_bnt_bianji">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="edite:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="b4s-hp-T1Y"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -176,7 +182,7 @@
                                     <constraint firstAttribute="bottom" secondItem="hkk-K3-xpy" secondAttribute="bottom" constant="15" id="AWW-F8-cNK"/>
                                     <constraint firstItem="uHv-he-0dE" firstAttribute="leading" secondItem="0AJ-t0-FUX" secondAttribute="trailing" constant="15" id="B3I-IU-zVB"/>
                                     <constraint firstItem="9KI-J7-W7j" firstAttribute="leading" secondItem="zMe-ym-GX7" secondAttribute="trailing" constant="22" id="Bbv-sY-gYq"/>
-                                    <constraint firstItem="JjI-Sa-Bfb" firstAttribute="top" secondItem="9KI-J7-W7j" secondAttribute="bottom" id="Cva-mw-il5"/>
+                                    <constraint firstItem="JjI-Sa-Bfb" firstAttribute="top" secondItem="9KI-J7-W7j" secondAttribute="bottom" constant="3" id="Cva-mw-il5"/>
                                     <constraint firstAttribute="trailing" secondItem="qKs-HJ-4oB" secondAttribute="trailing" constant="15" id="F4A-vb-Gzx"/>
                                     <constraint firstItem="qKs-HJ-4oB" firstAttribute="leading" secondItem="9KI-J7-W7j" secondAttribute="trailing" constant="17" id="KyX-7F-cwu"/>
                                     <constraint firstItem="0AJ-t0-FUX" firstAttribute="top" secondItem="V1u-pR-6dq" secondAttribute="top" constant="15" id="LwG-rk-UEt"/>
@@ -191,20 +197,19 @@
                                     <constraint firstItem="eI2-59-pGM" firstAttribute="leading" secondItem="V1u-pR-6dq" secondAttribute="leading" constant="15" id="Xma-m6-mZ5"/>
                                     <constraint firstAttribute="trailing" secondItem="t9G-9Y-md4" secondAttribute="trailing" id="Y7S-gf-pe6"/>
                                     <constraint firstItem="2Wr-IY-dGC" firstAttribute="top" secondItem="0AJ-t0-FUX" secondAttribute="bottom" constant="10" id="ZY4-oA-esy"/>
-                                    <constraint firstItem="lZv-Un-fRS" firstAttribute="leading" secondItem="9BU-le-PLU" secondAttribute="trailing" constant="5" id="ZqL-0z-2yc"/>
-                                    <constraint firstItem="t9G-9Y-md4" firstAttribute="top" secondItem="eI2-59-pGM" secondAttribute="bottom" constant="10" id="aQE-UE-rPo"/>
+                                    <constraint firstItem="t9G-9Y-md4" firstAttribute="top" secondItem="eI2-59-pGM" secondAttribute="bottom" constant="7" id="aQE-UE-rPo"/>
                                     <constraint firstItem="9BU-le-PLU" firstAttribute="leading" secondItem="0AJ-t0-FUX" secondAttribute="trailing" constant="15" id="avO-Lr-fgF"/>
                                     <constraint firstItem="lZv-Un-fRS" firstAttribute="top" secondItem="V1u-pR-6dq" secondAttribute="top" id="bBY-1Y-OQx"/>
                                     <constraint firstAttribute="trailing" secondItem="lZv-Un-fRS" secondAttribute="trailing" id="bbt-sf-fcw"/>
                                     <constraint firstItem="JjI-Sa-Bfb" firstAttribute="leading" secondItem="PoJ-Of-Zj5" secondAttribute="trailing" constant="22" id="beI-pk-WM2"/>
-                                    <constraint firstItem="eI2-59-pGM" firstAttribute="top" secondItem="7r5-Ry-SJL" secondAttribute="bottom" id="cKQ-CW-H1P"/>
+                                    <constraint firstItem="eI2-59-pGM" firstAttribute="top" secondItem="7r5-Ry-SJL" secondAttribute="bottom" constant="3" id="cKQ-CW-H1P"/>
                                     <constraint firstItem="6Ly-vr-eLG" firstAttribute="centerY" secondItem="bgj-0D-2Yj" secondAttribute="centerY" id="cMv-EV-C4v"/>
                                     <constraint firstItem="7r5-Ry-SJL" firstAttribute="leading" secondItem="V1u-pR-6dq" secondAttribute="leading" constant="15" id="cRq-Lb-nDS"/>
                                     <constraint firstItem="lZv-Un-fRS" firstAttribute="leading" secondItem="uHv-he-0dE" secondAttribute="trailing" constant="5" id="dn4-ME-OGC"/>
                                     <constraint firstItem="zMe-ym-GX7" firstAttribute="width" secondItem="7r5-Ry-SJL" secondAttribute="width" id="fGp-CD-4hj"/>
-                                    <constraint firstItem="PoJ-Of-Zj5" firstAttribute="top" secondItem="zMe-ym-GX7" secondAttribute="bottom" id="feT-1z-kEC"/>
+                                    <constraint firstItem="PoJ-Of-Zj5" firstAttribute="top" secondItem="zMe-ym-GX7" secondAttribute="bottom" constant="3" id="feT-1z-kEC"/>
                                     <constraint firstItem="JjI-Sa-Bfb" firstAttribute="width" secondItem="eI2-59-pGM" secondAttribute="width" id="gtR-t2-ruh"/>
-                                    <constraint firstItem="bgj-0D-2Yj" firstAttribute="top" secondItem="eI2-59-pGM" secondAttribute="bottom" constant="10" id="h4g-uA-cMO"/>
+                                    <constraint firstItem="bgj-0D-2Yj" firstAttribute="top" secondItem="eI2-59-pGM" secondAttribute="bottom" constant="7" id="h4g-uA-cMO"/>
                                     <constraint firstItem="zMe-ym-GX7" firstAttribute="top" secondItem="7r5-Ry-SJL" secondAttribute="top" id="hBc-Na-mdS"/>
                                     <constraint firstItem="qKs-HJ-4oB" firstAttribute="top" secondItem="9KI-J7-W7j" secondAttribute="top" id="hfm-Ku-aGk"/>
                                     <constraint firstItem="9BU-le-PLU" firstAttribute="bottom" secondItem="0AJ-t0-FUX" secondAttribute="bottom" id="ihy-77-ydK"/>
@@ -219,7 +224,7 @@
                                     <constraint firstItem="6Ly-vr-eLG" firstAttribute="leading" secondItem="bgj-0D-2Yj" secondAttribute="trailing" id="u5g-xS-4B7"/>
                                     <constraint firstItem="XHG-8r-8UU" firstAttribute="centerY" secondItem="0AJ-t0-FUX" secondAttribute="centerY" id="v6Z-W9-Er3"/>
                                     <constraint firstItem="ipu-4o-p0f" firstAttribute="leading" secondItem="Dp6-Fl-Rei" secondAttribute="trailing" id="wbI-ZW-dMu"/>
-                                    <constraint firstItem="IMf-i6-BUr" firstAttribute="top" secondItem="qKs-HJ-4oB" secondAttribute="bottom" id="wyZ-NT-fBw"/>
+                                    <constraint firstItem="IMf-i6-BUr" firstAttribute="top" secondItem="qKs-HJ-4oB" secondAttribute="bottom" constant="3" id="wyZ-NT-fBw"/>
                                     <constraint firstItem="0AJ-t0-FUX" firstAttribute="leading" secondItem="V1u-pR-6dq" secondAttribute="leading" constant="15" id="yQt-9J-mBj"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -248,8 +253,17 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="couponImg" destination="0AJ-t0-FUX" id="qOk-ad-oSl"/>
+                <outlet property="couponStateImg" destination="lZv-Un-fRS" id="YJR-Ca-BaG"/>
+                <outlet property="couponTitle" destination="uHv-he-0dE" id="j4h-5w-7qt"/>
+                <outlet property="limitLab" destination="XHG-8r-8UU" id="6Rc-0H-fSP"/>
                 <outlet property="line1" destination="ipu-4o-p0f" id="kmX-uN-b3a"/>
                 <outlet property="line2" destination="6Ly-vr-eLG" id="bTe-dd-Ojn"/>
+                <outlet property="orderPrice" destination="qKs-HJ-4oB" id="109-te-cYm"/>
+                <outlet property="receive" destination="zMe-ym-GX7" id="9Kb-kS-YSG"/>
+                <outlet property="rest" destination="7r5-Ry-SJL" id="mZp-F9-Y0A"/>
+                <outlet property="timeLab" destination="9BU-le-PLU" id="7lD-Q6-Msr"/>
+                <outlet property="used" destination="9KI-J7-W7j" id="bmL-kI-5rt"/>
             </connections>
         </tableViewCell>
     </objects>

@@ -26,6 +26,8 @@
 #import "JWBluetoothManage.h"
 #import "UIView+JHDrawCategory.h"
 #import "ZJTopImageBottomTitleButton.h"
+#import "THDatePickerView.h"
+#import "IFTools.h"
 
 
 
@@ -37,9 +39,6 @@
 
 #define MAS_SHORTHAND
 #define MAS_SHORTHAND_GLOBALS
-
-#define UserInfoDict   [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]
-#define StoreId        [[UserInfoDict objectForKey:@"store_id"] integerValue]
 
 
 #import <Masonry.h>
