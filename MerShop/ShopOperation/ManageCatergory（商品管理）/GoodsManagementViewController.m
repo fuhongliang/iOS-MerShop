@@ -24,8 +24,8 @@
 @property (nonatomic ,strong)UIView *leftView;
 @property (nonatomic ,strong)NSMutableArray *btnArr;
 @property (nonatomic ,assign)NSInteger index;
-@property (nonatomic ,strong)UIButton *bottomBtn1;
-@property (nonatomic ,strong)UIButton *bottomBtn2;
+@property (nonatomic ,strong)ZJTopImageBottomTitleButton *bottomBtn1;
+@property (nonatomic ,strong)ZJTopImageBottomTitleButton *bottomBtn2;
 @property (nonatomic ,assign)NSInteger storeId;
 @property (nonatomic ,strong)NSMutableArray *leftDataSource;
 @property (nonatomic ,strong)NSMutableArray *rightDataSource;
@@ -33,6 +33,7 @@
 @property (nonatomic ,strong)PhoneNumberView *upView;
 @property (nonatomic ,strong)NSString *catergoryName;
 @property (nonatomic ,assign)NSInteger *catergoryId;
+@property (nonatomic ,strong)NSMutableArray *dataArray;
 
 @end
 
@@ -101,6 +102,7 @@
     [Http_url POST:@"goods_list" dict:@{@"store_id":@(_storeId),@"class_id":@(classId)} showHUD:YES WithSuccessBlock:^(id data) {
         NSLog(@"获取成功");
         NSArray *arr = [[data objectForKey:@"data"] objectForKey:@"goods_list"];
+        self.dataArray = [arr mutableCopy];
         if (![arr isKindOfClass:[NSNull class]]){
             for (NSDictionary *dict in arr){
                 GoodsModel *model = [[GoodsModel alloc]initWithDictionary:dict error:nil];
@@ -132,25 +134,25 @@
     [self.view addSubview:backgroundView];
     
     
-    _bottomBtn1  = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    _bottomBtn1  = [[ZJTopImageBottomTitleButton alloc]init];
     [_bottomBtn1 setFrame:XFrame(IFAutoFitPx(30), IFAutoFitPx(14), (Screen_W-IFAutoFitPx(90))/2, IFAutoFitPx(80))];
     [_bottomBtn1 setTitle:@"管理分类" forState:(UIControlStateNormal)];
-    [_bottomBtn1 setImage:[UIImage imageNamed:@"editmenu_glfl"] forState:(UIControlStateNormal)];
-    [_bottomBtn1.titleLabel setFont:XFont(17)];
-    [_bottomBtn1 setTitleColor:BlackColor forState:(UIControlStateNormal)];
+    [_bottomBtn1 setImage:[UIImage imageNamed:@"editmenu_glfl_1"] forState:(UIControlStateNormal)];
+    [_bottomBtn1.titleLabel setFont:XFont(12)];
+    [_bottomBtn1 setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
     [_bottomBtn1 addTarget:self action:@selector(goManage) forControlEvents:(UIControlEventTouchUpInside)];
-    _bottomBtn1.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-    XViewLayerCB(_bottomBtn1, 3, 0.5, LineColor);
+//    _bottomBtn1.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+//    XViewLayerCB(_bottomBtn1, 3, 0.5, LineColor);
     [backgroundView addSubview:_bottomBtn1];
     
-    _bottomBtn2  = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    _bottomBtn2  = [[ZJTopImageBottomTitleButton alloc]init];
     [_bottomBtn2 setFrame:XFrame(IFAutoFitPx(30)+CGRectGetMaxX(_bottomBtn1.frame), IFAutoFitPx(14), (Screen_W-IFAutoFitPx(90))/2, IFAutoFitPx(80))];
     [_bottomBtn2 setTitle:@"新建商品" forState:(UIControlStateNormal)];
-    [_bottomBtn2 setImage:[UIImage imageNamed:@"editmenu_add"] forState:(UIControlStateNormal)];
-    [_bottomBtn2.titleLabel setFont:XFont(17)];
-    [_bottomBtn2 setTitleColor:BlackColor forState:(UIControlStateNormal)];
-    _bottomBtn2.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-    XViewLayerCB(_bottomBtn2, 3, 0.5, LineColor);
+    [_bottomBtn2 setImage:[UIImage imageNamed:@"editmenu_add_1"] forState:(UIControlStateNormal)];
+    [_bottomBtn2.titleLabel setFont:XFont(12)];
+    [_bottomBtn2 setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
+//    _bottomBtn2.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+//    XViewLayerCB(_bottomBtn2, 3, 0.5, LineColor);
     [_bottomBtn2 addTarget:self action:@selector(goCreateNewGoodsVC) forControlEvents:(UIControlEventTouchUpInside)];
     [backgroundView addSubview:_bottomBtn2];
     
@@ -179,7 +181,7 @@
         [leftBtn.titleLabel setTextAlignment:(NSTextAlignmentCenter)];
         [leftBtn addTarget:self action:@selector(clickBtn:) forControlEvents:(UIControlEventTouchUpInside)];
         if(i == 0){
-            [leftBtn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+            [leftBtn setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
             [leftBtn setBackgroundColor:[UIColor whiteColor]];
             _leftView = [[UIView alloc]init];
             [_leftView setFrame:XFrame(0, 0, IFAutoFitPx(6), IFAutoFitPx(96))];
@@ -219,7 +221,7 @@
     _index = sender.tag;
     for (UIButton *btn in _btnArr){
         if (btn.tag == _index){
-            [btn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+            [btn setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
             [btn setBackgroundColor:[UIColor whiteColor]];
             [_leftView setFrame:XFrame(0, IFAutoFitPx(96)*_index, IFAutoFitPx(6), IFAutoFitPx(96))];
         }else{
@@ -265,10 +267,24 @@
             [[IFUtils share]showErrorInfo:[data objectForKey:@"msg"]];
             if (model.goods_state == 1){
                 NSLog(@"已下架");
+                NSMutableDictionary *d = [[NSMutableDictionary alloc]initWithDictionary:self.dataArray[cell.tag]];
+                [d setValue:@(0) forKey:@"goods_state"];
+                GoodsModel *model = [[GoodsModel alloc]initWithDictionary:d error:nil];
+                [self.dataArray removeObjectAtIndex:cell.tag];
+                [self.dataArray insertObject:d atIndex:cell.tag];
+                [self.rightDataSource removeObjectAtIndex:cell.tag];
+                [self.rightDataSource insertObject:model atIndex:cell.tag];
                 [cell.orangeView setHidden:NO];
                 [cell.upShelf setTitle:@"上架" forState:(UIControlStateNormal)];
             }else if (model.goods_state == 0){
                 NSLog(@"已上架");
+                NSMutableDictionary *d = [[NSMutableDictionary alloc]initWithDictionary:self.dataArray[cell.tag]];
+                [d setValue:@(1) forKey:@"goods_state"];
+                GoodsModel *model = [[GoodsModel alloc]initWithDictionary:d error:nil];
+                [self.dataArray removeObjectAtIndex:cell.tag];
+                [self.dataArray insertObject:d atIndex:cell.tag];
+                [self.rightDataSource removeObjectAtIndex:cell.tag];
+                [self.rightDataSource insertObject:model atIndex:cell.tag];
                 [cell.orangeView setHidden:YES];
                 [cell.upShelf setTitle:@"下架" forState:(UIControlStateNormal)];
             }
@@ -282,18 +298,10 @@
 //编辑商品
 - (void)edite:(id)data{
     GoodsTableViewCell *cell = (GoodsTableViewCell *)data;
-    GoodsModel *model = self.rightDataSource[cell.tag];
     CreateNewGoodsViewController *vc = [[CreateNewGoodsViewController alloc]init];
     vc.className = [self.leftDataSource[_index] objectForKey:@"stc_name"];
     vc.classId = [[self.leftDataSource[_index] objectForKey:@"stc_id"] integerValue];
-    vc.image_path = [NSString stringWithFormat:@"%@/%@",model.img_path,model.img_name];
-    vc.goodsName = model.goods_name;
-    vc.currentPrice = model.goods_price;
-    vc.oldPrice = model.goods_marketprice;
-    vc.storage = model.goods_storage;
-    vc.desc = model.goods_desc;
-    vc.goodsId = model.goods_id;
-    vc.tempStr = @"编辑";
+    vc.tempDict = self.dataArray[cell.tag];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -314,6 +322,7 @@
         [Http_url POST:@"del_goods" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
             if ([[data objectForKey:@"code"] integerValue] == 200){
                 [self.rightDataSource removeObjectAtIndex:cell.tag];
+                [self.dataArray removeObjectAtIndex:cell.tag];
                 [self.mainTable reloadData];
             }
         } WithFailBlock:^(id data) {
@@ -337,5 +346,10 @@
     }
     return _rightDataSource;
 }
-
+- (NSMutableArray *)dataArray{
+    if (!_dataArray){
+        _dataArray = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _dataArray;
+}
 @end

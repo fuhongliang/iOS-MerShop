@@ -30,7 +30,7 @@
     titleArr = [NSMutableArray arrayWithCapacity:0];
     
     NSArray *imgarr1 = @[@"personal_ic_mdsz",@"personal_ic_dysz",@"personal_ic_xxls"];
-    NSArray *imgarr2 = @[@"personal_ic_yyzt",@"personal_ic_zhaq",@"personal_ic_yjfk"];
+    NSArray *imgarr2 = @[@"personal_ic_yyzt0",@"personal_ic_zhaq",@"personal_ic_yjfk"];
     NSArray *imgarr3 = @[@"personal_ic_gywm",@"personal_ic_kfzx"];
     NSArray *title1 = @[@"门店设置",@"打印设置",@"消息和铃声"];
     NSArray *title2 = @[@"营业状态",@"账户与安全",@"意见反馈"];

@@ -7,7 +7,6 @@
 //
 
 #import "ManageViewController.h"
-#import <WebKit/WebKit.h>
 
 @interface ManageViewController ()<WKUIDelegate,WKNavigationDelegate>
 @property (nonatomic ,strong)UIProgressView *progressView;

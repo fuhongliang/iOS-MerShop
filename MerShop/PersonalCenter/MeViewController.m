@@ -104,12 +104,16 @@
         AccountSecurityViewController *VC = [[AccountSecurityViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];
     }else if (button.tag == 1006){
-//        [self.clearView setHidden:NO];
-//        [self.upView setHidden:NO];
-//        AddActivityGoodsViewController *vc = [[AddActivityGoodsViewController alloc]init];
-//        [self.navigationController pushViewController:vc animated:YES];
-        DiscountViewController *vc = [[DiscountViewController alloc]init];
-        [self.navigationController pushViewController:vc animated:YES];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"客服电话" message:@"+86 18825110997" preferredStyle:(UIAlertControllerStyleAlert)];
+        [alert addAction:[UIAlertAction actionWithTitle:@"联系客服" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",@"18825110997"];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+            
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [self.navigationController presentViewController:alert animated:YES completion:nil];
     }else if (button.tag == 1007){
         RingSettingViewController *VC = [[RingSettingViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];

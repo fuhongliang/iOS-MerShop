@@ -18,4 +18,9 @@
 }
 */
 
+- (IBAction)submitAction:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(submitData)]){
+        [self.delegate performSelector:@selector(submitData) withObject:nil];
+    }
+}
 @end

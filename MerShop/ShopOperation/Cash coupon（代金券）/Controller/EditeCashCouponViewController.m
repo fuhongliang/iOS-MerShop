@@ -29,6 +29,17 @@
     [self setNaviTitle:@"添加活动"];
     _lowerLimitNumber = 1;
     [self.view setBackgroundColor:toPCcolor(@"#f5f5f5")];
+    [self setUI];
+    if(self.lastVCDict){
+        [self requestData];//判断是否从编辑按钮进来，则调取代金券详情接口
+    }
+    [self requestAmountData];
+}
+
+/**
+    调取面值请求接口
+ */
+- (void)requestAmountData{
     [Http_url POST:@"mianzhi_list" dict:nil showHUD:NO WithSuccessBlock:^(id data) {
         NSLog(@"%@",data);
         NSArray *a = [[NSBundle mainBundle]loadNibNamed:@"TimePickerView" owner:self options:nil];
@@ -43,7 +54,23 @@
         
     }];
 
-    [self setUI];
+}
+/**
+    调取代金券详情接口
+ */
+- (void)requestData{
+    NSDictionary *dict = @{
+                           @"voucher_id":@([self.lastVCDict[@"voucher_id"] integerValue])
+                           };
+    [Http_url POST:@"voucher_info" dict:dict showHUD:NO WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            NSLog(@"data");
+            [self fillEdite:data[@"data"]];
+        }
+    } WithFailBlock:^(id data) {
+        
+    }];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -55,11 +82,21 @@
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"EditeCouponView" owner:self options:nil];
     _editeView = [nib objectAtIndex:0];
     _editeView.delegate = self;
-    if (_lastVCDict != nil){
-        [self fillEdite:_lastVCDict];
-    }
     [_editeView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
     [self.view addSubview:self.editeView];
+    
+    UIButton *saveBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [saveBtn setTitle:@"提交" forState:(UIControlStateNormal)];
+    [saveBtn setBackgroundColor:IFThemeBlueColor];
+    [saveBtn setTitleColor:WhiteColor forState:(UIControlStateNormal)];
+    [saveBtn addTarget:self action:@selector(submit) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:saveBtn];
+    [saveBtn makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.left).offset(0);
+        make.right.equalTo(self.view.right).offset(0);
+        make.bottom.equalTo(self.view.bottom).offset(0);
+        make.height.equalTo(55);
+    }];
     
     _pickerBgView = [[UIView alloc]init];
     [_pickerBgView setBackgroundColor:[UIColor blackColor]];
@@ -77,11 +114,14 @@
 
 - (void)fillEdite:(NSDictionary *)dict{
     _editeView.cashCouponNameText.text = dict[@"voucher_title"];
-//    [_editeView.selectNumber setTitle:dict[@""] forState:(UIControlStateNormal)];
-    _editeView.serviceConditionText.text = dict[@"voucher_limit"];
+    NSString *p = [NSString stringWithFormat:@"%ld",(long)[dict[@"voucher_price"] integerValue]];
+    [_editeView.selectNumber setTitle:p forState:(UIControlStateNormal)];
+    _editeView.serviceConditionText.text = [NSString stringWithFormat:@"%@",dict[@"voucher_limit"]];
     [_editeView.selectTime setTitle:dict[@"voucher_end_date"] forState:(UIControlStateNormal)];
-    _editeView.couponNumberText.text = [NSString stringWithFormat:@"%@",dict[@"voucher_surplus"]];
+    _editeView.couponNumberText.text = [NSString stringWithFormat:@"%@",dict[@"voucher_total"]];
     _editeView.limitLab.text = [NSString stringWithFormat:@"%@",dict[@"voucher_eachlimit"]];
+    _editeView.couponDescription.text = [NSString stringWithFormat:@"%@",dict[@"voucher_desc"]];
+    self.lowerLimitNumber = [dict[@"voucher_eachlimit"] integerValue];
 }
 
 /**
@@ -154,18 +194,60 @@
     }];
 }
 
-#pragma mark - EditeCouponViewDelegate
+/**
+    提交活动方法
+ */
 - (void)submit{
+    if (self.editeView.cashCouponNameText.text.length == 0){
+        [[IFUtils share]showErrorInfo:@"请填写代金券名称！"];
+        return;
+    }
+    if ([self.editeView.selectNumber.titleLabel.text isEqualToString:@"请选择"]){
+        [[IFUtils share]showErrorInfo:@"请选择代金券面值！"];
+        return;
+    }
+    if (self.editeView.serviceConditionText.text.length == 0){
+        [[IFUtils share]showErrorInfo:@"请填写使用条件！"];
+        return;
+    }
+    if ([self.editeView.selectTime.titleLabel.text isEqualToString:@"请选择"]){
+        [[IFUtils share]showErrorInfo:@"请选择券的有效时间！"];
+        return;
+    }
+    if (self.editeView.couponNumberText.text.length == 0){
+        [[IFUtils share]showErrorInfo:@"请填写发放数量！"];
+        return;
+    }
+    if (self.editeView.couponDescription.text.length == 0){
+        [[IFUtils share]showErrorInfo:@"请填写代金券描述"];
+        return;
+    }
+    
+    NSDictionary *dict;
+    if (_lastVCDict){
+        dict = @{@"voucher_id":@([self.lastVCDict[@"voucher_id"] integerValue]),
+                 @"store_id":@(StoreId),
+                 @"title":_editeView.cashCouponNameText.text,
+                 @"mianzhi":_editeView.selectNumber.titleLabel.text,
+                 @"limit_price":_editeView.serviceConditionText.text,
+                 @"describe":_editeView.couponDescription.text,
+                 @"end_time":_editeView.selectTime.titleLabel.text,
+                 @"total_nums":@([_editeView.couponNumberText.text integerValue]),
+                 @"each_limit":@([_editeView.limitLab.text integerValue])
+                 };
+    }else{
+        dict = @{@"store_id":@(StoreId),
+                 @"title":_editeView.cashCouponNameText.text,
+                 @"mianzhi":_editeView.selectNumber.titleLabel.text,
+                 @"limit_price":_editeView.serviceConditionText.text,
+                 @"describe":_editeView.couponDescription.text,
+                 @"end_time":_editeView.selectTime.titleLabel.text,
+                 @"total_nums":@([_editeView.couponNumberText.text integerValue]),
+                 @"each_limit":@([_editeView.limitLab.text integerValue])
+                 };
+    }
+    
 
-    NSDictionary *dict = @{@"store_id":@(StoreId),
-                           @"title":_editeView.cashCouponNameText.text,
-                           @"mianzhi":_editeView.selectNumber.titleLabel.text,
-                           @"limit_price":_editeView.serviceConditionText.text,
-                           @"describe":_editeView.couponDescription.text,
-                           @"end_time":_editeView.selectTime.titleLabel.text,
-                           @"total_nums":@([_editeView.couponNumberText.text integerValue]),
-                           @"each_limit":@([_editeView.limitLab.text integerValue])
-                           };
     NSLog(@"%@",dict);
     
     [Http_url POST:@"voucher_edit" dict:dict showHUD:YES WithSuccessBlock:^(id data) {

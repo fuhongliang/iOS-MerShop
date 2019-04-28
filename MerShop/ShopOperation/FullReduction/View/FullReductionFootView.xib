@@ -126,37 +126,15 @@
                                 <constraint firstItem="35u-RU-usm" firstAttribute="leading" secondItem="iiK-k0-gHh" secondAttribute="leading" constant="15" id="iKQ-dO-aRt"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqg-5g-Chb">
-                            <rect key="frame" x="15" y="223" width="345" height="44"/>
-                            <color key="backgroundColor" red="0.10980392156862745" green="0.59607843137254901" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="KUN-Dm-cfy"/>
-                            </constraints>
-                            <state key="normal" title="提交">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="3"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="submitAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="X3F-Eg-LpT"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="mqg-5g-Chb" firstAttribute="top" secondItem="iiK-k0-gHh" secondAttribute="bottom" constant="30" id="5so-Qd-WJB"/>
                         <constraint firstItem="zal-qA-gam" firstAttribute="top" secondItem="b8U-J0-gBm" secondAttribute="top" id="NVN-mO-1JD"/>
                         <constraint firstAttribute="trailing" secondItem="zal-qA-gam" secondAttribute="trailing" id="Rjb-Fc-ATP"/>
                         <constraint firstItem="iiK-k0-gHh" firstAttribute="leading" secondItem="b8U-J0-gBm" secondAttribute="leading" id="bG4-tQ-vYQ"/>
                         <constraint firstItem="iiK-k0-gHh" firstAttribute="top" secondItem="zal-qA-gam" secondAttribute="bottom" constant="15" id="d2d-P6-nrD"/>
                         <constraint firstItem="zal-qA-gam" firstAttribute="leading" secondItem="b8U-J0-gBm" secondAttribute="leading" id="iPm-9X-yKw"/>
                         <constraint firstAttribute="trailing" secondItem="iiK-k0-gHh" secondAttribute="trailing" id="ibe-0J-b0Y"/>
-                        <constraint firstAttribute="trailing" secondItem="mqg-5g-Chb" secondAttribute="trailing" constant="15" id="nJh-V2-jAV"/>
-                        <constraint firstItem="mqg-5g-Chb" firstAttribute="leading" secondItem="b8U-J0-gBm" secondAttribute="leading" constant="15" id="uhz-5n-Kkg"/>
                     </constraints>
                 </view>
             </subviews>
@@ -173,7 +151,6 @@
                 <outlet property="priceText1" destination="KQ0-Qj-PoI" id="BUr-1F-07s"/>
                 <outlet property="priceText2" destination="KFi-Km-4gf" id="I75-4f-xk3"/>
                 <outlet property="remarkText" destination="35u-RU-usm" id="KMX-58-ILo"/>
-                <outlet property="submitBtn" destination="mqg-5g-Chb" id="Rwh-CW-YPI"/>
             </connections>
             <point key="canvasLocation" x="53.600000000000001" y="118.29085457271366"/>
         </view>

@@ -67,6 +67,12 @@
 		0446EB552240872800A86F32 /* SortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446EB532240872800A86F32 /* SortTableViewCell.m */; };
 		0446EB562240872800A86F32 /* SortTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0446EB542240872800A86F32 /* SortTableViewCell.xib */; };
 		04577960223908B100D968EA /* RingSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0457795F223908B100D968EA /* RingSettingViewController.m */; };
+		046D024122707B8000E79237 /* Bluetooth.html in Resources */ = {isa = PBXBuildFile; fileRef = 046D024022707B8000E79237 /* Bluetooth.html */; };
+		046D024422707C5B00E79237 /* BluetoothHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D024322707C5B00E79237 /* BluetoothHelpViewController.m */; };
+		046D024722708BB800E79237 /* BluetoothSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D024622708BB800E79237 /* BluetoothSettingViewController.m */; };
+		046D024A2271486500E79237 /* BlueSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D02492271486500E79237 /* BlueSettingView.m */; };
+		046D024C2271487D00E79237 /* BlueSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046D024B2271487D00E79237 /* BlueSettingView.xib */; };
+		046D024F22714C9A00E79237 /* UIViewController+LCBlue.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D024E22714C9A00E79237 /* UIViewController+LCBlue.m */; };
 		04A46A40225B4E6D00511C79 /* DiscountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A46A3F225B4E6D00511C79 /* DiscountViewController.m */; };
 		04A46A43225B54F400511C79 /* EmptyDiscountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A46A42225B54F400511C79 /* EmptyDiscountView.m */; };
 		04A46A45225B550600511C79 /* EmptyDiscountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A46A44225B550600511C79 /* EmptyDiscountView.xib */; };
@@ -141,6 +147,8 @@
 		04F54BCC2264730900DE81E4 /* FullReductionFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54BCB2264730900DE81E4 /* FullReductionFootView.xib */; };
 		04F54BD022647B6D00DE81E4 /* FullReductionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F54BCE22647B6D00DE81E4 /* FullReductionCell.m */; };
 		04F54BD122647B6D00DE81E4 /* FullReductionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54BCF22647B6D00DE81E4 /* FullReductionCell.xib */; };
+		04F5856C2275433C00188C19 /* ShopSetTableViewCell5.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5856A2275433B00188C19 /* ShopSetTableViewCell5.m */; };
+		04F5856D2275433C00188C19 /* ShopSetTableViewCell5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5856B2275433B00188C19 /* ShopSetTableViewCell5.xib */; };
 		04F5B7D822390AE100E36E3C /* NewsSettingview.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5B7D722390AE100E36E3C /* NewsSettingview.m */; };
 		04F5B7DA22390B0500E36E3C /* NewsSettingview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5B7D922390B0500E36E3C /* NewsSettingview.xib */; };
 		04F61DE722364E16004986E0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61DE622364E16004986E0 /* AppDelegate.m */; };
@@ -153,6 +161,8 @@
 		04F61E0A22364E18004986E0 /* MerShopUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61E0922364E18004986E0 /* MerShopUITests.m */; };
 		04F61E2022366583004986E0 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61E1F22366583004986E0 /* BasicViewController.m */; };
 		04F68EB12269ADE400F4DFC3 /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F68EB02269ADE400F4DFC3 /* CouponModel.m */; };
+		04F68EB52269E03F00F4DFC3 /* DiscountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F68EB42269E03F00F4DFC3 /* DiscountModel.m */; };
+		04F68EB8226ABA5A00F4DFC3 /* LimitDiscountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F68EB7226ABA5A00F4DFC3 /* LimitDiscountModel.m */; };
 		04FB88022249C7FC008BEFCB /* PhoneNumberSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB88012249C7FC008BEFCB /* PhoneNumberSettingViewController.m */; };
 		04FB88052249CE5A008BEFCB /* BusinessLicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB88042249CE5A008BEFCB /* BusinessLicenseViewController.m */; };
 		04FB880A224A1AC0008BEFCB /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB8809224A1AC0008BEFCB /* GoodsModel.m */; };
@@ -286,6 +296,16 @@
 		0446EB542240872800A86F32 /* SortTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortTableViewCell.xib; sourceTree = "<group>"; };
 		0457795E223908B100D968EA /* RingSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingSettingViewController.h; sourceTree = "<group>"; };
 		0457795F223908B100D968EA /* RingSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RingSettingViewController.m; sourceTree = "<group>"; };
+		046D024022707B8000E79237 /* Bluetooth.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Bluetooth.html; sourceTree = "<group>"; };
+		046D024222707C5B00E79237 /* BluetoothHelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BluetoothHelpViewController.h; sourceTree = "<group>"; };
+		046D024322707C5B00E79237 /* BluetoothHelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BluetoothHelpViewController.m; sourceTree = "<group>"; };
+		046D024522708BB800E79237 /* BluetoothSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BluetoothSettingViewController.h; sourceTree = "<group>"; };
+		046D024622708BB800E79237 /* BluetoothSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BluetoothSettingViewController.m; sourceTree = "<group>"; };
+		046D02482271486500E79237 /* BlueSettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueSettingView.h; sourceTree = "<group>"; };
+		046D02492271486500E79237 /* BlueSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueSettingView.m; sourceTree = "<group>"; };
+		046D024B2271487D00E79237 /* BlueSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlueSettingView.xib; sourceTree = "<group>"; };
+		046D024D22714C9A00E79237 /* UIViewController+LCBlue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LCBlue.h"; sourceTree = "<group>"; };
+		046D024E22714C9A00E79237 /* UIViewController+LCBlue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LCBlue.m"; sourceTree = "<group>"; };
 		04A46A3E225B4E6D00511C79 /* DiscountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscountViewController.h; sourceTree = "<group>"; };
 		04A46A3F225B4E6D00511C79 /* DiscountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscountViewController.m; sourceTree = "<group>"; };
 		04A46A41225B54F400511C79 /* EmptyDiscountView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyDiscountView.h; sourceTree = "<group>"; };
@@ -408,6 +428,9 @@
 		04F54BCD22647B6D00DE81E4 /* FullReductionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullReductionCell.h; sourceTree = "<group>"; };
 		04F54BCE22647B6D00DE81E4 /* FullReductionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullReductionCell.m; sourceTree = "<group>"; };
 		04F54BCF22647B6D00DE81E4 /* FullReductionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullReductionCell.xib; sourceTree = "<group>"; };
+		04F585692275433B00188C19 /* ShopSetTableViewCell5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopSetTableViewCell5.h; sourceTree = "<group>"; };
+		04F5856A2275433B00188C19 /* ShopSetTableViewCell5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopSetTableViewCell5.m; sourceTree = "<group>"; };
+		04F5856B2275433B00188C19 /* ShopSetTableViewCell5.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopSetTableViewCell5.xib; sourceTree = "<group>"; };
 		04F5B7D622390AE100E36E3C /* NewsSettingview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsSettingview.h; sourceTree = "<group>"; };
 		04F5B7D722390AE100E36E3C /* NewsSettingview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsSettingview.m; sourceTree = "<group>"; };
 		04F5B7D922390B0500E36E3C /* NewsSettingview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsSettingview.xib; sourceTree = "<group>"; };
@@ -433,6 +456,10 @@
 		04F61E1F22366583004986E0 /* BasicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
 		04F68EAF2269ADE400F4DFC3 /* CouponModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponModel.h; sourceTree = "<group>"; };
 		04F68EB02269ADE400F4DFC3 /* CouponModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponModel.m; sourceTree = "<group>"; };
+		04F68EB32269E03F00F4DFC3 /* DiscountModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscountModel.h; sourceTree = "<group>"; };
+		04F68EB42269E03F00F4DFC3 /* DiscountModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscountModel.m; sourceTree = "<group>"; };
+		04F68EB6226ABA5A00F4DFC3 /* LimitDiscountModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LimitDiscountModel.h; sourceTree = "<group>"; };
+		04F68EB7226ABA5A00F4DFC3 /* LimitDiscountModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LimitDiscountModel.m; sourceTree = "<group>"; };
 		04FB88002249C7FC008BEFCB /* PhoneNumberSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneNumberSettingViewController.h; sourceTree = "<group>"; };
 		04FB88012249C7FC008BEFCB /* PhoneNumberSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberSettingViewController.m; sourceTree = "<group>"; };
 		04FB88032249CE5A008BEFCB /* BusinessLicenseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusinessLicenseViewController.h; sourceTree = "<group>"; };
@@ -525,6 +552,7 @@
 		04235E56225B481400B2FC40 /* DiscountPackage */ = {
 			isa = PBXGroup;
 			children = (
+				04F68EB22269E02200F4DFC3 /* Model */,
 				04F54B93225F501100DE81E4 /* Controller */,
 				04F54B92225F500A00DE81E4 /* View */,
 			);
@@ -676,6 +704,9 @@
 				04C6187A2238FC2600773B7C /* ShopSetTableViewCell4.h */,
 				04C6187B2238FC2600773B7C /* ShopSetTableViewCell4.m */,
 				04C6187C2238FC2600773B7C /* ShopSetTableViewCell4.xib */,
+				04F585692275433B00188C19 /* ShopSetTableViewCell5.h */,
+				04F5856A2275433B00188C19 /* ShopSetTableViewCell5.m */,
+				04F5856B2275433B00188C19 /* ShopSetTableViewCell5.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -724,6 +755,8 @@
 				0446EB0F223E447600A86F32 /* IFUtils.m */,
 				042B18A422411416004D372A /* IFTools.h */,
 				042B18A522411416004D372A /* IFTools.m */,
+				046D024D22714C9A00E79237 /* UIViewController+LCBlue.h */,
+				046D024E22714C9A00E79237 /* UIViewController+LCBlue.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -807,6 +840,14 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		046D023F22707B7100E79237 /* Webview */ = {
+			isa = PBXGroup;
+			children = (
+				046D024022707B8000E79237 /* Bluetooth.html */,
+			);
+			path = Webview;
+			sourceTree = "<group>";
+		};
 		04A46A46225C39DF00511C79 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,6 +864,8 @@
 		04A46A47225C39EE00511C79 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04F68EB6226ABA5A00F4DFC3 /* LimitDiscountModel.h */,
+				04F68EB7226ABA5A00F4DFC3 /* LimitDiscountModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -870,6 +913,10 @@
 			children = (
 				04A46A69225CC3C700511C79 /* PrintSettingViewController.h */,
 				04A46A6A225CC3C700511C79 /* PrintSettingViewController.m */,
+				046D024222707C5B00E79237 /* BluetoothHelpViewController.h */,
+				046D024322707C5B00E79237 /* BluetoothHelpViewController.m */,
+				046D024522708BB800E79237 /* BluetoothSettingViewController.h */,
+				046D024622708BB800E79237 /* BluetoothSettingViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -880,6 +927,9 @@
 				04A46A6C225CC40E00511C79 /* PrintSettringHeaderView.h */,
 				04A46A6D225CC40E00511C79 /* PrintSettringHeaderView.m */,
 				04A46A6F225CC41E00511C79 /* PrintSettringHeaderView.xib */,
+				046D02482271486500E79237 /* BlueSettingView.h */,
+				046D02492271486500E79237 /* BlueSettingView.m */,
+				046D024B2271487D00E79237 /* BlueSettingView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1061,6 +1111,7 @@
 		04F61DE422364E16004986E0 /* MerShop */ = {
 			isa = PBXGroup;
 			children = (
+				046D023F22707B7100E79237 /* Webview */,
 				04235E4E2253524C00B2FC40 /* EmptyView */,
 				0446EAF8223E1B7500A86F32 /* Tools */,
 				04C6185522378B6A00773B7C /* MainViewController */,
@@ -1174,6 +1225,15 @@
 			children = (
 				04F68EAF2269ADE400F4DFC3 /* CouponModel.h */,
 				04F68EB02269ADE400F4DFC3 /* CouponModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04F68EB22269E02200F4DFC3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04F68EB32269E03F00F4DFC3 /* DiscountModel.h */,
+				04F68EB42269E03F00F4DFC3 /* DiscountModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1326,6 +1386,7 @@
 				04F54BA522607E1100DE81E4 /* EditeCouponView.xib in Resources */,
 				04F54B87225F461D00DE81E4 /* CashCouponTableViewCell.xib in Resources */,
 				042B182A2240EA3E004D372A /* UserEvaluationTableViewCell1.xib in Resources */,
+				046D024122707B8000E79237 /* Bluetooth.html in Resources */,
 				04F54BA022603AFC00DE81E4 /* FullReduceTableViewCell.xib in Resources */,
 				04F54BCC2264730900DE81E4 /* FullReductionFootView.xib in Resources */,
 				04F212BC224CAAC900611664 /* NoImageWithReplyTableViewCell.xib in Resources */,
@@ -1347,6 +1408,7 @@
 				042B182F2240F704004D372A /* HeaderView1.xib in Resources */,
 				041668CE22672CAA00A3D2E1 /* NewGoodsTableViewCell5.xib in Resources */,
 				04F54BD122647B6D00DE81E4 /* FullReductionCell.xib in Resources */,
+				046D024C2271487D00E79237 /* BlueSettingView.xib in Resources */,
 				04A46A45225B550600511C79 /* EmptyDiscountView.xib in Resources */,
 				04235E532253531500B2FC40 /* EmptyOrderView.xib in Resources */,
 				04F5B7DA22390B0500E36E3C /* NewsSettingview.xib in Resources */,
@@ -1362,6 +1424,7 @@
 				04F61DEF22364E18004986E0 /* Assets.xcassets in Resources */,
 				041668D32268115C00A3D2E1 /* TimePickerView.xib in Resources */,
 				04F61DED22364E16004986E0 /* Main.storyboard in Resources */,
+				04F5856D2275433C00188C19 /* ShopSetTableViewCell5.xib in Resources */,
 				0446EB28223F874C00A86F32 /* NewGoodsTableViewCell1.xib in Resources */,
 				04A46A7E225D8DF400511C79 /* README.md in Resources */,
 				04FD40BF22432708000C9311 /* refuseView.xib in Resources */,
@@ -1451,13 +1514,16 @@
 				04C618482237874600773B7C /* MeViewController.m in Sources */,
 				04F54B90225F500300DE81E4 /* DiscountPackageTableViewCell.m in Sources */,
 				04F212C72251B75200611664 /* UIView+LC.m in Sources */,
+				046D024F22714C9A00E79237 /* UIViewController+LCBlue.m in Sources */,
 				0416690722684DDA00A3D2E1 /* FullReductionModel.m in Sources */,
 				04F54BC2226471FF00DE81E4 /* AddFullReductionViewController.m in Sources */,
 				04A46A6E225CC40E00511C79 /* PrintSettringHeaderView.m in Sources */,
 				04F54BC5226472B100DE81E4 /* FullReductionHeadView.m in Sources */,
 				04F5B7D822390AE100E36E3C /* NewsSettingview.m in Sources */,
+				04F68EB8226ABA5A00F4DFC3 /* LimitDiscountModel.m in Sources */,
 				04FD40C922436EA2000C9311 /* AllReadyDeliveryTableViewCell.m in Sources */,
 				04FD40C422436402000C9311 /* WaitDeliveryTableViewCell.m in Sources */,
+				046D024722708BB800E79237 /* BluetoothSettingViewController.m in Sources */,
 				041668CD22672CAA00A3D2E1 /* NewGoodsTableViewCell5.m in Sources */,
 				04A46A43225B54F400511C79 /* EmptyDiscountView.m in Sources */,
 				0446EAD4223A36DC00A86F32 /* PhoneNumberView.m in Sources */,
@@ -1482,6 +1548,7 @@
 				04C61851223787A400773B7C /* WaitDealwithViewController.m in Sources */,
 				0446EB0A223E439F00A86F32 /* SVRadialGradientLayer.m in Sources */,
 				042B181F2240CB76004D372A /* UserEvaluationTableViewCell.m in Sources */,
+				04F68EB52269E03F00F4DFC3 /* DiscountModel.m in Sources */,
 				0446EB46223FEE7F00A86F32 /* LogCategory.m in Sources */,
 				04FB88052249CE5A008BEFCB /* BusinessLicenseViewController.m in Sources */,
 				04F54B9B225F5AE900DE81E4 /* CashCouponViewController.m in Sources */,
@@ -1497,6 +1564,7 @@
 				041668C72265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m in Sources */,
 				04C6187D2238FC2600773B7C /* ShopSetTableViewCell4.m in Sources */,
 				0446EAE2223B441200A86F32 /* HeaderView.m in Sources */,
+				04F5856C2275433C00188C19 /* ShopSetTableViewCell5.m in Sources */,
 				04F212B2224B79C000611664 /* JXMovableCellTableView.m in Sources */,
 				042B182D2240F6F2004D372A /* HeaderView1.m in Sources */,
 				04F54BBD2264613600DE81E4 /* PackageView.m in Sources */,
@@ -1531,6 +1599,7 @@
 				0446EAE8223B7A3800A86F32 /* TableViewCell.m in Sources */,
 				04A46A40225B4E6D00511C79 /* DiscountViewController.m in Sources */,
 				0446EB27223F874C00A86F32 /* NewGoodsTableViewCell1.m in Sources */,
+				046D024422707C5B00E79237 /* BluetoothHelpViewController.m in Sources */,
 				042B18292240EA3E004D372A /* UserEvaluationTableViewCell1.m in Sources */,
 				04F54BD022647B6D00DE81E4 /* FullReductionCell.m in Sources */,
 				04C618732238DC9E00773B7C /* ShopSetTableViewCell2.m in Sources */,
@@ -1548,6 +1617,7 @@
 				04F54B98225F5ACE00DE81E4 /* DiscountPackageViewController.m in Sources */,
 				0446EB1A223F6BFF00A86F32 /* ManageCatergoryTableViewCell.m in Sources */,
 				04577960223908B100D968EA /* RingSettingViewController.m in Sources */,
+				046D024A2271486500E79237 /* BlueSettingView.m in Sources */,
 				04F212AF224B566B00611664 /* NewCatergoryViewController.m in Sources */,
 				0446EAF7223BB8CD00A86F32 /* ManageViewController.m in Sources */,
 			);
@@ -1736,7 +1806,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ifhu.MerShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ifu_iOS_Development;
+				PROVISIONING_PROFILE_SPECIFIER = ifu_iOS_Develop;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};

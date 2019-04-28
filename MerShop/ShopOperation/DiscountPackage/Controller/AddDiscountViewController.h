@@ -8,10 +8,9 @@
 
 #import "BasicViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
 
 @interface AddDiscountViewController : BasicViewController
-
+@property (nonatomic ,assign)NSInteger taocan_Id;
+@property (nonatomic ,copy)NSDictionary *activityInfo;
 @end
 
-NS_ASSUME_NONNULL_END

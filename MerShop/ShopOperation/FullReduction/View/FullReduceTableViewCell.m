@@ -33,12 +33,12 @@
     NSString *time1 = [IFTools dateToString:[NSDate dateWithTimeIntervalSince1970:model.start_time] dateFormat:@"yyyy-MM-dd"];
     NSString *time2 = [IFTools dateToString:[NSDate dateWithTimeIntervalSince1970:model.end_time] dateFormat:@"yyyy-MM-dd"];
     self.activityTime.text = [NSString stringWithFormat:@"%@~%@",time1,time2];
-    if (model.state == 4){
-        [self.activityImg setImage:[UIImage imageNamed:@"yhq_bnt_xszk_mlj1"]];
-        [self.stateImg setHidden:NO];
-    }else if (model.state == 2){
+    if (model.state == 2){
         [self.activityImg setImage:[UIImage imageNamed:@"yhq_bnt_xszk_mlj"]];
         [self.stateImg setHidden:YES];
+    }else{
+        [self.activityImg setImage:[UIImage imageNamed:@"yhq_bnt_xszk_mlj1"]];
+        [self.stateImg setHidden:NO];
     }
 
     NSArray *a = model.rule;
@@ -49,8 +49,14 @@
         [label setText:
          [NSString stringWithFormat:@"   满 %@ 减 %@   ",dict[@"price"],dict[@"discount"]]];
         [label setFont:XFont(11)];
-        [label setTextColor:toPCcolor(@"#f77a27")];
-        XViewLayerCB(label, 1, 0.5, toPCcolor(@"#f77a27"));
+        
+        if(model.state == 2){
+            XViewLayerCB(label, 1, 0.5, toPCcolor(@"#f77a27"));
+            [label setTextColor:toPCcolor(@"#f77a27")];
+        }else{
+            XViewLayerCB(label, 1, 0.5, toPCcolor(@"#dedede"));
+            [label setTextColor:toPCcolor(@"#999999")];
+        }
         [self.limitBgview addSubview:label];
         if (i == 0){
             [label makeConstraints:^(MASConstraintMaker *make) {

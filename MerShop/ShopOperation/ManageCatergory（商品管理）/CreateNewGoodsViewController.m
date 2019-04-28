@@ -28,6 +28,7 @@
 @property (nonatomic ,strong)NSMutableArray *pickerDatasource;
 @property (nonatomic ,copy)NSString *chooseClassName;
 @property (nonatomic ,assign)NSInteger catergoryId;
+@property (nonatomic ,strong)UIButton *saveBtn;
 
 @end
 
@@ -44,9 +45,22 @@
     [self.view setBackgroundColor:LineColor];
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     [self.pickerDatasource addObjectsFromArray:[user objectForKey:@"classArray"]];
-    if (_className){//判断是否从管理分类进来新建商品
+    [self setUI];
+    if (_className){//判断是否从编辑进来新建商品
         _chooseClassName = _className;
         _catergoryId = _classId;
+        [self setNaviTitle:@"编辑商品"];
+        [self.headerview.btnImg setHidden:YES];
+        [self.headerview.btnText setHidden:YES];
+        self.image_path = [NSString stringWithFormat:@"%@/%@",_tempDict[@"img_path"],_tempDict[@"img_name"]];
+        [_headerview.goodsImage sd_setImageWithURL:[NSURL URLWithString:self.image_path]];
+        self.goodsName = _tempDict[@"goods_name"];
+        self.currentPrice = _tempDict[@"goods_price"];
+        self.oldPrice = _tempDict[@"goods_marketprice"];
+        self.storage = [_tempDict[@"goods_storage"] integerValue];
+        self.desc = _tempDict[@"goods_desc"];
+        self.goodsId = [_tempDict[@"goods_id"]integerValue];
+        self.tempStr = @"编辑";
     }else{
         if (self.pickerDatasource.count == 0){
             
@@ -55,7 +69,6 @@
             _catergoryId = [[[self.pickerDatasource objectAtIndex:0] objectForKey:@"stc_id"] integerValue];
         }
     }
-    [self setUI];
 }
 
 - (void)setUI{
@@ -101,24 +114,23 @@
     [self.textview addSubview:placeHolder1];
     
     
-    UIButton *saveBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [saveBtn setFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(view1.frame)+IFAutoFitPx(61), Screen_W-IFAutoFitPx(60), IFAutoFitPx(88))];
-    [saveBtn setTitle:@"保存" forState:(UIControlStateNormal)];
-    [saveBtn setBackgroundColor:IFThemeBlueColor];
-    saveBtn.layer.cornerRadius = 3;
-    saveBtn.layer.masksToBounds = YES;
-    [saveBtn addTarget:self action:@selector(save) forControlEvents:(UIControlEventTouchUpInside)];
-    [saveBtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-    [view addSubview:saveBtn];
+    _saveBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [_saveBtn setFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(view1.frame)+IFAutoFitPx(61), Screen_W-IFAutoFitPx(60), IFAutoFitPx(88))];
+    [_saveBtn setTitle:@"保存" forState:(UIControlStateNormal)];
+    [_saveBtn setBackgroundColor:IFThemeBlueColor];
+    _saveBtn.layer.cornerRadius = 3;
+    _saveBtn.layer.masksToBounds = YES;
+    [_saveBtn addTarget:self action:@selector(save) forControlEvents:(UIControlEventTouchUpInside)];
+    [_saveBtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+    [view addSubview:_saveBtn];
     
     _mainTableview.tableFooterView = view;
     [self.view addSubview:_mainTableview];
     
     _headerview = [[[NSBundle mainBundle]loadNibNamed:@"CreateNewGoodsHeaderView" owner:self options:nil] objectAtIndex:0];
     _headerview.delegate = self;
-    UIImage * result = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.image_path]]];
-    _headerview.goodsImage.image = result;
     [_headerview setFrame:XFrame(0, 0, Screen_W, 175)];
+
     [_mainTableview setTableHeaderView:_headerview];
     
     _BackgroundView = [[UIView alloc]init];
@@ -421,11 +433,10 @@
     LCWeakSelf(self)
     UIImage *uploadImg = _headerview.goodsImage.image;
     NSString *descStr = self.textview.text;
-//    NSArray *sell_time = @[@{@"start_time":@"00:00",@"end_time":@"23:99"},@{@"start_time":@"00:00",@"end_time":@"23:99"}];
     
     //1.任务一：上传图片
     NSBlockOperation *operation1 = [NSBlockOperation blockOperationWithBlock:^{
-        NSLog(@"下载图片 - %@", [NSThread currentThread]);
+        
         [NSThread sleepForTimeInterval:1.0];
         [Http_url POST:@"image_upload/goods_img" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
             
@@ -439,7 +450,7 @@
     }];
     //1.任务二：提交图片
     NSBlockOperation *operation2 = [NSBlockOperation blockOperationWithBlock:^{
-        NSLog(@"下载图片 - %@", [NSThread currentThread]);
+        
         [NSThread sleepForTimeInterval:1.0];
         NSString *postUrl;
         NSDictionary *pramadict;
@@ -470,9 +481,11 @@
                           };
             
         }
-        [Http_url POST:postUrl dict:pramadict showHUD:YES WithSuccessBlock:^(id data) {
+        [Http_url POST:postUrl dict:pramadict showHUD:NO WithSuccessBlock:^(id data) {
             if ([[data objectForKey:@"code"] integerValue] == 200){
+                [SVProgressHUD dismiss];
                 [[IFUtils share]showErrorInfo:@"添加成功"];
+                [weakself.saveBtn setUserInteractionEnabled:YES];
             }
         } WithFailBlock:^(id data) {
             
@@ -507,6 +520,8 @@
         [[IFUtils share]showErrorInfo:@"商品图片还未添加"];
         return;
     }
+    [[IFUtils share]showLoadingView];
+    [_saveBtn setUserInteractionEnabled:NO];
     [self uploadImage];
 }
 

@@ -18,4 +18,24 @@
 }
 */
 
+- (IBAction)addAction:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(addActivityGoods)]){
+        [self.delegate performSelector:@selector(addActivityGoods) withObject:nil];
+    }
+}
+
+
+- (IBAction)openSwitch:(id)sender {
+    if (self.stateSwitch.isOn){
+        if (self.delegate && [self.delegate respondsToSelector:@selector(open:)]){
+            [self.delegate performSelector:@selector(open:) withObject:@"1"];
+        }
+    }else{
+        if (self.delegate && [self.delegate respondsToSelector:@selector(open:)]){
+            [self.delegate performSelector:@selector(open:) withObject:@"0"];
+        }
+
+    }
+}
+
 @end

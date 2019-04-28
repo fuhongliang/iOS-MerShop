@@ -37,7 +37,7 @@
     [Http_url POST:@"mamsong_list" dict:dict showHUD:NO WithSuccessBlock:^(id data) {
         NSLog(@"%@",[data objectForKey:@"data"]);
         NSArray *arr = [data objectForKey:@"data"];
-        if (arr){
+        if (![arr isEqual:[NSNull null]]){
             [self.dataSource removeAllObjects];
             for (NSDictionary *dict in arr){
                 FullReductionModel *model = [[FullReductionModel alloc]initWithDictionary:dict error:nil];
@@ -64,7 +64,7 @@
     [view addSubview:line];
     
     ZJTopImageBottomTitleButton *btn = [[ZJTopImageBottomTitleButton alloc]init];
-    [btn setFrame:XFrame((Screen_W-IFAutoFitPx(200))/2, IFAutoFitPx(1), IFAutoFitPx(200), IFAutoFitPx(95))];
+    [btn setFrame:XFrame((Screen_W-IFAutoFitPx(200))/2, IFAutoFitPx(10), IFAutoFitPx(200), IFAutoFitPx(80))];
     [btn setTitle:@"添加活动" forState:(UIControlStateNormal)];
     [btn setImage:[UIImage imageNamed:@"yhq_addhuodong"] forState:(UIControlStateNormal)];
     [btn setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
@@ -100,14 +100,23 @@
     NSDictionary *dict = @{@"mansong_id":[NSString stringWithFormat:@"%ld",model.mansong_id],
                            @"store_id":StoreIdString
                            };
-    [Http_url POST:@"mamsong_del" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
-        if ([[data objectForKey:@"code"] integerValue] == 200){
-            [self.dataSource removeObjectAtIndex:cell.tag];
-            [self.mainTableView reloadData];
-        }
-    } WithFailBlock:^(id data) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确定删除该活动吗？" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
         
-    }];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [Http_url POST:@"mamsong_del" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
+            if ([[data objectForKey:@"code"] integerValue] == 200){
+                [self.dataSource removeObjectAtIndex:cell.tag];
+                [self.mainTableView reloadData];
+            }
+        } WithFailBlock:^(id data) {
+            
+        }];
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
+
+
 }
 
 - (void)addActivity{

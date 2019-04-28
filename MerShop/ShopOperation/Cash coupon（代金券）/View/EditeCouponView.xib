@@ -22,13 +22,24 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DTd-Jo-P1Q">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="代金券名称*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2I-dm-Nsn">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2I-dm-Nsn">
                                     <rect key="frame" x="15" y="14" width="113" height="20.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="113" id="V09-q7-URU"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="代金券名称">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="*">
+                                            <attributes>
+                                                <color key="NSColor" red="0.92549019607843142" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" metaFont="system" size="17"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="最多可输入20个字" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p7X-qA-Iud">
@@ -50,28 +61,50 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IlE-5h-bUs">
-                            <rect key="frame" x="0.0" y="63.5" width="375" height="98"/>
+                            <rect key="frame" x="0.0" y="63.5" width="375" height="98.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="券的面值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICw-xR-ohy">
-                                    <rect key="frame" x="15" y="14" width="113" height="20.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICw-xR-ohy">
+                                    <rect key="frame" x="15" y="14" width="113" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="113" id="zcC-65-rid"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="券的面值">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="*">
+                                            <attributes>
+                                                <color key="NSColor" red="0.92549019607843142" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" metaFont="system" size="17"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用条件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ga-nV-ydN">
-                                    <rect key="frame" x="15" y="63" width="113" height="21"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ga-nV-ydN">
+                                    <rect key="frame" x="15" y="63.5" width="113" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="113" id="ogy-xW-QIg"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="使用条件">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="*">
+                                            <attributes>
+                                                <color key="NSColor" red="0.92549019607843142" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" metaFont="system" size="17"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o1i-7J-hqt">
-                                    <rect key="frame" x="15" y="48.5" width="360" height="0.5"/>
+                                    <rect key="frame" x="15" y="49" width="360" height="0.5"/>
                                     <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="b4d-Uz-pEG"/>
@@ -85,7 +118,7 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0o-du-7Yd">
-                                    <rect key="frame" x="298" y="7" width="46" height="34.5"/>
+                                    <rect key="frame" x="298" y="7" width="46" height="35"/>
                                     <state key="normal" title="请选择">
                                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -94,13 +127,13 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bv-Pa-veG">
-                                    <rect key="frame" x="342" y="63" width="18" height="21"/>
+                                    <rect key="frame" x="342" y="63.5" width="18" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用券最低订单金额" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3a5-GA-Dci">
-                                    <rect key="frame" x="215.5" y="57.5" width="118.5" height="32"/>
+                                    <rect key="frame" x="215.5" y="58" width="118.5" height="32"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -130,15 +163,26 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TU3-sn-Qhw">
-                            <rect key="frame" x="0.0" y="191.5" width="375" height="48.5"/>
+                            <rect key="frame" x="0.0" y="192" width="375" height="49"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有效期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jD5-aX-BES">
-                                    <rect key="frame" x="15" y="14" width="113" height="20.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jD5-aX-BES">
+                                    <rect key="frame" x="15" y="14" width="113" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="113" id="28c-uN-FDX"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="有效期">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="*">
+                                            <attributes>
+                                                <color key="NSColor" red="0.92549019607843142" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" metaFont="system" size="17"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="fN9-sQ-Tqv">
@@ -149,7 +193,7 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14t-NF-t4X">
-                                    <rect key="frame" x="298" y="4" width="46" height="40.5"/>
+                                    <rect key="frame" x="298" y="4" width="46" height="41"/>
                                     <state key="normal" title="请选择">
                                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -171,24 +215,46 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zoL-nY-zRR">
-                            <rect key="frame" x="0.0" y="255" width="375" height="102.5"/>
+                            <rect key="frame" x="0.0" y="256" width="375" height="102.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发放张数*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgk-aH-Hbh">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgk-aH-Hbh">
                                     <rect key="frame" x="15" y="14" width="113" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="113" id="L1a-s5-meh"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="发放张数">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="*">
+                                            <attributes>
+                                                <color key="NSColor" red="0.91826683282852173" green="0.16882431668359726" blue="0.13176077040678241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" metaFont="system" size="17"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每人限领" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXi-qK-VNT">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXi-qK-VNT">
                                     <rect key="frame" x="15" y="67.5" width="113" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="113" id="Y5D-ET-wAY"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="每人限领">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="*">
+                                            <attributes>
+                                                <color key="NSColor" red="0.92549019607843142" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" metaFont="system" size="17"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0t-CM-vGg">
@@ -261,7 +327,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hby-kR-0Se">
-                            <rect key="frame" x="0.0" y="372.5" width="375" height="90"/>
+                            <rect key="frame" x="0.0" y="373.5" width="375" height="90"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="代金券描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5C-aB-Q3F">
                                     <rect key="frame" x="15" y="8" width="345" height="21"/>
@@ -288,44 +354,22 @@
                                 <constraint firstAttribute="height" constant="90" id="wvQ-CX-UJJ"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGf-5q-xwO">
-                            <rect key="frame" x="15" y="492.5" width="345" height="45"/>
-                            <color key="backgroundColor" red="0.10980392156862745" green="0.59607843137254901" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="45" id="79w-YW-Gee"/>
-                            </constraints>
-                            <state key="normal" title="提交">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="3"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.MasksToBounds" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="submitAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="rBv-jb-Uva"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="zoL-nY-zRR" firstAttribute="leading" secondItem="grE-Jl-quQ" secondAttribute="leading" id="2RG-MX-W3n"/>
                         <constraint firstItem="zoL-nY-zRR" firstAttribute="top" secondItem="TU3-sn-Qhw" secondAttribute="bottom" constant="15" id="6SL-C3-zsG"/>
                         <constraint firstItem="Hby-kR-0Se" firstAttribute="leading" secondItem="grE-Jl-quQ" secondAttribute="leading" id="DoV-Ul-H1W"/>
-                        <constraint firstAttribute="trailing" secondItem="KGf-5q-xwO" secondAttribute="trailing" constant="15" id="GJI-H3-oLs"/>
                         <constraint firstItem="IlE-5h-bUs" firstAttribute="leading" secondItem="grE-Jl-quQ" secondAttribute="leading" id="JRn-x9-Os2"/>
                         <constraint firstAttribute="trailing" secondItem="zoL-nY-zRR" secondAttribute="trailing" id="W9C-0H-2tY"/>
                         <constraint firstItem="DTd-Jo-P1Q" firstAttribute="top" secondItem="grE-Jl-quQ" secondAttribute="top" id="bLy-HY-vZt"/>
                         <constraint firstAttribute="trailing" secondItem="DTd-Jo-P1Q" secondAttribute="trailing" id="bzi-E8-WvU"/>
                         <constraint firstAttribute="trailing" secondItem="IlE-5h-bUs" secondAttribute="trailing" id="dYL-dd-uz6"/>
-                        <constraint firstItem="KGf-5q-xwO" firstAttribute="top" secondItem="Hby-kR-0Se" secondAttribute="bottom" constant="30" id="fVZ-7G-GqE"/>
                         <constraint firstItem="IlE-5h-bUs" firstAttribute="top" secondItem="DTd-Jo-P1Q" secondAttribute="bottom" constant="15" id="gCE-qb-WxK"/>
                         <constraint firstItem="Hby-kR-0Se" firstAttribute="top" secondItem="zoL-nY-zRR" secondAttribute="bottom" constant="15" id="l0L-1I-sji"/>
                         <constraint firstAttribute="trailing" secondItem="Hby-kR-0Se" secondAttribute="trailing" id="oWg-wb-9PI"/>
                         <constraint firstItem="TU3-sn-Qhw" firstAttribute="leading" secondItem="grE-Jl-quQ" secondAttribute="leading" id="wnB-Jb-Thm"/>
                         <constraint firstAttribute="trailing" secondItem="TU3-sn-Qhw" secondAttribute="trailing" id="wxY-fz-MwE"/>
-                        <constraint firstItem="KGf-5q-xwO" firstAttribute="leading" secondItem="grE-Jl-quQ" secondAttribute="leading" constant="15" id="xAd-Ee-PZ5"/>
                         <constraint firstItem="TU3-sn-Qhw" firstAttribute="top" secondItem="IlE-5h-bUs" secondAttribute="bottom" constant="30" id="y3X-vf-Bqq"/>
                         <constraint firstItem="DTd-Jo-P1Q" firstAttribute="leading" secondItem="grE-Jl-quQ" secondAttribute="leading" id="zI7-9K-934"/>
                     </constraints>

@@ -47,6 +47,19 @@
     _headerView.activityText.delegate = self;
     [self.mainTableView setTableHeaderView:_headerView];
     
+    UIButton *saveBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [saveBtn setTitle:@"提交" forState:(UIControlStateNormal)];
+    [saveBtn setBackgroundColor:IFThemeBlueColor];
+    [saveBtn setTitleColor:WhiteColor forState:(UIControlStateNormal)];
+    [saveBtn addTarget:self action:@selector(submit) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:saveBtn];
+    [saveBtn makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.left).offset(0);
+        make.right.equalTo(self.view.right).offset(0);
+        make.bottom.equalTo(self.view.bottom).offset(0);
+        make.height.equalTo(55);
+    }];
+    
     _footerView = [[[NSBundle mainBundle]loadNibNamed:@"FullReductionFootView" owner:self options:nil] objectAtIndex:0];
     _footerView.delegate = self;
     _footerView.priceText1.delegate = self;
@@ -121,6 +134,11 @@
     if (self.dataSource.count == 0){
         [[IFUtils share]showErrorInfo:@"请输入满减金额！"];
         return;
+    }
+    if (self.footerView.remarkText.text.length == 0){
+        _remarkStr = @"";
+    }else{
+        _remarkStr = self.footerView.remarkText.text;
     }
     NSDictionary *dict = @{@"store_id":[UserInfoDict objectForKey:@"store_id"],
                            @"mansong_name":_activityName,
@@ -208,7 +226,7 @@
 - (UITableView *)mainTableView{
     if (!_mainTableView){
         _mainTableView = [[UITableView alloc]init];
-        [_mainTableView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
+        [_mainTableView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y-55)];
         [_mainTableView setBackgroundColor:[UIColor whiteColor]];
         [_mainTableView setTableFooterView:[[UIView alloc]init]];
         [_mainTableView setDelegate:self];

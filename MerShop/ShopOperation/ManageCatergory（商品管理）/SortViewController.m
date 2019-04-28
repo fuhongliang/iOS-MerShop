@@ -20,6 +20,7 @@
 @property (nonatomic ,strong)UIView *clearView;
 @property (nonatomic ,strong)PhoneNumberView *upView;
 @property (nonatomic ,assign)NSInteger deleteIndex;
+@property (nonatomic ,strong)NSMutableArray *classIdArr;
 @end
 
 @implementation SortViewController
@@ -30,8 +31,11 @@
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSArray *arr = [user objectForKey:@"classArray"];
     _storeID = [[[user objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];
-
     [self.dataSource addObjectsFromArray:arr];
+    //刚开始进来把分类ID 添加到数组里边
+    for (NSDictionary *dict in self.dataSource){
+        [self.classIdArr addObject:[dict objectForKey:@"stc_id"]];//替换后的分类ID顺序
+    }
     NSLog(@"%@",self.dataSource);
     [self.mainTableview reloadData];
     [self setUI];
@@ -62,6 +66,19 @@
     [_upView setBackgroundColor:[UIColor whiteColor]];
     [_upView setHidden:YES];
     [self.view addSubview:_upView];
+    
+    UIButton *btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [btn setTitle:@"保存" forState:(UIControlStateNormal)];
+    [btn addTarget:self action:@selector(saveSort) forControlEvents:(UIControlEventTouchUpInside)];
+    [btn.titleLabel setFont:XFont(18)];
+    [btn setBackgroundColor:IFThemeBlueColor];
+    [btn setTitleColor:WhiteColor forState:(UIControlStateNormal)];
+    [self.navigationView addSubview:btn];
+    [btn makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.navigationView.top).offset(StatusBar_H);
+        make.right.equalTo(self.navigationView.right).offset(-15);
+        make.bottom.equalTo(self.navigationView.bottom).offset(0);
+    }];
 
 }
 
@@ -113,8 +130,12 @@
     __weak typeof(self) weakself = self;
     [Http_url POST:@"del_goods_class" dict:@{@"class_id":@(classID),@"store_id":@(storeID)} showHUD:YES WithSuccessBlock:^(id data) {
         if ([[data objectForKey:@"code"] integerValue] == 200){
+            [weakself.classIdArr removeAllObjects];//删除原来的ID ，防止重复添加
             [weakself.dataSource removeObjectAtIndex:weakself.deleteIndex];
             [user setObject:weakself.dataSource forKey:@"classArray"];
+            for (NSDictionary *dict in self.dataSource){
+                [weakself.classIdArr addObject:[dict objectForKey:@"stc_id"]];
+            }
             [weakself.mainTableview reloadData];
             [weakself.clearView setHidden:YES];
             [weakself.upView setHidden:YES];
@@ -127,25 +148,33 @@
 
 
 - (void)topAction:(id)data{
+    [self.classIdArr removeAllObjects];
     SortTableViewCell *cell = (SortTableViewCell *)data;
     NSDictionary *dict = [self.dataSource objectAtIndex:cell.tag];
     [self.dataSource removeObjectAtIndex:cell.tag];
     [self.dataSource insertObject:dict atIndex:0];
-    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
     for (NSDictionary *dict in self.dataSource){
-        [arr addObject:[dict objectForKey:@"stc_id"]];//替换后的分类ID顺序
+        [self.classIdArr addObject:[dict objectForKey:@"stc_id"]];//替换后的分类ID顺序
     }
-    NSDictionary *prama = @{@"class_ids":[self objectToJson:arr],
+    NSDictionary *prama = @{@"class_ids":[self objectToJson:self.classIdArr],
                             @"store_id":@(_storeID)
                             };
-    [self requestSort:prama];
+    [Http_url POST:@"sort_goods_class" dict:prama showHUD:NO WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            [[NSUserDefaults standardUserDefaults] setObject:self.dataSource forKey:@"classArray"];
+            [self.mainTableview reloadData];
+        }
+    } WithFailBlock:^(id data) {
+        
+    }];
 }
 
 - (void)requestSort:(NSDictionary *)prama{
     [Http_url POST:@"sort_goods_class" dict:prama showHUD:NO WithSuccessBlock:^(id data) {
         if ([[data objectForKey:@"code"] integerValue] == 200){
             [[NSUserDefaults standardUserDefaults] setObject:self.dataSource forKey:@"classArray"];
-            [self.mainTableview reloadData];
+            [[IFUtils share]showErrorInfo:@"保存成功"];
+            [self.navigationController popViewControllerAnimated:YES];
         }
     } WithFailBlock:^(id data) {
         
@@ -169,7 +198,6 @@
     }
 }
 
-
 #pragma mark - JXMovableCellTableViewDelegate
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
@@ -179,17 +207,13 @@
 
 - (void)tableView:(JXMovableCellTableView *)tableView endMoveCellAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"%ld",indexPath.row);
+    [self.classIdArr removeAllObjects];
     [self.dataSource removeObjectAtIndex:self.currentIndex];
     [self.dataSource insertObject:self.removeCurrentDict atIndex:indexPath.row];
     NSLog(@"%@",self.dataSource);
-    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
     for (NSDictionary *dict in self.dataSource){
-        [arr addObject:[dict objectForKey:@"stc_id"]];//替换后的分类ID顺序
+        [self.classIdArr addObject:[dict objectForKey:@"stc_id"]];//替换后的分类ID顺序
     }
-    NSDictionary *prama = @{@"class_ids":[self objectToJson:arr],
-                            @"store_id":@(_storeID)
-                            };
-    [self requestSort:prama];
 
 }
 
@@ -221,10 +245,26 @@
     
 }
 
+/**
+    保存排序方法
+ */
+- (void)saveSort{
+    NSDictionary *prama = @{@"class_ids":[self objectToJson:self.classIdArr],
+                            @"store_id":@(_storeID)
+                            };
+    [self requestSort:prama];
+}
+
 - (NSMutableArray *)dataSource{
     if (!_dataSource){
         _dataSource = [NSMutableArray arrayWithCapacity:0];
     }
     return _dataSource;
+}
+- (NSMutableArray *)classIdArr{
+    if (!_classIdArr){
+        _classIdArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _classIdArr;
 }
 @end

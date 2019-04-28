@@ -22,4 +22,16 @@
         [self.delegate performSelector:@selector(addNumber) withObject:nil];
     }
 }
+
+- (IBAction)startAction:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(showPickerView:)]){
+        [self.delegate performSelector:@selector(showPickerView:) withObject:@"开始"];
+    }
+}
+
+- (IBAction)endAction:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(showPickerView:)]){
+        [self.delegate performSelector:@selector(showPickerView:) withObject:@"结束"];
+    }
+}
 @end

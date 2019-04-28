@@ -11,6 +11,7 @@
 #import "ShopSetTableViewCell2.h"
 #import "ShopSetTableViewCell3.h"
 #import "ShopSetTableViewCell4.h"
+#import "ShopSetTableViewCell5.h"
 #import "BusinessStatusViewController.h"
 #import "RestaurantNoticeViewController.h"
 #import "PhoneNumberSettingViewController.h"
@@ -179,18 +180,21 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0){
+    if (section == 1){
+        return 5;
+    }else{
         return 2;
     }
-    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section == 0){
+        return IFAutoFitPx(40);
+    }else if (section == 1){
         return IFAutoFitPx(40);
     }
     return 0.1;
@@ -254,51 +258,62 @@
             }
             return cell;
         }
-    }
-    if (indexPath.row == 0){
-        ShopSetTableViewCell2 *cell = (ShopSetTableViewCell2 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell2"];
-        if (!cell){
-            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell2" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-        }
-        NSString *imageStr = [[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_avatar"];
-        [cell.ShopHeadIcon sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"moren_dianpu"]];
-        cell.Title.text = @"店铺头像";
-        return cell;
-    }else if (indexPath.row == 1 || indexPath.row == 3 || indexPath.row ==4){
-        ShopSetTableViewCell1 *cell = (ShopSetTableViewCell1 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell1"];
-        if (!cell){
-            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell1" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-        }
-        if (indexPath.row == 1){
-            cell.Title.text = @"餐厅电话";
-            NSDictionary *userDict = [self getUserInfo];
-            cell.SubTitle.text = [NSString stringWithFormat:@"%@",userDict[@"store_phone"]];
+    }else if (indexPath.section == 1){
+        if (indexPath.row == 0){
+            ShopSetTableViewCell2 *cell = (ShopSetTableViewCell2 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell2"];
+            if (!cell){
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell2" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
+            }
+            NSString *imageStr = [[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_avatar"];
+            [cell.ShopHeadIcon sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"moren_dianpu"]];
+            cell.Title.text = @"店铺头像";
             return cell;
-        }else if (indexPath.row == 4){
-            cell.SubTitle.text = @"";
-            cell.Title.text = @"营业资质";
-            return cell;
+        }else if (indexPath.row == 1 || indexPath.row == 3 || indexPath.row ==4){
+            ShopSetTableViewCell1 *cell = (ShopSetTableViewCell1 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell1"];
+            if (!cell){
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell1" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
+            }
+            if (indexPath.row == 1){
+                cell.Title.text = @"餐厅电话";
+                NSDictionary *userDict = [self getUserInfo];
+                cell.SubTitle.text = [NSString stringWithFormat:@"%@",userDict[@"store_phone"]];
+                return cell;
+            }else if (indexPath.row == 4){
+                cell.SubTitle.text = @"";
+                cell.Title.text = @"营业资质";
+                return cell;
+            }else{
+                NSDictionary *user = [self getUserInfo];
+                cell.SubTitle.text = [NSString stringWithFormat:@"%@~%@",user[@"work_start_time"],user[@"work_end_time"]];
+                cell.Title.text = @"营业时间";
+                return cell;
+            }
+            
         }else{
-            NSDictionary *user = [self getUserInfo];
-            cell.SubTitle.text = [NSString stringWithFormat:@"%@~%@",user[@"work_start_time"],user[@"work_end_time"]];
-            cell.Title.text = @"营业时间";
+            ShopSetTableViewCell3 *cell = (ShopSetTableViewCell3 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell3"];
+            if (!cell){
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell3" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
+            }
+            NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+            cell.SubTitle.text = dict[@"area_info"];
+            cell.Title.text = @"餐厅地址";
             return cell;
+            
         }
-        
     }else{
-        ShopSetTableViewCell3 *cell = (ShopSetTableViewCell3 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell3"];
+        NSArray *a = @[@"自动接单",@"自动打印"];
+        ShopSetTableViewCell5 *cell = (ShopSetTableViewCell5 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell5"];
         if (!cell){
-            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell3" owner:self options:nil];
+            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell5" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
-        NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
-        cell.SubTitle.text = dict[@"area_info"];
-        cell.Title.text = @"餐厅地址";
+        cell.title.text = a[indexPath.row];
         return cell;
-        
     }
+
     return nil;
 }
 

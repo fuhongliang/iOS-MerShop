@@ -17,8 +17,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    
 }
 
 - (IBAction)edite:(id)sender {
@@ -36,16 +35,21 @@
 - (void)setDataWithModel:(CouponModel *)model{
     [self.line1 drawDottedLine];
     [self.line2 drawDottedLine];
+//    self.editeBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+//    self.deleteBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     if (model.voucher_state == 1){
         [self.couponImg setImage:[UIImage imageNamed:@"yhq_bnt_xszk_djq"]];
         [self.couponStateImg setHidden:YES];
+        [self.editeBtn setHidden:NO];
         [self.rest setTextColor:toPCcolor(@"#1c98f6")];
         [self.receive setTextColor:toPCcolor(@"#1c98f6")];
         [self.used setTextColor:toPCcolor(@"#1c98f6")];
         [self.orderPrice setTextColor:toPCcolor(@"#1c98f6")];
+        
     }else{
         [self.couponImg setImage:[UIImage imageNamed:@"yhq_bnt_xszk_djq01"]];
         [self.couponStateImg setHidden:NO];
+        [self.editeBtn setHidden:YES];
         [self.rest setTextColor:toPCcolor(@"#333333")];
         [self.receive setTextColor:toPCcolor(@"#333333")];
         [self.used setTextColor:toPCcolor(@"#333333")];

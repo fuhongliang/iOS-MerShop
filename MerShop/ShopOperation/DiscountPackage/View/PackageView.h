@@ -10,6 +10,7 @@
 
 
 @interface PackageView : UIView
+@property (weak, nonatomic) IBOutlet UITextField *activityName;
 
 @end
 

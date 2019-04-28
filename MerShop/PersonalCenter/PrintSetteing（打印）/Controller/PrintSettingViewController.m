@@ -10,6 +10,8 @@
 #import "PrintSettringHeaderView.h"
 #import "ZJTopImageBottomTitleButton.h"
 #import <CoreBluetooth/CoreBluetooth.h>
+#import "BluetoothHelpViewController.h"
+#import "BluetoothSettingViewController.h"
 
 @interface PrintSettingViewController ()<UITableViewDelegate,UITableViewDataSource,CBCentralManagerDelegate>
 @property (nonatomic ,strong)PrintSettringHeaderView *headerView;
@@ -22,6 +24,12 @@
 @property (nonatomic ,strong)UIView *headerView2;
 @property (nonatomic ,strong)UILabel *connectDevice;
 @property (nonatomic ,strong)UILabel *connectState;
+//未连接蓝牙之前，搜索加载的菊花
+@property (nonatomic ,strong)UIActivityIndicatorView *indicatorView;
+//连接蓝牙之后，搜索加载的菊花
+@property (nonatomic ,strong)UIActivityIndicatorView *indicatorView1;
+
+@property (nonatomic ,strong)CBPeripheral *currentBluetooth;
 @end
 
 @implementation PrintSettingViewController
@@ -48,6 +56,8 @@
                 weakself.connectState.text = @"已连接";
                 weakself.mainTableView.tableHeaderView = weakself.headerView2;
                 [weakself.mainTableView reloadData];
+                weakself.currentBluetooth = perpheral;
+
             });
         }else{
             [ProgressShow alertView:self.view Message:error.domain cb:nil];
@@ -63,6 +73,17 @@
     [newDevice setTextColor:toPCcolor(@"#808080")];
     [newDevice setFont:XFont(14)];
     [self.headerView1 addSubview:newDevice];
+    
+    self.indicatorView = [[UIActivityIndicatorView alloc]init];
+    self.indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    [self.headerView1 addSubview:self.indicatorView];
+    [self.indicatorView makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.headerView1.right).offset(-15);
+        make.centerY.equalTo(newDevice.centerY).offset(0);
+        make.width.offset(15);
+        make.height.offset(15);
+    }];
+    
     [self.mainTableView setTableHeaderView:self.headerView1];
     
     UILabel *myDeviceLab = [[UILabel alloc]init];
@@ -84,11 +105,9 @@
     [view1 addSubview:img];
     
     UIButton *printBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [printBtn setFrame:XFrame(Screen_W-IFAutoFitPx(30)-IFAutoFitPx(140), IFAutoFitPx(30), IFAutoFitPx(140), IFAutoFitPx(36))];
-    [printBtn setTitle:@"打印测试" forState:(UIControlStateNormal)];
-    [printBtn setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
-    XViewLayerCB(printBtn, 3, IFAutoFitPx(1), IFThemeBlueColor);
-    printBtn.titleLabel.font = XFont(14);
+    [printBtn setFrame:XFrame(Screen_W-IFAutoFitPx(30)-IFAutoFitPx(32), IFAutoFitPx(30), IFAutoFitPx(32), IFAutoFitPx(32))];
+    [printBtn setImage:[UIImage imageNamed:@"dyj_ic_sbxqgt"] forState:(UIControlStateNormal)];
+    [printBtn addTarget:self action:@selector(goPrintSettingView) forControlEvents:(UIControlEventTouchUpInside)];
     [view1 addSubview:printBtn];
     
     _connectDevice = [[UILabel alloc]init];
@@ -111,6 +130,17 @@
     [newDevice2 setTextColor:toPCcolor(@"#808080")];
     [newDevice2 setFont:XFont(14)];
     [self.headerView2 addSubview:newDevice2];
+    
+    self.indicatorView1 = [[UIActivityIndicatorView alloc]init];
+    self.indicatorView1.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    [self.headerView2 addSubview:self.indicatorView1];
+    [self.indicatorView1 makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.headerView2.right).offset(-15);
+        make.centerY.equalTo(newDevice2.centerY).offset(0);
+        make.width.offset(15);
+        make.height.offset(15);
+    }];
+    
 
 }
 
@@ -128,7 +158,7 @@
     [bottomView addSubview:line];
     
     _searchBtn = [[ZJTopImageBottomTitleButton alloc]init];
-    [_searchBtn setFrame:XFrame(0, IFAutoFitPx(1), Screen_W, IFAutoFitPx(95))];
+    [_searchBtn setFrame:XFrame(0, IFAutoFitPx(1), Screen_W, IFAutoFitPx(80))];
     [_searchBtn setImage:[UIImage imageNamed:@"dyj_ic_sousuosb"] forState:(UIControlStateNormal)];
     [_searchBtn setTitle:@"搜索设备" forState:(UIControlStateNormal)];
     [_searchBtn setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
@@ -139,50 +169,50 @@
 
 - (void)printLab{
     UIButton *printbtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [printbtn setFrame:XFrame(Screen_W-IFAutoFitPx(148)-IFAutoFitPx(30), StatusBar_H+IFAutoFitPx(15), IFAutoFitPx(148), Navagtion_H-IFAutoFitPx(30))];
-    [printbtn setTitle:@"打印" forState:(UIControlStateNormal)];
+    [printbtn setTitle:@"帮助" forState:(UIControlStateNormal)];
     [printbtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     [printbtn setBackgroundColor:IFThemeBlueColor];
-    [printbtn addTarget:self action:@selector(print) forControlEvents:(UIControlEventTouchUpInside)];
-    XViewLayerCB(printbtn, 1, 1, [UIColor whiteColor]);
+    [printbtn addTarget:self action:@selector(goHelpVC) forControlEvents:(UIControlEventTouchUpInside)];
+    [printbtn.titleLabel setFont:XFont(18)];
     [self.navigationView addSubview:printbtn];
+    
+    [printbtn makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.navigationView.right).offset(-15);
+        make.top.equalTo(self.navigationView.top).offset(StatusBar_H);
+        make.bottom.equalTo(self.navigationView.bottom).offset(0);
+    }];
     
 }
 
-- (void)print{
-    if (_manage.stage != JWScanStageCharacteristics) {
-        [ProgressShow alertView:self.view Message:@"打印机正在准备中..." cb:nil];
-        return;
-    }
-    JWPrinter *printer = [[JWPrinter alloc] init];
-    NSString *str1 = @"=============银智付=============";
-    [printer appendText:str1 alignment:HLTextAlignmentCenter];
-    [printer appendTitle:@"商户名称：" value:@"樱花休闲娱乐会所"];
-    [printer appendTitle:@"商户编号：" value:@"09891331"];
-    [printer appendTitle:@"订单编号：" value:@"MS1234567890"];
-    [printer appendTitle:@"交易类型：" value:@"微信支付"];
-    [printer appendTitle:@"交易时间：" value:@"2019-03-14"];
-    [printer appendTitle:@"金   额：" value:@"300元"];
-    [printer appendTitle:@"服务技师：" value:@"小红"];
-    [printer appendFooter:@"欢迎再次光临!"];
-    [printer appendNewLine];
-    NSData *mainData = [printer getFinalData];
-    [[JWBluetoothManage sharedInstance] sendPrintData:mainData completion:^(BOOL completion, CBPeripheral *connectPerpheral,NSString *error) {
-        if (completion) {
-            NSLog(@"打印成功");
-        }else{
-            NSLog(@"写入错误---:%@",error);
-        }
-    }];
+//跳转打印参数设置页面
+- (void)goPrintSettingView{
+    BluetoothSettingViewController *vc = [[BluetoothSettingViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
+//跳转蓝牙帮助页面
+- (void)goHelpVC{
+    BluetoothHelpViewController *vc = [[BluetoothHelpViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)searchBluetooth{
     LCWeakSelf(self)
+    [self.indicatorView startAnimating];
+    [self.indicatorView1 startAnimating];
     [self.manage beginScanPerpheralSuccess:^(NSArray<CBPeripheral *> *peripherals, NSArray<NSNumber *> *rssis) {
         NSLog(@"%@",peripherals);
         weakself.dataSource = [NSMutableArray arrayWithArray:peripherals];
+        [self.indicatorView1 stopAnimating];
+        [self.indicatorView stopAnimating];
+//        for (CBPeripheral *b in weakself.dataSource){
+//            if ([weakself.currentBluetooth.name isEqualToString:b.name]){
+//                [weakself.dataSource removeObject:b];
+//            }
+//        }
         [weakself.mainTableView reloadData];
+        
+        
         
         NSLog(@"------------蓝牙列表---------%@",weakself.dataSource);
     } failure:^(CBManagerState status) {
@@ -232,7 +262,10 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[IFUtils share]showErrorInfo:@"连接成功"];
                     weakself.connectDevice.text = bluetoothName;
+                    weakself.currentBluetooth = perpheral;
                     [weakself.mainTableView setTableHeaderView:weakself.headerView2];
+                    [weakself.dataSource removeObjectAtIndex:indexPath.row];
+                    [weakself.mainTableView reloadData];
                 });
             }else{
                 [[IFUtils share]showErrorInfo:error.domain];

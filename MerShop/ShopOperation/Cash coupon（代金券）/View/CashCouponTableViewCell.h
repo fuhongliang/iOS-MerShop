@@ -26,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *receive;
 @property (weak, nonatomic) IBOutlet UILabel *used;
 @property (weak, nonatomic) IBOutlet UILabel *orderPrice;
+@property (weak, nonatomic) IBOutlet UIButton *editeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
+
 
 @property (weak, nonatomic) IBOutlet UIView *line1;
 @property (weak, nonatomic) IBOutlet UIView *line2;

@@ -149,8 +149,12 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkk-K3-xpy">
-                                        <rect key="frame" x="229" y="166.5" width="46" height="17"/>
+                                        <rect key="frame" x="219" y="166.5" width="56" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="e0T-BJ-yRU"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
                                         <state key="normal" title="删除" image="yhq_bnt_shanchu">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -159,8 +163,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="di0-e5-MKI">
-                                        <rect key="frame" x="153" y="166.5" width="46" height="17"/>
+                                        <rect key="frame" x="133" y="166.5" width="56" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="pLu-sc-a3k"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                         <state key="normal" title="编辑" image="yhq_bnt_bianji">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -256,6 +264,8 @@
                 <outlet property="couponImg" destination="0AJ-t0-FUX" id="qOk-ad-oSl"/>
                 <outlet property="couponStateImg" destination="lZv-Un-fRS" id="YJR-Ca-BaG"/>
                 <outlet property="couponTitle" destination="uHv-he-0dE" id="j4h-5w-7qt"/>
+                <outlet property="deleteBtn" destination="hkk-K3-xpy" id="NEZ-tc-esJ"/>
+                <outlet property="editeBtn" destination="di0-e5-MKI" id="Buy-qH-dEd"/>
                 <outlet property="limitLab" destination="XHG-8r-8UU" id="6Rc-0H-fSP"/>
                 <outlet property="line1" destination="ipu-4o-p0f" id="kmX-uN-b3a"/>
                 <outlet property="line2" destination="6Ly-vr-eLG" id="bTe-dd-Ojn"/>

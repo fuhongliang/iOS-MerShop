@@ -13,7 +13,6 @@
 - (void)addNumber;
 - (void)reduceNumber;
 - (void)showPickerView:(id)data;
-- (void)submit;
 
 @end
 
@@ -43,7 +42,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *couponDescription;
 
 @property (weak, nonatomic)id<EditeCouponViewDelegate>delegate;
-- (IBAction)submitAction:(id)sender;
 - (IBAction)addAction:(id)sender;
 - (IBAction)reduceAction:(id)sender;
 - (IBAction)selectNumAction:(id)sender;

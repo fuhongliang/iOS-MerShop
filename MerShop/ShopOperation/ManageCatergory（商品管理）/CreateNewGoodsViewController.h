@@ -21,5 +21,6 @@
 @property (nonatomic ,copy)NSString *desc;
 @property (nonatomic ,assign)NSInteger goodsId;
 @property (nonatomic ,copy)NSString *tempStr;//是否是从商品管理编辑进来
+@property (nonatomic ,copy)NSDictionary *tempDict;
 @end
 

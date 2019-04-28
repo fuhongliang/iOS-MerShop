@@ -17,11 +17,11 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 }\
 (isPhoneX);})
 
-//#define http_devUrlString       @"http://47.111.27.189:2000/v2/"
+#define http_devUrlString       @"http://47.111.27.189:2000/v2/"
 
-#define http_devUrlString          @"http://192.168.5.15/api/public/index.php/v2/"
+//#define http_devUrlString          @"http://192.168.5.15/api/public/index.php/v2/"
 
-#define http_urlString          @"http://47.92.244.60:88/v1/"
+#define http_urlString          @"http://47.92.244.60:88/v2/"
 
 #define IFUserDefaults   [NSUserDefaults standardUserDefaults]
 

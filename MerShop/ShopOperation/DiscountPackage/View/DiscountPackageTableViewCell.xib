@@ -44,18 +44,32 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaW-aR-Xz0">
-                                        <rect key="frame" x="234" y="106.5" width="46" height="17"/>
+                                        <rect key="frame" x="224" y="106.5" width="56" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="2C1-sH-4tA"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
                                         <state key="normal" title="删除" image="yhq_bnt_shanchu">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deleteAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="A4y-1q-EKa"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMm-gt-bBn">
-                                        <rect key="frame" x="158" y="106.5" width="46" height="17"/>
+                                        <rect key="frame" x="138" y="106.5" width="56" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="8v5-WY-9sw"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="9" maxY="0.0"/>
                                         <state key="normal" title="管理" image="yhq_bnt_guanli">
                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="manageAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rdc-JS-s1b"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bnt_icon_zuo_yuan" translatesAutoresizingMaskIntoConstraints="NO" id="s9g-8h-qGs">
                                         <rect key="frame" x="0.0" y="90" width="4" height="8"/>
@@ -137,7 +151,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="discountPrice" destination="iaH-d9-czq" id="cCy-u1-oFg"/>
                 <outlet property="line" destination="VC9-gv-tlC" id="oQa-Pv-3sT"/>
+                <outlet property="manageBtn" destination="jMm-gt-bBn" id="oBT-Sw-sEV"/>
+                <outlet property="packageImg" destination="0DT-rW-Khi" id="AjC-XO-F0G"/>
+                <outlet property="stateImg" destination="j2t-g8-yBy" id="cyj-9x-Zv5"/>
+                <outlet property="title" destination="Ple-IW-V55" id="sD2-HF-5Mn"/>
             </connections>
         </tableViewCell>
     </objects>

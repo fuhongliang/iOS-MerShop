@@ -10,6 +10,7 @@
 
 
 @interface DiscountViewController : BasicViewController
-
+@property (nonatomic ,assign)NSInteger xianshi_id;
+@property (nonatomic ,copy)NSDictionary *activityInfo;
 @end
 

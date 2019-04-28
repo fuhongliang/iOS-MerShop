@@ -8,10 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+@protocol DiscountPackageGoodsCellDelegate <NSObject>
 
-@interface DiscountPackageGoodsCell : UITableViewCell
+- (void)deleteGoods:(id)data;
 
 @end
 
-NS_ASSUME_NONNULL_END
+@interface DiscountPackageGoodsCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *oldPrice;
+@property (weak, nonatomic) IBOutlet UILabel *discountPrice;
+@property (weak, nonatomic)id<DiscountPackageGoodsCellDelegate>delegate;
+- (IBAction)deleteAction:(id)sender;
+- (void)setDataWithDict:(NSDictionary *)dict;
+@end
+
