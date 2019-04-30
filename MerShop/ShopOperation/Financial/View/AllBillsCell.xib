@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="AllBillsCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyZ-PT-qZv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全部账单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGN-Rd-3qc">
+                                <rect key="frame" x="15" y="11.5" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="fQT-Gw-FB7">
+                                <rect key="frame" x="297" y="16" width="8" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="8" id="ITR-zO-lc8"/>
+                                    <constraint firstAttribute="height" constant="12" id="MhU-Ak-Gbz"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fb9-rC-234">
+                                <rect key="frame" x="15" y="43" width="305" height="0.5"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="94y-kl-VeS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fb9-rC-234" secondAttribute="trailing" id="3NE-RN-ia4"/>
+                            <constraint firstItem="fQT-Gw-FB7" firstAttribute="centerY" secondItem="zGN-Rd-3qc" secondAttribute="centerY" id="4Y1-Xq-YJu"/>
+                            <constraint firstAttribute="bottom" secondItem="fb9-rC-234" secondAttribute="bottom" id="4b7-eV-OW4"/>
+                            <constraint firstAttribute="trailing" secondItem="fQT-Gw-FB7" secondAttribute="trailing" constant="15" id="JvB-kl-poD"/>
+                            <constraint firstItem="fb9-rC-234" firstAttribute="leading" secondItem="iyZ-PT-qZv" secondAttribute="leading" constant="15" id="V51-t5-A9r"/>
+                            <constraint firstItem="zGN-Rd-3qc" firstAttribute="leading" secondItem="iyZ-PT-qZv" secondAttribute="leading" constant="15" id="qB9-d1-s4U"/>
+                            <constraint firstItem="zGN-Rd-3qc" firstAttribute="centerY" secondItem="iyZ-PT-qZv" secondAttribute="centerY" id="u1h-2N-gTu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="iyZ-PT-qZv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1PC-F1-Zlc"/>
+                    <constraint firstItem="iyZ-PT-qZv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="aha-g3-hLy"/>
+                    <constraint firstAttribute="bottom" secondItem="iyZ-PT-qZv" secondAttribute="bottom" id="f0n-k4-Nc2"/>
+                    <constraint firstAttribute="trailing" secondItem="iyZ-PT-qZv" secondAttribute="trailing" id="o0C-w7-paA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <point key="canvasLocation" x="377.60000000000002" y="96.251874062968525"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrow" width="8.5" height="14"/>
+    </resources>
+</document>

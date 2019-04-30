@@ -16,6 +16,7 @@
 #import "FullReductionViewController.h"
 #import "DiscountPackageViewController.h"
 #import "CashCouponViewController.h"
+#import "FinanceViewController.h"
 
 @interface ShopViewController ()<UITableViewDelegate,UITableViewDataSource,HeaderViewDelegate>
 @property (nonatomic ,strong)HeaderView *headView;
@@ -119,16 +120,18 @@
     GoodsManagementViewController *vc = [[GoodsManagementViewController alloc]init];
     [self.navigationController pushViewController:vc animated:NO];
 }
-
 - (void)evaluation:(UIButton *)sender{
     UserEvaluationViewController *vc = [[UserEvaluationViewController alloc]init];
     [self.navigationController pushViewController:vc animated:NO];
 }
-
 - (void)managementData:(UIButton *)sender{
     ManageViewController *vc = [[ManageViewController alloc]init];
     vc.url = [NSString stringWithFormat:@"%@",[self.storeData objectForKey:@"jingying_url"]];
     [self.navigationController pushViewController:vc animated:NO];
+}
+- (void)finance:(UIButton *)sender{
+    FinanceViewController *vc = [[FinanceViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "AccountSecurityViewController.h"
 #import "RingSettingViewController.h"
 #import "FeedbackViewController.h"
+#import "AboutUsViewController.h"
 #import "BackgroundView.h"
 #import "AppDelegate.h"
 #import "LoginInViewController.h"
@@ -96,7 +97,8 @@
         BusinessStatusViewController *VC = [[BusinessStatusViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];
     }else if (button.tag == 1003){
-        
+        AboutUsViewController *vc = [[AboutUsViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (button.tag == 1004){
         PrintSettingViewController *vc = [[PrintSettingViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];

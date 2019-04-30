@@ -27,6 +27,8 @@
 		042B19292241D05F004D372A /* NewOrderTableViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B19272241D05F004D372A /* NewOrderTableViewCell1.m */; };
 		042B192A2241D05F004D372A /* NewOrderTableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042B19282241D05F004D372A /* NewOrderTableViewCell1.xib */; };
 		042B19382242383D004D372A /* NewOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B19372242383D004D372A /* NewOrderModel.m */; };
+		043766662276F1C600101E89 /* Registview.m in Sources */ = {isa = PBXBuildFile; fileRef = 043766652276F1C600101E89 /* Registview.m */; };
+		043766682276F1DF00101E89 /* Registview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043766672276F1DF00101E89 /* Registview.xib */; };
 		0446EAB82239251100A86F32 /* BusinessStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446EAB72239251100A86F32 /* BusinessStatusViewController.m */; };
 		0446EABB2239319900A86F32 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446EABA2239319900A86F32 /* FeedbackViewController.m */; };
 		0446EABE2239EDD400A86F32 /* AccountSecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446EABD2239EDD400A86F32 /* AccountSecurityViewController.m */; };
@@ -149,8 +151,37 @@
 		04F54BD122647B6D00DE81E4 /* FullReductionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F54BCF22647B6D00DE81E4 /* FullReductionCell.xib */; };
 		04F5856C2275433C00188C19 /* ShopSetTableViewCell5.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5856A2275433B00188C19 /* ShopSetTableViewCell5.m */; };
 		04F5856D2275433C00188C19 /* ShopSetTableViewCell5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5856B2275433B00188C19 /* ShopSetTableViewCell5.xib */; };
+		04F5857422754E5A00188C19 /* FinancialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5857222754E5A00188C19 /* FinancialCell.m */; };
+		04F5857522754E5A00188C19 /* FinancialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5857322754E5A00188C19 /* FinancialCell.xib */; };
+		04F585792275505400188C19 /* AllBillsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F585772275505400188C19 /* AllBillsCell.m */; };
+		04F5857A2275505400188C19 /* AllBillsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F585782275505400188C19 /* AllBillsCell.xib */; };
+		04F5857D2275511000188C19 /* FinancialHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5857C2275511000188C19 /* FinancialHeaderView.m */; };
+		04F5857F2275511E00188C19 /* FinancialHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5857E2275511E00188C19 /* FinancialHeaderView.xib */; };
+		04F585822275806400188C19 /* FinanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F585812275806400188C19 /* FinanceViewController.m */; };
+		04F585852275943300188C19 /* AllbillsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F585842275943300188C19 /* AllbillsViewController.m */; };
+		04F585882275A05F00188C19 /* BankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F585872275A05F00188C19 /* BankCardViewController.m */; };
+		04F5858B2275A15C00188C19 /* BankCardManageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5858A2275A15C00188C19 /* BankCardManageView.m */; };
+		04F5858D2275A17500188C19 /* BankCardManageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5858C2275A17500188C19 /* BankCardManageView.xib */; };
+		04F585902275B02200188C19 /* AccountInfomationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5858F2275B02200188C19 /* AccountInfomationController.m */; };
+		04F585932275B05100188C19 /* AccountInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F585922275B05100188C19 /* AccountInfoView.m */; };
+		04F585952275B05F00188C19 /* AccountInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F585942275B05F00188C19 /* AccountInfoView.xib */; };
+		04F585982275B63800188C19 /* AddBankCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F585972275B63800188C19 /* AddBankCardView.m */; };
+		04F5859A2275B65500188C19 /* AddBankCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F585992275B65500188C19 /* AddBankCardView.xib */; };
+		04F5859D2275C2A900188C19 /* FinishBankCardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5859C2275C2A900188C19 /* FinishBankCardInfo.m */; };
+		04F5859F2275C2B600188C19 /* FinishBankCardInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5859E2275C2B600188C19 /* FinishBankCardInfo.xib */; };
 		04F5B7D822390AE100E36E3C /* NewsSettingview.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5B7D722390AE100E36E3C /* NewsSettingview.m */; };
 		04F5B7DA22390B0500E36E3C /* NewsSettingview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5B7D922390B0500E36E3C /* NewsSettingview.xib */; };
+		04F5C51E2275CBF800C5C218 /* AddBankCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5C51D2275CBF800C5C218 /* AddBankCardController.m */; };
+		04F5C521227692BA00C5C218 /* GetMoneyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5C520227692BA00C5C218 /* GetMoneyController.m */; };
+		04F5C524227692DC00C5C218 /* GetMoneyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5C523227692DC00C5C218 /* GetMoneyView.m */; };
+		04F5C526227692F500C5C218 /* GetMoneyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5C525227692F500C5C218 /* GetMoneyView.xib */; };
+		04F5C52A2276A6B000C5C218 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5C5292276A6B000C5C218 /* AboutUsViewController.m */; };
+		04F5C5322276ABAA00C5C218 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5C5312276ABAA00C5C218 /* AboutView.m */; };
+		04F5C5342276ABC300C5C218 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5C5332276ABC300C5C218 /* AboutView.xib */; };
+		04F5C5372276CD7D00C5C218 /* InfomationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5C5362276CD7D00C5C218 /* InfomationViewController.m */; };
+		04F5C53A2276CFD700C5C218 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5C5392276CFD700C5C218 /* LoginView.m */; };
+		04F5C53C2276CFE800C5C218 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F5C53B2276CFE800C5C218 /* LoginView.xib */; };
+		04F5C53F2276E14700C5C218 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5C53E2276E14700C5C218 /* RegisterViewController.m */; };
 		04F61DE722364E16004986E0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61DE622364E16004986E0 /* AppDelegate.m */; };
 		04F61DEA22364E16004986E0 /* LoginInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F61DE922364E16004986E0 /* LoginInViewController.m */; };
 		04F61DED22364E16004986E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F61DEB22364E16004986E0 /* Main.storyboard */; };
@@ -225,6 +256,9 @@
 		042B19282241D05F004D372A /* NewOrderTableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewOrderTableViewCell1.xib; sourceTree = "<group>"; };
 		042B19362242383D004D372A /* NewOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewOrderModel.h; sourceTree = "<group>"; };
 		042B19372242383D004D372A /* NewOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewOrderModel.m; sourceTree = "<group>"; };
+		043766642276F1C600101E89 /* Registview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Registview.h; sourceTree = "<group>"; };
+		043766652276F1C600101E89 /* Registview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Registview.m; sourceTree = "<group>"; };
+		043766672276F1DF00101E89 /* Registview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Registview.xib; sourceTree = "<group>"; };
 		0446EAB62239251100A86F32 /* BusinessStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusinessStatusViewController.h; sourceTree = "<group>"; };
 		0446EAB72239251100A86F32 /* BusinessStatusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BusinessStatusViewController.m; sourceTree = "<group>"; };
 		0446EAB92239319900A86F32 /* FeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
@@ -431,9 +465,57 @@
 		04F585692275433B00188C19 /* ShopSetTableViewCell5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopSetTableViewCell5.h; sourceTree = "<group>"; };
 		04F5856A2275433B00188C19 /* ShopSetTableViewCell5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopSetTableViewCell5.m; sourceTree = "<group>"; };
 		04F5856B2275433B00188C19 /* ShopSetTableViewCell5.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopSetTableViewCell5.xib; sourceTree = "<group>"; };
+		04F5857122754E5A00188C19 /* FinancialCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinancialCell.h; sourceTree = "<group>"; };
+		04F5857222754E5A00188C19 /* FinancialCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinancialCell.m; sourceTree = "<group>"; };
+		04F5857322754E5A00188C19 /* FinancialCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinancialCell.xib; sourceTree = "<group>"; };
+		04F585762275505400188C19 /* AllBillsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllBillsCell.h; sourceTree = "<group>"; };
+		04F585772275505400188C19 /* AllBillsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllBillsCell.m; sourceTree = "<group>"; };
+		04F585782275505400188C19 /* AllBillsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllBillsCell.xib; sourceTree = "<group>"; };
+		04F5857B2275511000188C19 /* FinancialHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinancialHeaderView.h; sourceTree = "<group>"; };
+		04F5857C2275511000188C19 /* FinancialHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinancialHeaderView.m; sourceTree = "<group>"; };
+		04F5857E2275511E00188C19 /* FinancialHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinancialHeaderView.xib; sourceTree = "<group>"; };
+		04F585802275806400188C19 /* FinanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinanceViewController.h; sourceTree = "<group>"; };
+		04F585812275806400188C19 /* FinanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinanceViewController.m; sourceTree = "<group>"; };
+		04F585832275943300188C19 /* AllbillsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllbillsViewController.h; sourceTree = "<group>"; };
+		04F585842275943300188C19 /* AllbillsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllbillsViewController.m; sourceTree = "<group>"; };
+		04F585862275A05F00188C19 /* BankCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardViewController.h; sourceTree = "<group>"; };
+		04F585872275A05F00188C19 /* BankCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardViewController.m; sourceTree = "<group>"; };
+		04F585892275A15C00188C19 /* BankCardManageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardManageView.h; sourceTree = "<group>"; };
+		04F5858A2275A15C00188C19 /* BankCardManageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardManageView.m; sourceTree = "<group>"; };
+		04F5858C2275A17500188C19 /* BankCardManageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankCardManageView.xib; sourceTree = "<group>"; };
+		04F5858E2275B02200188C19 /* AccountInfomationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfomationController.h; sourceTree = "<group>"; };
+		04F5858F2275B02200188C19 /* AccountInfomationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfomationController.m; sourceTree = "<group>"; };
+		04F585912275B05100188C19 /* AccountInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfoView.h; sourceTree = "<group>"; };
+		04F585922275B05100188C19 /* AccountInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfoView.m; sourceTree = "<group>"; };
+		04F585942275B05F00188C19 /* AccountInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountInfoView.xib; sourceTree = "<group>"; };
+		04F585962275B63800188C19 /* AddBankCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddBankCardView.h; sourceTree = "<group>"; };
+		04F585972275B63800188C19 /* AddBankCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddBankCardView.m; sourceTree = "<group>"; };
+		04F585992275B65500188C19 /* AddBankCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddBankCardView.xib; sourceTree = "<group>"; };
+		04F5859B2275C2A900188C19 /* FinishBankCardInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinishBankCardInfo.h; sourceTree = "<group>"; };
+		04F5859C2275C2A900188C19 /* FinishBankCardInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinishBankCardInfo.m; sourceTree = "<group>"; };
+		04F5859E2275C2B600188C19 /* FinishBankCardInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinishBankCardInfo.xib; sourceTree = "<group>"; };
 		04F5B7D622390AE100E36E3C /* NewsSettingview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsSettingview.h; sourceTree = "<group>"; };
 		04F5B7D722390AE100E36E3C /* NewsSettingview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsSettingview.m; sourceTree = "<group>"; };
 		04F5B7D922390B0500E36E3C /* NewsSettingview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsSettingview.xib; sourceTree = "<group>"; };
+		04F5C51C2275CBF800C5C218 /* AddBankCardController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddBankCardController.h; sourceTree = "<group>"; };
+		04F5C51D2275CBF800C5C218 /* AddBankCardController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddBankCardController.m; sourceTree = "<group>"; };
+		04F5C51F227692BA00C5C218 /* GetMoneyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetMoneyController.h; sourceTree = "<group>"; };
+		04F5C520227692BA00C5C218 /* GetMoneyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetMoneyController.m; sourceTree = "<group>"; };
+		04F5C522227692DC00C5C218 /* GetMoneyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetMoneyView.h; sourceTree = "<group>"; };
+		04F5C523227692DC00C5C218 /* GetMoneyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetMoneyView.m; sourceTree = "<group>"; };
+		04F5C525227692F500C5C218 /* GetMoneyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetMoneyView.xib; sourceTree = "<group>"; };
+		04F5C5282276A6B000C5C218 /* AboutUsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		04F5C5292276A6B000C5C218 /* AboutUsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		04F5C5302276ABAA00C5C218 /* AboutView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
+		04F5C5312276ABAA00C5C218 /* AboutView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
+		04F5C5332276ABC300C5C218 /* AboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
+		04F5C5352276CD7D00C5C218 /* InfomationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfomationViewController.h; sourceTree = "<group>"; };
+		04F5C5362276CD7D00C5C218 /* InfomationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfomationViewController.m; sourceTree = "<group>"; };
+		04F5C5382276CFD700C5C218 /* LoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		04F5C5392276CFD700C5C218 /* LoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		04F5C53B2276CFE800C5C218 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		04F5C53D2276E14700C5C218 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		04F5C53E2276E14700C5C218 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		04F61DE222364E16004986E0 /* MerShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MerShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F61DE522364E16004986E0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04F61DE622364E16004986E0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -963,8 +1045,16 @@
 				04F61E1F22366583004986E0 /* BasicViewController.m */,
 				04F61DE822364E16004986E0 /* LoginInViewController.h */,
 				04F61DE922364E16004986E0 /* LoginInViewController.m */,
+				04F5C53D2276E14700C5C218 /* RegisterViewController.h */,
+				04F5C53E2276E14700C5C218 /* RegisterViewController.m */,
 				04C61856223790B000773B7C /* NavigationViewController.h */,
 				04C61857223790B000773B7C /* NavigationViewController.m */,
+				04F5C5382276CFD700C5C218 /* LoginView.h */,
+				04F5C5392276CFD700C5C218 /* LoginView.m */,
+				04F5C53B2276CFE800C5C218 /* LoginView.xib */,
+				043766642276F1C600101E89 /* Registview.h */,
+				043766652276F1C600101E89 /* Registview.m */,
+				043766672276F1DF00101E89 /* Registview.xib */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -1085,6 +1175,77 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		04F5856E22754C3600188C19 /* Financial */ = {
+			isa = PBXGroup;
+			children = (
+				04F5857022754DE300188C19 /* FinancialVC */,
+				04F5856F22754DCE00188C19 /* View */,
+			);
+			path = Financial;
+			sourceTree = "<group>";
+		};
+		04F5856F22754DCE00188C19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04F5857122754E5A00188C19 /* FinancialCell.h */,
+				04F5857222754E5A00188C19 /* FinancialCell.m */,
+				04F5857322754E5A00188C19 /* FinancialCell.xib */,
+				04F585762275505400188C19 /* AllBillsCell.h */,
+				04F585772275505400188C19 /* AllBillsCell.m */,
+				04F585782275505400188C19 /* AllBillsCell.xib */,
+				04F5857B2275511000188C19 /* FinancialHeaderView.h */,
+				04F5857C2275511000188C19 /* FinancialHeaderView.m */,
+				04F5857E2275511E00188C19 /* FinancialHeaderView.xib */,
+				04F585892275A15C00188C19 /* BankCardManageView.h */,
+				04F5858A2275A15C00188C19 /* BankCardManageView.m */,
+				04F5858C2275A17500188C19 /* BankCardManageView.xib */,
+				04F585912275B05100188C19 /* AccountInfoView.h */,
+				04F585922275B05100188C19 /* AccountInfoView.m */,
+				04F585942275B05F00188C19 /* AccountInfoView.xib */,
+				04F585962275B63800188C19 /* AddBankCardView.h */,
+				04F585972275B63800188C19 /* AddBankCardView.m */,
+				04F585992275B65500188C19 /* AddBankCardView.xib */,
+				04F5859B2275C2A900188C19 /* FinishBankCardInfo.h */,
+				04F5859C2275C2A900188C19 /* FinishBankCardInfo.m */,
+				04F5859E2275C2B600188C19 /* FinishBankCardInfo.xib */,
+				04F5C522227692DC00C5C218 /* GetMoneyView.h */,
+				04F5C523227692DC00C5C218 /* GetMoneyView.m */,
+				04F5C525227692F500C5C218 /* GetMoneyView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04F5857022754DE300188C19 /* FinancialVC */ = {
+			isa = PBXGroup;
+			children = (
+				04F585802275806400188C19 /* FinanceViewController.h */,
+				04F585812275806400188C19 /* FinanceViewController.m */,
+				04F585832275943300188C19 /* AllbillsViewController.h */,
+				04F585842275943300188C19 /* AllbillsViewController.m */,
+				04F585862275A05F00188C19 /* BankCardViewController.h */,
+				04F585872275A05F00188C19 /* BankCardViewController.m */,
+				04F5858E2275B02200188C19 /* AccountInfomationController.h */,
+				04F5858F2275B02200188C19 /* AccountInfomationController.m */,
+				04F5C51C2275CBF800C5C218 /* AddBankCardController.h */,
+				04F5C51D2275CBF800C5C218 /* AddBankCardController.m */,
+				04F5C51F227692BA00C5C218 /* GetMoneyController.h */,
+				04F5C520227692BA00C5C218 /* GetMoneyController.m */,
+			);
+			path = FinancialVC;
+			sourceTree = "<group>";
+		};
+		04F5C5272276A68300C5C218 /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				04F5C5282276A6B000C5C218 /* AboutUsViewController.h */,
+				04F5C5292276A6B000C5C218 /* AboutUsViewController.m */,
+				04F5C5302276ABAA00C5C218 /* AboutView.h */,
+				04F5C5312276ABAA00C5C218 /* AboutView.m */,
+				04F5C5332276ABC300C5C218 /* AboutView.xib */,
+			);
+			path = AboutUs;
+			sourceTree = "<group>";
+		};
 		04F61DD922364E16004986E0 = {
 			isa = PBXGroup;
 			children = (
@@ -1172,6 +1333,8 @@
 				042B19252241D03F004D372A /* view */,
 				04C6184F223787A400773B7C /* WaitDealwithViewController.h */,
 				04C61850223787A400773B7C /* WaitDealwithViewController.m */,
+				04F5C5352276CD7D00C5C218 /* InfomationViewController.h */,
+				04F5C5362276CD7D00C5C218 /* InfomationViewController.m */,
 			);
 			path = WaitDealwith;
 			sourceTree = "<group>";
@@ -1190,6 +1353,7 @@
 		04F61E1C2236633E004986E0 /* ShopOperation */ = {
 			isa = PBXGroup;
 			children = (
+				04F5856E22754C3600188C19 /* Financial */,
 				04235E57225B483B00B2FC40 /* Cash coupon（代金券） */,
 				04235E56225B481400B2FC40 /* DiscountPackage */,
 				04235E55225B47EB00B2FC40 /* FullReduction */,
@@ -1209,6 +1373,7 @@
 			children = (
 				04C618462237874600773B7C /* MeViewController.h */,
 				04C618472237874600773B7C /* MeViewController.m */,
+				04F5C5272276A68300C5C218 /* AboutUs */,
 				04A46A66225CC2B500511C79 /* PrintSetteing（打印） */,
 				0446EAD8223A5A5800A86F32 /* RingSetting */,
 				0446EAD7223A5A4100A86F32 /* FeedBack */,
@@ -1385,6 +1550,7 @@
 				04A46A55225C41FD00511C79 /* AddGoodsTableViewCell.xib in Resources */,
 				04F54BA522607E1100DE81E4 /* EditeCouponView.xib in Resources */,
 				04F54B87225F461D00DE81E4 /* CashCouponTableViewCell.xib in Resources */,
+				04F5857F2275511E00188C19 /* FinancialHeaderView.xib in Resources */,
 				042B182A2240EA3E004D372A /* UserEvaluationTableViewCell1.xib in Resources */,
 				046D024122707B8000E79237 /* Bluetooth.html in Resources */,
 				04F54BA022603AFC00DE81E4 /* FullReduceTableViewCell.xib in Resources */,
@@ -1398,6 +1564,9 @@
 				04F212B7224CA7F100611664 /* NoImageTableViewCell.xib in Resources */,
 				04F54BBA2264373E00DE81E4 /* FooterView.xib in Resources */,
 				0446EB37223F9B8A00A86F32 /* NewGoodsTableViewCell4.xib in Resources */,
+				04F5858D2275A17500188C19 /* BankCardManageView.xib in Resources */,
+				04F5C53C2276CFE800C5C218 /* LoginView.xib in Resources */,
+				04F5859A2275B65500188C19 /* AddBankCardView.xib in Resources */,
 				04EBC277225F32E10035BD29 /* DiscountTableViewCell.xib in Resources */,
 				04F54B91225F500300DE81E4 /* DiscountPackageTableViewCell.xib in Resources */,
 				0446EAE9223B7A3800A86F32 /* TableViewCell.xib in Resources */,
@@ -1408,6 +1577,7 @@
 				042B182F2240F704004D372A /* HeaderView1.xib in Resources */,
 				041668CE22672CAA00A3D2E1 /* NewGoodsTableViewCell5.xib in Resources */,
 				04F54BD122647B6D00DE81E4 /* FullReductionCell.xib in Resources */,
+				04F5C5342276ABC300C5C218 /* AboutView.xib in Resources */,
 				046D024C2271487D00E79237 /* BlueSettingView.xib in Resources */,
 				04A46A45225B550600511C79 /* EmptyDiscountView.xib in Resources */,
 				04235E532253531500B2FC40 /* EmptyOrderView.xib in Resources */,
@@ -1415,11 +1585,14 @@
 				0446EB1B223F6BFF00A86F32 /* ManageCatergoryTableViewCell.xib in Resources */,
 				04C6187E2238FC2600773B7C /* ShopSetTableViewCell4.xib in Resources */,
 				04FD40CA22436EA2000C9311 /* AllReadyDeliveryTableViewCell.xib in Resources */,
+				04F585952275B05F00188C19 /* AccountInfoView.xib in Resources */,
 				0446EB32223F8B0200A86F32 /* NewGoodsTableViewCell3.xib in Resources */,
 				0446EAE4223B441F00A86F32 /* HeaderView.xib in Resources */,
 				0446EB09223E439F00A86F32 /* SVProgressHUD.bundle in Resources */,
 				04A46A65225C9C2200511C79 /* ChangePriceView.xib in Resources */,
+				04F5859F2275C2B600188C19 /* FinishBankCardInfo.xib in Resources */,
 				04FD40C522436402000C9311 /* WaitDeliveryTableViewCell.xib in Resources */,
+				04F5857522754E5A00188C19 /* FinancialCell.xib in Resources */,
 				04F54BAD22642CF000DE81E4 /* DiscountPackageGoodsCell.xib in Resources */,
 				04F61DEF22364E18004986E0 /* Assets.xcassets in Resources */,
 				041668D32268115C00A3D2E1 /* TimePickerView.xib in Resources */,
@@ -1429,10 +1602,13 @@
 				04A46A7E225D8DF400511C79 /* README.md in Resources */,
 				04FD40BF22432708000C9311 /* refuseView.xib in Resources */,
 				04C618792238DDE600773B7C /* ShopSetTableViewCell3.xib in Resources */,
+				04F5857A2275505400188C19 /* AllBillsCell.xib in Resources */,
 				04F54BBF2264619900DE81E4 /* PackageView.xib in Resources */,
+				043766682276F1DF00101E89 /* Registview.xib in Resources */,
 				042B18202240CB76004D372A /* UserEvaluationTableViewCell.xib in Resources */,
 				0446EB2D223F88EF00A86F32 /* NewGoodsTableViewCell2.xib in Resources */,
 				042B192A2241D05F004D372A /* NewOrderTableViewCell1.xib in Resources */,
+				04F5C526227692F500C5C218 /* GetMoneyView.xib in Resources */,
 				04C618742238DC9E00773B7C /* ShopSetTableViewCell2.xib in Resources */,
 				0446EB562240872800A86F32 /* SortTableViewCell.xib in Resources */,
 				04F54BC7226472BE00DE81E4 /* FullReductionHeadView.xib in Resources */,
@@ -1517,8 +1693,13 @@
 				046D024F22714C9A00E79237 /* UIViewController+LCBlue.m in Sources */,
 				0416690722684DDA00A3D2E1 /* FullReductionModel.m in Sources */,
 				04F54BC2226471FF00DE81E4 /* AddFullReductionViewController.m in Sources */,
+				04F5C51E2275CBF800C5C218 /* AddBankCardController.m in Sources */,
+				04F585792275505400188C19 /* AllBillsCell.m in Sources */,
+				04F5C53A2276CFD700C5C218 /* LoginView.m in Sources */,
+				04F5C52A2276A6B000C5C218 /* AboutUsViewController.m in Sources */,
 				04A46A6E225CC40E00511C79 /* PrintSettringHeaderView.m in Sources */,
 				04F54BC5226472B100DE81E4 /* FullReductionHeadView.m in Sources */,
+				04F585852275943300188C19 /* AllbillsViewController.m in Sources */,
 				04F5B7D822390AE100E36E3C /* NewsSettingview.m in Sources */,
 				04F68EB8226ABA5A00F4DFC3 /* LimitDiscountModel.m in Sources */,
 				04FD40C922436EA2000C9311 /* AllReadyDeliveryTableViewCell.m in Sources */,
@@ -1533,6 +1714,7 @@
 				0446EB0D223E439F00A86F32 /* SVProgressHUD.m in Sources */,
 				041669032268160700A3D2E1 /* THDatePickerView.m in Sources */,
 				04235E51225352E200B2FC40 /* EmptyOrderView.m in Sources */,
+				04F585882275A05F00188C19 /* BankCardViewController.m in Sources */,
 				04F54B86225F461D00DE81E4 /* CashCouponTableViewCell.m in Sources */,
 				0446EB16223F4C1A00A86F32 /* ManageCatergoryViewController.m in Sources */,
 				04A46A4B225C3A4F00511C79 /* AddActivityGoodsViewController.m in Sources */,
@@ -1542,20 +1724,27 @@
 				04F212B6224CA7F100611664 /* NoImageTableViewCell.m in Sources */,
 				04C618782238DDE600773B7C /* ShopSetTableViewCell3.m in Sources */,
 				04F61E2022366583004986E0 /* BasicViewController.m in Sources */,
+				04F5C521227692BA00C5C218 /* GetMoneyController.m in Sources */,
 				0446EB36223F9B8A00A86F32 /* NewGoodsTableViewCell4.m in Sources */,
 				042B19292241D05F004D372A /* NewOrderTableViewCell1.m in Sources */,
 				0446EB0B223E439F00A86F32 /* SVProgressAnimatedView.m in Sources */,
 				04C61851223787A400773B7C /* WaitDealwithViewController.m in Sources */,
 				0446EB0A223E439F00A86F32 /* SVRadialGradientLayer.m in Sources */,
+				04F5C5322276ABAA00C5C218 /* AboutView.m in Sources */,
 				042B181F2240CB76004D372A /* UserEvaluationTableViewCell.m in Sources */,
+				04F5C5372276CD7D00C5C218 /* InfomationViewController.m in Sources */,
 				04F68EB52269E03F00F4DFC3 /* DiscountModel.m in Sources */,
+				04F585822275806400188C19 /* FinanceViewController.m in Sources */,
 				0446EB46223FEE7F00A86F32 /* LogCategory.m in Sources */,
 				04FB88052249CE5A008BEFCB /* BusinessLicenseViewController.m in Sources */,
 				04F54B9B225F5AE900DE81E4 /* CashCouponViewController.m in Sources */,
 				04F61DF522364E18004986E0 /* main.m in Sources */,
 				0446EB4F224084D800A86F32 /* SortViewController.m in Sources */,
+				04F585902275B02200188C19 /* AccountInfomationController.m in Sources */,
 				0446EAF0223B926D00A86F32 /* GoodsTableViewCell.m in Sources */,
+				04F5C53F2276E14700C5C218 /* RegisterViewController.m in Sources */,
 				04A46A58225C767500511C79 /* ActivityHeaderView.m in Sources */,
+				04F5859D2275C2A900188C19 /* FinishBankCardInfo.m in Sources */,
 				04F212CA2251B77600611664 /* CALayer+BorderColor.m in Sources */,
 				0446EAB82239251100A86F32 /* BusinessStatusViewController.m in Sources */,
 				0446EAF4223BB7E100A86F32 /* UserEvaluationViewController.m in Sources */,
@@ -1568,6 +1757,7 @@
 				04F212B2224B79C000611664 /* JXMovableCellTableView.m in Sources */,
 				042B182D2240F6F2004D372A /* HeaderView1.m in Sources */,
 				04F54BBD2264613600DE81E4 /* PackageView.m in Sources */,
+				04F585982275B63800188C19 /* AddBankCardView.m in Sources */,
 				04F54BA322607E0500DE81E4 /* EditeCouponView.m in Sources */,
 				04C6185422378B5700773B7C /* TabBarController.m in Sources */,
 				04F61DE722364E16004986E0 /* AppDelegate.m in Sources */,
@@ -1583,6 +1773,7 @@
 				04C6186E2238D04B00773B7C /* ShopSetTableViewCell1.m in Sources */,
 				042B18A622411416004D372A /* IFTools.m in Sources */,
 				0446EADB223A5AD600A86F32 /* RestaurantNoticeViewController.m in Sources */,
+				04F5857D2275511000188C19 /* FinancialHeaderView.m in Sources */,
 				0446EAEC223B8B4A00A86F32 /* GoodsManagementViewController.m in Sources */,
 				0446EABB2239319900A86F32 /* FeedbackViewController.m in Sources */,
 				0446EB2C223F88EF00A86F32 /* NewGoodsTableViewCell2.m in Sources */,
@@ -1595,6 +1786,7 @@
 				0446EAFB223E1B9D00A86F32 /* Http_url.m in Sources */,
 				04A46A5E225C8A1200511C79 /* EditeActivityTableViewCell.m in Sources */,
 				04C6184B2237876900773B7C /* ShopViewController.m in Sources */,
+				04F5858B2275A15C00188C19 /* BankCardManageView.m in Sources */,
 				0446EAD12239F71E00A86F32 /* ChangePasswordViewController.m in Sources */,
 				0446EAE8223B7A3800A86F32 /* TableViewCell.m in Sources */,
 				04A46A40225B4E6D00511C79 /* DiscountViewController.m in Sources */,
@@ -1602,6 +1794,7 @@
 				046D024422707C5B00E79237 /* BluetoothHelpViewController.m in Sources */,
 				042B18292240EA3E004D372A /* UserEvaluationTableViewCell1.m in Sources */,
 				04F54BD022647B6D00DE81E4 /* FullReductionCell.m in Sources */,
+				043766662276F1C600101E89 /* Registview.m in Sources */,
 				04C618732238DC9E00773B7C /* ShopSetTableViewCell2.m in Sources */,
 				0446EB10223E447600A86F32 /* IFUtils.m in Sources */,
 				0446EB552240872800A86F32 /* SortTableViewCell.m in Sources */,
@@ -1610,9 +1803,12 @@
 				0446EB13223F3AE000A86F32 /* CreateGoodsViewController.m in Sources */,
 				04F54BB82264372200DE81E4 /* FooterView.m in Sources */,
 				04F54B8C225F480300DE81E4 /* FullReductionViewController.m in Sources */,
+				04F585932275B05100188C19 /* AccountInfoView.m in Sources */,
+				04F5857422754E5A00188C19 /* FinancialCell.m in Sources */,
 				04F212BB224CAAC900611664 /* NoImageWithReplyTableViewCell.m in Sources */,
 				04C61858223790B000773B7C /* NavigationViewController.m in Sources */,
 				04A46A7C225D8DF400511C79 /* UIView+JHDrawCategory.m in Sources */,
+				04F5C524227692DC00C5C218 /* GetMoneyView.m in Sources */,
 				04C6186A2238CFB000773B7C /* ShopSetViewController.m in Sources */,
 				04F54B98225F5ACE00DE81E4 /* DiscountPackageViewController.m in Sources */,
 				0446EB1A223F6BFF00A86F32 /* ManageCatergoryTableViewCell.m in Sources */,

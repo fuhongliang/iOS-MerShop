@@ -35,6 +35,12 @@
     self.oneMonthIncome.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"30_orderamount"]];
 }
 
+- (IBAction)financialBtn:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(finance:)]){
+        [self.delegate performSelector:@selector(finance:) withObject:nil];
+    }
+}
+
 - (IBAction)goodsManageBtn:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(category:)]){
         [self.delegate performSelector:@selector(category:) withObject:nil];

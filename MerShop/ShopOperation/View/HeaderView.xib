@@ -90,7 +90,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPW-eh-5Fy" customClass="ZJTopImageBottomTitleButton">
-                                    <rect key="frame" x="20" y="111.5" width="87.5" height="50.5"/>
+                                    <rect key="frame" x="106.5" y="111.5" width="76" height="50.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <state key="normal" title="商品管理" image="find_ic_spgl">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -100,7 +100,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hJ-dT-RUP" customClass="ZJTopImageBottomTitleButton">
-                                    <rect key="frame" x="143.5" y="111.5" width="88" height="50.5"/>
+                                    <rect key="frame" x="192.5" y="111.5" width="76.5" height="50.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <state key="normal" title="用户评价" image="find_ic_yhpj">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,7 +110,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jf8-cp-46T" customClass="ZJTopImageBottomTitleButton">
-                                    <rect key="frame" x="267.5" y="111.5" width="87.5" height="50.5"/>
+                                    <rect key="frame" x="279" y="111.5" width="76" height="50.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <state key="normal" title="经营数据" image="find_ic_jysj">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -119,10 +119,20 @@
                                         <action selector="managementDataBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="7q9-X1-wdg"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5Q-Xa-dQE" customClass="ZJTopImageBottomTitleButton">
+                                    <rect key="frame" x="20" y="111.5" width="76.5" height="50.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <state key="normal" title="财务结算" image="find_ic_cwjs">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="financialBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="k8X-6c-oUJ"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="jf8-cp-46T" firstAttribute="leading" secondItem="1hJ-dT-RUP" secondAttribute="trailing" constant="36" id="0IY-LP-F29"/>
+                                <constraint firstItem="jf8-cp-46T" firstAttribute="leading" secondItem="1hJ-dT-RUP" secondAttribute="trailing" constant="10" id="0IY-LP-F29"/>
                                 <constraint firstItem="z0e-7g-pDo" firstAttribute="top" secondItem="7Fe-lK-lI1" secondAttribute="bottom" constant="15" id="0c3-5B-h1G"/>
                                 <constraint firstAttribute="trailing" secondItem="OL0-am-l99" secondAttribute="trailing" id="1XX-n9-y6h"/>
                                 <constraint firstItem="F7t-iF-RgE" firstAttribute="top" secondItem="eC5-ZB-rFy" secondAttribute="bottom" constant="5" id="1yc-nG-Pj3"/>
@@ -130,12 +140,14 @@
                                 <constraint firstItem="xhE-8e-beS" firstAttribute="leading" secondItem="iZI-pj-nHD" secondAttribute="leading" constant="15" id="3bI-mV-8c5"/>
                                 <constraint firstItem="z0e-7g-pDo" firstAttribute="width" secondItem="eC5-ZB-rFy" secondAttribute="width" id="5XD-ab-VHy"/>
                                 <constraint firstItem="sPW-eh-5Fy" firstAttribute="top" secondItem="xhE-8e-beS" secondAttribute="bottom" constant="15" id="6lZ-Rk-cBW"/>
+                                <constraint firstItem="sPW-eh-5Fy" firstAttribute="leading" secondItem="E5Q-Xa-dQE" secondAttribute="trailing" constant="10" id="7Dz-Rt-g4I"/>
                                 <constraint firstItem="QuP-IT-KBC" firstAttribute="width" secondItem="F7t-iF-RgE" secondAttribute="width" id="7Hm-3y-5cz"/>
                                 <constraint firstItem="KA7-ZB-cHz" firstAttribute="height" secondItem="eC5-ZB-rFy" secondAttribute="height" id="7MW-Wl-FwW"/>
                                 <constraint firstItem="OL0-am-l99" firstAttribute="height" secondItem="eC5-ZB-rFy" secondAttribute="height" id="8UK-sg-qGn"/>
                                 <constraint firstItem="z0e-7g-pDo" firstAttribute="leading" secondItem="eC5-ZB-rFy" secondAttribute="trailing" id="8ri-1h-w6t"/>
                                 <constraint firstItem="dyR-iF-AbA" firstAttribute="height" secondItem="F7t-iF-RgE" secondAttribute="height" id="9uu-iC-gJA"/>
                                 <constraint firstItem="z0e-7g-pDo" firstAttribute="height" secondItem="eC5-ZB-rFy" secondAttribute="height" id="9wy-u3-XD9"/>
+                                <constraint firstItem="E5Q-Xa-dQE" firstAttribute="top" secondItem="xhE-8e-beS" secondAttribute="bottom" constant="15" id="Apj-D9-t4Z"/>
                                 <constraint firstItem="xhE-8e-beS" firstAttribute="top" secondItem="F7t-iF-RgE" secondAttribute="bottom" constant="8" id="B7h-2H-e7x"/>
                                 <constraint firstItem="dyR-iF-AbA" firstAttribute="leading" secondItem="vWh-vk-OPU" secondAttribute="trailing" id="BHg-Aa-GSl"/>
                                 <constraint firstItem="eC5-ZB-rFy" firstAttribute="top" secondItem="7Fe-lK-lI1" secondAttribute="bottom" constant="15" id="C6P-gf-WqE"/>
@@ -143,10 +155,12 @@
                                 <constraint firstItem="dyR-iF-AbA" firstAttribute="top" secondItem="OL0-am-l99" secondAttribute="bottom" constant="5" id="K7Y-Jo-f08"/>
                                 <constraint firstItem="OL0-am-l99" firstAttribute="top" secondItem="7Fe-lK-lI1" secondAttribute="bottom" constant="15" id="Lza-BQ-fPc"/>
                                 <constraint firstItem="jf8-cp-46T" firstAttribute="width" secondItem="sPW-eh-5Fy" secondAttribute="width" id="OAH-Xm-R0F"/>
+                                <constraint firstItem="E5Q-Xa-dQE" firstAttribute="leading" secondItem="iZI-pj-nHD" secondAttribute="leading" constant="20" id="Oh7-Iv-HnS"/>
                                 <constraint firstItem="QuP-IT-KBC" firstAttribute="height" secondItem="F7t-iF-RgE" secondAttribute="height" id="P5e-Sc-Fmj"/>
                                 <constraint firstItem="OL0-am-l99" firstAttribute="width" secondItem="eC5-ZB-rFy" secondAttribute="width" id="PQb-rk-eD7"/>
                                 <constraint firstAttribute="height" constant="167" id="QB9-hO-gf2"/>
                                 <constraint firstAttribute="trailing" secondItem="jf8-cp-46T" secondAttribute="trailing" constant="20" id="QEF-TY-bu4"/>
+                                <constraint firstItem="E5Q-Xa-dQE" firstAttribute="width" secondItem="sPW-eh-5Fy" secondAttribute="width" id="QXo-Dt-cUI"/>
                                 <constraint firstItem="jf8-cp-46T" firstAttribute="top" secondItem="xhE-8e-beS" secondAttribute="bottom" constant="15" id="R0r-hv-5xv"/>
                                 <constraint firstItem="KA7-ZB-cHz" firstAttribute="top" secondItem="7Fe-lK-lI1" secondAttribute="bottom" constant="15" id="R6C-6X-8Sv"/>
                                 <constraint firstItem="KA7-ZB-cHz" firstAttribute="leading" secondItem="z0e-7g-pDo" secondAttribute="trailing" id="RiD-wy-iZk"/>
@@ -156,10 +170,10 @@
                                 <constraint firstItem="vWh-vk-OPU" firstAttribute="leading" secondItem="QuP-IT-KBC" secondAttribute="trailing" id="a3z-ai-epg"/>
                                 <constraint firstItem="vWh-vk-OPU" firstAttribute="top" secondItem="KA7-ZB-cHz" secondAttribute="bottom" constant="5" id="avF-m9-w48"/>
                                 <constraint firstItem="OL0-am-l99" firstAttribute="leading" secondItem="KA7-ZB-cHz" secondAttribute="trailing" id="bAC-qK-Asp"/>
+                                <constraint firstItem="E5Q-Xa-dQE" firstAttribute="height" secondItem="sPW-eh-5Fy" secondAttribute="height" id="c6Z-DT-8y6"/>
                                 <constraint firstItem="F7t-iF-RgE" firstAttribute="leading" secondItem="iZI-pj-nHD" secondAttribute="leading" id="dNq-w8-SiT"/>
-                                <constraint firstItem="1hJ-dT-RUP" firstAttribute="leading" secondItem="sPW-eh-5Fy" secondAttribute="trailing" constant="36" id="doH-UE-IZB"/>
+                                <constraint firstItem="1hJ-dT-RUP" firstAttribute="leading" secondItem="sPW-eh-5Fy" secondAttribute="trailing" constant="10" id="doH-UE-IZB"/>
                                 <constraint firstItem="1hJ-dT-RUP" firstAttribute="height" secondItem="sPW-eh-5Fy" secondAttribute="height" id="drx-MV-gLv"/>
-                                <constraint firstItem="sPW-eh-5Fy" firstAttribute="leading" secondItem="iZI-pj-nHD" secondAttribute="leading" constant="20" id="fOv-5b-n9e"/>
                                 <constraint firstItem="dyR-iF-AbA" firstAttribute="width" secondItem="F7t-iF-RgE" secondAttribute="width" id="gMW-DM-OKE"/>
                                 <constraint firstItem="vWh-vk-OPU" firstAttribute="height" secondItem="F7t-iF-RgE" secondAttribute="height" id="gmD-4M-5tk"/>
                                 <constraint firstAttribute="trailing" secondItem="7Fe-lK-lI1" secondAttribute="trailing" constant="204" id="hsn-Zq-kvb"/>
@@ -279,6 +293,7 @@
         </view>
     </objects>
     <resources>
+        <image name="find_ic_cwjs" width="23" height="23"/>
         <image name="find_ic_jysj" width="23" height="23"/>
         <image name="find_ic_spgl" width="23" height="23"/>
         <image name="find_ic_yhpj" width="23" height="23"/>

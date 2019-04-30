@@ -14,6 +14,7 @@
 - (void)category:(UIButton *)sender;
 - (void)evaluation:(UIButton *)sender;
 - (void)managementData:(UIButton *)sender;
+- (void)finance:(UIButton *)sender;
 @end
 
 @interface HeaderView : UIView
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *oneMonthIncome;
 @property (weak, nonatomic) IBOutlet UIView *cuxiaoView;
 @property (weak, nonatomic) id<HeaderViewDelegate>delegate;
+- (IBAction)financialBtn:(id)sender;
 
 - (IBAction)goodsManageBtn:(id)sender;
 

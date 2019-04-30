@@ -36,6 +36,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // 点击空白处收键盘
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
+    [self.view addGestureRecognizer:singleTap];
+
     self.switchStatus = self.storage;
     [self setNaviTitle:@"新建商品"];
     self.dataArr = @[@[@"商品名称*",@"商品分类*"],@[@"价格*",@"原价*",@"库存无限",
@@ -69,6 +74,12 @@
             _catergoryId = [[[self.pickerDatasource objectAtIndex:0] objectForKey:@"stc_id"] integerValue];
         }
     }
+}
+
+#pragma mark --收起键盘
+// 点击空白处收键盘
+-(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer {
+    [self.view endEditing:YES];
 }
 
 - (void)setUI{
