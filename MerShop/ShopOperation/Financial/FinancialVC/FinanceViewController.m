@@ -17,6 +17,9 @@
 @interface FinanceViewController ()<UITableViewDelegate,UITableViewDataSource,FinancialHeaderViewDelegate>
 @property (nonatomic ,strong)UITableView *mainTableView;
 @property (nonatomic ,weak)FinancialHeaderView *headerView;
+@property (nonatomic ,copy)NSDictionary *account;
+@property (nonatomic ,strong)NSMutableArray *dataArr;
+
 @end
 
 @implementation FinanceViewController
@@ -26,6 +29,36 @@
     [self setNaviTitle:@"财务结算"];
     [self.view setBackgroundColor:BackgroundColor];
     [self setUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self requestData];
+}
+
+- (void)requestData{
+    [Http_url POST:@"store_jiesuan" dict:@{@"store_id":@(StoreId)} showHUD:NO WithSuccessBlock:^(id data) {
+        NSLog(@"%@",data);
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            self.account = [data objectForKey:@"data"];
+            self.dataArr = [data[@"data"][@"list"] mutableCopy];
+            
+            self.headerView.receiveMoney.text = [NSString stringWithFormat:@"%@",self.account[@"y_jiesuan"]];
+            self.headerView.waitReceiveMoney.text = [NSString stringWithFormat:@"%@",self.account[@"d_jiesuan"]];
+            
+            NSString *bank_type = self.account[@"account"][@"bank_type"];
+            NSString *cardStr = self.account[@"account"][@"account_number"];
+            if (bank_type.length != 0 && cardStr.length != 0){//判断是否已添加银行卡
+                NSString *str = [cardStr substringFromIndex:cardStr.length-4];
+                self.headerView.bankCardBtn.text = [NSString stringWithFormat:@"%@(尾号%@)",bank_type,str];
+            }else{
+                self.headerView.bankCardBtn.text = @"请添加银行卡";
+            }
+            [self.mainTableView reloadData];
+        }
+    } WithFailBlock:^(id data) {
+        
+    }];
 }
 
 - (void)setUI{
@@ -55,13 +88,15 @@
     
 }
 
-
+#pragma mark - UITableviewDelegate
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 30;
+    //+1是因为全部账单那一行也是算在cell里
+    return self.dataArr.count+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FinancialCell *cell1 = (FinancialCell *)[tableView dequeueReusableCellWithIdentifier:@"FinancialCell"];
+    //全部账单的那一行cell
     AllBillsCell *cell2 = (AllBillsCell *)[tableView dequeueReusableCellWithIdentifier:@"AllBillsCell"];
     if (indexPath.row == 0){
         if (!cell2){
@@ -74,6 +109,8 @@
             NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FinancialCell" owner:self options:nil];
             cell1 = [nib objectAtIndex:0];
         }
+        //-1减去全部账单所占的一行
+        [cell1 fillCellWithDict:self.dataArr[indexPath.row-1]];
         return cell1;
     }
 }
@@ -93,6 +130,7 @@
 
 - (void)goGetMoneyView{
     GetMoneyController *vc = [[GetMoneyController alloc]init];
+    vc.accountDict = self.account;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -110,4 +148,10 @@
     return _mainTableView;
 }
 
+- (NSMutableArray *)dataArr{
+    if (!_dataArr){
+        _dataArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _dataArr;
+}
 @end

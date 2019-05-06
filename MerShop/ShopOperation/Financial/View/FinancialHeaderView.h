@@ -17,6 +17,9 @@
 
 @interface FinancialHeaderView : UIView
 @property (weak, nonatomic) IBOutlet UIView *bankCardView;
+@property (weak, nonatomic) IBOutlet UILabel *receiveMoney;
+@property (weak, nonatomic) IBOutlet UILabel *waitReceiveMoney;
+@property (weak, nonatomic) IBOutlet UILabel *bankCardBtn;
 @property (weak, nonatomic)id<FinancialHeaderViewDelegate>delegate;
 - (IBAction)addBankCardAction:(id)sender;
 - (IBAction)getMoneyAction:(id)sender;

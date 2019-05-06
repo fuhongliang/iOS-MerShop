@@ -9,4 +9,8 @@ pod 'Masonry'
 pod 'MJExtension'
 pod 'Bugtags'
 pod 'JWBluetoothPrinte'
+pod 'UMCCommon'
+pod 'UMCPush'
+pod 'UMCSecurityPlugins'
+pod 'BRPickerView'
 end

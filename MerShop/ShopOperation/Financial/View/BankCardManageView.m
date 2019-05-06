@@ -17,4 +17,10 @@
         [self.delegate performSelector:@selector(checkAccountInfo) withObject:nil];
     }
 }
+
+- (IBAction)deleteCard:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(deleteAction)]){
+        [self.delegate performSelector:@selector(deleteAction) withObject:nil];
+    }
+}
 @end

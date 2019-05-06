@@ -60,8 +60,8 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k6Y-r9-jbQ">
-                                    <rect key="frame" x="38" y="120.5" width="200" height="17"/>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入金额" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k6Y-r9-jbQ">
+                                    <rect key="frame" x="38" y="122.5" width="200" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="200" id="hWU-R0-3g1"/>
                                     </constraints>
@@ -74,6 +74,9 @@
                                     <state key="normal" title="全部提现">
                                         <color key="titleColor" red="0.14117647058823529" green="0.63137254901960782" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="allGetAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="HYC-Kh-MGL"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oz6-yE-BCJ">
                                     <rect key="frame" x="15" y="147.5" width="345" height="0.5"/>
@@ -93,7 +96,6 @@
                             <constraints>
                                 <constraint firstItem="wia-IC-teG" firstAttribute="bottom" secondItem="Wgr-4d-Tsn" secondAttribute="bottom" id="0I8-mG-C13"/>
                                 <constraint firstAttribute="trailing" secondItem="oz6-yE-BCJ" secondAttribute="trailing" constant="15" id="1IZ-fn-bU6"/>
-                                <constraint firstItem="k6Y-r9-jbQ" firstAttribute="bottom" secondItem="Wgr-4d-Tsn" secondAttribute="bottom" constant="-4" id="31x-yo-yVs"/>
                                 <constraint firstItem="rAu-rm-Qey" firstAttribute="top" secondItem="PQJ-ER-OuI" secondAttribute="top" constant="15" id="40H-KU-8l0"/>
                                 <constraint firstItem="Wgr-4d-Tsn" firstAttribute="leading" secondItem="PQJ-ER-OuI" secondAttribute="leading" constant="19" id="45K-8z-rbr"/>
                                 <constraint firstItem="fHC-Xn-OwP" firstAttribute="top" secondItem="Wxr-D3-4DB" secondAttribute="bottom" constant="14" id="5xU-kE-6Tb"/>
@@ -109,6 +111,7 @@
                                 <constraint firstItem="gDC-z7-zp6" firstAttribute="top" secondItem="rAu-rm-Qey" secondAttribute="bottom" constant="8" id="a2S-zx-2G6"/>
                                 <constraint firstItem="tBi-ZR-Ayj" firstAttribute="top" secondItem="PQJ-ER-OuI" secondAttribute="top" constant="25" id="bzO-AS-Kbq"/>
                                 <constraint firstItem="oz6-yE-BCJ" firstAttribute="leading" secondItem="PQJ-ER-OuI" secondAttribute="leading" constant="15" id="cbf-IM-gbo"/>
+                                <constraint firstItem="k6Y-r9-jbQ" firstAttribute="centerY" secondItem="Wgr-4d-Tsn" secondAttribute="centerY" id="csB-kk-bEd"/>
                                 <constraint firstItem="XCd-v2-vx9" firstAttribute="top" secondItem="oz6-yE-BCJ" secondAttribute="bottom" constant="9" id="iJZ-lG-79v"/>
                                 <constraint firstAttribute="trailing" secondItem="Wxr-D3-4DB" secondAttribute="trailing" id="leo-HK-pfk"/>
                                 <constraint firstItem="Wxr-D3-4DB" firstAttribute="top" secondItem="gDC-z7-zp6" secondAttribute="bottom" constant="10" id="nYO-Fp-S0t"/>
@@ -130,6 +133,9 @@
                                     <integer key="value" value="3"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="ensure:" destination="iN0-l3-epB" eventType="touchUpInside" id="cMY-SF-OmK"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
@@ -151,6 +157,12 @@
                 <constraint firstItem="w6g-E0-SiD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bxN-hg-Bda"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="accountType" destination="rAu-rm-Qey" id="Cau-Ge-wDN"/>
+                <outlet property="canGetLabel" destination="XCd-v2-vx9" id="gJT-RE-kIN"/>
+                <outlet property="lastFourNumber" destination="gDC-z7-zp6" id="Egg-zy-RX4"/>
+                <outlet property="moneyText" destination="k6Y-r9-jbQ" id="Lfw-vz-AZy"/>
+            </connections>
             <point key="canvasLocation" x="138.40000000000001" y="111.99400299850076"/>
         </view>
     </objects>

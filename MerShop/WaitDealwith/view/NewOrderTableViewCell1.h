@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *number;
 @property (weak, nonatomic) IBOutlet UILabel *rightNowLab;
 @property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *customerPhoneNumber;
 @property (weak, nonatomic) IBOutlet UILabel *address;
 @property (weak, nonatomic) IBOutlet UILabel *allPrice;
 @property (weak, nonatomic) IBOutlet UILabel *servicePrice;

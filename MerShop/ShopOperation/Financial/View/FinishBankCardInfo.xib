@@ -52,7 +52,7 @@
                                         <constraint firstAttribute="height" constant="0.5" id="RSX-Pg-vCf"/>
                                     </constraints>
                                 </view>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入持卡人姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rC5-Uq-s4a">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入持卡人姓名" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rC5-Uq-s4a">
                                     <rect key="frame" x="248.5" y="16" width="118.5" height="17"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -82,11 +82,11 @@
                                         <constraint firstAttribute="height" constant="0.5" id="hUy-NB-0q4"/>
                                     </constraints>
                                 </view>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入银行卡号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l2i-Ws-mkZ">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入银行卡号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l2i-Ws-mkZ">
                                     <rect key="frame" x="262.5" y="65.5" width="104" height="17"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfU-66-wj3">
                                     <rect key="frame" x="15" y="113" width="77" height="21"/>
@@ -112,7 +112,7 @@
                                         <constraint firstAttribute="height" constant="0.5" id="KXt-3F-bIZ"/>
                                     </constraints>
                                 </view>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入开户支行地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BFm-9J-jyM">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入开户支行地址" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BFm-9J-jyM">
                                     <rect key="frame" x="233.5" y="115" width="133" height="17"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -135,17 +135,18 @@
                                     </attributedString>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工商银行储蓄卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EpV-4c-tPf">
-                                    <rect key="frame" x="238" y="162" width="122" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入银行卡类型" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aDk-6u-wf7">
+                                    <rect key="frame" x="248.5" y="164" width="118.5" height="17"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="KYF-zD-WTv" firstAttribute="top" secondItem="10c-vq-ZIE" secondAttribute="top" constant="14" id="1FH-oS-rGx"/>
                                 <constraint firstItem="Iy0-ke-AVy" firstAttribute="leading" secondItem="10c-vq-ZIE" secondAttribute="leading" constant="15" id="1Gl-9v-9hq"/>
+                                <constraint firstItem="aDk-6u-wf7" firstAttribute="centerY" secondItem="zyw-mr-pQ4" secondAttribute="centerY" id="1W2-o1-K8H"/>
                                 <constraint firstItem="rC5-Uq-s4a" firstAttribute="centerY" secondItem="KYF-zD-WTv" secondAttribute="centerY" id="6gA-kX-tyO"/>
                                 <constraint firstItem="zyw-mr-pQ4" firstAttribute="leading" secondItem="10c-vq-ZIE" secondAttribute="leading" constant="15" id="7zJ-IB-SJn"/>
                                 <constraint firstItem="l2i-Ws-mkZ" firstAttribute="centerY" secondItem="DF9-Ac-zBT" secondAttribute="centerY" id="Che-gI-zbz"/>
@@ -154,14 +155,13 @@
                                 <constraint firstItem="BFm-9J-jyM" firstAttribute="centerY" secondItem="MfU-66-wj3" secondAttribute="centerY" id="K1s-lz-NYK"/>
                                 <constraint firstAttribute="trailing" secondItem="jmr-mF-vPP" secondAttribute="trailing" id="M1x-Q3-8I7"/>
                                 <constraint firstItem="Vma-wZ-Fgq" firstAttribute="top" secondItem="DF9-Ac-zBT" secondAttribute="bottom" constant="14" id="N83-29-kkd"/>
-                                <constraint firstAttribute="trailing" secondItem="EpV-4c-tPf" secondAttribute="trailing" constant="15" id="Ndv-BT-q0k"/>
                                 <constraint firstAttribute="bottom" secondItem="zyw-mr-pQ4" secondAttribute="bottom" constant="14" id="OfH-Tt-Xn2"/>
                                 <constraint firstItem="jmr-mF-vPP" firstAttribute="top" secondItem="MfU-66-wj3" secondAttribute="bottom" constant="14" id="Rgx-AG-hVm"/>
                                 <constraint firstItem="KYF-zD-WTv" firstAttribute="leading" secondItem="10c-vq-ZIE" secondAttribute="leading" constant="15" id="St4-6M-ImD"/>
+                                <constraint firstAttribute="trailing" secondItem="aDk-6u-wf7" secondAttribute="trailing" constant="8" id="TXJ-wH-VqX"/>
                                 <constraint firstItem="jmr-mF-vPP" firstAttribute="leading" secondItem="10c-vq-ZIE" secondAttribute="leading" constant="15" id="VE5-tA-hu9"/>
                                 <constraint firstAttribute="trailing" secondItem="rC5-Uq-s4a" secondAttribute="trailing" constant="8" id="Wfe-lq-toY"/>
                                 <constraint firstAttribute="height" constant="197" id="XGR-ni-7Pc"/>
-                                <constraint firstItem="EpV-4c-tPf" firstAttribute="centerY" secondItem="zyw-mr-pQ4" secondAttribute="centerY" id="afz-FN-NCd"/>
                                 <constraint firstItem="Vma-wZ-Fgq" firstAttribute="leading" secondItem="10c-vq-ZIE" secondAttribute="leading" constant="15" id="bjW-Qv-fif"/>
                                 <constraint firstItem="DF9-Ac-zBT" firstAttribute="leading" secondItem="10c-vq-ZIE" secondAttribute="leading" constant="15" id="bo3-8c-IkV"/>
                                 <constraint firstItem="MfU-66-wj3" firstAttribute="leading" secondItem="10c-vq-ZIE" secondAttribute="leading" constant="15" id="h6e-R0-2lA"/>
@@ -174,7 +174,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WrA-Lx-4RB">
-                            <rect key="frame" x="20" y="249" width="215" height="26"/>
+                            <rect key="frame" x="15" y="249" width="215" height="26"/>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
                                     <fragment content="点击完成即表示同意">
@@ -208,13 +208,16 @@
                                     <integer key="value" value="3"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="finishAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Xxv-ON-cxz"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="10c-vq-ZIE" firstAttribute="top" secondItem="7BX-0E-zAS" secondAttribute="bottom" constant="10" id="E69-rv-SFJ"/>
                         <constraint firstItem="7BX-0E-zAS" firstAttribute="top" secondItem="ELJ-Wv-dWL" secondAttribute="top" constant="20" id="EES-RK-F4L"/>
-                        <constraint firstItem="WrA-Lx-4RB" firstAttribute="leading" secondItem="ELJ-Wv-dWL" secondAttribute="leading" constant="20" id="OlD-H5-4mS"/>
+                        <constraint firstItem="WrA-Lx-4RB" firstAttribute="leading" secondItem="ELJ-Wv-dWL" secondAttribute="leading" constant="15" id="OlD-H5-4mS"/>
                         <constraint firstItem="WrA-Lx-4RB" firstAttribute="top" secondItem="10c-vq-ZIE" secondAttribute="bottom" constant="5" id="e8s-QE-lMz"/>
                         <constraint firstItem="7BX-0E-zAS" firstAttribute="leading" secondItem="ELJ-Wv-dWL" secondAttribute="leading" constant="15" id="g8m-jH-u3n"/>
                         <constraint firstAttribute="trailing" secondItem="4vk-Ue-Ei6" secondAttribute="trailing" constant="15" id="gid-Rr-GTh"/>
@@ -233,6 +236,12 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ELJ-Wv-dWL" secondAttribute="bottom" id="pBt-lR-qYY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="bankAddress" destination="BFm-9J-jyM" id="FQD-JY-SoC"/>
+                <outlet property="bankCardNumber" destination="l2i-Ws-mkZ" id="1LQ-dw-4jY"/>
+                <outlet property="bankType" destination="aDk-6u-wf7" id="DXH-gm-4IL"/>
+                <outlet property="name" destination="rC5-Uq-s4a" id="Ivp-Lb-dhh"/>
+            </connections>
             <point key="canvasLocation" x="138.40000000000001" y="111.99400299850076"/>
         </view>
     </objects>

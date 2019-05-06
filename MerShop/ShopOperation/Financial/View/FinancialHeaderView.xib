@@ -72,8 +72,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bix-cK-JKH">
                             <rect key="frame" x="15" y="139.5" width="345" height="49.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国工商银行（尾号8899）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2L-7m-wop">
-                                    <rect key="frame" x="14" y="12" width="203" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请添加银行卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2L-7m-wop">
+                                    <rect key="frame" x="14" y="12" width="98" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -172,7 +172,10 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="bankCardBtn" destination="P2L-7m-wop" id="Hvz-WQ-tjq"/>
                 <outlet property="bankCardView" destination="bix-cK-JKH" id="kwe-48-GEK"/>
+                <outlet property="receiveMoney" destination="uxI-v2-bwy" id="ksz-FE-K5e"/>
+                <outlet property="waitReceiveMoney" destination="TaA-Xd-XUS" id="wc8-UF-exP"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="111.99400299850076"/>
         </view>

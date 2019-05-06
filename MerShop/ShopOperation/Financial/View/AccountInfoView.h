@@ -10,6 +10,10 @@
 
 
 @interface AccountInfoView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *accountNumber;
+@property (weak, nonatomic) IBOutlet UILabel *accountName;
+@property (weak, nonatomic) IBOutlet UILabel *accountType;
+@property (weak, nonatomic) IBOutlet UILabel *bankBranch;
 
 @end
 

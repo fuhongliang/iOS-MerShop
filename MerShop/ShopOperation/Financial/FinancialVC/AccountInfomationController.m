@@ -17,13 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setNaviTitle:@"账户信息"];
     [self.view setBackgroundColor:BackgroundColor];
-    
     [self setUI];
+    [self requestData];
 }
-
 
 - (void)setUI{
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"AccountInfoView" owner:self options:nil];
@@ -32,5 +30,18 @@
     [self.view addSubview:_accountView];
 }
 
+- (void)requestData{
+    [Http_url POST:@"bank_account_info" dict:@{@"store_id":@(StoreId)} showHUD:NO WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            NSDictionary *dict = data[@"data"];
+            self.accountView.accountNumber.text = dict[@"account_number"];
+            self.accountView.accountName.text = dict[@"account_name"];
+            self.accountView.accountType.text = dict[@"bank_type"];
+            self.accountView.bankBranch.text = dict[@"bank_name"];
+        }
+    } WithFailBlock:^(id data) {
+        
+    }];
+}
 
 @end

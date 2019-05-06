@@ -10,11 +10,14 @@
 #import "CashCouponTableViewCell.h"
 #import "EditeCashCouponViewController.h"
 #import "CouponModel.h"
+#import "BuyingPackagesView.h"
 
 
-@interface CashCouponViewController ()<UITableViewDelegate ,UITableViewDataSource,CashCouponTableViewCellDelegate>
+@interface CashCouponViewController ()<UITableViewDelegate ,UITableViewDataSource,CashCouponTableViewCellDelegate,BuyingPackagesViewDelegate>
 @property (nonatomic ,strong)UITableView *mainTableView;
 @property (nonatomic ,strong)NSMutableArray *dataSource;
+@property (nonatomic ,strong)UIView *bgView;
+@property (nonatomic ,weak)BuyingPackagesView *packagesView;
 @property (nonatomic ,copy)NSArray *dataArr;
 @end
 
@@ -35,13 +38,16 @@
 - (void)requestListData{
     [Http_url POST:@"voucher_list" dict:@{@"store_id":StoreIdString} showHUD:NO WithSuccessBlock:^(id data) {
         self.dataArr = [data objectForKey:@"data"];
-        if (![self.dataArr isEqual:[NSNull null]]){
+        if ([[data objectForKey:@"code"] integerValue] == 200){
             [self.dataSource removeAllObjects];
             for (NSDictionary *dict in self.dataArr){
                 CouponModel *model = [[CouponModel alloc]initWithDictionary:dict error:nil];
                 [self.dataSource addObject:model];
             }
             [self.mainTableView reloadData];
+        }else if ([[data objectForKey:@"code"] integerValue] == 2000){
+            [self.bgView setHidden:NO];
+            [self.packagesView setHidden:NO];
         }
         
     } WithFailBlock:^(id data) {
@@ -71,6 +77,23 @@
     [btn setBackgroundColor:WhiteColor];
     [btn.titleLabel setFont:XFont(11)];
     [view addSubview:btn];
+    
+    _bgView = [[UIView alloc]init];
+    [_bgView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
+    [_bgView setBackgroundColor:BlackColor];
+    [_bgView setAlpha:0.4];
+    [_bgView setHidden:YES];
+    [self.view addSubview:_bgView];
+    
+    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"BuyingPackagesView" owner:self options:nil];
+    _packagesView = [nib objectAtIndex:0];
+    _packagesView.layer.cornerRadius = 4;
+    _packagesView.layer.masksToBounds = YES;
+    [_packagesView setHidden:YES];
+    _packagesView.delegate = self;
+    [_packagesView setFrame:XFrame(0, 0, 280, 244)];
+    [_packagesView setCenter:self.view.center];
+    [self.view addSubview:_packagesView];
 
 }
 
@@ -92,9 +115,39 @@
     return cell;
 }
 
+//添加活动方法
 - (void)addActivity{
     EditeCashCouponViewController *vc = [[EditeCashCouponViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - BuyingPackagesView
+/**
+    取消按钮方法
+ */
+- (void)cancel{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+/**
+    确定按钮方法
+ */
+- (void)ensure{
+    NSInteger a = [_packagesView.numberText.text integerValue];
+    NSDictionary *dict =@{@"month":@(a),
+                          @"store_id":@(StoreId)
+                          };
+    if (a == 0){
+        [[IFUtils share]showErrorInfo:@"请输入您要购买的套餐数量！"];
+    }
+    [Http_url POST:@"add_voucher_quota" dict:dict showHUD:NO WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            [[IFUtils share]showErrorInfo:@"购买成功,请开始添加活动吧！"];
+            [self.bgView setHidden:YES];
+            [self.packagesView setHidden:YES];
+        }
+    } WithFailBlock:^(id data) {
+        
+    }];
 }
 
 #pragma mark - CashCouponTableViewCellDelegate 删除 & 编辑

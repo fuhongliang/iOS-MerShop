@@ -45,7 +45,7 @@
             if (show){
                 [SVProgressHUD dismiss];
             }
-            [[IFUtils share]showErrorInfo:[NSString stringWithFormat:@"%@",dic[@"msg"]]];
+            successBlock(dic);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [[IFUtils share]showErrorInfo:@"发送失败,请稍后再试!"];

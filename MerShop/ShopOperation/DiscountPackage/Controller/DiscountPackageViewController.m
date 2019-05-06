@@ -9,11 +9,14 @@
 #import "DiscountPackageViewController.h"
 #import "DiscountPackageTableViewCell.h"
 #import "AddDiscountViewController.h"
+#import "BuyingPackagesView.h"
 #import "DiscountModel.h"
 
-@interface DiscountPackageViewController ()<UITableViewDataSource,UITableViewDelegate,DiscountPackageTableViewCellDelegate>
+@interface DiscountPackageViewController ()<UITableViewDataSource,UITableViewDelegate,DiscountPackageTableViewCellDelegate,BuyingPackagesViewDelegate>
 @property (nonatomic ,strong)UITableView *mainTableView;
 @property (nonatomic ,strong)NSMutableArray *dataSource;
+@property (nonatomic ,strong)UIView *bgView;
+@property (nonatomic ,weak)BuyingPackagesView *packagesView;
 @property (nonatomic ,copy)NSArray *dataArr;
 @end
 
@@ -38,15 +41,16 @@
         NSLog(@"%@",data);
         NSArray *arr = [data objectForKey:@"data"];
         weakself.dataArr = [arr copy];
-        if (![arr isEqual:[NSNull null]]){
+        if ([[data objectForKey:@"code"] integerValue] == 200){
             [self.dataSource removeAllObjects];
             for (NSDictionary *dict in arr){
                 DiscountModel *model = [[DiscountModel alloc]initWithDictionary:dict error:nil];
                 [weakself.dataSource addObject:model];
             }
             [weakself.mainTableView reloadData];
-        }else{
-            
+        }else if ([[data objectForKey:@"code"] integerValue] == 2000){
+            [self.bgView setHidden:NO];
+            [self.packagesView setHidden:NO];
         }
     } WithFailBlock:^(id data) {
         
@@ -76,6 +80,23 @@
     [btn.titleLabel setFont:XFont(11)];
     [view addSubview:btn];
     
+    _bgView = [[UIView alloc]init];
+    [_bgView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
+    [_bgView setBackgroundColor:BlackColor];
+    [_bgView setAlpha:0.4];
+    [_bgView setHidden:YES];
+    [self.view addSubview:_bgView];
+    
+    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"BuyingPackagesView" owner:self options:nil];
+    _packagesView = [nib objectAtIndex:0];
+    _packagesView.layer.cornerRadius = 4;
+    _packagesView.layer.masksToBounds = YES;
+    [_packagesView setHidden:YES];
+    _packagesView.delegate = self;
+    [_packagesView setFrame:XFrame(0, 0, 280, 244)];
+    [_packagesView setCenter:self.view.center];
+    [self.view addSubview:_packagesView];
+    
 
 }
 
@@ -100,6 +121,35 @@
 - (void)addActivity{
     AddDiscountViewController *vc = [[AddDiscountViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - BuyingPackagesView
+/**
+ 取消按钮方法
+ */
+- (void)cancel{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+/**
+ 确定按钮方法
+ */
+- (void)ensure{
+    NSInteger a = [_packagesView.numberText.text integerValue];
+    NSDictionary *dict =@{@"month":@(a),
+                          @"store_id":@(StoreId)
+                          };
+    if (a == 0){
+        [[IFUtils share]showErrorInfo:@"请输入您要购买的套餐数量！"];
+    }
+    [Http_url POST:@"add_bundling_quota" dict:dict showHUD:NO WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            [[IFUtils share]showErrorInfo:@"购买成功,请开始添加活动吧！"];
+            [self.bgView setHidden:YES];
+            [self.packagesView setHidden:YES];
+        }
+    } WithFailBlock:^(id data) {
+        
+    }];
 }
 
 #pragma mark - DiscountPackageTableViewCellDelegate

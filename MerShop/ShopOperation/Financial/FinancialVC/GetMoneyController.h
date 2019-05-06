@@ -10,6 +10,6 @@
 
 
 @interface GetMoneyController : BasicViewController
-
+@property (nonatomic ,copy)NSDictionary *accountDict;
 @end
 

@@ -29,6 +29,12 @@
 		042B19382242383D004D372A /* NewOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B19372242383D004D372A /* NewOrderModel.m */; };
 		043766662276F1C600101E89 /* Registview.m in Sources */ = {isa = PBXBuildFile; fileRef = 043766652276F1C600101E89 /* Registview.m */; };
 		043766682276F1DF00101E89 /* Registview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043766672276F1DF00101E89 /* Registview.xib */; };
+		0437666A2278011000101E89 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 043766692278011000101E89 /* UserNotifications.framework */; };
+		043766732278334000101E89 /* SuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043766722278334000101E89 /* SuccessViewController.m */; };
+		0437668022783A7500101E89 /* SuccessFinishView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0437667F22783A7500101E89 /* SuccessFinishView.m */; };
+		0437668222783A8C00101E89 /* SuccessFinishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0437668122783A8C00101E89 /* SuccessFinishView.xib */; };
+		04376685227ED11100101E89 /* BuyingPackagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04376684227ED11100101E89 /* BuyingPackagesView.m */; };
+		04376687227ED11F00101E89 /* BuyingPackagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04376686227ED11F00101E89 /* BuyingPackagesView.xib */; };
 		0446EAB82239251100A86F32 /* BusinessStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446EAB72239251100A86F32 /* BusinessStatusViewController.m */; };
 		0446EABB2239319900A86F32 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446EABA2239319900A86F32 /* FeedbackViewController.m */; };
 		0446EABE2239EDD400A86F32 /* AccountSecurityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0446EABD2239EDD400A86F32 /* AccountSecurityViewController.m */; };
@@ -259,6 +265,16 @@
 		043766642276F1C600101E89 /* Registview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Registview.h; sourceTree = "<group>"; };
 		043766652276F1C600101E89 /* Registview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Registview.m; sourceTree = "<group>"; };
 		043766672276F1DF00101E89 /* Registview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Registview.xib; sourceTree = "<group>"; };
+		043766692278011000101E89 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		0437666B2278014E00101E89 /* MerShop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MerShop.entitlements; sourceTree = "<group>"; };
+		043766712278334000101E89 /* SuccessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuccessViewController.h; sourceTree = "<group>"; };
+		043766722278334000101E89 /* SuccessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuccessViewController.m; sourceTree = "<group>"; };
+		0437667E22783A7500101E89 /* SuccessFinishView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuccessFinishView.h; sourceTree = "<group>"; };
+		0437667F22783A7500101E89 /* SuccessFinishView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuccessFinishView.m; sourceTree = "<group>"; };
+		0437668122783A8C00101E89 /* SuccessFinishView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuccessFinishView.xib; sourceTree = "<group>"; };
+		04376683227ED11100101E89 /* BuyingPackagesView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyingPackagesView.h; sourceTree = "<group>"; };
+		04376684227ED11100101E89 /* BuyingPackagesView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyingPackagesView.m; sourceTree = "<group>"; };
+		04376686227ED11F00101E89 /* BuyingPackagesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyingPackagesView.xib; sourceTree = "<group>"; };
 		0446EAB62239251100A86F32 /* BusinessStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusinessStatusViewController.h; sourceTree = "<group>"; };
 		0446EAB72239251100A86F32 /* BusinessStatusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BusinessStatusViewController.m; sourceTree = "<group>"; };
 		0446EAB92239319900A86F32 /* FeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
@@ -567,6 +583,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0437666A2278011000101E89 /* UserNotifications.framework in Frameworks */,
 				F99E8FF7E8026AB79818BE01 /* libPods-MerShop.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1211,6 +1228,9 @@
 				04F5C522227692DC00C5C218 /* GetMoneyView.h */,
 				04F5C523227692DC00C5C218 /* GetMoneyView.m */,
 				04F5C525227692F500C5C218 /* GetMoneyView.xib */,
+				0437667E22783A7500101E89 /* SuccessFinishView.h */,
+				0437667F22783A7500101E89 /* SuccessFinishView.m */,
+				0437668122783A8C00101E89 /* SuccessFinishView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1230,6 +1250,8 @@
 				04F5C51D2275CBF800C5C218 /* AddBankCardController.m */,
 				04F5C51F227692BA00C5C218 /* GetMoneyController.h */,
 				04F5C520227692BA00C5C218 /* GetMoneyController.m */,
+				043766712278334000101E89 /* SuccessViewController.h */,
+				043766722278334000101E89 /* SuccessViewController.m */,
 			);
 			path = FinancialVC;
 			sourceTree = "<group>";
@@ -1272,6 +1294,7 @@
 		04F61DE422364E16004986E0 /* MerShop */ = {
 			isa = PBXGroup;
 			children = (
+				0437666B2278014E00101E89 /* MerShop.entitlements */,
 				046D023F22707B7100E79237 /* Webview */,
 				04235E4E2253524C00B2FC40 /* EmptyView */,
 				0446EAF8223E1B7500A86F32 /* Tools */,
@@ -1364,6 +1387,9 @@
 				0446EADF223B43EA00A86F32 /* View */,
 				04C618492237876900773B7C /* ShopViewController.h */,
 				04C6184A2237876900773B7C /* ShopViewController.m */,
+				04376683227ED11100101E89 /* BuyingPackagesView.h */,
+				04376684227ED11100101E89 /* BuyingPackagesView.m */,
+				04376686227ED11F00101E89 /* BuyingPackagesView.xib */,
 			);
 			path = ShopOperation;
 			sourceTree = "<group>";
@@ -1428,6 +1454,7 @@
 		0AF38524FA7141748382F6F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				043766692278011000101E89 /* UserNotifications.framework */,
 				7D4CCEAA0C415E8AA40B68B5 /* libPods-MerShop.a */,
 			);
 			name = Frameworks;
@@ -1511,6 +1538,14 @@
 				TargetAttributes = {
 					04F61DE122364E16004986E0 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					04F61DF922364E18004986E0 = {
 						CreatedOnToolsVersion = 10.1;
@@ -1554,6 +1589,7 @@
 				042B182A2240EA3E004D372A /* UserEvaluationTableViewCell1.xib in Resources */,
 				046D024122707B8000E79237 /* Bluetooth.html in Resources */,
 				04F54BA022603AFC00DE81E4 /* FullReduceTableViewCell.xib in Resources */,
+				04376687227ED11F00101E89 /* BuyingPackagesView.xib in Resources */,
 				04F54BCC2264730900DE81E4 /* FullReductionFootView.xib in Resources */,
 				04F212BC224CAAC900611664 /* NoImageWithReplyTableViewCell.xib in Resources */,
 				04C6186F2238D04B00773B7C /* ShopSetTableViewCell1.xib in Resources */,
@@ -1566,6 +1602,7 @@
 				0446EB37223F9B8A00A86F32 /* NewGoodsTableViewCell4.xib in Resources */,
 				04F5858D2275A17500188C19 /* BankCardManageView.xib in Resources */,
 				04F5C53C2276CFE800C5C218 /* LoginView.xib in Resources */,
+				0437668222783A8C00101E89 /* SuccessFinishView.xib in Resources */,
 				04F5859A2275B65500188C19 /* AddBankCardView.xib in Resources */,
 				04EBC277225F32E10035BD29 /* DiscountTableViewCell.xib in Resources */,
 				04F54B91225F500300DE81E4 /* DiscountPackageTableViewCell.xib in Resources */,
@@ -1663,6 +1700,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MerShop/Pods-MerShop-resources.sh",
+				"${PODS_ROOT}/BRPickerView/BRPickerView/AddressPickerView/BRPickerView.bundle",
 				"${PODS_ROOT}/Bugtags/Bugtags.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefreshExample/MJRefreshExample/MJRefresh/MJRefresh.bundle",
@@ -1671,6 +1709,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BRPickerView.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Bugtags.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
@@ -1693,6 +1732,7 @@
 				046D024F22714C9A00E79237 /* UIViewController+LCBlue.m in Sources */,
 				0416690722684DDA00A3D2E1 /* FullReductionModel.m in Sources */,
 				04F54BC2226471FF00DE81E4 /* AddFullReductionViewController.m in Sources */,
+				0437668022783A7500101E89 /* SuccessFinishView.m in Sources */,
 				04F5C51E2275CBF800C5C218 /* AddBankCardController.m in Sources */,
 				04F585792275505400188C19 /* AllBillsCell.m in Sources */,
 				04F5C53A2276CFD700C5C218 /* LoginView.m in Sources */,
@@ -1717,6 +1757,7 @@
 				04F585882275A05F00188C19 /* BankCardViewController.m in Sources */,
 				04F54B86225F461D00DE81E4 /* CashCouponTableViewCell.m in Sources */,
 				0446EB16223F4C1A00A86F32 /* ManageCatergoryViewController.m in Sources */,
+				04376685227ED11100101E89 /* BuyingPackagesView.m in Sources */,
 				04A46A4B225C3A4F00511C79 /* AddActivityGoodsViewController.m in Sources */,
 				0446EB0C223E439F00A86F32 /* SVIndefiniteAnimatedView.m in Sources */,
 				04C6184E2237878800773B7C /* OrderManagementViewController.m in Sources */,
@@ -1787,6 +1828,7 @@
 				04A46A5E225C8A1200511C79 /* EditeActivityTableViewCell.m in Sources */,
 				04C6184B2237876900773B7C /* ShopViewController.m in Sources */,
 				04F5858B2275A15C00188C19 /* BankCardManageView.m in Sources */,
+				043766732278334000101E89 /* SuccessViewController.m in Sources */,
 				0446EAD12239F71E00A86F32 /* ChangePasswordViewController.m in Sources */,
 				0446EAE8223B7A3800A86F32 /* TableViewCell.m in Sources */,
 				04A46A40225B4E6D00511C79 /* DiscountViewController.m in Sources */,
@@ -1987,6 +2029,7 @@
 			baseConfigurationReference = C6774E492B8F8E4A9E075F1A /* Pods-MerShop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MerShop/MerShop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6L4S78C444;
@@ -2013,6 +2056,7 @@
 			baseConfigurationReference = 2A64BC8AA121C02E47419A4D /* Pods-MerShop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MerShop/MerShop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6L4S78C444;
@@ -2027,7 +2071,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ifhu.MerShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "ifu_iOS Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = ifu_iOS_Distribution;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};

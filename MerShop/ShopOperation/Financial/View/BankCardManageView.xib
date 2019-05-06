@@ -40,27 +40,27 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6258" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vZ-Qz-fbJ">
-                                    <rect key="frame" x="16" y="69.5" width="66.5" height="29"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⋆⋆⋆⋆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vZ-Qz-fbJ">
+                                    <rect key="frame" x="16" y="69.5" width="78" height="23"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* * * *" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ubi-Iu-N5z">
-                                    <rect key="frame" x="97.5" y="69.5" width="66.5" height="29"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⋆⋆⋆⋆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ubi-Iu-N5z">
+                                    <rect key="frame" x="94" y="69.5" width="77.5" height="23"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* * * *" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTU-XT-X35">
-                                    <rect key="frame" x="179" y="69.5" width="66.5" height="29"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⋆⋆⋆⋆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTU-XT-X35">
+                                    <rect key="frame" x="171.5" y="69.5" width="78" height="23"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8896" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMz-3u-8aO">
-                                    <rect key="frame" x="260.5" y="69.5" width="66.5" height="29"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                    <rect key="frame" x="249.5" y="69.5" width="77.5" height="23"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -82,12 +82,12 @@
                                 <constraint firstItem="M9H-CI-sq3" firstAttribute="centerY" secondItem="dAg-jG-tKY" secondAttribute="centerY" id="2N9-R1-bvl"/>
                                 <constraint firstItem="nMz-3u-8aO" firstAttribute="height" secondItem="GTU-XT-X35" secondAttribute="height" id="3Sw-OG-I2q"/>
                                 <constraint firstItem="GTU-XT-X35" firstAttribute="width" secondItem="Ubi-Iu-N5z" secondAttribute="width" id="3rh-4b-XnY"/>
-                                <constraint firstItem="nMz-3u-8aO" firstAttribute="leading" secondItem="GTU-XT-X35" secondAttribute="trailing" constant="15" id="4i5-ci-vmc"/>
+                                <constraint firstItem="nMz-3u-8aO" firstAttribute="leading" secondItem="GTU-XT-X35" secondAttribute="trailing" id="4i5-ci-vmc"/>
                                 <constraint firstItem="GTU-XT-X35" firstAttribute="height" secondItem="Ubi-Iu-N5z" secondAttribute="height" id="5g5-lN-Q8s"/>
                                 <constraint firstItem="eKV-Ww-iLk" firstAttribute="top" secondItem="sPg-3z-cUR" secondAttribute="top" constant="16" id="8zs-My-Zhz"/>
                                 <constraint firstItem="dAg-jG-tKY" firstAttribute="leading" secondItem="sPg-3z-cUR" secondAttribute="leading" constant="15" id="JMm-fd-M5g"/>
                                 <constraint firstAttribute="trailing" secondItem="M9H-CI-sq3" secondAttribute="trailing" constant="18" id="LrY-cb-UWk"/>
-                                <constraint firstItem="Ubi-Iu-N5z" firstAttribute="leading" secondItem="9vZ-Qz-fbJ" secondAttribute="trailing" constant="15" id="N2e-jx-LFW"/>
+                                <constraint firstItem="Ubi-Iu-N5z" firstAttribute="leading" secondItem="9vZ-Qz-fbJ" secondAttribute="trailing" id="N2e-jx-LFW"/>
                                 <constraint firstItem="OeC-3q-uNJ" firstAttribute="leading" secondItem="eKV-Ww-iLk" secondAttribute="trailing" constant="10" id="Rca-ak-7hd"/>
                                 <constraint firstItem="nMz-3u-8aO" firstAttribute="width" secondItem="GTU-XT-X35" secondAttribute="width" id="Tdh-ZL-BnT"/>
                                 <constraint firstItem="9vZ-Qz-fbJ" firstAttribute="leading" secondItem="sPg-3z-cUR" secondAttribute="leading" constant="16" id="VBx-cP-595"/>
@@ -99,7 +99,7 @@
                                 <constraint firstItem="Ubi-Iu-N5z" firstAttribute="height" secondItem="9vZ-Qz-fbJ" secondAttribute="height" id="maR-Z6-Mvo"/>
                                 <constraint firstAttribute="bottom" secondItem="dAg-jG-tKY" secondAttribute="bottom" constant="18" id="ncB-uX-UhV"/>
                                 <constraint firstAttribute="trailing" secondItem="nMz-3u-8aO" secondAttribute="trailing" constant="18" id="ppy-Rs-wcD"/>
-                                <constraint firstItem="GTU-XT-X35" firstAttribute="leading" secondItem="Ubi-Iu-N5z" secondAttribute="trailing" constant="15" id="xfO-C4-k0F"/>
+                                <constraint firstItem="GTU-XT-X35" firstAttribute="leading" secondItem="Ubi-Iu-N5z" secondAttribute="trailing" id="xfO-C4-k0F"/>
                                 <constraint firstItem="GTU-XT-X35" firstAttribute="top" secondItem="Ubi-Iu-N5z" secondAttribute="top" id="y5i-h6-NGN"/>
                                 <constraint firstItem="Ubi-Iu-N5z" firstAttribute="width" secondItem="9vZ-Qz-fbJ" secondAttribute="width" id="yeh-P9-c6i"/>
                                 <constraint firstItem="9vZ-Qz-fbJ" firstAttribute="top" secondItem="eKV-Ww-iLk" secondAttribute="bottom" constant="34" id="zXZ-Iv-EhH"/>
@@ -191,6 +191,9 @@
                                     <integer key="value" value="3"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="deleteCard:" destination="iN0-l3-epB" eventType="touchUpInside" id="YT8-ba-H3c"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -226,6 +229,13 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="jKY-k6-5Vw" secondAttribute="bottom" id="xrS-QV-bvk"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="bankType" destination="eKV-Ww-iLk" id="27r-lD-Q6u"/>
+                <outlet property="lastFour" destination="nMz-3u-8aO" id="Gwl-75-hWT"/>
+                <outlet property="name" destination="dAg-jG-tKY" id="XeA-zz-txm"/>
+                <outlet property="time" destination="M9H-CI-sq3" id="MYF-ez-27T"/>
+                <outlet property="topFour" destination="9vZ-Qz-fbJ" id="Cuv-eZ-xLF"/>
+            </connections>
             <point key="canvasLocation" x="53.600000000000001" y="111.99400299850076"/>
         </view>
         <tapGestureRecognizer id="PrV-AR-571">

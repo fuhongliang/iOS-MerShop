@@ -31,7 +31,7 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="银行卡类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fo-LO-z8F">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="银行卡账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fo-LO-z8F">
                             <rect key="frame" x="15" y="56" width="87" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -49,14 +49,8 @@
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开户地区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OL-5A-MHX">
-                            <rect key="frame" x="15" y="176" width="70" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开户支行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmV-B4-97v">
-                            <rect key="frame" x="15" y="216" width="70" height="21"/>
+                            <rect key="frame" x="15" y="176" width="70" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -79,14 +73,8 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="广东深圳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q97-Qe-EBA">
-                            <rect key="frame" x="290" y="176" width="70" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国工商银行高新园支行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuf-PD-4uw">
-                            <rect key="frame" x="169" y="216" width="191" height="21"/>
+                            <rect key="frame" x="169" y="176" width="191" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -95,13 +83,11 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="pZ3-gX-Kxc" secondAttribute="trailing" constant="15" id="4kD-mm-th1"/>
-                        <constraint firstItem="Q97-Qe-EBA" firstAttribute="centerY" secondItem="6OL-5A-MHX" secondAttribute="centerY" id="8aH-c6-cAS"/>
+                        <constraint firstItem="bmV-B4-97v" firstAttribute="top" secondItem="4lS-hv-5bf" secondAttribute="bottom" constant="19" id="7Fj-Of-W4N"/>
                         <constraint firstItem="xuf-PD-4uw" firstAttribute="centerY" secondItem="bmV-B4-97v" secondAttribute="centerY" id="Cno-pf-4eL"/>
-                        <constraint firstItem="6OL-5A-MHX" firstAttribute="leading" secondItem="ER2-2J-bmb" secondAttribute="leading" constant="15" id="HyN-Xs-SoF"/>
                         <constraint firstAttribute="trailing" secondItem="xuf-PD-4uw" secondAttribute="trailing" constant="15" id="Krk-eY-avf"/>
                         <constraint firstItem="pZ3-gX-Kxc" firstAttribute="centerY" secondItem="4lS-hv-5bf" secondAttribute="centerY" id="NOh-gZ-wz0"/>
                         <constraint firstItem="4lS-hv-5bf" firstAttribute="top" secondItem="Rr0-bl-STv" secondAttribute="bottom" constant="19" id="TfI-bS-2BC"/>
-                        <constraint firstItem="bmV-B4-97v" firstAttribute="top" secondItem="6OL-5A-MHX" secondAttribute="bottom" constant="19" id="UTI-vv-tNn"/>
                         <constraint firstItem="tSA-IL-tEc" firstAttribute="leading" secondItem="ER2-2J-bmb" secondAttribute="leading" constant="15" id="V5U-fV-EhB"/>
                         <constraint firstItem="Rr0-bl-STv" firstAttribute="top" secondItem="2fo-LO-z8F" secondAttribute="bottom" constant="19" id="aed-cK-isQ"/>
                         <constraint firstAttribute="trailing" secondItem="cwe-u0-yGy" secondAttribute="trailing" constant="15" id="d9P-nE-9AT"/>
@@ -115,9 +101,7 @@
                         <constraint firstItem="TiB-n4-MTK" firstAttribute="centerY" secondItem="Rr0-bl-STv" secondAttribute="centerY" id="t2v-FN-Fxb"/>
                         <constraint firstItem="cwe-u0-yGy" firstAttribute="centerY" secondItem="2fo-LO-z8F" secondAttribute="centerY" id="tWb-Dj-Zba"/>
                         <constraint firstItem="Rr0-bl-STv" firstAttribute="leading" secondItem="ER2-2J-bmb" secondAttribute="leading" constant="15" id="uZ8-vq-rwN"/>
-                        <constraint firstItem="6OL-5A-MHX" firstAttribute="top" secondItem="4lS-hv-5bf" secondAttribute="bottom" constant="19" id="vPm-Td-kQT"/>
                         <constraint firstAttribute="trailing" secondItem="IBB-d6-tBJ" secondAttribute="trailing" constant="15" id="vaF-lz-xTJ"/>
-                        <constraint firstAttribute="trailing" secondItem="Q97-Qe-EBA" secondAttribute="trailing" constant="15" id="ysX-Ri-o6J"/>
                     </constraints>
                 </view>
             </subviews>
@@ -129,6 +113,12 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ER2-2J-bmb" secondAttribute="bottom" id="y6w-Td-DAg"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="accountName" destination="TiB-n4-MTK" id="Mgd-r6-ygx"/>
+                <outlet property="accountNumber" destination="cwe-u0-yGy" id="d4G-uc-xm4"/>
+                <outlet property="accountType" destination="pZ3-gX-Kxc" id="amx-Oz-GQp"/>
+                <outlet property="bankBranch" destination="xuf-PD-4uw" id="Wja-W0-dCJ"/>
+            </connections>
         </view>
     </objects>
 </document>

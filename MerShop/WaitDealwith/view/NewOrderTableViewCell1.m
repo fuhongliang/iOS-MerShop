@@ -36,7 +36,8 @@
 
 - (void)addProduct:(OrderModel *)model{
     self.number.text = [NSString stringWithFormat:@"#%ld",(long)model.order_id];
-    self.name.text = [NSString stringWithFormat:@"%@  %@",model.extend_order_common[@"reciver_name"],model.extend_order_common[@"phone"]];
+    self.name.text = [NSString stringWithFormat:@"%@  ",model.extend_order_common[@"reciver_name"]];
+    self.customerPhoneNumber.text = [NSString stringWithFormat:@"%@",model.extend_order_common[@"phone"]];
     self.address.text = [NSString stringWithFormat:@"地址：%@",model.extend_order_common[@"address"]];
     
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"下单时间：%@",model.add_time]];
@@ -49,9 +50,6 @@
     self.allPrice.text = [NSString stringWithFormat:@"¥%@",model.total_price];
     self.servicePrice.text = [NSString stringWithFormat:@"¥%@",model.commis_price];
     self.income.text = [NSString stringWithFormat:@"¥%@",model.goods_pay_price];
-    self.allPrice.font = [UIFont fontWithName:@"PingFang-SC-Bold" size:15];
-    self.servicePrice.font = [UIFont fontWithName:@"PingFang-SC-Bold" size:15];
-    self.income.font = [UIFont fontWithName:@"PingFang-SC-Bold" size:15];
     
     NSArray *a = model.extend_order_goods;
     UIView *lastView = nil;

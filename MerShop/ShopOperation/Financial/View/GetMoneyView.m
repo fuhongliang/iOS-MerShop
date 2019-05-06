@@ -10,12 +10,17 @@
 
 @implementation GetMoneyView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+
+- (IBAction)allGetAction:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(allGet)]){
+        [self.delegate performSelector:@selector(allGet) withObject:nil];
+    }
 }
-*/
+
+- (IBAction)ensure:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(ensureGet)]){
+        [self.delegate performSelector:@selector(ensureGet) withObject:nil];
+    }
+}
 
 @end

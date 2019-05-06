@@ -10,6 +10,12 @@
 
 
 @interface FinancialCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cardLabel;
+@property (weak, nonatomic) IBOutlet UILabel *state;
+
+- (void)fillCellWithDict:(NSDictionary *)dict;
 
 @end
 

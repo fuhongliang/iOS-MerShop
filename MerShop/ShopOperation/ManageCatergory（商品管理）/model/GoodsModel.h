@@ -28,13 +28,14 @@
 
 @property (nonatomic ,copy)NSArray *goods_sale_time;
 @property (nonatomic ,assign)NSInteger goods_id;
-@property (nonatomic ,copy)NSString *img_path;
+//@property (nonatomic ,copy)NSString *img_path;
 @property (nonatomic ,copy)NSString *img_name;
 @property (nonatomic ,assign)NSInteger goods_state;
 @property (nonatomic ,copy)NSString *goods_name;
 @property (nonatomic ,copy)NSString *goods_price;
 @property (nonatomic ,copy)NSString *goods_marketprice;
 //@property (nonatomic ,assign)NSInteger goods_salenum;
+@property (nonatomic ,copy)NSString *xianshi_price;
 @property (nonatomic ,assign)NSInteger goods_storage;
 @property (nonatomic ,copy)NSString *goods_desc;
 

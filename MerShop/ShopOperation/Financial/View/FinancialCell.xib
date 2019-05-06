@@ -80,6 +80,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="cardLabel" destination="kEH-Yb-YvS" id="zmE-Vx-gLv"/>
+                <outlet property="moneyLabel" destination="agD-IF-7ys" id="doL-89-sc5"/>
+                <outlet property="state" destination="tq6-ZF-RE6" id="KSp-we-IxH"/>
+                <outlet property="timeLabel" destination="jlk-QU-9Nq" id="FAn-zJ-0kR"/>
+            </connections>
             <point key="canvasLocation" x="137.59999999999999" y="111.54422788605699"/>
         </tableViewCell>
     </objects>

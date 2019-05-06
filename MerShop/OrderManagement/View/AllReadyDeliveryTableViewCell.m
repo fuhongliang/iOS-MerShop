@@ -25,7 +25,8 @@
 
 - (void)addProduct:(NewOrderModel *)model{
     self.number.text = [NSString stringWithFormat:@"#%ld",(long)model.order_id];
-    self.customerName.text = [NSString stringWithFormat:@"%@  %@",model.extend_order_common[@"reciver_name"],model.extend_order_common[@"phone"]];
+    self.customerName.text = [NSString stringWithFormat:@"%@  ",model.extend_order_common[@"reciver_name"]];
+    self.customerPhoneNumber.text = [NSString stringWithFormat:@"%@",model.extend_order_common[@"phone"]];
     self.address.text = [NSString stringWithFormat:@"地址：%@",model.extend_order_common[@"address"]];
     self.orderState.text = [NSString stringWithFormat:@"%@",model.order_state];
     if ([self.orderState.text isEqualToString:@"已取消"]){
@@ -50,13 +51,9 @@
     self.allPrice.text = [NSString stringWithFormat:@"¥%@",model.total_price];
     self.serviceFee.text = [NSString stringWithFormat:@"¥%@",model.commis_price];
     self.incomeFee.text = [NSString stringWithFormat:@"¥%@",model.goods_pay_price];
-    self.allPrice.font = [UIFont fontWithName:@"PingFang-SC-Bold" size:15];
-    self.serviceFee.font = [UIFont fontWithName:@"PingFang-SC-Bold" size:15];
-    self.incomeFee.font = [UIFont fontWithName:@"PingFang-SC-Bold" size:15];
 
     NSString *riderName = [NSString stringWithFormat:@"%@",[model.delivery objectForKey:@"name"]];
     NSString *phoneNumber = [NSString stringWithFormat:@"%@",[model.delivery objectForKey:@"phone"]];
-    self.riderInfo.text = [NSString stringWithFormat:@"骑手：%@  %@",riderName,phoneNumber];
     NSArray *a = model.extend_order_goods;
     UIView *lastView = nil;
     for (NSInteger i=0;i<a.count;i++){
@@ -133,6 +130,9 @@
 }
 
 - (IBAction)printf:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(printfOrder:)]){
+        [self.delegate performSelector:@selector(printfOrder:) withObject:self];
+    }
 }
 
 @end
