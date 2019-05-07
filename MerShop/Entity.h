@@ -31,6 +31,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 
 #define StoreIdString   [UserInfoDict objectForKey:@"store_id"]
 
+#define img_path    @"http://pqk40fvkr.bkt.clouddn.com/"
 
 #define IFThemeBlueColor toPCcolor(@"#1C98F6")   //APP主题色
 

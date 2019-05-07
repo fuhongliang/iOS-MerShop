@@ -64,7 +64,7 @@
             [self.mainTableview setTableHeaderView:[[UIView alloc] init]];
             for (NSDictionary *dict in arr){
                 OrderModel *model = [[OrderModel alloc]initWithDictionary:dict error:nil];
-                [self.dataArr addObject:model];
+//                [self.dataArr addObject:model];
             }
             [self.mainTableview reloadData];
             

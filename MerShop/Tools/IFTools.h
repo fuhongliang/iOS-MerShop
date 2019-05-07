@@ -29,5 +29,7 @@
 + (NSString*)dateToString:(NSDate*)date dateFormat:(NSString*)dateFormat;
 
 + (NSString *)toJsonData:(id)theData;
+
++ (UIImage *)compressImageQuality:(UIImage *)image toByte:(NSInteger)maxLength;
 @end
 

@@ -131,7 +131,7 @@
 }
 - (void)finance:(UIButton *)sender{
     FinanceViewController *vc = [[FinanceViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController pushViewController:vc animated:NO];
 }
 
 @end

@@ -37,9 +37,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 点击空白处收键盘
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
-    [self.view addGestureRecognizer:singleTap];
+//    // 点击空白处收键盘
+//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
+//    [self.view addGestureRecognizer:singleTap];
 
     self.switchStatus = self.storage;
     [self setNaviTitle:@"新建商品"];
@@ -57,7 +57,7 @@
         [self setNaviTitle:@"编辑商品"];
         [self.headerview.btnImg setHidden:YES];
         [self.headerview.btnText setHidden:YES];
-        self.image_path = [NSString stringWithFormat:@"%@/%@",_tempDict[@"img_path"],_tempDict[@"img_name"]];
+        self.image_path = [NSString stringWithFormat:@"%@",_tempDict[@"img_name"]];
         [_headerview.goodsImage sd_setImageWithURL:[NSURL URLWithString:self.image_path]];
         self.goodsName = _tempDict[@"goods_name"];
         self.currentPrice = _tempDict[@"goods_price"];
@@ -76,11 +76,11 @@
     }
 }
 
-#pragma mark --收起键盘
-// 点击空白处收键盘
--(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer {
-    [self.view endEditing:YES];
-}
+//#pragma mark --收起键盘
+//// 点击空白处收键盘
+//-(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer {
+//    [self.view endEditing:YES];
+//}
 
 - (void)setUI{
     _mainTableview = [[UITableView alloc]init];
@@ -243,6 +243,16 @@
     _headerview.goodsImage.image = info[UIImagePickerControllerEditedImage];
     [self.headerview.btnImg setHidden:YES];
     [self.headerview.btnText setHidden:YES];
+    LCWeakSelf(self)
+    UIImage *uploadImg = [IFTools compressImageQuality:_headerview.goodsImage.image toByte:2048];
+    [Http_url POST:@"image_upload" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
+        
+        weakself.image_path = [NSString stringWithFormat:@"%@%@",img_path,[data objectForKey:@"data"]];
+        
+        
+    } WithFailBlock:^(id data) {
+        
+    }];
     [picker dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -337,7 +347,7 @@
             cell4.text.text = _goodsName;
             [cell4 setAttributeText:_dataArr[indexPath.section][indexPath.row]];
             return cell4;
-        }else{
+        }else if (indexPath.row == 1){
             if (!cell2){
                 NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"NewGoodsTableViewCell2" owner:self options:nil];
                 cell2 = [nib objectAtIndex:0];
@@ -409,7 +419,7 @@
     }
 }
 
-#pragma mark - uipickerview delegate &datasource
+#pragma mark - uipickerview delegate & datasource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
 }
@@ -442,71 +452,67 @@
 #pragma mark - 上传图片
 - (void)uploadImage{
     LCWeakSelf(self)
-    UIImage *uploadImg = _headerview.goodsImage.image;
     NSString *descStr = self.textview.text;
-    
-    //1.任务一：上传图片
-    NSBlockOperation *operation1 = [NSBlockOperation blockOperationWithBlock:^{
-        
-        [NSThread sleepForTimeInterval:1.0];
-        [Http_url POST:@"image_upload/goods_img" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
-            
-            weakself.image_path = [[data objectForKey:@"data"] objectForKey:@"img_name"];
-            
-            
-        } WithFailBlock:^(id data) {
-            
-        }];
-
-    }];
-    //1.任务二：提交图片
-    NSBlockOperation *operation2 = [NSBlockOperation blockOperationWithBlock:^{
-        
-        [NSThread sleepForTimeInterval:1.0];
-        NSString *postUrl;
-        NSDictionary *pramadict;
-        if ([self.tempStr isEqualToString:@"编辑"]){
-            postUrl = @"edit_goods";
-            pramadict = @{@"store_id":@(StoreId),
-                          @"class_id":@(weakself.catergoryId),
-                          @"goods_name":weakself.goodsName,
-                          @"goods_price":@([weakself.currentPrice floatValue]),
-                          @"origin_price":@([weakself.oldPrice floatValue]),
-                          @"goods_storage":@(weakself.switchStatus),
-                          //@"sell_time":[self toJSONString:sell_time],
-                          @"goods_desc":descStr,
-                          @"img_name":weakself.image_path,
-                          @"goods_id":@(weakself.goodsId)
-                          };
-        }else{
-            postUrl = @"add_goods";
-            pramadict = @{@"store_id":@(StoreId),
-                          @"class_id":@(weakself.catergoryId),
-                          @"goods_name":weakself.goodsName,
-                          @"goods_price":@([weakself.currentPrice floatValue]),
-                          @"origin_price":@([weakself.oldPrice floatValue]),
-                          @"goods_storage":@(weakself.switchStatus),
-                          //@"sell_time":[self toJSONString:sell_time],
-                          @"goods_desc":descStr,
-                          @"img_name":weakself.image_path
-                          };
-            
+    NSString *postUrl;
+    NSDictionary *pramadict;
+    if ([self.tempStr isEqualToString:@"编辑"]){
+        postUrl = @"edit_goods";
+        pramadict = @{@"store_id":@(StoreId),
+                      @"class_id":@(weakself.catergoryId),
+                      @"goods_name":weakself.goodsName,
+                      @"goods_price":@([weakself.currentPrice floatValue]),
+                      @"origin_price":@([weakself.oldPrice floatValue]),
+                      @"goods_storage":@(weakself.switchStatus),
+                      //@"sell_time":[self toJSONString:sell_time],
+                      @"goods_desc":descStr,
+                      @"img_name":weakself.image_path,
+                      @"goods_id":@(weakself.goodsId)
+                      };
+    }else{
+        postUrl = @"add_goods";
+        pramadict = @{@"store_id":@(StoreId),
+                      @"class_id":@(weakself.catergoryId),
+                      @"goods_name":weakself.goodsName,
+                      @"goods_price":@([weakself.currentPrice floatValue]),
+                      @"origin_price":@([weakself.oldPrice floatValue]),
+                      @"goods_storage":@(weakself.switchStatus),
+                      //@"sell_time":[self toJSONString:sell_time],
+                      @"goods_desc":descStr,
+                      @"img_name":weakself.image_path
+                      };
+    }
+    [Http_url POST:postUrl dict:pramadict showHUD:NO WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            [SVProgressHUD dismiss];
+            [[IFUtils share]showErrorInfo:@"添加成功"];
+            [weakself.saveBtn setUserInteractionEnabled:YES];
         }
-        [Http_url POST:postUrl dict:pramadict showHUD:NO WithSuccessBlock:^(id data) {
-            if ([[data objectForKey:@"code"] integerValue] == 200){
-                [SVProgressHUD dismiss];
-                [[IFUtils share]showErrorInfo:@"添加成功"];
-                [weakself.saveBtn setUserInteractionEnabled:YES];
-            }
-        } WithFailBlock:^(id data) {
-            
-        }];
+    } WithFailBlock:^(id data) {
+        
     }];
-    
-    [operation2 addDependency:operation1];
-    //5.创建队列并加入任务
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperations:@[ operation2, operation1] waitUntilFinished:NO];
+//    //1.任务一：上传图片
+//    NSBlockOperation *operation1 = [NSBlockOperation blockOperationWithBlock:^{
+//
+//        [Http_url POST:@"image_upload" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
+//
+//            weakself.image_path = [NSString stringWithFormat:@"%@%@",img_path,[data objectForKey:@"data"]];
+//
+//
+//        } WithFailBlock:^(id data) {
+//
+//        }];
+//
+//    }];
+//    //1.任务二：提交图片
+//    NSBlockOperation *operation2 = [NSBlockOperation blockOperationWithBlock:^{
+//
+//
+//    }];
+//
+//    [operation2 addDependency:operation1];
+//    //5.创建队列并加入任务
+//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+//    [queue addOperations:@[ operation2, operation1] waitUntilFinished:NO];
     
 }
 

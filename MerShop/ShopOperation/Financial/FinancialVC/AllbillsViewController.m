@@ -26,6 +26,11 @@
     [self setNaviTitle:@"全部账单"];
     [self.view setBackgroundColor:BackgroundColor];
     [self setUI];
+    [self requestData];
+    
+}
+
+- (void)requestData{
     
 }
 
