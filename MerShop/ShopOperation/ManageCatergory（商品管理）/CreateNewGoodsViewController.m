@@ -490,29 +490,6 @@
     } WithFailBlock:^(id data) {
         
     }];
-//    //1.任务一：上传图片
-//    NSBlockOperation *operation1 = [NSBlockOperation blockOperationWithBlock:^{
-//
-//        [Http_url POST:@"image_upload" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
-//
-//            weakself.image_path = [NSString stringWithFormat:@"%@%@",img_path,[data objectForKey:@"data"]];
-//
-//
-//        } WithFailBlock:^(id data) {
-//
-//        }];
-//
-//    }];
-//    //1.任务二：提交图片
-//    NSBlockOperation *operation2 = [NSBlockOperation blockOperationWithBlock:^{
-//
-//
-//    }];
-//
-//    [operation2 addDependency:operation1];
-//    //5.创建队列并加入任务
-//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-//    [queue addOperations:@[ operation2, operation1] waitUntilFinished:NO];
     
 }
 

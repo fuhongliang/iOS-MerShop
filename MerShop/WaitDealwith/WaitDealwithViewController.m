@@ -8,19 +8,25 @@
 
 #import "WaitDealwithViewController.h"
 #import "NewOrderTableViewCell1.h"
+#import "InfomationViewController.h"
+#import "LoginInViewController.h"
 #import "refuseView.h"
 #import "MJRefresh.h"
 #import "OrderModel.h"
 #import "EmptyOrderView.h"
 
-@interface WaitDealwithViewController ()<UITableViewDelegate,UITableViewDataSource,NewOrderTableViewCell1Delegate,refuseViewDelegate>
+
+@interface WaitDealwithViewController ()<UITableViewDelegate,UITableViewDataSource,NewOrderTableViewCell1Delegate,refuseViewDelegate,XTScrollLabelViewDelegate>
 @property (nonatomic ,strong)UITableView *mainTableview;
 @property (nonatomic ,strong)NSMutableArray *dataArr;
-@property (nonatomic ,strong)UIView *bgView;
+@property (nonatomic ,strong)UIView *bgView;//拒单背景view
 @property (nonatomic ,assign)NSInteger orderID;
 @property (nonatomic ,strong)refuseView *refuseView;
 @property (nonatomic ,assign)NSInteger refuseIndex;
 @property (nonatomic ,strong)EmptyOrderView *emptyView;
+@property (nonatomic ,strong)NSArray *noticeArray;
+@property (nonatomic ,strong)UIView *lightBgView;//跑马灯背景view
+@property (nonatomic ,strong)GBLoopView *loopView;//跑马灯view
 @end
 
 @implementation WaitDealwithViewController
@@ -57,14 +63,19 @@
 - (void)requestData{
     NSInteger storeId = [[[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];
     [Http_url POST:@"get_neworder" dict:@{@"store_id":@(storeId)} showHUD:NO WithSuccessBlock:^(id data) {
-        NSArray *arr = [data objectForKey:@"data"];
+        if ([[data objectForKey:@"code"] integerValue] == 3001){
+            [self tokenLost];
+            return ;
+        }
+        self.noticeArray = [data[@"data"][@"msg"] copy];
+        NSArray *arr = [data objectForKey:@"data"][@"list"];
         if ([[data objectForKey:@"data"] isKindOfClass:[NSNull class]]){
             [self.mainTableview setTableHeaderView:self.emptyView];
         }else{
             [self.mainTableview setTableHeaderView:[[UIView alloc] init]];
             for (NSDictionary *dict in arr){
                 OrderModel *model = [[OrderModel alloc]initWithDictionary:dict error:nil];
-//                [self.dataArr addObject:model];
+                [self.dataArr addObject:model];
             }
             [self.mainTableview reloadData];
             
@@ -75,9 +86,40 @@
     }];
 }
 
+- (void)tokenLost{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
+    LoginInViewController *loginVC = [[LoginInViewController alloc]init];
+    NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:loginVC];
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.window.rootViewController = navi;
+}
+
+
 - (void)setUI{
+    
+    _lightBgView = [[UIView alloc]init];
+    [_lightBgView setBackgroundColor:toPCcolor(@"#FDF6DB")];
+    [_lightBgView setFrame:XFrame(0, ViewStart_Y, Screen_W, 30)];
+    [self.view addSubview:_lightBgView];
+    
+    NSArray *loopArrs = [NSArray arrayWithObjects:@"您有一笔新订单，系统已自动接单~",nil];
+    
+    _loopView = [[GBLoopView alloc] initWithFrame:CGRectMake(0, 0,Screen_W, 30)];
+    [_loopView setDirection:GBLoopDirectionRight];
+    [_loopView setTickerArrs:loopArrs];
+    [_loopView setSpeed:60.0f];
+    [_lightBgView addSubview:_loopView];
+    [_loopView start];
+    
+    UIButton *closeBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [closeBtn setFrame:XFrame(Screen_W-30, 7, 15, 15)];
+    [closeBtn setImage:[UIImage imageNamed:@"home_xt_gb"] forState:(UIControlStateNormal)];
+    [closeBtn addTarget:self action:@selector(closeNotice) forControlEvents:(UIControlEventTouchUpInside)];
+    [_lightBgView addSubview:closeBtn];
+    
     _mainTableview = [[UITableView alloc]init];
-    [_mainTableview setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
+    [_mainTableview setFrame:XFrame(0, ViewStart_Y+30, Screen_W, Screen_H-ViewStart_Y)];
     [_mainTableview setDelegate:self];
     [_mainTableview setDataSource:self];
     [_mainTableview setBackgroundColor:toPCcolor(@"#f5f5f5")];
@@ -99,8 +141,40 @@
     self.refuseView.delegate = self;
     [self.view addSubview:self.refuseView];
     
+    UIButton *noticeBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [noticeBtn setImage:[UIImage imageNamed:@"home_xt_ts"] forState:(UIControlStateNormal)];
+    [noticeBtn addTarget:self action:@selector(clickNotice) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.navigationView addSubview:noticeBtn];
+    [noticeBtn makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.navigationView.right).offset(-18);
+        make.width.equalTo(17);
+        make.height.equalTo(16);
+        make.bottom.equalTo(self.navigationView.bottom).offset(-13);
+    }];
+    
 }
 
+/**
+    关闭顶部跑马灯
+ */
+- (void)closeNotice{
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.lightBgView setHidden:YES];
+        [self.mainTableview setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
+    }];
+}
+
+/**
+    点击导航条通知按钮
+ */
+- (void)clickNotice{
+    InfomationViewController *noticeVC = [[InfomationViewController alloc]init];
+    [self.navigationController pushViewController:noticeVC animated:YES];
+}
+
+/**
+    拒绝订单
+ */
 - (void)refuseOrder:(id)cell{
     NewOrderTableViewCell1 *c = cell;
     OrderModel *model = self.dataArr[c.tag];
@@ -110,12 +184,14 @@
     [self.refuseView setHidden:NO];
 }
 
+/**
+    接收订单
+ */
 - (void)receiveOrder:(id)cell{
     NewOrderTableViewCell1 *c = cell;
     _refuseIndex = c.tag;
     OrderModel *model = self.dataArr[c.tag];
     _orderID = model.order_id;
-//    __weak typeof(self) weakself = self;
     [Http_url POST:@"receive_order" dict:@{@"order_id":@(_orderID)} showHUD:YES WithSuccessBlock:^(id data) {
         if (data){
             [[IFUtils share]showErrorInfo:@"已接单"];

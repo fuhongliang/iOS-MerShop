@@ -12,7 +12,7 @@
 
 - (void)allGet;
 - (void)ensureGet;
-
+- (void)addBankCard;
 @end
 
 @interface GetMoneyView : UIView
@@ -23,6 +23,8 @@
 @property (weak, nonatomic)id<GetMoneyViewDelegate>delegate;
 - (IBAction)allGetAction:(id)sender;
 - (IBAction)ensure:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *addCardBtn;
+- (IBAction)addAction:(id)sender;
 
 @end
 

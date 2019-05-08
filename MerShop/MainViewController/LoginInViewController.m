@@ -60,7 +60,6 @@
                           @"member_passwd":_loginview.passWordText.text
                           };
     [Http_url POST:@"member_login" dict:dic showHUD:YES WithSuccessBlock:^(id data) {
-        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
         NSMutableDictionary *userInfoDict = [[NSMutableDictionary alloc]initWithDictionary:[data objectForKey:@"data"]];
         NSArray *arr = [userInfoDict allKeys];
         for (NSString *key in arr){
@@ -70,8 +69,8 @@
         }
         NSLog(@"%@",userInfoDict);
         if (userInfoDict){
-            [user setObject:userInfoDict forKey:@"userInfo"];
-            [user synchronize];
+            [IFUserDefaults setObject:userInfoDict forKey:@"userInfo"];
+            [IFUserDefaults synchronize];
         }
         [self GotoMainTabBarVC];
     } WithFailBlock:^(id data) {

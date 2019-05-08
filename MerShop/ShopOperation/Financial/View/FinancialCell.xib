@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结算尾号：8819" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEH-Yb-YvS">
-                                <rect key="frame" x="15" y="38.5" width="97" height="16"/>
+                                <rect key="frame" x="15" y="46" width="97" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已出账" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tq6-ZF-RE6">
-                                <rect key="frame" x="262" y="37.5" width="43" height="17"/>
+                                <rect key="frame" x="262" y="43" width="43" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.039215686270000001" green="0.78039215689999997" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -59,16 +59,16 @@
                             <constraint firstAttribute="bottom" secondItem="1u7-wX-wJk" secondAttribute="bottom" id="3Em-XR-5Jk"/>
                             <constraint firstItem="1u7-wX-wJk" firstAttribute="leading" secondItem="0gj-Zr-9gn" secondAttribute="leading" constant="15" id="6Ps-vU-onu"/>
                             <constraint firstItem="kEH-Yb-YvS" firstAttribute="leading" secondItem="0gj-Zr-9gn" secondAttribute="leading" constant="15" id="Axd-WX-w16"/>
-                            <constraint firstItem="kEH-Yb-YvS" firstAttribute="top" secondItem="jlk-QU-9Nq" secondAttribute="bottom" constant="2.5" id="DyP-OZ-vhg"/>
-                            <constraint firstAttribute="bottom" secondItem="tq6-ZF-RE6" secondAttribute="bottom" constant="15" id="Mus-rg-cmQ"/>
+                            <constraint firstItem="kEH-Yb-YvS" firstAttribute="top" secondItem="jlk-QU-9Nq" secondAttribute="bottom" constant="10" id="DyP-OZ-vhg"/>
+                            <constraint firstAttribute="bottom" secondItem="kEH-Yb-YvS" secondAttribute="bottom" constant="7.5" id="GwR-1t-vpv"/>
+                            <constraint firstAttribute="bottom" secondItem="tq6-ZF-RE6" secondAttribute="bottom" constant="9.5" id="VVO-xL-tZV"/>
                             <constraint firstItem="agD-IF-7ys" firstAttribute="top" secondItem="0gj-Zr-9gn" secondAttribute="top" constant="15" id="XB3-PV-9RJ"/>
                             <constraint firstAttribute="trailing" secondItem="tq6-ZF-RE6" secondAttribute="trailing" constant="15" id="ZY9-n1-cVt"/>
                             <constraint firstAttribute="trailing" secondItem="agD-IF-7ys" secondAttribute="trailing" constant="15" id="dZm-fS-DjX"/>
                             <constraint firstAttribute="trailing" secondItem="1u7-wX-wJk" secondAttribute="trailing" id="jIz-RZ-ohb"/>
                             <constraint firstItem="jlk-QU-9Nq" firstAttribute="leading" secondItem="0gj-Zr-9gn" secondAttribute="leading" constant="15" id="m9S-Tt-QPg"/>
                             <constraint firstItem="jlk-QU-9Nq" firstAttribute="top" secondItem="0gj-Zr-9gn" secondAttribute="top" constant="15" id="pcf-NZ-lpZ"/>
-                            <constraint firstItem="tq6-ZF-RE6" firstAttribute="top" secondItem="agD-IF-7ys" secondAttribute="bottom" constant="4.5" id="xGy-4I-gTZ"/>
-                            <constraint firstAttribute="bottom" secondItem="kEH-Yb-YvS" secondAttribute="bottom" constant="15" id="zuC-4H-rFZ"/>
+                            <constraint firstItem="tq6-ZF-RE6" firstAttribute="top" secondItem="agD-IF-7ys" secondAttribute="bottom" constant="10" id="xGy-4I-gTZ"/>
                         </constraints>
                     </view>
                 </subviews>

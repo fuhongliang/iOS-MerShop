@@ -41,9 +41,22 @@
                 [SVProgressHUD dismiss];
             }
             successBlock(dic);
+        }else if (code == 3001){
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
+            LoginInViewController *loginVC = [[LoginInViewController alloc]init];
+            NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:loginVC];
+            AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            delegate.window.rootViewController = navi;
+            if (show){
+                [SVProgressHUD dismiss];
+            }
+            [[IFUtils share]showErrorInfo:dic[@"msg"]];
+            successBlock(dic);
         }else{
             if (show){
                 [SVProgressHUD dismiss];
+                [[IFUtils share]showErrorInfo:dic[@"msg"]];
             }
             successBlock(dic);
         }

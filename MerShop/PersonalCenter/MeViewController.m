@@ -126,12 +126,20 @@
 }
 
 - (void)SignOut{
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
-    LoginInViewController *loginVC = [[LoginInViewController alloc]init];
-    NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:loginVC];
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    delegate.window.rootViewController = navi;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确定退出登录吗？" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
+        LoginInViewController *loginVC = [[LoginInViewController alloc]init];
+        NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:loginVC];
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        delegate.window.rootViewController = navi;
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [self.navigationController presentViewController:alert animated:YES completion:nil];
+
 }
 
 - (void)cancelCall:(UIButton *)sender{

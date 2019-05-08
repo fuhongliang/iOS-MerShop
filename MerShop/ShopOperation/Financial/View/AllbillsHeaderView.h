@@ -8,10 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
 
-@interface AllbillsHeaderView : UIView
+@protocol AllbillsHeaderViewDelegate <NSObject>
+
+- (void)chooseDate;
 
 @end
 
-NS_ASSUME_NONNULL_END
+@interface AllbillsHeaderView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *getMoneyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *restMoneyLabel;
+@property (weak, nonatomic) IBOutlet UIButton *dateBtn;
+@property (weak, nonatomic)id<AllbillsHeaderViewDelegate>delegate;
+- (IBAction)chooseDateAction:(id)sender;
+
+@end
+

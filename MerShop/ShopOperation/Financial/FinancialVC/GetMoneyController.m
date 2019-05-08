@@ -9,6 +9,7 @@
 #import "GetMoneyController.h"
 #import "GetMoneyView.h"
 #import "SuccessViewController.h"
+#import "AddBankCardController.h"
 
 @interface GetMoneyController ()<GetMoneyViewDelegate>
 @property (weak, nonatomic)GetMoneyView *mainview;
@@ -45,13 +46,22 @@
         _mainview.accountType.text = self.accountDict[@"account"][@"bank_type"];
         _mainview.lastFourNumber.text = [NSString stringWithFormat:@"尾号%@储蓄卡",[cardNumber substringFromIndex:cardNumber.length-4]];
         _mainview.canGetLabel.text = cashStr;
+        [_mainview.addCardBtn setHidden:YES];
+    }else{
+        [_mainview.accountType setHidden:YES];
+        [_mainview.lastFourNumber setHidden:YES];
     }
 
     [self.view addSubview:_mainview];
     
 }
 
+
 #pragma mark - GetMoneyViewDelegate
+- (void)addBankCard{
+    AddBankCardController *vc = [[AddBankCardController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 /**
     全部提现按钮代理方
  

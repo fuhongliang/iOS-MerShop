@@ -19,7 +19,7 @@
 #import "UIImageView+WebCache.h"
 
 
-@interface ShopSetViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource>
+@interface ShopSetViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate>
 @property (nonatomic ,strong)UITableView *tableview;
 @property (nonatomic ,strong)UIPickerView *pickerView1;
 @property (nonatomic ,strong)UIPickerView *pickerView2;
@@ -321,10 +321,10 @@
     if (indexPath.section == 0){
         if (indexPath.row == 0){
             BusinessStatusViewController *VC = [[BusinessStatusViewController alloc]init];
-            [self.navigationController pushViewController:VC animated:NO];
+            [self.navigationController pushViewController:VC animated:YES];
         }else{
             RestaurantNoticeViewController *VC = [[RestaurantNoticeViewController alloc]init];
-            [self.navigationController pushViewController:VC animated:NO];
+            [self.navigationController pushViewController:VC animated:YES];
         }
     }else{
         if (indexPath.row == 3){
@@ -336,8 +336,103 @@
         }else if (indexPath.row == 4){
             BusinessLicenseViewController *vc = [[BusinessLicenseViewController alloc]init];
             [self.navigationController pushViewController:vc animated:YES];
+        }else if (indexPath.row == 0){
+            [self changeStoreImg];
         }
     }
+}
+
+/**
+    调用相册、相机,上传店铺头像
+ */
+- (void)changeStoreImg{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"请选择头像来源" message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *cameral = [UIAlertAction actionWithTitle:@"直接拍照" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [self openCameral];
+    }];
+    UIAlertAction *album = [UIAlertAction actionWithTitle:@"图片库" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [self openPhotoLibrary];
+    }];
+    [alert addAction:cameral];
+    [alert addAction:album];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+//打开相机
+- (void)openCameral{
+    if ([UIImagePickerController isSourceTypeAvailable:(UIImagePickerControllerSourceTypeCamera)]){
+        //摄像头
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+        imagePicker.allowsEditing = YES;
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }else{
+        NSLog(@"无摄像头");
+    }
+}
+
+//打开相册
+- (void)openPhotoLibrary{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:^{
+        NSLog(@"打开相册");
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"取消");
+    }];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera){
+        //图片存入相册
+        UIImageWriteToSavedPhotosAlbum(info[UIImagePickerControllerEditedImage], nil, nil, nil);
+    }
+    LCWeakSelf(self)
+    UIImage *uploadImg = info[UIImagePickerControllerEditedImage];
+    [Http_url POST:@"image_upload" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            NSString *imagePath = [NSString stringWithFormat:@"%@%@",img_path,[data objectForKey:@"data"]];
+            NSDictionary *uploadImgDict = @{@"store_id":@(StoreId),
+                                            @"avator":imagePath
+                                            };
+            [Http_url POST:@"change_avator" dict:uploadImgDict showHUD:NO WithSuccessBlock:^(id data) {
+                NSLog(@"%@",data);
+                NSMutableDictionary *userInfoDict = [[NSMutableDictionary alloc]initWithDictionary:[data objectForKey:@"data"]];
+                NSArray *arr = [userInfoDict allKeys];
+                for (NSString *key in arr){
+                    if ([[userInfoDict objectForKey:key] isKindOfClass:[NSNull class]]){
+                        [userInfoDict setObject:@"" forKey:key];
+                    }
+                }
+                if (userInfoDict){
+                    [IFUserDefaults setObject:userInfoDict forKey:@"userInfo"];
+                    [IFUserDefaults synchronize];
+                    [weakself.tableview reloadData];
+                }
+                
+            } WithFailBlock:^(id data) {
+                
+            }];
+        }
+        
+    } WithFailBlock:^(id data) {
+        
+    }];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (void)cancel{

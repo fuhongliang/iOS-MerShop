@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		040161032281245700956431 /* AllbillsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040161022281245700956431 /* AllbillsHeaderView.m */; };
 		040161052281247700956431 /* AllbillsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040161042281247700956431 /* AllbillsHeaderView.xib */; };
+		040161092281667A00956431 /* NoticeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 040161072281667A00956431 /* NoticeTableViewCell.m */; };
+		0401610A2281667A00956431 /* NoticeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040161082281667A00956431 /* NoticeTableViewCell.xib */; };
+		0401610D2281722700956431 /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401610C2281722700956431 /* NoticeDetailViewController.m */; };
+		0401611122817B6900956431 /* GBLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401611022817B6800956431 /* GBLoopView.m */; };
+		040161162281848A00956431 /* XTScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040161142281848A00956431 /* XTScrollLabelView.m */; };
+		040161172281848A00956431 /* NSString+Width.m in Sources */ = {isa = PBXBuildFile; fileRef = 040161152281848A00956431 /* NSString+Width.m */; };
 		041668C72265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041668C62265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m */; };
 		041668C92265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041668C82265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib */; };
 		041668CD22672CAA00A3D2E1 /* NewGoodsTableViewCell5.m in Sources */ = {isa = PBXBuildFile; fileRef = 041668CB22672CAA00A3D2E1 /* NewGoodsTableViewCell5.m */; };
@@ -235,6 +241,17 @@
 		040161012281245700956431 /* AllbillsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllbillsHeaderView.h; sourceTree = "<group>"; };
 		040161022281245700956431 /* AllbillsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllbillsHeaderView.m; sourceTree = "<group>"; };
 		040161042281247700956431 /* AllbillsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllbillsHeaderView.xib; sourceTree = "<group>"; };
+		040161062281667A00956431 /* NoticeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeTableViewCell.h; sourceTree = "<group>"; };
+		040161072281667A00956431 /* NoticeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeTableViewCell.m; sourceTree = "<group>"; };
+		040161082281667A00956431 /* NoticeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeTableViewCell.xib; sourceTree = "<group>"; };
+		0401610B2281722700956431 /* NoticeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeDetailViewController.h; sourceTree = "<group>"; };
+		0401610C2281722700956431 /* NoticeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeDetailViewController.m; sourceTree = "<group>"; };
+		0401610F22817B6800956431 /* GBLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBLoopView.h; sourceTree = "<group>"; };
+		0401611022817B6800956431 /* GBLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBLoopView.m; sourceTree = "<group>"; };
+		040161122281848900956431 /* NSString+Width.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Width.h"; sourceTree = "<group>"; };
+		040161132281848900956431 /* XTScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTScrollLabelView.h; sourceTree = "<group>"; };
+		040161142281848A00956431 /* XTScrollLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTScrollLabelView.m; sourceTree = "<group>"; };
+		040161152281848A00956431 /* NSString+Width.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Width.m"; sourceTree = "<group>"; };
 		041668C52265B03F00A3D2E1 /* CreateNewGoodsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateNewGoodsHeaderView.h; sourceTree = "<group>"; };
 		041668C62265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateNewGoodsHeaderView.m; sourceTree = "<group>"; };
 		041668C82265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateNewGoodsHeaderView.xib; sourceTree = "<group>"; };
@@ -610,6 +627,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0401610E22817B6800956431 /* GBLoopView */ = {
+			isa = PBXGroup;
+			children = (
+				0401610F22817B6800956431 /* GBLoopView.h */,
+				0401611022817B6800956431 /* GBLoopView.m */,
+			);
+			path = GBLoopView;
+			sourceTree = "<group>";
+		};
 		0416690422684DB000A3D2E1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -714,6 +740,9 @@
 				04FD40BB224326F4000C9311 /* refuseView.h */,
 				04FD40BC224326F4000C9311 /* refuseView.m */,
 				04FD40BE22432708000C9311 /* refuseView.xib */,
+				040161062281667A00956431 /* NoticeTableViewCell.h */,
+				040161072281667A00956431 /* NoticeTableViewCell.m */,
+				040161082281667A00956431 /* NoticeTableViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1345,6 +1374,7 @@
 		04F61E1922366285004986E0 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				0401610E22817B6800956431 /* GBLoopView */,
 				04A46A74225D8DF400511C79 /* JHDraw */,
 				0446EAFE223E438900A86F32 /* SVProgressHUD */,
 				04C618652238A24C00773B7C /* ZJTopImageBottomTitleButton.h */,
@@ -1353,6 +1383,10 @@
 				04F212B1224B79C000611664 /* JXMovableCellTableView.m */,
 				041669022268160700A3D2E1 /* THDatePickerView.h */,
 				041669012268160700A3D2E1 /* THDatePickerView.m */,
+				040161122281848900956431 /* NSString+Width.h */,
+				040161152281848A00956431 /* NSString+Width.m */,
+				040161132281848900956431 /* XTScrollLabelView.h */,
+				040161142281848A00956431 /* XTScrollLabelView.m */,
 			);
 			path = ThirdLib;
 			sourceTree = "<group>";
@@ -1366,6 +1400,8 @@
 				04C61850223787A400773B7C /* WaitDealwithViewController.m */,
 				04F5C5352276CD7D00C5C218 /* InfomationViewController.h */,
 				04F5C5362276CD7D00C5C218 /* InfomationViewController.m */,
+				0401610B2281722700956431 /* NoticeDetailViewController.h */,
+				0401610C2281722700956431 /* NoticeDetailViewController.m */,
 			);
 			path = WaitDealwith;
 			sourceTree = "<group>";
@@ -1634,6 +1670,7 @@
 				0446EB32223F8B0200A86F32 /* NewGoodsTableViewCell3.xib in Resources */,
 				0446EAE4223B441F00A86F32 /* HeaderView.xib in Resources */,
 				0446EB09223E439F00A86F32 /* SVProgressHUD.bundle in Resources */,
+				0401610A2281667A00956431 /* NoticeTableViewCell.xib in Resources */,
 				04A46A65225C9C2200511C79 /* ChangePriceView.xib in Resources */,
 				04F5859F2275C2B600188C19 /* FinishBankCardInfo.xib in Resources */,
 				04FD40C522436402000C9311 /* WaitDeliveryTableViewCell.xib in Resources */,
@@ -1774,6 +1811,7 @@
 				04F212B6224CA7F100611664 /* NoImageTableViewCell.m in Sources */,
 				04C618782238DDE600773B7C /* ShopSetTableViewCell3.m in Sources */,
 				04F61E2022366583004986E0 /* BasicViewController.m in Sources */,
+				040161092281667A00956431 /* NoticeTableViewCell.m in Sources */,
 				04F5C521227692BA00C5C218 /* GetMoneyController.m in Sources */,
 				0446EB36223F9B8A00A86F32 /* NewGoodsTableViewCell4.m in Sources */,
 				042B19292241D05F004D372A /* NewOrderTableViewCell1.m in Sources */,
@@ -1797,6 +1835,7 @@
 				04F5859D2275C2A900188C19 /* FinishBankCardInfo.m in Sources */,
 				04F212CA2251B77600611664 /* CALayer+BorderColor.m in Sources */,
 				0446EAB82239251100A86F32 /* BusinessStatusViewController.m in Sources */,
+				0401610D2281722700956431 /* NoticeDetailViewController.m in Sources */,
 				0446EAF4223BB7E100A86F32 /* UserEvaluationViewController.m in Sources */,
 				041668D12268104400A3D2E1 /* TimePickerView.m in Sources */,
 				04A46A63225C9C0100511C79 /* ChangePriceView.m in Sources */,
@@ -1807,9 +1846,11 @@
 				04F212B2224B79C000611664 /* JXMovableCellTableView.m in Sources */,
 				042B182D2240F6F2004D372A /* HeaderView1.m in Sources */,
 				04F54BBD2264613600DE81E4 /* PackageView.m in Sources */,
+				040161172281848A00956431 /* NSString+Width.m in Sources */,
 				04F585982275B63800188C19 /* AddBankCardView.m in Sources */,
 				04F54BA322607E0500DE81E4 /* EditeCouponView.m in Sources */,
 				04C6185422378B5700773B7C /* TabBarController.m in Sources */,
+				0401611122817B6900956431 /* GBLoopView.m in Sources */,
 				04F61DE722364E16004986E0 /* AppDelegate.m in Sources */,
 				04F54BAC22642CF000DE81E4 /* DiscountPackageGoodsCell.m in Sources */,
 				04A46A6B225CC3C700511C79 /* PrintSettingViewController.m in Sources */,
@@ -1819,6 +1860,7 @@
 				040161032281245700956431 /* AllbillsHeaderView.m in Sources */,
 				04FB88022249C7FC008BEFCB /* PhoneNumberSettingViewController.m in Sources */,
 				04F54B9F22603AFC00DE81E4 /* FullReduceTableViewCell.m in Sources */,
+				040161162281848A00956431 /* XTScrollLabelView.m in Sources */,
 				0446EB23223F86BC00A86F32 /* CreateNewGoodsViewController.m in Sources */,
 				04A46A54225C41FD00511C79 /* AddGoodsTableViewCell.m in Sources */,
 				04C6186E2238D04B00773B7C /* ShopSetTableViewCell1.m in Sources */,

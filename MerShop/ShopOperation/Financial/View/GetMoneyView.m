@@ -23,4 +23,9 @@
     }
 }
 
+- (IBAction)addAction:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(addBankCard)]){
+        [self.delegate performSelector:@selector(addBankCard) withObject:nil];
+    }
+}
 @end

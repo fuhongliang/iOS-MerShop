@@ -91,6 +91,15 @@
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jp6-Vm-yWP">
+                                    <rect key="frame" x="64" y="21" width="92" height="30"/>
+                                    <state key="normal" title="请添加银行卡">
+                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="addAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="hXt-z8-hQD"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -105,6 +114,7 @@
                                 <constraint firstItem="Wxr-D3-4DB" firstAttribute="leading" secondItem="PQJ-ER-OuI" secondAttribute="leading" id="M96-ax-ibZ"/>
                                 <constraint firstItem="k6Y-r9-jbQ" firstAttribute="leading" secondItem="Wgr-4d-Tsn" secondAttribute="trailing" constant="8" id="PCx-JI-Ulf"/>
                                 <constraint firstItem="tBi-ZR-Ayj" firstAttribute="leading" secondItem="PQJ-ER-OuI" secondAttribute="leading" constant="19" id="PrR-HG-FYv"/>
+                                <constraint firstItem="Jp6-Vm-yWP" firstAttribute="leading" secondItem="tBi-ZR-Ayj" secondAttribute="trailing" constant="17" id="T1L-Kd-NAk"/>
                                 <constraint firstAttribute="height" constant="189" id="UM0-uS-Hfb"/>
                                 <constraint firstItem="XCd-v2-vx9" firstAttribute="leading" secondItem="PQJ-ER-OuI" secondAttribute="leading" constant="15" id="VdX-Xv-g7a"/>
                                 <constraint firstItem="Wgr-4d-Tsn" firstAttribute="top" secondItem="fHC-Xn-OwP" secondAttribute="bottom" constant="15" id="XMB-Pz-gzK"/>
@@ -113,6 +123,7 @@
                                 <constraint firstItem="oz6-yE-BCJ" firstAttribute="leading" secondItem="PQJ-ER-OuI" secondAttribute="leading" constant="15" id="cbf-IM-gbo"/>
                                 <constraint firstItem="k6Y-r9-jbQ" firstAttribute="centerY" secondItem="Wgr-4d-Tsn" secondAttribute="centerY" id="csB-kk-bEd"/>
                                 <constraint firstItem="XCd-v2-vx9" firstAttribute="top" secondItem="oz6-yE-BCJ" secondAttribute="bottom" constant="9" id="iJZ-lG-79v"/>
+                                <constraint firstItem="Jp6-Vm-yWP" firstAttribute="centerY" secondItem="tBi-ZR-Ayj" secondAttribute="centerY" id="jEd-1x-84p"/>
                                 <constraint firstAttribute="trailing" secondItem="Wxr-D3-4DB" secondAttribute="trailing" id="leo-HK-pfk"/>
                                 <constraint firstItem="Wxr-D3-4DB" firstAttribute="top" secondItem="gDC-z7-zp6" secondAttribute="bottom" constant="10" id="nYO-Fp-S0t"/>
                                 <constraint firstItem="gDC-z7-zp6" firstAttribute="leading" secondItem="tBi-ZR-Ayj" secondAttribute="trailing" constant="15" id="wrI-4S-bZB"/>
@@ -159,6 +170,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="accountType" destination="rAu-rm-Qey" id="Cau-Ge-wDN"/>
+                <outlet property="addCardBtn" destination="Jp6-Vm-yWP" id="GKa-dp-f6N"/>
                 <outlet property="canGetLabel" destination="XCd-v2-vx9" id="gJT-RE-kIN"/>
                 <outlet property="lastFourNumber" destination="gDC-z7-zp6" id="Egg-zy-RX4"/>
                 <outlet property="moneyText" destination="k6Y-r9-jbQ" id="Lfw-vz-AZy"/>
