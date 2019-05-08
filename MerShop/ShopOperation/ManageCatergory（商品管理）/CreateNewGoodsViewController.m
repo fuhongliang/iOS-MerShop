@@ -407,7 +407,7 @@
             return cell4;
         }
     }
-    return nil;
+    return cell2;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

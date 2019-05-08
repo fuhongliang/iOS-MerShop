@@ -69,7 +69,7 @@
                 }
                 [dict setObject:dict[@"goods_price"] forKey:@"xianshi_price"];
                 [dict setObject:dict[@"goods_origin_price"] forKey:@"goods_price"];
-                [dict setObject:data[@"data"][@"img_path"] forKey:@"img_path"];
+                [dict setObject:dict[@"img_name"] forKey:@"img_path"];
                 [self.dataArr removeObjectAtIndex:i];
                 [self.dataArr insertObject:dict atIndex:i];
             }
@@ -149,12 +149,6 @@
         [arr addObject:dict];
     }
     NSDictionary *dict;
-    dict = @{@"store_id":StoreIdString,
-        @"bundling_name":_headView.activityName.text,
-       @"discount_price":[NSString stringWithFormat:@"%ld",(long)allPrice],
-           @"goods_list":arr,
-             @"bl_state":@(self.stateNumber)
-            };
     if(self.activityInfo != nil){//判断是否是从点击管理按钮进来
         dict = @{@"bundling_id":[NSString stringWithFormat:@"%ld",(long)self.taocan_Id],
                  @"store_id":StoreIdString,

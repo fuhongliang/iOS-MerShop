@@ -52,8 +52,8 @@
     self.serviceFee.text = [NSString stringWithFormat:@"¥%@",model.commis_price];
     self.incomeFee.text = [NSString stringWithFormat:@"¥%@",model.goods_pay_price];
 
-    NSString *riderName = [NSString stringWithFormat:@"%@",[model.delivery objectForKey:@"name"]];
-    NSString *phoneNumber = [NSString stringWithFormat:@"%@",[model.delivery objectForKey:@"phone"]];
+//    NSString *riderName = [NSString stringWithFormat:@"%@",[model.delivery objectForKey:@"name"]];
+//    NSString *phoneNumber = [NSString stringWithFormat:@"%@",[model.delivery objectForKey:@"phone"]];
     NSArray *a = model.extend_order_goods;
     UIView *lastView = nil;
     for (NSInteger i=0;i<a.count;i++){
