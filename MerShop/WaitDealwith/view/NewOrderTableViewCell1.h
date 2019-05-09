@@ -12,7 +12,7 @@
 @protocol NewOrderTableViewCell1Delegate <NSObject>
 - (void)refuseOrder:(id)cell;
 - (void)receiveOrder:(id)cell;
-
+- (void)explandOrder:(id)data;
 @end
 
 @interface NewOrderTableViewCell1 : UITableViewCell
@@ -27,12 +27,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *income;
 @property (weak, nonatomic) IBOutlet UILabel *makeOrderTime;
 @property (weak, nonatomic) IBOutlet UILabel *orderNumber;
+@property (weak, nonatomic) IBOutlet UIButton *explandTextBtn;
+@property (weak, nonatomic) IBOutlet UIButton *explandImgBtn;
+@property (copy, nonatomic)NSString *expland;
 @property (weak,nonatomic)id <NewOrderTableViewCell1Delegate>delegate;
 - (IBAction)refuse:(id)sender;
 
 - (IBAction)receive:(id)sender;
 
+- (IBAction)explandAction:(id)sender;
 
-- (void)addProduct:(OrderModel *)model;
+- (void)addProduct:(OrderModel *)model withExplandState:(NSString *)state;
 @end
 

@@ -18,7 +18,7 @@
 @property (nonatomic ,strong)NSMutableArray *dataSource;
 @property (nonatomic ,strong)UIView *bgView;
 @property (nonatomic ,weak)BuyingPackagesView *packagesView;
-@property (nonatomic ,copy)NSArray *dataArr;
+@property (nonatomic ,strong)NSMutableArray *dataArr;
 @end
 
 @implementation CashCouponViewController
@@ -37,14 +37,19 @@
 
 - (void)requestListData{
     [Http_url POST:@"voucher_list" dict:@{@"store_id":StoreIdString} showHUD:NO WithSuccessBlock:^(id data) {
-        self.dataArr = [data objectForKey:@"data"];
+        [self.dataArr removeAllObjects];
         if ([[data objectForKey:@"code"] integerValue] == 200){
-            [self.dataSource removeAllObjects];
-            for (NSDictionary *dict in self.dataArr){
-                CouponModel *model = [[CouponModel alloc]initWithDictionary:dict error:nil];
-                [self.dataSource addObject:model];
+            if (kISNullArray(self.dataArr)){
+                
+            }else{
+                self.dataArr = [[data objectForKey:@"data"] mutableCopy];
+                [self.dataSource removeAllObjects];
+                for (NSDictionary *dict in self.dataArr){
+                    CouponModel *model = [[CouponModel alloc]initWithDictionary:dict error:nil];
+                    [self.dataSource addObject:model];
+                }
+                [self.mainTableView reloadData];
             }
-            [self.mainTableView reloadData];
         }else if ([[data objectForKey:@"code"] integerValue] == 2000){
             [self.bgView setHidden:NO];
             [self.packagesView setHidden:NO];
@@ -178,6 +183,7 @@
             if ([[data objectForKey:@"code"] integerValue] == 200){
                 [[IFUtils share]showErrorInfo:@"删除成功"];
                 [self.dataSource removeObjectAtIndex:cell.tag];
+                [self.dataArr removeObjectAtIndex:cell.tag];
                 [self.mainTableView reloadData];
             }
         } WithFailBlock:^(id data) {
@@ -210,5 +216,11 @@
         _dataSource = [NSMutableArray arrayWithCapacity:0];
     }
     return _dataSource;
+}
+- (NSMutableArray *)dataArr{
+    if (!_dataArr){
+        _dataArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _dataArr;
 }
 @end

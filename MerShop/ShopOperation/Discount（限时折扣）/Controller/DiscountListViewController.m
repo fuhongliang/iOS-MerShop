@@ -17,7 +17,7 @@
 @property (nonatomic ,strong)NSMutableArray *dataSource;
 @property (nonatomic ,strong)UIView *bgView;
 @property (nonatomic ,weak)BuyingPackagesView *packagesView;
-@property (nonatomic ,copy)NSArray *a;
+@property (nonatomic ,strong)NSMutableArray *a;
 @end
 
 @implementation DiscountListViewController
@@ -39,17 +39,25 @@
     [Http_url POST:@"xianshi_list" dict:@{@"store_id":@(StoreId)} showHUD:NO WithSuccessBlock:^(id data) {
         
         NSLog(@"%@",data);
-        self.a = [data objectForKey:@"data"];
+        [self.a removeAllObjects];
+        NSArray *arr = [data objectForKey:@"data"];
         if ([[data objectForKey:@"code"] integerValue] == 200){
-            [self.dataSource removeAllObjects];
-            for (NSDictionary *dict in self.a){
-                LimitDiscountModel *model = [[LimitDiscountModel alloc]initWithDictionary:dict error:nil];
-                [self.dataSource addObject:model];
+            if (kISNullArray(arr)){
+                
+            }else{
+                self.a = [[data objectForKey:@"data"] mutableCopy];
+                [self.dataSource removeAllObjects];
+                for (NSDictionary *dict in self.a){
+                    LimitDiscountModel *model = [[LimitDiscountModel alloc]initWithDictionary:dict error:nil];
+                    [self.dataSource addObject:model];
+                }
+                [self.mainTableView reloadData];
             }
-            [self.mainTableView reloadData];
         }else if ([[data objectForKey:@"code"] integerValue] == 2000){
             
         }
+
+        
     } WithFailBlock:^(id data) {
         
     }];
@@ -178,6 +186,7 @@
         [Http_url POST:@"xianshi_del" dict:dict showHUD:NO WithSuccessBlock:^(id data) {
             if ([[data objectForKey:@"code"] integerValue] == 200){
                 [self.dataSource removeObjectAtIndex:cell.tag];
+                [self.a removeObjectAtIndex:cell.tag];
                 [self.mainTableView reloadData];
             }
         } WithFailBlock:^(id data) {
@@ -207,4 +216,11 @@
     }
     return _dataSource;
 }
+- (NSMutableArray *)a{
+    if (!_a){
+        _a = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _a;
+}
+
 @end

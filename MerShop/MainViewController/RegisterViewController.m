@@ -67,19 +67,29 @@
         [[IFUtils share]showErrorInfo:@"请输入验证码"];
         return;
     }
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSDictionary *dict = @{@"mobile":_registView.userName.text,
                            @"password":_registView.passWord.text,
-                           @"verify_code":_registView.verificationCode.text
+                           @"verify_code":_registView.verificationCode.text,
+                           @"app_type":@(2),
+                           @"device_tokens":delegate.token
                            };
-    [Http_url POST:@"member_register" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
-        if ([[data objectForKey:@"code"] integerValue] == 200){
-            [[IFUtils share]showErrorInfo:@"注册成功"];
-            [self.navigationController popViewControllerAnimated:YES];
-        }
+    [Http_url POST:@"check_mobile" dict:@{@"mobile":_registView.userName.text} showHUD:NO WithSuccessBlock:^(id data) {
+        
+        [Http_url POST:@"member_register" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
+            if ([[data objectForKey:@"code"] integerValue] == 200){
+                [[IFUtils share]showErrorInfo:@"注册成功"];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            
+        } WithFailBlock:^(id data) {
+            
+        }];
         
     } WithFailBlock:^(id data) {
         
     }];
+
     
 }
 /**

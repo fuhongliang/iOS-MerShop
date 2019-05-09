@@ -12,6 +12,7 @@
 @protocol AllReadyDeliveryTableViewCellDelegate <NSObject>
 
 - (void)printfOrder:(id)data;
+- (void)finishedExplandOrder:(id)data;
 
 @end
 
@@ -29,9 +30,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *orderTime;
 @property (weak, nonatomic) IBOutlet UILabel *orderNumber;
 @property (weak, nonatomic) IBOutlet UIButton *printfBtn;
+@property (weak, nonatomic) IBOutlet UIButton *explandTextBtn;
+@property (weak, nonatomic) IBOutlet UIButton *explandImgBtn;
+@property (copy, nonatomic)NSString *expland;
+
 @property (weak, nonatomic)id<AllReadyDeliveryTableViewCellDelegate>delegate;
-- (void)addProduct:(NewOrderModel *)model;
+- (void)addProduct:(NewOrderModel *)model withExplandState:(NSString *)state;
 - (IBAction)printf:(id)sender;
 
+- (IBAction)explandAction:(id)sender;
 @end
 

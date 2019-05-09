@@ -126,6 +126,7 @@
 }
 
 - (void)setMyInformation:(NSDictionary *)userinfo{
+    [self.headImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",img_path,[userinfo objectForKey:@"store_avatar"]]] placeholderImage:[UIImage imageNamed:@"moren_dianpu"]];
     self.userName.text = [userinfo objectForKey:@"store_name"];
     self.describe.text = [userinfo objectForKey:@"store_description"];
 }

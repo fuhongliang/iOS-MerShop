@@ -51,9 +51,9 @@
     [self createNavigationbar];
     self.bgView = [[BackgroundView alloc]initWithFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y-Tabbar_H)];
     self.bgView.delegate = self;
-    NSString *imageStr = [[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_avatar"];
-    [self.bgView.headImage sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"moren_dianpu"]];
-    [self.bgView setMyInformation:[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]];
+//    NSString *imageStr = [[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_avatar"];
+//    [self.bgView.headImage sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"moren_dianpu"]];
+//    [self.bgView setMyInformation:[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]];
     [self.bgView setBackgroundColor:IFThemeBlueColor];
     [self.view addSubview:self.bgView];
     

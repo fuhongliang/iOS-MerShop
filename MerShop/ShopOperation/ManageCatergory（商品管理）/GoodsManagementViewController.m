@@ -102,8 +102,8 @@
     [Http_url POST:@"goods_list" dict:@{@"store_id":@(_storeId),@"class_id":@(classId)} showHUD:YES WithSuccessBlock:^(id data) {
         NSLog(@"获取成功");
         NSArray *arr = [[data objectForKey:@"data"] objectForKey:@"goods_list"];
-        self.dataArray = [arr mutableCopy];
         if (![arr isKindOfClass:[NSNull class]]){
+            self.dataArray = [arr mutableCopy];
             for (NSDictionary *dict in arr){
                 GoodsModel *model = [[GoodsModel alloc]initWithDictionary:dict error:nil];
                 [self.rightDataSource addObject:model];

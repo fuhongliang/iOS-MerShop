@@ -284,7 +284,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="立即送达" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oH1-I6-MR5">
                                         <rect key="frame" x="79" y="12" width="65.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.10980392156862745" green="0.59607843137254901" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8k-Ja-W9e">
@@ -306,13 +306,32 @@
                                     <constraint firstItem="UzT-wt-XHr" firstAttribute="leading" secondItem="Vzy-Yn-vOz" secondAttribute="leading" constant="15" id="xHY-g3-HUT"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPo-eK-kX2">
+                                <rect key="frame" x="296" y="146.5" width="9" height="6"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="6" id="C8c-Wp-JVl"/>
+                                    <constraint firstAttribute="width" constant="9" id="Ej2-KU-9nQ"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="icon_zhankai"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CL1-03-fDN">
+                                <rect key="frame" x="259" y="134.5" width="31" height="30"/>
+                                <state key="normal" title="展开">
+                                    <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="explandAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BdX-OH-gQT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="q31-Kt-tlA" secondAttribute="trailing" constant="15" id="1BY-ok-NJY"/>
+                            <constraint firstAttribute="trailing" secondItem="KPo-eK-kX2" secondAttribute="trailing" constant="15" id="3tG-tU-eqb"/>
                             <constraint firstItem="Xk1-A4-pW7" firstAttribute="leading" secondItem="OGV-DT-AfW" secondAttribute="leading" id="3ud-dV-ktv"/>
                             <constraint firstItem="BbX-rG-VsT" firstAttribute="top" secondItem="l8L-ej-JLd" secondAttribute="bottom" constant="15" id="4bN-S9-dTE"/>
                             <constraint firstItem="wnG-9N-1Ye" firstAttribute="leading" secondItem="OGV-DT-AfW" secondAttribute="leading" constant="11" id="4cp-tu-YU6"/>
+                            <constraint firstItem="CL1-03-fDN" firstAttribute="centerY" secondItem="sGh-Gr-1Xc" secondAttribute="centerY" id="5G8-T3-hph"/>
                             <constraint firstItem="sGh-Gr-1Xc" firstAttribute="leading" secondItem="OGV-DT-AfW" secondAttribute="leading" constant="15" id="5Qq-4K-xqq"/>
                             <constraint firstItem="Xgz-h0-Qht" firstAttribute="width" secondItem="BbX-rG-VsT" secondAttribute="width" id="Aeq-Pg-YVj"/>
                             <constraint firstAttribute="bottom" secondItem="Xk1-A4-pW7" secondAttribute="bottom" id="Bvj-W4-LjI"/>
@@ -326,6 +345,7 @@
                             <constraint firstItem="Xgz-h0-Qht" firstAttribute="top" secondItem="BbX-rG-VsT" secondAttribute="bottom" constant="15" id="Ohx-iN-PjF"/>
                             <constraint firstItem="flp-tG-b7P" firstAttribute="leading" secondItem="OGV-DT-AfW" secondAttribute="leading" constant="15" id="RpP-J3-lqf"/>
                             <constraint firstItem="Vzy-Yn-vOz" firstAttribute="top" secondItem="OGV-DT-AfW" secondAttribute="top" id="T9B-69-PTf"/>
+                            <constraint firstItem="KPo-eK-kX2" firstAttribute="centerY" secondItem="sGh-Gr-1Xc" secondAttribute="centerY" id="URJ-e6-7rf"/>
                             <constraint firstItem="Ai6-54-lgn" firstAttribute="trailing" secondItem="q31-Kt-tlA" secondAttribute="trailing" id="UUR-SA-9PQ"/>
                             <constraint firstItem="jRc-DV-lDc" firstAttribute="leading" secondItem="OGV-DT-AfW" secondAttribute="leading" constant="15" id="XZ1-po-xCJ"/>
                             <constraint firstItem="pL4-nu-Yup" firstAttribute="trailing" secondItem="Ai6-54-lgn" secondAttribute="trailing" id="XkI-ld-tSG"/>
@@ -336,6 +356,7 @@
                             <constraint firstItem="sGh-Gr-1Xc" firstAttribute="top" secondItem="1VL-rz-bcW" secondAttribute="bottom" constant="15" id="af7-SN-76J"/>
                             <constraint firstAttribute="trailing" secondItem="jRc-DV-lDc" secondAttribute="trailing" constant="15" id="dOU-zX-Lx4"/>
                             <constraint firstItem="BbX-rG-VsT" firstAttribute="width" secondItem="l8L-ej-JLd" secondAttribute="width" id="dmO-pA-t8q"/>
+                            <constraint firstItem="KPo-eK-kX2" firstAttribute="leading" secondItem="CL1-03-fDN" secondAttribute="trailing" constant="6" id="dwy-Yx-M8Q"/>
                             <constraint firstItem="BbX-rG-VsT" firstAttribute="leading" secondItem="OGV-DT-AfW" secondAttribute="leading" constant="15" id="fLb-p1-bf3"/>
                             <constraint firstAttribute="trailing" secondItem="YL7-yV-ZWM" secondAttribute="trailing" constant="15" id="faA-rd-Slf"/>
                             <constraint firstItem="YL7-yV-ZWM" firstAttribute="top" secondItem="wnG-9N-1Ye" secondAttribute="bottom" constant="15" id="frH-W9-SfT"/>
@@ -368,6 +389,8 @@
                 <outlet property="contentBgView" destination="flp-tG-b7P" id="95w-0P-i5V"/>
                 <outlet property="customerName" destination="1pa-it-1oh" id="xaF-Vr-Ca3"/>
                 <outlet property="customerPhoneNumber" destination="MPS-DF-jWP" id="U5g-35-nUE"/>
+                <outlet property="explandImgBtn" destination="KPo-eK-kX2" id="lMY-4E-JvB"/>
+                <outlet property="explandTextBtn" destination="CL1-03-fDN" id="GZJ-ut-7PI"/>
                 <outlet property="incomePrice" destination="pL4-nu-Yup" id="w8b-ZN-yEB"/>
                 <outlet property="number" destination="UzT-wt-XHr" id="SwZ-0e-jEN"/>
                 <outlet property="orderNumber" destination="jRc-DV-lDc" id="xu8-tA-CFL"/>
@@ -384,5 +407,6 @@
         <image name="home_dd_shou" width="13" height="13"/>
         <image name="icon_dianhua" width="18" height="18"/>
         <image name="icon_weizhi" width="9.5" height="13"/>
+        <image name="icon_zhankai" width="7.5" height="4.5"/>
     </resources>
 </document>

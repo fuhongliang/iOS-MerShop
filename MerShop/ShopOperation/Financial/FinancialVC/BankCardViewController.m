@@ -40,11 +40,12 @@
 }
 
 - (void)requestData{
+    
     [Http_url POST:@"bank_account_list" dict:@{@"store_id":@(StoreId)} showHUD:NO WithSuccessBlock:^(id data) {
         
         if ([[data objectForKey:@"code"] integerValue] == 200){
             NSDictionary *dict = [data[@"data"] copy];
-            if ([dict[@"bank_type"] isEqualToString:@""]){
+            if (kISNullString(dict[@"bank_type"])){
                 NSArray *nib1 = [[NSBundle mainBundle]loadNibNamed:@"AddBankCardView" owner:self options:nil];
                 self.addView = [nib1 objectAtIndex:0];
                 self.addView.delegate = self;

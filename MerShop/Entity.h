@@ -19,7 +19,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 
 #define http_devUrlString       @"http://47.111.27.189:2000/v3/"
 
-//#define http_devUrlString          @"http://192.168.5.15/api/public/index.php/v3/"
+//#define lijing          @"http://192.168.5.15/api/public/index.php/v3/"
 
 #define http_urlString          @"http://47.92.244.60:88/v3/"
 
@@ -93,6 +93,20 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 //强弱引用
 #define LCWeakSelf(type)    __weak typeof(type)  weak##type = type;
 #define LCStrongSelf(type)  __strong typeof(type) type = weak##type;
+
+//字符串是否为空
+#define kISNullString(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] < 1 ? YES : NO )
+//数组是否为空
+#define kISNullArray(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0 ||[array isEqual:[NSNull null]])
+//字典是否为空
+#define kISNullDict(dic) (dic == nil || [dic isKindOfClass:[NSNull class]] || dic.allKeys == 0 || [dic isEqual:[NSNull null]])
+//是否是空对象
+#define kISNullObject(_object) (_object == nil \
+|| [_object isKindOfClass:[NSNull class]] \
+|| ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) \
+|| ([_object respondsToSelector:@selector(count)] && [(NSArray *)_object count] == 0))
+//判断对象是否为空,为空则返回默认值
+#define kGetNullDefaultObj(_value,_default) ([_value isKindOfClass:[NSNull class]] || !_value || _value == nil || [_value isEqualToString:@"(null)"] || [_value isEqualToString:@"<null>"] || [_value isEqualToString:@""] || [_value length] == 0)?_default:_value
 
 #define UIKIT_STATIC_INLINE    static inline
 UIKIT_STATIC_INLINE UIColor *toPCcolor(NSString *pcColorstr)

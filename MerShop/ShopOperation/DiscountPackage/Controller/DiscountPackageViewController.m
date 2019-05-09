@@ -17,7 +17,7 @@
 @property (nonatomic ,strong)NSMutableArray *dataSource;
 @property (nonatomic ,strong)UIView *bgView;
 @property (nonatomic ,weak)BuyingPackagesView *packagesView;
-@property (nonatomic ,copy)NSArray *dataArr;
+@property (nonatomic ,strong)NSMutableArray *dataArr;
 @end
 
 @implementation DiscountPackageViewController
@@ -40,18 +40,25 @@
     [Http_url POST:@"bundling_list" dict:@{@"store_id":@(StoreId)} showHUD:NO WithSuccessBlock:^(id data) {
         NSLog(@"%@",data);
         NSArray *arr = [data objectForKey:@"data"];
-        weakself.dataArr = [arr copy];
+        [self.dataArr removeAllObjects];
         if ([[data objectForKey:@"code"] integerValue] == 200){
-            [self.dataSource removeAllObjects];
-            for (NSDictionary *dict in arr){
-                DiscountModel *model = [[DiscountModel alloc]initWithDictionary:dict error:nil];
-                [weakself.dataSource addObject:model];
+            if (kISNullArray(arr)){
+                
+            }else{
+                weakself.dataArr = [[data objectForKey:@"data"] mutableCopy];
+                [self.dataSource removeAllObjects];
+                for (NSDictionary *dict in arr){
+                    DiscountModel *model = [[DiscountModel alloc]initWithDictionary:dict error:nil];
+                    [weakself.dataSource addObject:model];
+                }
+                [weakself.mainTableView reloadData];
             }
-            [weakself.mainTableView reloadData];
         }else if ([[data objectForKey:@"code"] integerValue] == 2000){
             [self.bgView setHidden:NO];
             [self.packagesView setHidden:NO];
         }
+
+        
     } WithFailBlock:^(id data) {
         
     }];
@@ -183,6 +190,7 @@
         [Http_url POST:@"bundling_del" dict:dict showHUD:NO WithSuccessBlock:^(id data) {
             if ([[data objectForKey:@"code"] integerValue] == 200){
                 [self.dataSource removeObjectAtIndex:cell.tag];
+                [self.dataArr removeObjectAtIndex:cell.tag];
                 [self.mainTableView reloadData];
             }
         } WithFailBlock:^(id data) {
@@ -215,4 +223,10 @@
     return _dataSource;
 }
 
+- (NSMutableArray *)dataArr{
+    if (!_dataArr){
+        _dataArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _dataArr;
+}
 @end

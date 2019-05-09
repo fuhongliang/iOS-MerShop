@@ -34,7 +34,26 @@
     }
 }
 
-- (void)addProduct:(OrderModel *)model{
+- (IBAction)explandAction:(id)sender {
+    if ([self.expland isEqualToString:@"0"]){
+        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
+        [arr addObject:self];
+        [arr addObject:@"1"];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(explandOrder:)]){
+            [self.delegate performSelector:@selector(explandOrder:) withObject:arr];
+        }
+    }else{
+        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
+        [arr addObject:self];
+        [arr addObject:@"0"];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(explandOrder:)]){
+            [self.delegate performSelector:@selector(explandOrder:) withObject:arr];
+        }
+    }
+}
+
+- (void)addProduct:(OrderModel *)model withExplandState:(NSString *)state{
+    self.expland = state;
     self.number.text = [NSString stringWithFormat:@"#%ld",(long)model.order_id];
     self.name.text = [NSString stringWithFormat:@"%@  ",model.extend_order_common[@"reciver_name"]];
     self.customerPhoneNumber.text = [NSString stringWithFormat:@"%@",model.extend_order_common[@"phone"]];
@@ -52,14 +71,32 @@
     self.income.text = [NSString stringWithFormat:@"¥%@",model.goods_pay_price];
     
     NSArray *a = model.extend_order_goods;
+    NSInteger goodsCount;
+    if (a.count>2){
+        [self.explandTextBtn setHidden:NO];
+        [self.explandImgBtn setHidden:NO];
+        if ([state isEqualToString:@"0"]){
+            goodsCount = 2;
+            [self.explandTextBtn setTitle:@"展开" forState:(UIControlStateNormal)];
+            [self.explandImgBtn setImage:[UIImage imageNamed:@"icon_zhankai"] forState:(UIControlStateNormal)];
+        }else{
+            goodsCount = a.count;
+            [self.explandTextBtn setTitle:@"收起" forState:(UIControlStateNormal)];
+            [self.explandImgBtn setImage:[UIImage imageNamed:@"icon_shouqi"] forState:(UIControlStateNormal)];
+        }
+    }else{
+        [self.explandImgBtn setHidden:YES];
+        [self.explandTextBtn setHidden:YES];
+        goodsCount = a.count;
+    }
     UIView *lastView = nil;
-    for (NSInteger i=0;i<a.count;i++){
+    for (NSInteger i=0;i<goodsCount;i++){
         NSDictionary *dict = a[i];
         UIView *bgview = [[UIView alloc]init];
         [bgview setBackgroundColor:[UIColor whiteColor]];
         [self.contentBgView addSubview:bgview];
         if (i == 0) {
-            if ((a.count -1) == 0) {
+            if ((goodsCount -1) == 0) {
                 [bgview mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.left.equalTo(self.contentBgView.mas_left).offset(0);
                     make.top.equalTo(self.contentBgView.mas_top).offset(0);
@@ -74,7 +111,7 @@
                 }];
             }
             
-        }else if (i == (a.count - 1)){
+        }else if (i == (goodsCount - 1)){
             [bgview mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(self.contentBgView.mas_left).offset(0);
                 make.top.equalTo(lastView.mas_bottom).offset(10);

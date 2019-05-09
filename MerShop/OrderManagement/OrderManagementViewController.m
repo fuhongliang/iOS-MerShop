@@ -27,6 +27,9 @@
 @property (nonatomic ,copy)NSArray *indexArr;
 @property (nonatomic ,strong)EmptyOrderView *emptyView;
 @property (nonatomic ,copy)NSArray *dictArr;
+
+//判断每条订单是否是展开状态的数组，
+@property (nonatomic ,strong)NSMutableArray *explandArr;
 @end
 
 @implementation OrderManagementViewController
@@ -73,6 +76,8 @@
     
     [Http_url POST:@"order_list" dict:@{@"order_state":@(stateId),@"store_id":@(storeId)} showHUD:YES WithSuccessBlock:^(id data) {
         self.dictArr = [data objectForKey:@"data"];
+        //每次请求数据删除，删除原有数据,判断是否是展开状态
+        [self.explandArr removeAllObjects];
         if ([[data objectForKey:@"data"] isKindOfClass:[NSNull class]]){
             [self.mainTableview setTableHeaderView:self.emptyView ];
         }else{
@@ -80,6 +85,7 @@
             for (NSDictionary *dict in self.dictArr){
                 NewOrderModel *model = [[NewOrderModel alloc]initWithDictionary:dict error:nil];
                 [self.dataSource addObject:model];
+                [self.explandArr addObject:@"0"];
             }
         }
         [self.mainTableview reloadData];
@@ -152,13 +158,13 @@
     if (self.dataSource.count > 0){
         model = self.dataSource[indexPath.row];
     }
-    if ([model.order_state isEqualToString:@"待配送"] || [model.order_state isEqualToString:@"已完成"]){
+    if ([model.order_state isEqualToString:@"配送中"] || [model.order_state isEqualToString:@"已完成"]){
         if (!cell2){
             NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"AllReadyDeliveryTableViewCell" owner:self options:nil];
             cell2 = [nib objectAtIndex:0];
         }
         if (self.dataSource.count > 0){
-            [cell2 addProduct:self.dataSource[indexPath.row]];
+            [cell2 addProduct:self.dataSource[indexPath.row] withExplandState:self.explandArr[indexPath.row]];
         }
         cell2.tag = indexPath.row;
         cell2.delegate = self;
@@ -170,7 +176,7 @@
         }
         if (self.dataSource.count >0){
             NewOrderModel *model = self.dataSource[indexPath.row];
-            [cell1 addProduct:model];
+            [cell1 addProduct:model withExplandState:self.explandArr[indexPath.row]];
         }
         cell1.tag = indexPath.row;
         cell1.delegate = self;
@@ -190,6 +196,14 @@
     [self printOrderWithDict:dict];
     
 }
+/**
+    待配送cell展开按钮方法
+ */
+- (void)explandOrder:(id)data{
+    WaitDeliveryTableViewCell *cell = (WaitDeliveryTableViewCell *)data[0];
+    [self.explandArr replaceObjectAtIndex:cell.tag withObject:data[1]];
+    [self.mainTableview reloadData];
+}
 
 #pragma mark - AllReadyDeliveryTableViewCellDelegate
 /**
@@ -200,8 +214,16 @@
     NSInteger index = cell.tag;
     NSDictionary *dict = self.dictArr[index];
     [self printOrderWithDict:dict];
-    
 }
+/**
+    已完成cell展开按钮方法
+ */
+- (void)finishedExplandOrder:(id)data{
+    AllReadyDeliveryTableViewCell *cell = (AllReadyDeliveryTableViewCell *)data[0];
+    [self.explandArr replaceObjectAtIndex:cell.tag withObject:data[1]];
+    [self.mainTableview reloadData];
+}
+
 #pragma mark - 懒加载
 - (NSMutableArray *)dataSource{
     if (!_dataSource){
@@ -236,6 +258,13 @@
         _finishedArr = [NSMutableArray arrayWithCapacity:0];
     }
     return _finishedArr;
+}
+
+- (NSMutableArray *)explandArr{
+    if (!_explandArr){
+        _explandArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _explandArr;
 }
 
 - (void)clickBtn:(UIButton *)sender{

@@ -42,6 +42,7 @@
             }
             successBlock(dic);
         }else if (code == 3001){
+            //当token失效，强制退出登录
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
             LoginInViewController *loginVC = [[LoginInViewController alloc]init];
@@ -53,10 +54,16 @@
             }
             [[IFUtils share]showErrorInfo:dic[@"msg"]];
             successBlock(dic);
+            return ;
+        }else if (code == 1001){
+            //验证手机是否注册
+            [[IFUtils share]showErrorInfo:dic[@"msg"]];
+            return;
         }else{
             if (show){
                 [SVProgressHUD dismiss];
                 [[IFUtils share]showErrorInfo:dic[@"msg"]];
+                return ;
             }
             successBlock(dic);
         }

@@ -27,7 +27,7 @@
     [self setUMessageRegisterEntity:launchOptions];
     
     //集成bugtags
-//    [Bugtags startWithAppKey:@"a9f3371df352d637e15d5cd13955a61c" invocationEvent:BTGInvocationEventBubble];
+    [Bugtags startWithAppKey:@"a9f3371df352d637e15d5cd13955a61c" invocationEvent:BTGInvocationEventBubble];
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -133,6 +133,10 @@
     NSLog(@"设备token=%@",[[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
     stringByReplacingOccurrencesOfString: @">" withString: @""]
     stringByReplacingOccurrencesOfString: @" " withString: @""]);
+    
+    NSString *Token = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""] stringByReplacingOccurrencesOfString: @">" withString: @""] stringByReplacingOccurrencesOfString: @" " withString: @""];
+    self.token = Token;
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"deviceToken" object:Token];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

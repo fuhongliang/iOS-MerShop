@@ -265,7 +265,7 @@
                 NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell2" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
             }
-            NSString *imageStr = [[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_avatar"];
+            NSString *imageStr = [NSString stringWithFormat:@"%@%@",img_path,[[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_avatar"]];
             [cell.ShopHeadIcon sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"moren_dianpu"]];
             cell.Title.text = @"店铺头像";
             return cell;

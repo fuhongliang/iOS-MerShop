@@ -38,21 +38,23 @@
 
 - (void)requestData{
     [Http_url POST:@"store_jiesuan" dict:@{@"store_id":@(StoreId)} showHUD:NO WithSuccessBlock:^(id data) {
-        NSLog(@"%@",data);
         if ([[data objectForKey:@"code"] integerValue] == 200){
             self.account = [data objectForKey:@"data"];
-            self.dataArr = [data[@"data"][@"list"] mutableCopy];
-            
+            NSArray *arr = data[@"data"][@"list"];
+            if (![arr isEqual:[NSNull null]]){
+                self.dataArr = [data[@"data"][@"list"] mutableCopy];
+                NSLog(@"=======%@",self.dataArr);
+            }
             self.headerView.receiveMoney.text = [NSString stringWithFormat:@"%@",self.account[@"y_jiesuan"]];
             self.headerView.waitReceiveMoney.text = [NSString stringWithFormat:@"%@",self.account[@"d_jiesuan"]];
             
             NSString *bank_type = self.account[@"account"][@"bank_type"];
             NSString *cardStr = self.account[@"account"][@"account_number"];
-            if (bank_type.length != 0 && cardStr.length != 0){//判断是否已添加银行卡
+            if (kISNullString(bank_type)){//判断是否已添加银行卡
+                self.headerView.bankCardBtn.text = @"请添加银行卡";
+            }else{
                 NSString *str = [cardStr substringFromIndex:cardStr.length-4];
                 self.headerView.bankCardBtn.text = [NSString stringWithFormat:@"%@(尾号%@)",bank_type,str];
-            }else{
-                self.headerView.bankCardBtn.text = @"请添加银行卡";
             }
             [self.mainTableView reloadData];
         }

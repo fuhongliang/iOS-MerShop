@@ -27,6 +27,9 @@
 @property (nonatomic ,strong)NSArray *noticeArray;
 @property (nonatomic ,strong)UIView *lightBgView;//跑马灯背景view
 @property (nonatomic ,strong)GBLoopView *loopView;//跑马灯view
+
+//判断每条订单是否是展开状态的数组，
+@property (nonatomic ,strong)NSMutableArray *explandArr;
 @end
 
 @implementation WaitDealwithViewController
@@ -63,19 +66,23 @@
 - (void)requestData{
     NSInteger storeId = [[[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];
     [Http_url POST:@"get_neworder" dict:@{@"store_id":@(storeId)} showHUD:NO WithSuccessBlock:^(id data) {
+        //判断logintoken是否失效
         if ([[data objectForKey:@"code"] integerValue] == 3001){
             [self tokenLost];
             return ;
         }
         self.noticeArray = [data[@"data"][@"msg"] copy];
         NSArray *arr = [data objectForKey:@"data"][@"list"];
-        if ([[data objectForKey:@"data"] isKindOfClass:[NSNull class]]){
+        
+        [self.explandArr removeAllObjects];
+        if ([arr isKindOfClass:[NSNull class]]){
             [self.mainTableview setTableHeaderView:self.emptyView];
         }else{
             [self.mainTableview setTableHeaderView:[[UIView alloc] init]];
             for (NSDictionary *dict in arr){
                 OrderModel *model = [[OrderModel alloc]initWithDictionary:dict error:nil];
                 [self.dataArr addObject:model];
+                [self.explandArr addObject:@"0"];
             }
             [self.mainTableview reloadData];
             
@@ -195,12 +202,23 @@
     [Http_url POST:@"receive_order" dict:@{@"order_id":@(_orderID)} showHUD:YES WithSuccessBlock:^(id data) {
         if (data){
             [[IFUtils share]showErrorInfo:@"已接单"];
+            //删除已接单的数据元
             [self.dataArr removeObjectAtIndex:self.refuseIndex];
+            [self.explandArr removeObjectAtIndex:self.refuseIndex];
+            if (self.dataArr.count == 0){
+                [self.mainTableview setTableHeaderView:self.emptyView];
+            }
             [self.mainTableview reloadData];
         }
     } WithFailBlock:^(id data) {
         
     }];
+}
+
+- (void)explandOrder:(id)data{
+    NewOrderTableViewCell1 *cell = (NewOrderTableViewCell1 *)data[0];
+    [self.explandArr replaceObjectAtIndex:cell.tag withObject:data[1]];
+    [self.mainTableview reloadData];
 }
 
 - (void)refuseMethod:(UIButton *)sender{
@@ -223,7 +241,12 @@
     [Http_url POST:@"refuse_order" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
         if (data){
             [[IFUtils share]showErrorInfo:@"已拒绝"];
+            //删除拒绝的数据元
             [self.dataArr removeObjectAtIndex:self.refuseIndex];
+            [self.explandArr removeObjectAtIndex:self.refuseIndex];
+            if (self.dataArr.count == 0){
+                [self.mainTableview setTableHeaderView:self.emptyView];
+            }
             [self.mainTableview reloadData];
         }
     } WithFailBlock:^(id data) {
@@ -238,6 +261,13 @@
     return _dataArr;
 }
 
+- (NSMutableArray *)explandArr{
+    if (!_explandArr){
+        _explandArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _explandArr;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArr.count;
 }
@@ -250,7 +280,7 @@
     }
     if (self.dataArr.count >0){
         OrderModel *model = self.dataArr[indexPath.row];
-        [cell addProduct:model];
+        [cell addProduct:model withExplandState:self.explandArr[indexPath.row]];
     }
     cell.delegate = self;
     cell.tag = indexPath.row;

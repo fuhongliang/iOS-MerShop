@@ -42,11 +42,16 @@
         NSArray *arr = [data objectForKey:@"data"];
         if ([[data objectForKey:@"code"] integerValue] == 200){
             [self.dataSource removeAllObjects];
-            for (NSDictionary *dict in arr){
-                FullReductionModel *model = [[FullReductionModel alloc]initWithDictionary:dict error:nil];
-                [self.dataSource addObject:model];
+            if (kISNullArray(arr)){
+                
+            }else{
+                for (NSDictionary *dict in arr){
+                    FullReductionModel *model = [[FullReductionModel alloc]initWithDictionary:dict error:nil];
+                    [self.dataSource addObject:model];
+                }
+                [self.mainTableView reloadData];
             }
-            [self.mainTableView reloadData];
+
         }else if ([[data objectForKey:@"code"] integerValue] == 2000){
             [self.bgView setHidden:NO];
             [self.packagesView setHidden:NO];
