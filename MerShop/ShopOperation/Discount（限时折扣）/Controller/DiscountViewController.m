@@ -58,10 +58,10 @@
                 self.discountId = [NSString stringWithFormat:@"%@",data[@"data"][@"xianshi_id"]];
                 self.headerView.activityNameText.text = [NSString stringWithFormat:@"%@",name];
                 NSInteger start = [data[@"data"][@"start_time"] integerValue];
-                NSString *startTime = [IFTools dateToString:[NSDate dateWithTimeIntervalSince1970:start] dateFormat:@"yyyy-MM-dd"];
+                NSString *startTime = [IFTools dateToString:[NSDate dateWithTimeIntervalSince1970:start] dateFormat:@"yyyy-MM-dd HH:mm"];
                 [self.headerView.startTimeBtn setTitle:startTime forState:(UIControlStateNormal)];
                 NSInteger end = [data[@"data"][@"end_time"] integerValue];
-                NSString *endTime = [IFTools dateToString:[NSDate dateWithTimeIntervalSince1970:end] dateFormat:@"yyyy-MM-dd"];
+                NSString *endTime = [IFTools dateToString:[NSDate dateWithTimeIntervalSince1970:end] dateFormat:@"yyyy-MM-dd HH:mm"];
                 [self.headerView.endTimeBtn setTitle:endTime forState:(UIControlStateNormal)];
                 if ([mark isKindOfClass:[NSNull class]]){
                     self.headerView.markText.text = @"";

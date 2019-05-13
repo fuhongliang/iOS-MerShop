@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LoginView : UIView
 @property (weak, nonatomic) IBOutlet UITextField *userNameText;
 @property (weak, nonatomic) IBOutlet UITextField *passWordText;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic)id<LoginViewDelegate>delegate;
 - (IBAction)protocolAction:(id)sender;
 - (IBAction)loginAction:(id)sender;

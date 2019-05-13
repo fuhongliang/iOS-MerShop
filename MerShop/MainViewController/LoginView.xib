@@ -37,8 +37,8 @@
                                 <constraint firstAttribute="height" constant="30" id="MvQ-5u-xge"/>
                             </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxl-YG-uOS">
                             <rect key="frame" x="15" y="227.5" width="345" height="0.5"/>
@@ -59,8 +59,8 @@
                                 <constraint firstAttribute="height" constant="30" id="ctL-FH-jXa"/>
                             </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="search" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hG-Fy-chR">
                             <rect key="frame" x="15" y="299" width="345" height="0.5"/>
@@ -91,9 +91,9 @@
                                 <action selector="protocolAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="sKJ-Jp-sP8"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKC-1d-gk7">
+                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKC-1d-gk7">
                             <rect key="frame" x="15" y="380.5" width="345" height="44"/>
-                            <color key="backgroundColor" red="0.10980392156862745" green="0.59607843137254901" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="uij-Yf-7ao"/>
                             </constraints>
@@ -174,6 +174,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="loginBtn" destination="aKC-1d-gk7" id="wGw-gO-Eak"/>
                 <outlet property="passWordText" destination="LaT-uh-oh0" id="PeC-bn-Chp"/>
                 <outlet property="userNameText" destination="p5n-gl-C68" id="sLA-nY-V6f"/>
             </connections>

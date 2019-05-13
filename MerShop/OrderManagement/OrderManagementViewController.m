@@ -204,8 +204,21 @@
     [self.explandArr replaceObjectAtIndex:cell.tag withObject:data[1]];
     [self.mainTableview reloadData];
 }
+/**
+    待配送拨打电话
+ */
+- (void)playCallAction:(id)data{
+    [self playCellPhoneWithData:data];
+}
+
 
 #pragma mark - AllReadyDeliveryTableViewCellDelegate
+/**
+    已完成拨打用户电话
+ */
+- (void)playCallAction1:(id)data{
+    [self playCellPhoneWithData:data];
+}
 /**
     已完成的打印订单按钮方法
  */

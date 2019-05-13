@@ -16,5 +16,9 @@
  */
 - (void)printOrderWithDict:(NSDictionary *)dict;
 
+/**
+    新订单拨打用户电话
+ */
+- (void)playCellPhoneWithData:(id)data;
 @end
 

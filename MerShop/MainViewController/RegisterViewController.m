@@ -9,7 +9,7 @@
 #import "RegisterViewController.h"
 #import "Registview.h"
 
-@interface RegisterViewController ()<RegistviewDelegate>
+@interface RegisterViewController ()<RegistviewDelegate,UITextFieldDelegate>
 
 @property (nonatomic ,strong)Registview *registView;
 @end
@@ -27,7 +27,20 @@
     _registView = [nib objectAtIndex:0];
     _registView.delegate = self;
     [_registView setFrame:XFrame(0, 0, Screen_W, Screen_H)];
+    _registView.userName.delegate = self;
+    _registView.passWord.delegate = self;
+    _registView.verificationCode.delegate = self;
     [self.view addSubview:_registView];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if (kISNullString(_registView.userName.text) || kISNullString(_registView.passWord.text) || kISNullString(_registView.verificationCode.text)){
+        [_registView.registBtn setBackgroundColor:toPCcolor(@"#e5e5e5")];
+        [_registView.registBtn setUserInteractionEnabled:NO];
+    }else{
+        [_registView.registBtn setBackgroundColor:toPCcolor(@"#1c98f6")];
+        [_registView.registBtn setUserInteractionEnabled:YES];
+    }
 }
 
 #pragma mark --收起键盘
@@ -41,8 +54,17 @@
     获取验证码代理方法
  */
 - (void)getCode{
+    
+    if(kISNullString(self.registView.userName.text)){
+        [[IFUtils share]showErrorInfo:@"请输入手机号"];
+        return;
+    }
+    if(self.registView.userName.text.length != 11){
+        [[IFUtils share]showErrorInfo:@"手机号格式错误"];
+        return;
+    }
     [self requestVerificationCode];
-    [self createTimer];
+
 }
 /**
     注册协议代理方法
@@ -103,10 +125,12 @@
     获取验证码
  */
 - (void)requestVerificationCode{
+
     NSInteger phoneNumber = [self.registView.userName.text integerValue];
     [Http_url POST:@"get_sms" dict:@{@"phone_number":@(phoneNumber)} showHUD:YES WithSuccessBlock:^(id data) {
         if ([[data objectForKey:@"code"] integerValue] ==200){
             NSLog(@"获取成功");
+            [self createTimer];
         }
     } WithFailBlock:^(id data) {
         
@@ -169,7 +193,7 @@
                 NSString * title = [NSString stringWithFormat:@"%d秒",timeout];
                 
                 [weakSelf.registView.codeBtn setUserInteractionEnabled:NO];
-                
+                                
                 [weakSelf.registView.codeBtn setTitle:title forState:UIControlStateNormal];
             });
         }

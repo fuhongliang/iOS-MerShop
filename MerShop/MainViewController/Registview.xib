@@ -48,7 +48,7 @@
                                 <constraint firstAttribute="height" constant="30" id="ExR-OF-Kmo"/>
                             </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGa-Yj-geK">
@@ -70,8 +70,8 @@
                                 <constraint firstAttribute="height" constant="30" id="DeS-C1-ot0"/>
                             </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcf-Pb-Ms6">
                             <rect key="frame" x="15" y="295" width="345" height="0.5"/>
@@ -87,12 +87,12 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TZg-gF-U9t">
-                            <rect key="frame" x="79" y="321" width="90" height="30"/>
+                            <rect key="frame" x="79" y="321" width="108" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="Mbd-y9-lAm"/>
                             </constraints>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqf-zy-JMY">
@@ -102,11 +102,12 @@
                                 <constraint firstAttribute="height" constant="0.5" id="qb8-NK-ZZg"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIz-IZ-USk">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIz-IZ-USk">
                             <rect key="frame" x="273" y="321" width="87" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="87" id="Jb1-Zm-koT"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="获取验证码">
                                 <color key="titleColor" red="0.10980392160000001" green="0.59607843140000005" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -147,9 +148,9 @@
                                 <action selector="protocolAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Hpy-Nj-qMy"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05q-jP-HFd">
+                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05q-jP-HFd">
                             <rect key="frame" x="15" y="428" width="345" height="44"/>
-                            <color key="backgroundColor" red="0.10980392160000001" green="0.59607843140000005" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="4G5-gi-9Qb"/>
                             </constraints>
@@ -216,6 +217,7 @@
             <connections>
                 <outlet property="codeBtn" destination="TIz-IZ-USk" id="KK1-iu-mWc"/>
                 <outlet property="passWord" destination="Znb-sl-eqm" id="tCF-a0-Cxc"/>
+                <outlet property="registBtn" destination="05q-jP-HFd" id="bAv-eA-VeJ"/>
                 <outlet property="userName" destination="jja-z7-T9K" id="iYU-v9-n3q"/>
                 <outlet property="verificationCode" destination="TZg-gF-U9t" id="k0k-ka-ZZP"/>
             </connections>

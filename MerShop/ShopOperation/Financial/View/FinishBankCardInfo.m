@@ -16,4 +16,10 @@
         [self.delegate performSelector:@selector(finish) withObject:nil];
     }
 }
+
+- (IBAction)chooseCardAction:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chooseCard)]){
+        [self.delegate performSelector:@selector(chooseCard) withObject:nil];
+    }
+}
 @end

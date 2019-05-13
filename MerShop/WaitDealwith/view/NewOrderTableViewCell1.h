@@ -13,6 +13,7 @@
 - (void)refuseOrder:(id)cell;
 - (void)receiveOrder:(id)cell;
 - (void)explandOrder:(id)data;
+- (void)playCallAction:(id)data;
 @end
 
 @interface NewOrderTableViewCell1 : UITableViewCell
@@ -30,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *explandTextBtn;
 @property (weak, nonatomic) IBOutlet UIButton *explandImgBtn;
 @property (copy, nonatomic)NSString *expland;
+@property (copy, nonatomic)NSString *PhoneNumber;
 @property (weak,nonatomic)id <NewOrderTableViewCell1Delegate>delegate;
 - (IBAction)refuse:(id)sender;
 
@@ -37,6 +39,7 @@
 
 - (IBAction)explandAction:(id)sender;
 
+- (IBAction)playCall:(id)sender;
 - (void)addProduct:(OrderModel *)model withExplandState:(NSString *)state;
 @end
 

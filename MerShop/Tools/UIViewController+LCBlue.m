@@ -80,4 +80,16 @@
     
 }
 
+- (void)playCellPhoneWithData:(id)data{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否拨打客户的联系电话" preferredStyle:(UIAlertControllerStyleAlert)];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",data];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [self.navigationController presentViewController:alert animated:YES completion:nil];
+}
 @end

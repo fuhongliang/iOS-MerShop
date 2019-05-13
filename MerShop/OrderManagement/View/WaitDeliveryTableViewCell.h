@@ -13,6 +13,7 @@
 
 - (void)printOrder:(id)data;
 - (void)explandOrder:(id)data;
+- (void)playCallAction:(id)data;
 
 @end
 
@@ -34,9 +35,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *explandImgBtn;
 @property (weak, nonatomic)id<WaitDeliveryTableViewCellDelegate>delegate;
 @property (copy, nonatomic)NSString *expland;
+@property (copy, nonatomic)NSString *PhoneNumber;
 - (void)addProduct:(NewOrderModel *)model withExplandState:(NSString *)state;
 - (IBAction)printf:(id)sender;
 - (IBAction)explandAction:(id)sender;
+- (IBAction)playCall:(id)sender;
 
 @end
 

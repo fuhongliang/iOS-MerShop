@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *passWord;
 @property (weak, nonatomic) IBOutlet UITextField *verificationCode;
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *registBtn;
 @property (weak, nonatomic)id<RegistviewDelegate>delegate;
 - (IBAction)getCodeAction:(id)sender;
 - (IBAction)protocolAction:(id)sender;

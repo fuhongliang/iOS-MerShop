@@ -28,8 +28,8 @@
 }
 
 - (void)setDataWithDict:(NSDictionary *)dict{
-    NSString *urlPath = [NSString stringWithFormat:@"%@/%@",[dict objectForKey:@"img_path"],[dict objectForKey:@"img_name"]];
-    [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:urlPath]];
+    NSString *urlPath = [NSString stringWithFormat:@"%@/%@",img_path,[dict objectForKey:@"img_name"]];
+    [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:urlPath] placeholderImage:[UIImage imageNamed:@"bnt_photo_moren"]];
     [self.name setText:[NSString stringWithFormat:@"%@",[dict objectForKey:@"goods_name"]]];
     NSInteger a = [dict[@"xianshi_price"] integerValue];
     NSInteger b = [dict[@"goods_price"] integerValue];

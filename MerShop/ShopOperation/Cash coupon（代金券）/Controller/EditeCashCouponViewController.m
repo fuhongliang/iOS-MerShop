@@ -7,7 +7,7 @@
 //
 
 #import "EditeCashCouponViewController.h"
-#import "TimePickerView.h"
+
 
 @interface EditeCashCouponViewController ()<EditeCouponViewDelegate,TimePickerViewDelegate,THDatePickerViewDelegate,UITextFieldDelegate>
 @property (nonatomic ,strong)EditeCouponView *editeView;
@@ -247,7 +247,6 @@
                  };
     }
     
-
     NSLog(@"%@",dict);
     
     [Http_url POST:@"voucher_edit" dict:dict showHUD:YES WithSuccessBlock:^(id data) {

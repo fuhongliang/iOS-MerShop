@@ -11,6 +11,7 @@
 @protocol FinishBankCardInfoDelegate <NSObject>
 
 - (void)finish;
+- (void)chooseCard;
 
 @end
 
@@ -18,10 +19,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *bankCardNumber;
 @property (weak, nonatomic) IBOutlet UITextField *bankAddress;
-@property (weak, nonatomic) IBOutlet UITextField *bankType;
+@property (weak, nonatomic) IBOutlet UIButton *cardType;
+@property (weak, nonatomic) IBOutlet UIButton *arrowBtn;
 
 @property (weak, nonatomic)id<FinishBankCardInfoDelegate>delegate;
 - (IBAction)finishAction:(id)sender;
+- (IBAction)chooseCardAction:(id)sender;
 
 @end
 

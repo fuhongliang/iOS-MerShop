@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lastFourNumber;
 @property (weak, nonatomic) IBOutlet UITextField *moneyText;
 @property (weak, nonatomic) IBOutlet UILabel *canGetLabel;
+@property (weak, nonatomic) IBOutlet UIButton *arrow;
+
 @property (weak, nonatomic)id<GetMoneyViewDelegate>delegate;
 - (IBAction)allGetAction:(id)sender;
 - (IBAction)ensure:(id)sender;

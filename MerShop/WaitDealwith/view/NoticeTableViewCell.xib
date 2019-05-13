@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyo-ea-YDX">
-                                <rect key="frame" x="15" y="42" width="35.5" height="17"/>
+                                <rect key="frame" x="15" y="42" width="290" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -54,6 +54,7 @@
                             <constraint firstAttribute="trailing" secondItem="1Pa-M6-iEM" secondAttribute="trailing" constant="15" id="7Qn-g6-Dor"/>
                             <constraint firstItem="0HT-td-QGm" firstAttribute="leading" secondItem="AH5-12-I5Y" secondAttribute="leading" constant="15" id="7bW-3c-JFd"/>
                             <constraint firstAttribute="trailing" secondItem="0HT-td-QGm" secondAttribute="trailing" id="EQr-2L-qQg"/>
+                            <constraint firstAttribute="trailing" secondItem="zyo-ea-YDX" secondAttribute="trailing" constant="15" id="FK0-6X-1wb"/>
                             <constraint firstItem="Uzh-fy-VwW" firstAttribute="top" secondItem="AH5-12-I5Y" secondAttribute="top" constant="11" id="NKW-w0-ujx"/>
                             <constraint firstItem="Uzh-fy-VwW" firstAttribute="leading" secondItem="AH5-12-I5Y" secondAttribute="leading" constant="15" id="QxU-nJ-AQa"/>
                             <constraint firstAttribute="bottom" secondItem="0HT-td-QGm" secondAttribute="bottom" id="fpO-Fz-j8K"/>

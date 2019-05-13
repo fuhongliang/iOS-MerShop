@@ -47,6 +47,7 @@
         _mainview.lastFourNumber.text = [NSString stringWithFormat:@"尾号%@储蓄卡",[cardNumber substringFromIndex:cardNumber.length-4]];
         _mainview.canGetLabel.text = cashStr;
         [_mainview.addCardBtn setHidden:YES];
+        [_mainview.arrow setHidden:YES];
     }else{
         [_mainview.accountType setHidden:YES];
         [_mainview.lastFourNumber setHidden:YES];

@@ -18,6 +18,7 @@
 @property (nonatomic ,strong)NSMutableArray *dataSource;
 @property (nonatomic ,strong)UIView *bgView;
 @property (nonatomic ,weak)BuyingPackagesView *packagesView;
+@property (nonatomic ,weak)EmptyDiscountView *emptyView;
 @end
 
 @implementation FullReductionViewController
@@ -43,8 +44,12 @@
         if ([[data objectForKey:@"code"] integerValue] == 200){
             [self.dataSource removeAllObjects];
             if (kISNullArray(arr)){
-                
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"EmptyDiscountView" owner:self options:nil];
+                self.emptyView = [nib objectAtIndex:0];
+                [self.emptyView setFrame:XFrame(0, 0, Screen_W, Screen_H-ViewStart_Y-IFAutoFitPx(96))];
+                [self.mainTableView setTableHeaderView:self.emptyView];
             }else{
+                [self.mainTableView setTableHeaderView:[[UIView alloc] init]];
                 for (NSDictionary *dict in arr){
                     FullReductionModel *model = [[FullReductionModel alloc]initWithDictionary:dict error:nil];
                     [self.dataSource addObject:model];

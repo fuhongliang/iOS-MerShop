@@ -51,7 +51,7 @@
         self.goodsState.text = @"已下架";
         [self.upShelf setTitle:@"上架" forState:(UIControlStateNormal)];
     }
-    [self.goodsIcon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.img_name]] placeholderImage:[UIImage imageNamed:@"bnt_photo_moren"]];
+    [self.goodsIcon sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",img_path,model.img_name]] placeholderImage:[UIImage imageNamed:@"bnt_photo_moren"]];
     self.goodsStorage.text = [NSString stringWithFormat:@"当前库存：%ld",(long)model.goods_storage];
     self.goodsTitle.text = model.goods_name;
     self.currentPrice.text = [NSString stringWithFormat:@"¥%@",model.goods_price];

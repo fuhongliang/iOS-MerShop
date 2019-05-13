@@ -41,7 +41,12 @@
 
 - (void)setData:(NSArray *)data{
     [self.dataSource addObjectsFromArray:data];
-    _selectTitle = [NSString stringWithFormat:@"%@",[self.dataSource[0] objectForKey:@"voucher_price"]];
+    if ([data[0] isKindOfClass:[NSString class]]){
+        _selectTitle = data[0];
+    }else{
+        _selectTitle = [NSString stringWithFormat:@"%@",[self.dataSource[0] objectForKey:@"voucher_price"]];
+    }
+    
 }
 
 #pragma mark - UIPickerViewDelegate and UIPickerViewDataSource
@@ -60,12 +65,23 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    NSString *title = [NSString stringWithFormat:@"%@",[[self.dataSource objectAtIndex:row] objectForKey:@"voucher_price"]];
+    NSString *title;
+    if ([self.dataSource[0] isKindOfClass:[NSString class]]){
+        title = [self.dataSource objectAtIndex:row];
+    }else{
+        title = [NSString stringWithFormat:@"%@",[[self.dataSource objectAtIndex:row] objectForKey:@"voucher_price"]];
+    }
+    
     return title;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    _selectTitle = [NSString stringWithFormat:@"%@",[[self.dataSource objectAtIndex:row] objectForKey:@"voucher_price"]];
+    if ([self.dataSource[0] isKindOfClass:[NSString class]]){
+        _selectTitle = [self.dataSource objectAtIndex:row];
+    }else{
+        _selectTitle = [NSString stringWithFormat:@"%@",[[self.dataSource objectAtIndex:row] objectForKey:@"voucher_price"]];
+    }
+    
 }
 
 

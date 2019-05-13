@@ -15,7 +15,7 @@
 
 
 
-@interface LoginInViewController ()<LoginViewDelegate>
+@interface LoginInViewController ()<LoginViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic ,strong)LoginView *loginview;
 
@@ -35,8 +35,23 @@
     _loginview = [nib objectAtIndex:0];
     _loginview.delegate = self;
     [_loginview setFrame:XFrame(0, 0, Screen_W, Screen_H)];
+    
+    _loginview.userNameText.delegate = self;
+    _loginview.passWordText.delegate = self;
     [self.view addSubview:_loginview];
     
+}
+
+#pragma mark - 键盘代理方法
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    if (kISNullString(_loginview.userNameText.text) || kISNullString(_loginview.passWordText.text)){
+        [_loginview.loginBtn setBackgroundColor:toPCcolor(@"#e5e5e5")];
+        [_loginview.loginBtn setUserInteractionEnabled:NO];
+    }else{
+        [_loginview.loginBtn setBackgroundColor:toPCcolor(@"#1c98f6")];
+        [_loginview.loginBtn setUserInteractionEnabled:YES];
+    }
 }
 
 #pragma mark --收起键盘

@@ -55,15 +55,6 @@
     [_phoneLab setText:[NSString stringWithFormat:@"%ld",self.phoneNumber]];
     [whiteBackGroundView addSubview:_phoneLab];
     
-    _codeBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [_codeBtn setFrame:XFrame(Screen_W-IFAutoFitPx(204),IFAutoFitPx(30), IFAutoFitPx(174), IFAutoFitPx(55))];
-    [_codeBtn setTitle:@"获取验证码" forState:(UIControlStateNormal)];
-    [_codeBtn setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
-    [_codeBtn.titleLabel setFont:XFont(14)];
-    [_codeBtn addTarget:self action:@selector(getVerificationCode) forControlEvents:(UIControlEventTouchUpInside)];
-    XViewLayerCB(_codeBtn, IFAutoFitPx(4), IFAutoFitPx(2), IFThemeBlueColor);
-    [whiteBackGroundView addSubview:_codeBtn];
-    
     _line1 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(30),CGRectGetMaxY(_phoneLab.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(1))];
     [_line1 setBackgroundColor:LineColor];
     [whiteBackGroundView addSubview:_line1];
@@ -73,6 +64,15 @@
     _codeText.font = XFont(17);
     _codeText.delegate = self;
     [whiteBackGroundView addSubview:_codeText];
+    
+    _codeBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [_codeBtn setFrame:XFrame(Screen_W-IFAutoFitPx(204),CGRectGetMaxY(_line1.frame)+IFAutoFitPx(30), IFAutoFitPx(174), IFAutoFitPx(55))];
+    [_codeBtn setTitle:@"获取验证码" forState:(UIControlStateNormal)];
+    [_codeBtn setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
+    [_codeBtn.titleLabel setFont:XFont(14)];
+    [_codeBtn addTarget:self action:@selector(getVerificationCode) forControlEvents:(UIControlEventTouchUpInside)];
+    XViewLayerCB(_codeBtn, IFAutoFitPx(4), IFAutoFitPx(2), IFThemeBlueColor);
+    [whiteBackGroundView addSubview:_codeBtn];
     
     _line2 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(30),CGRectGetMaxY(_codeText.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(1))];
     [_line2 setBackgroundColor:LineColor];

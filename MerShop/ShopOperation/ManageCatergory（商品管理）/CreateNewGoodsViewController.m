@@ -37,10 +37,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    // 点击空白处收键盘
-//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
-//    [self.view addGestureRecognizer:singleTap];
-
     self.switchStatus = self.storage;
     [self setNaviTitle:@"新建商品"];
     self.dataArr = @[@[@"商品名称*",@"商品分类*"],@[@"价格*",@"原价*",@"库存无限",
@@ -57,8 +53,8 @@
         [self setNaviTitle:@"编辑商品"];
         [self.headerview.btnImg setHidden:YES];
         [self.headerview.btnText setHidden:YES];
-        self.image_path = [NSString stringWithFormat:@"%@",_tempDict[@"img_name"]];
-        [_headerview.goodsImage sd_setImageWithURL:[NSURL URLWithString:self.image_path]];
+        self.image_path = [NSString stringWithFormat:@"%@/%@",img_path,_tempDict[@"img_name"]];
+        [_headerview.goodsImage sd_setImageWithURL:[NSURL URLWithString:self.image_path] placeholderImage:[UIImage imageNamed:@"bnt_photo_moren"]];
         self.goodsName = _tempDict[@"goods_name"];
         self.currentPrice = _tempDict[@"goods_price"];
         self.oldPrice = _tempDict[@"goods_marketprice"];
@@ -66,6 +62,13 @@
         self.desc = _tempDict[@"goods_desc"];
         self.goodsId = [_tempDict[@"goods_id"]integerValue];
         self.tempStr = @"编辑";
+        self.switchStatus = [_tempDict[@"goods_storage"]integerValue];
+        if (kISNullString(self.desc)){
+            
+        }else{
+            self.textview.text = self.desc;
+            self.placeHolder.alpha = 0;
+        }
     }else{
         if (self.pickerDatasource.count == 0){
             
@@ -243,16 +246,6 @@
     _headerview.goodsImage.image = info[UIImagePickerControllerEditedImage];
     [self.headerview.btnImg setHidden:YES];
     [self.headerview.btnText setHidden:YES];
-    LCWeakSelf(self)
-    UIImage *uploadImg = [IFTools compressImageQuality:_headerview.goodsImage.image toByte:2048];
-    [Http_url POST:@"image_upload" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
-        
-        weakself.image_path = [NSString stringWithFormat:@"%@%@",img_path,[data objectForKey:@"data"]];
-        
-        
-    } WithFailBlock:^(id data) {
-        
-    }];
     [picker dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -372,14 +365,6 @@
             cell3.delegate = self;
             return cell3;
         }
-//        else if (indexPath.row == 3){
-//            if (!cell2){
-//                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"NewGoodsTableViewCell2" owner:self options:nil];
-//                cell2 = [nib objectAtIndex:0];
-//            }
-//            cell2.leftLabel.text = _dataArr[indexPath.section][indexPath.row];
-//            return cell2;
-//        }
         else if (indexPath.row == 3){
             if (!cell5){
                 NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"NewGoodsTableViewCell5" owner:self options:nil];
@@ -453,43 +438,51 @@
 - (void)uploadImage{
     LCWeakSelf(self)
     NSString *descStr = self.textview.text;
-    NSString *postUrl;
-    NSDictionary *pramadict;
-    if ([self.tempStr isEqualToString:@"编辑"]){
-        postUrl = @"edit_goods";
-        pramadict = @{@"store_id":@(StoreId),
-                      @"class_id":@(weakself.catergoryId),
-                      @"goods_name":weakself.goodsName,
-                      @"goods_price":@([weakself.currentPrice floatValue]),
-                      @"origin_price":@([weakself.oldPrice floatValue]),
-                      @"goods_storage":@(weakself.switchStatus),
-                      //@"sell_time":[self toJSONString:sell_time],
-                      @"goods_desc":descStr,
-                      @"img_name":weakself.image_path,
-                      @"goods_id":@(weakself.goodsId)
-                      };
-    }else{
-        postUrl = @"add_goods";
-        pramadict = @{@"store_id":@(StoreId),
-                      @"class_id":@(weakself.catergoryId),
-                      @"goods_name":weakself.goodsName,
-                      @"goods_price":@([weakself.currentPrice floatValue]),
-                      @"origin_price":@([weakself.oldPrice floatValue]),
-                      @"goods_storage":@(weakself.switchStatus),
-                      //@"sell_time":[self toJSONString:sell_time],
-                      @"goods_desc":descStr,
-                      @"img_name":weakself.image_path
-                      };
-    }
-    [Http_url POST:postUrl dict:pramadict showHUD:NO WithSuccessBlock:^(id data) {
-        if ([[data objectForKey:@"code"] integerValue] == 200){
-            [SVProgressHUD dismiss];
-            [[IFUtils share]showErrorInfo:@"添加成功"];
-            [weakself.saveBtn setUserInteractionEnabled:YES];
+    UIImage *uploadImg = [IFTools compressImageQuality:_headerview.goodsImage.image toByte:2048];
+    [Http_url POST:@"image_upload" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
+        
+        weakself.image_path = [NSString stringWithFormat:@"%@",[data objectForKey:@"data"]];
+        NSString *postUrl;
+        NSDictionary *pramadict;
+        if ([self.tempStr isEqualToString:@"编辑"]){
+            postUrl = @"edit_goods";
+            pramadict = @{@"store_id":@(StoreId),
+                          @"class_id":@(weakself.catergoryId),
+                          @"goods_name":weakself.goodsName,
+                          @"goods_price":@([weakself.currentPrice floatValue]),
+                          @"origin_price":@([weakself.oldPrice floatValue]),
+                          @"goods_storage":@(weakself.switchStatus),
+                          @"goods_desc":descStr,
+                          @"img_name":weakself.image_path,
+                          @"goods_id":@(weakself.goodsId)
+                          };
+        }else{
+            postUrl = @"add_goods";
+            pramadict = @{@"store_id":@(StoreId),
+                          @"class_id":@(weakself.catergoryId),
+                          @"goods_name":weakself.goodsName,
+                          @"goods_price":@([weakself.currentPrice floatValue]),
+                          @"origin_price":@([weakself.oldPrice floatValue]),
+                          @"goods_storage":@(weakself.switchStatus),
+                          @"goods_desc":descStr,
+                          @"img_name":weakself.image_path
+                          };
         }
+        [Http_url POST:postUrl dict:pramadict showHUD:NO WithSuccessBlock:^(id data) {
+            if ([[data objectForKey:@"code"] integerValue] == 200){
+                [weakself.navigationController popViewControllerAnimated:YES];
+                [[IFUtils share]showErrorInfo:@"保存成功"];
+            }
+        } WithFailBlock:^(id data) {
+            
+        }];
+        
+        
     } WithFailBlock:^(id data) {
         
     }];
+
+
     
 }
 
@@ -515,7 +508,6 @@
         return;
     }
     [[IFUtils share]showLoadingView];
-    [_saveBtn setUserInteractionEnabled:NO];
     [self uploadImage];
 }
 

@@ -63,6 +63,9 @@
                                             <constraint firstAttribute="height" constant="18" id="zwy-h6-iiX"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="icon_dianhua"/>
+                                        <connections>
+                                            <action selector="playCall:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0Ia-8f-pEf"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vzn-yl-bq2">
                                         <rect key="frame" x="103" y="17" width="44.5" height="20"/>
@@ -349,9 +352,9 @@
                                         <state key="normal" backgroundImage="icon_dianhua"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0J-dQ-dmC">
-                                        <rect key="frame" x="120" y="17" width="104.5" height="20"/>
+                                        <rect key="frame" x="120" y="17" width="93" height="20"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="18585947676">
+                                            <fragment content="185****7676">
                                                 <attributes>
                                                     <color key="NSColor" red="0.10980392156862745" green="0.59607843137254901" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="17" name="Helvetica-Bold"/>

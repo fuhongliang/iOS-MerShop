@@ -100,6 +100,14 @@
                                         <action selector="addAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="hXt-z8-hQD"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfV-aF-i0d">
+                                    <rect key="frame" x="352" y="30" width="8" height="12"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="12" id="G68-uF-Kjv"/>
+                                        <constraint firstAttribute="width" constant="8" id="iw7-d2-czo"/>
+                                    </constraints>
+                                    <state key="normal" title="Button" image="icon_jinru_hui"/>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -126,6 +134,8 @@
                                 <constraint firstItem="Jp6-Vm-yWP" firstAttribute="centerY" secondItem="tBi-ZR-Ayj" secondAttribute="centerY" id="jEd-1x-84p"/>
                                 <constraint firstAttribute="trailing" secondItem="Wxr-D3-4DB" secondAttribute="trailing" id="leo-HK-pfk"/>
                                 <constraint firstItem="Wxr-D3-4DB" firstAttribute="top" secondItem="gDC-z7-zp6" secondAttribute="bottom" constant="10" id="nYO-Fp-S0t"/>
+                                <constraint firstAttribute="trailing" secondItem="IfV-aF-i0d" secondAttribute="trailing" constant="15" id="oMQ-Bk-0FR"/>
+                                <constraint firstItem="IfV-aF-i0d" firstAttribute="centerY" secondItem="Jp6-Vm-yWP" secondAttribute="centerY" id="pdK-ZU-fTI"/>
                                 <constraint firstItem="gDC-z7-zp6" firstAttribute="leading" secondItem="tBi-ZR-Ayj" secondAttribute="trailing" constant="15" id="wrI-4S-bZB"/>
                                 <constraint firstAttribute="trailing" secondItem="wia-IC-teG" secondAttribute="trailing" constant="15" id="xRT-0D-JRa"/>
                             </constraints>
@@ -171,6 +181,7 @@
             <connections>
                 <outlet property="accountType" destination="rAu-rm-Qey" id="Cau-Ge-wDN"/>
                 <outlet property="addCardBtn" destination="Jp6-Vm-yWP" id="GKa-dp-f6N"/>
+                <outlet property="arrow" destination="IfV-aF-i0d" id="n3f-El-Rvi"/>
                 <outlet property="canGetLabel" destination="XCd-v2-vx9" id="gJT-RE-kIN"/>
                 <outlet property="lastFourNumber" destination="gDC-z7-zp6" id="Egg-zy-RX4"/>
                 <outlet property="moneyText" destination="k6Y-r9-jbQ" id="Lfw-vz-AZy"/>
@@ -179,6 +190,7 @@
         </view>
     </objects>
     <resources>
+        <image name="icon_jinru_hui" width="8" height="12.5"/>
         <image name="icon_tixian_tb" width="28" height="22"/>
     </resources>
 </document>

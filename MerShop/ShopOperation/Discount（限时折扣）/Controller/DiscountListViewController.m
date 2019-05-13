@@ -18,6 +18,7 @@
 @property (nonatomic ,strong)UIView *bgView;
 @property (nonatomic ,weak)BuyingPackagesView *packagesView;
 @property (nonatomic ,strong)NSMutableArray *a;
+@property (nonatomic ,weak)EmptyDiscountView *emptyView;
 @end
 
 @implementation DiscountListViewController
@@ -43,8 +44,12 @@
         NSArray *arr = [data objectForKey:@"data"];
         if ([[data objectForKey:@"code"] integerValue] == 200){
             if (kISNullArray(arr)){
-                
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"EmptyDiscountView" owner:self options:nil];
+                self.emptyView = [nib objectAtIndex:0];
+                [self.emptyView setFrame:XFrame(0, 0, Screen_W, Screen_H-ViewStart_Y-IFAutoFitPx(96))];
+                [self.mainTableView setTableHeaderView:self.emptyView];
             }else{
+                [self.mainTableView setTableHeaderView:[[UIView alloc] init]];
                 self.a = [[data objectForKey:@"data"] mutableCopy];
                 [self.dataSource removeAllObjects];
                 for (NSDictionary *dict in self.a){
@@ -54,7 +59,8 @@
                 [self.mainTableView reloadData];
             }
         }else if ([[data objectForKey:@"code"] integerValue] == 2000){
-            
+            [self.bgView setHidden:NO];
+            [self.packagesView setHidden:NO];
         }
 
         

@@ -71,22 +71,27 @@
             [self tokenLost];
             return ;
         }
-        self.noticeArray = [data[@"data"][@"msg"] copy];
-        NSArray *arr = [data objectForKey:@"data"][@"list"];
-        
-        [self.explandArr removeAllObjects];
-        if ([arr isKindOfClass:[NSNull class]]){
-            [self.mainTableview setTableHeaderView:self.emptyView];
-        }else{
-            [self.mainTableview setTableHeaderView:[[UIView alloc] init]];
-            for (NSDictionary *dict in arr){
-                OrderModel *model = [[OrderModel alloc]initWithDictionary:dict error:nil];
-                [self.dataArr addObject:model];
-                [self.explandArr addObject:@"0"];
-            }
-            [self.mainTableview reloadData];
+        if (kISNullObject(data[@"data"])){
             
+        }else{
+            self.noticeArray = [data[@"data"][@"msg"] copy];
+            NSArray *arr = [data objectForKey:@"data"][@"list"];
+            
+            [self.explandArr removeAllObjects];
+            if ([arr isKindOfClass:[NSNull class]]){
+                [self.mainTableview setTableHeaderView:self.emptyView];
+            }else{
+                [self.mainTableview setTableHeaderView:[[UIView alloc] init]];
+                for (NSDictionary *dict in arr){
+                    OrderModel *model = [[OrderModel alloc]initWithDictionary:dict error:nil];
+                    [self.dataArr addObject:model];
+                    [self.explandArr addObject:@"0"];
+                }
+                [self.mainTableview reloadData];
+                
+            }
         }
+
         
     } WithFailBlock:^(id data) {
         
@@ -215,10 +220,29 @@
     }];
 }
 
+/**
+    展开按钮代理方法
+ */
 - (void)explandOrder:(id)data{
     NewOrderTableViewCell1 *cell = (NewOrderTableViewCell1 *)data[0];
     [self.explandArr replaceObjectAtIndex:cell.tag withObject:data[1]];
     [self.mainTableview reloadData];
+}
+
+/**
+    拨打用户电话按钮方法
+ */
+- (void)playCallAction:(id)data{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"是否拨打客户的联系电话" preferredStyle:(UIAlertControllerStyleAlert)];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",data];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [self.navigationController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)refuseMethod:(UIButton *)sender{
@@ -237,7 +261,6 @@
     NSDictionary *dict = @{@"order_id":@(_orderID),
                            @"refuse_reason":reason,
                            };
-//    __weak typeof(self)weakself = self;
     [Http_url POST:@"refuse_order" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
         if (data){
             [[IFUtils share]showErrorInfo:@"已拒绝"];
@@ -254,6 +277,7 @@
     }];
 }
 
+#define mark - 懒加载
 - (NSMutableArray *)dataArr{
     if (!_dataArr){
         _dataArr = [NSMutableArray arrayWithCapacity:0];

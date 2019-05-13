@@ -25,10 +25,17 @@
 
 - (void)addProduct:(NewOrderModel *)model withExplandState:(NSString *)state{
     self.expland = state;
+    
     self.number.text = [NSString stringWithFormat:@"#%ld",(long)model.order_id];
+    
     self.customerName.text = [NSString stringWithFormat:@"%@  ",model.extend_order_common[@"reciver_name"]];
-    self.customerPhoneNumber.text = [NSString stringWithFormat:@"%@",model.extend_order_common[@"phone"]];
-    self.address.text = [NSString stringWithFormat:@"地址：%@",model.extend_order_common[@"address"]];
+    
+    self.PhoneNumber = [NSString stringWithFormat:@"%@",model.extend_order_common[@"phone"]];
+    self.customerPhoneNumber.text = [NSString stringWithFormat:@"%@****%@",[self.PhoneNumber substringToIndex:3],[self.PhoneNumber substringFromIndex:self.PhoneNumber.length-4]];
+    
+    NSString *address = [NSString stringWithFormat:@"地址：%@",model.extend_order_common[@"address"]];
+    self.address.text = [address stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
     self.orderState.text = [NSString stringWithFormat:@"%@",model.order_state];
     if ([self.orderState.text isEqualToString:@"已取消"]){
         self.orderState.textColor = toPCcolor(@"#999999");
@@ -149,6 +156,12 @@
 - (IBAction)printf:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(printfOrder:)]){
         [self.delegate performSelector:@selector(printfOrder:) withObject:self];
+    }
+}
+
+- (IBAction)playCall:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(playCallAction1:)]){
+        [self.delegate performSelector:@selector(playCallAction1:) withObject:self.PhoneNumber];
     }
 }
 

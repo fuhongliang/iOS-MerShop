@@ -198,18 +198,17 @@
 
 - (void)searchBluetooth{
     LCWeakSelf(self)
+    [self.searchBtn setImage:[UIImage imageNamed:@"dyj_ic_sousuosb01"] forState:(UIControlStateNormal)];
+    [self.searchBtn setTitleColor:toPCcolor(@"#999999") forState:(UIControlStateNormal)];
     [self.indicatorView startAnimating];
     [self.indicatorView1 startAnimating];
     [self.manage beginScanPerpheralSuccess:^(NSArray<CBPeripheral *> *peripherals, NSArray<NSNumber *> *rssis) {
         NSLog(@"%@",peripherals);
         weakself.dataSource = [NSMutableArray arrayWithArray:peripherals];
-        [self.indicatorView1 stopAnimating];
-        [self.indicatorView stopAnimating];
-//        for (CBPeripheral *b in weakself.dataSource){
-//            if ([weakself.currentBluetooth.name isEqualToString:b.name]){
-//                [weakself.dataSource removeObject:b];
-//            }
-//        }
+        [weakself.indicatorView1 stopAnimating];
+        [weakself.indicatorView stopAnimating];
+        [self.searchBtn setImage:[UIImage imageNamed:@"dyj_ic_sousuosb"] forState:(UIControlStateNormal)];
+        [self.searchBtn setTitleColor:toPCcolor(@"#1c98f6") forState:(UIControlStateNormal)];
         [weakself.mainTableView reloadData];
         
         

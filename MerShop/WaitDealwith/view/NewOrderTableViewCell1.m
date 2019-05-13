@@ -52,11 +52,18 @@
     }
 }
 
+- (IBAction)playCall:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(playCallAction:)]){
+        [self.delegate performSelector:@selector(playCallAction:) withObject:self.PhoneNumber];
+    }
+}
+
 - (void)addProduct:(OrderModel *)model withExplandState:(NSString *)state{
     self.expland = state;
     self.number.text = [NSString stringWithFormat:@"#%ld",(long)model.order_id];
     self.name.text = [NSString stringWithFormat:@"%@  ",model.extend_order_common[@"reciver_name"]];
-    self.customerPhoneNumber.text = [NSString stringWithFormat:@"%@",model.extend_order_common[@"phone"]];
+    self.PhoneNumber = [NSString stringWithFormat:@"%@",model.extend_order_common[@"phone"]];
+    self.customerPhoneNumber.text = [NSString stringWithFormat:@"%@****%@",[self.PhoneNumber substringToIndex:3],[self.PhoneNumber substringFromIndex:self.PhoneNumber.length-4]];
     self.address.text = [NSString stringWithFormat:@"地址：%@",model.extend_order_common[@"address"]];
     
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"下单时间：%@",model.add_time]];

@@ -64,7 +64,7 @@
     NSInteger store_id = [[dict objectForKey:@"store_id"] integerValue];
     _content = self.text1.text;
     NSLog(@"-------------%ld",_content.length);
-    if (_content.length == 0){
+    if (kISNullString(_content)){
         [[IFUtils share]showErrorInfo:@"请输入您将反馈的内容!"];
         return;
     }
@@ -76,6 +76,7 @@
         NSInteger code = [[data objectForKey:@"code"] integerValue];
         if (code == 200){
             [[IFUtils share]showErrorInfo:@"提交成功"];
+            [self.navigationController popViewControllerAnimated:YES];
         }
     } WithFailBlock:^(id data) {
         

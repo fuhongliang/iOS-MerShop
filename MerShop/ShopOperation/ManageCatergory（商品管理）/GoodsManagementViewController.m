@@ -34,6 +34,7 @@
 @property (nonatomic ,strong)NSString *catergoryName;
 @property (nonatomic ,assign)NSInteger *catergoryId;
 @property (nonatomic ,strong)NSMutableArray *dataArray;
+@property (nonatomic ,assign)NSInteger classID;
 
 @end
 
@@ -42,17 +43,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNaviTitle:@"商品管理"];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *userInfo = [userDefaults objectForKey:@"userInfo"];
-    _storeId = [[userInfo objectForKey:@"store_id"] integerValue];
+    _storeId = StoreId;
     [self setRightUI];
-    
+    [self requestCatergory];
+    self.classID = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self requestCatergory];
-    [self requestGoods:0];
+//    [self requestCatergory];
+    [self requestGoods:self.classID];
 }
 
 - (void)requestCatergory{
@@ -231,8 +231,8 @@
     }
     NSDictionary *classDict = self.leftDataSource[_index];
     if(classDict != nil){
-        NSInteger classID = [[classDict objectForKey:@"stc_id"] integerValue];
-        [self requestGoods:classID];
+        self.classID = [[classDict objectForKey:@"stc_id"] integerValue];
+        [self requestGoods:self.classID];
     }
 }
 
@@ -262,37 +262,50 @@
     NSDictionary *dict = @{@"goods_id":@(goods_Id),
                            @"store_id":@(StoreId)
                            };
-    [Http_url POST:@"chgoods_state" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
-        if ([[data objectForKey:@"code"] integerValue] == 200){
-            [[IFUtils share]showErrorInfo:[data objectForKey:@"msg"]];
-            if (model.goods_state == 1){
-                NSLog(@"已下架");
-                NSMutableDictionary *d = [[NSMutableDictionary alloc]initWithDictionary:self.dataArray[cell.tag]];
-                [d setValue:@(0) forKey:@"goods_state"];
-                GoodsModel *model = [[GoodsModel alloc]initWithDictionary:d error:nil];
-                [self.dataArray removeObjectAtIndex:cell.tag];
-                [self.dataArray insertObject:d atIndex:cell.tag];
-                [self.rightDataSource removeObjectAtIndex:cell.tag];
-                [self.rightDataSource insertObject:model atIndex:cell.tag];
-                [cell.orangeView setHidden:NO];
-                [cell.upShelf setTitle:@"上架" forState:(UIControlStateNormal)];
-            }else if (model.goods_state == 0){
-                NSLog(@"已上架");
-                NSMutableDictionary *d = [[NSMutableDictionary alloc]initWithDictionary:self.dataArray[cell.tag]];
-                [d setValue:@(1) forKey:@"goods_state"];
-                GoodsModel *model = [[GoodsModel alloc]initWithDictionary:d error:nil];
-                [self.dataArray removeObjectAtIndex:cell.tag];
-                [self.dataArray insertObject:d atIndex:cell.tag];
-                [self.rightDataSource removeObjectAtIndex:cell.tag];
-                [self.rightDataSource insertObject:model atIndex:cell.tag];
-                [cell.orangeView setHidden:YES];
-                [cell.upShelf setTitle:@"下架" forState:(UIControlStateNormal)];
+    NSString *title;
+    if (model.goods_state == 1){
+        title = @"确定下架该商品吗？";
+    }else{
+        title = @"确定上架该商品吗";
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"让我再想想吧！");
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [Http_url POST:@"chgoods_state" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
+            if ([[data objectForKey:@"code"] integerValue] == 200){
+                [[IFUtils share]showErrorInfo:[data objectForKey:@"msg"]];
+                if (model.goods_state == 1){
+                    NSLog(@"已下架");
+                    NSMutableDictionary *d = [[NSMutableDictionary alloc]initWithDictionary:self.dataArray[cell.tag]];
+                    [d setValue:@(0) forKey:@"goods_state"];
+                    GoodsModel *model = [[GoodsModel alloc]initWithDictionary:d error:nil];
+                    [self.dataArray removeObjectAtIndex:cell.tag];
+                    [self.dataArray insertObject:d atIndex:cell.tag];
+                    [self.rightDataSource removeObjectAtIndex:cell.tag];
+                    [self.rightDataSource insertObject:model atIndex:cell.tag];
+                    [cell.orangeView setHidden:NO];
+                    [cell.upShelf setTitle:@"上架" forState:(UIControlStateNormal)];
+                }else if (model.goods_state == 0){
+                    NSLog(@"已上架");
+                    NSMutableDictionary *d = [[NSMutableDictionary alloc]initWithDictionary:self.dataArray[cell.tag]];
+                    [d setValue:@(1) forKey:@"goods_state"];
+                    GoodsModel *model = [[GoodsModel alloc]initWithDictionary:d error:nil];
+                    [self.dataArray removeObjectAtIndex:cell.tag];
+                    [self.dataArray insertObject:d atIndex:cell.tag];
+                    [self.rightDataSource removeObjectAtIndex:cell.tag];
+                    [self.rightDataSource insertObject:model atIndex:cell.tag];
+                    [cell.orangeView setHidden:YES];
+                    [cell.upShelf setTitle:@"下架" forState:(UIControlStateNormal)];
+                }
+                [self.mainTable reloadData];
             }
-            [self.mainTable reloadData];
-        }
-    } WithFailBlock:^(id data) {
-        
-    }];
+        } WithFailBlock:^(id data) {
+            
+        }];
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 //编辑商品
