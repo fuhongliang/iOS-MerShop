@@ -125,12 +125,22 @@
 - (void)SignOut{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确定退出登录吗？" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
-        LoginInViewController *loginVC = [[LoginInViewController alloc]init];
-        NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:loginVC];
-        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        delegate.window.rootViewController = navi;
+        
+        [Http_url POST:@"member_logout" dict:@{@"store_id":@(StoreId)} showHUD:YES WithSuccessBlock:^(id data) {
+            if ([[data objectForKey:@"code"] integerValue] == 200){
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
+                LoginInViewController *loginVC = [[LoginInViewController alloc]init];
+                NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:loginVC];
+                AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                delegate.window.rootViewController = navi;
+            }
+
+        } WithFailBlock:^(id data) {
+            
+        }];
+
+        
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
         

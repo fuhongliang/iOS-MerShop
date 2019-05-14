@@ -105,34 +105,47 @@
 }
 
 - (void)setStoreState:(NSInteger )number{
-    NSDictionary *userDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
-    NSInteger storeID = [[userDict objectForKey:@"store_id"] integerValue];
-    __weak typeof(self) weakSelf = self;
-    [Http_url POST:@"store_set_workstate" dict:@{@"store_id":@(storeID),@"store_state":@(number)} showHUD:YES WithSuccessBlock:^(id data) {
-        if (data){
-            if (number == 0){
-                NSMutableDictionary *userDict1 = [[NSMutableDictionary alloc]initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]];
-                [userDict1 setValue:@"0" forKey:@"store_state"];
-                NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-                [user setObject:userDict1 forKey:@"userInfo"];
-                [weakSelf.waitStartLab setText:@"已停止营业"];
-                [weakSelf.stop setTitle:@"开始营业" forState:(UIControlStateNormal)];
-                [weakSelf.status setImage:[UIImage imageNamed:@"yingye_ic_weiyingye"]];
-            }else{
-                NSMutableDictionary *userDict1 = [[NSMutableDictionary alloc]initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]];
-                [userDict1 setValue:@"1" forKey:@"store_state"];
-                NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-                [user setObject:userDict1 forKey:@"userInfo"];
-                [weakSelf.waitStartLab setText:@"正在营业"];
-                [weakSelf.stop setTitle:@"停止营业" forState:(UIControlStateNormal)];
-                [weakSelf.status setImage:[UIImage imageNamed:@"yingye_ic_yiyingye"]];
+    NSString *title;
+    if (number == 0){
+        title = @"确定停止营业吗？";
+    }else{
+        title = @"确定开始营业吗？";
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        
+        __weak typeof(self) weakSelf = self;
+        [Http_url POST:@"store_set_workstate" dict:@{@"store_id":@(StoreId),@"store_state":@(number)} showHUD:YES WithSuccessBlock:^(id data) {
+            if (data){
+                if (number == 0){
+                    NSMutableDictionary *userDict1 = [[NSMutableDictionary alloc]initWithDictionary:UserInfoDict];
+                    [userDict1 setValue:@"0" forKey:@"store_state"];
+                    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+                    [user setObject:userDict1 forKey:@"userInfo"];
+                    [weakSelf.waitStartLab setText:@"已停止营业"];
+                    [weakSelf.stop setTitle:@"开始营业" forState:(UIControlStateNormal)];
+                    [weakSelf.status setImage:[UIImage imageNamed:@"yingye_ic_weiyingye"]];
+                }else{
+                    NSMutableDictionary *userDict1 = [[NSMutableDictionary alloc]initWithDictionary:UserInfoDict];
+                    [userDict1 setValue:@"1" forKey:@"store_state"];
+                    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+                    [user setObject:userDict1 forKey:@"userInfo"];
+                    [weakSelf.waitStartLab setText:@"正在营业"];
+                    [weakSelf.stop setTitle:@"停止营业" forState:(UIControlStateNormal)];
+                    [weakSelf.status setImage:[UIImage imageNamed:@"yingye_ic_yiyingye"]];
+                }
+                
             }
+            
+        } WithFailBlock:^(id data) {
+            
+        }];
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
 
-        }
-        
-    } WithFailBlock:^(id data) {
-        
-    }];
 }
 
 @end

@@ -46,7 +46,7 @@
     //空页面
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"EmptyOrderView" owner:self options:nil];
     _emptyView = [nib objectAtIndex:0];
-    [_emptyView setFrame:XFrame(0, ViewStart_Y+IFAutoFitPx(88), Screen_W, Screen_H-ViewStart_Y-Tabbar_H)];
+    [_emptyView setFrame:XFrame(0, 0, Screen_W, Screen_H-ViewStart_Y-Tabbar_H-IFAutoFitPx(88))];
     [_emptyView setBackgroundColor:toPCcolor(@"#f5f5f5")];
     [self.mainTableview setTableHeaderView:_emptyView];
     

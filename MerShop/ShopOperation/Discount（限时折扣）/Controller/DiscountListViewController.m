@@ -133,6 +133,7 @@
                           };
     if (a == 0){
         [[IFUtils share]showErrorInfo:@"请输入您要购买的套餐数量！"];
+        return;
     }
     [Http_url POST:@"add_xianshi_quota" dict:dict showHUD:NO WithSuccessBlock:^(id data) {
         if ([[data objectForKey:@"code"] integerValue] == 200){

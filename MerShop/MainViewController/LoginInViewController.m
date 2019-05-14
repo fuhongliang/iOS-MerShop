@@ -71,10 +71,14 @@
         [[IFUtils share]showErrorInfo:@"请输入您的密码"];
         return;
     }
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSDictionary *dic = @{@"member_name":_loginview.userNameText.text,
-                          @"member_passwd":_loginview.passWordText.text
+                          @"member_passwd":_loginview.passWordText.text,
+                          @"app_type":@(2),
+                          @"device_tokens":delegate.token
                           };
     [Http_url POST:@"member_login" dict:dic showHUD:YES WithSuccessBlock:^(id data) {
+        
         NSString *urlStr = [[data objectForKey:@"data"] objectForKey:@"joinin_url"];
         if (kISNullString(urlStr)){
             NSMutableDictionary *userInfoDict = [[NSMutableDictionary alloc]initWithDictionary:[data objectForKey:@"data"]];

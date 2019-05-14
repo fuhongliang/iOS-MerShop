@@ -19,6 +19,7 @@
 
 @implementation FeedbackViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController.navigationBar setHidden:YES];
@@ -37,15 +38,7 @@
     [_text1 setBackgroundColor:[UIColor whiteColor]];
     [_text1 setDelegate:self];
     [self.view addSubview:_text1];
-//
-//    _text2 = [[UITextView alloc]init];
-//    [_text2 setFrame:XFrame(0, CGRectGetMaxY(_text1.frame)+IFAutoFitPx(30), Screen_W, IFAutoFitPx(88))];
-//    [_text2 setFont:XFont(17)];
-//    [_text2 setTextColor:toPCcolor(@"#999999")];
-//    [_text2 setBackgroundColor:[UIColor whiteColor]];
-//    [_text2 setDelegate:self];
-//    [self.view addSubview:_text2];
-    
+
     _feedBack = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [_feedBack setFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(_text1.frame)+IFAutoFitPx(62), Screen_W-IFAutoFitPx(60), IFAutoFitPx(88))];
     [_feedBack setBackgroundColor:IFThemeBlueColor];
@@ -63,7 +56,6 @@
     NSDictionary *dict = [userinfo objectForKey:@"userInfo"];
     NSInteger store_id = [[dict objectForKey:@"store_id"] integerValue];
     _content = self.text1.text;
-    NSLog(@"-------------%ld",_content.length);
     if (kISNullString(_content)){
         [[IFUtils share]showErrorInfo:@"请输入您将反馈的内容!"];
         return;
@@ -96,14 +88,6 @@
     placeHolder1.contentMode = UIViewContentModeTop;
     [self.text1 addSubview:placeHolder1];
     
-//    UILabel *placeHolder2 = [[UILabel alloc] initWithFrame:XFrame(IFAutoFitPx(15), IFAutoFitPx(13), Screen_W-IFAutoFitPx(60), IFAutoFitPx(36))];
-//    placeHolder2.text = @"请留下联系方式，以方便我们回复您!";
-//    placeHolder2.textColor = toPCcolor(@"#999999");
-//    self.placeHolder2 = placeHolder2;
-//    placeHolder2.font = XFont(17);
-//    placeHolder2.numberOfLines = 0;
-//    placeHolder2.contentMode = UIViewContentModeTop;
-//    [self.text2 addSubview:placeHolder2];
 }
 
 - (void)textViewDidChange:(UITextView *)textView{
@@ -112,19 +96,6 @@
     }else{
         self.placeHolder1.alpha = 0;
     }
-//    if (textView == _text1){
-//        if (!textView.text.length){
-//            self.placeHolder1.alpha = 1;
-//        }else{
-//            self.placeHolder1.alpha = 0;
-//        }
-//    }else{
-//        if (!textView.text.length){
-//            self.placeHolder2.alpha = 1;
-//        }else{
-//            self.placeHolder2.alpha = 0;
-//        }
-//    }
 }
 
 /*

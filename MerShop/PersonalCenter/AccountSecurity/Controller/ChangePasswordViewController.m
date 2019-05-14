@@ -170,7 +170,7 @@
 }
 
 - (void)ensureChange{
-    if (self.codeText.text.length != 4 || self.codeText.text.length == 0){
+    if (self.codeText.text.length != 4){
         [[IFUtils share]showErrorInfo:@"验证码不正确"];
         return;
     }else if (self.passWordText1.text.length <6 || self.passWordText1.text.length == 0){

@@ -58,6 +58,15 @@
             //验证手机是否注册
             [[IFUtils share]showErrorInfo:dic[@"msg"]];
             return;
+        }else if (code == 1000){
+            //参数缺失
+            [[IFUtils share]showErrorInfo:dic[@"msg"]];
+            return;
+        }else if (code == 2000){
+            //未购买套餐
+            [[IFUtils share]showErrorInfo:dic[@"msg"]];
+            successBlock(dic);
+            return ;
         }else{
             [[IFUtils share]showErrorInfo:dic[@"msg"]];
             successBlock(dic);
