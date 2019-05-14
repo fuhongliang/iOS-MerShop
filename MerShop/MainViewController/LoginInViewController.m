@@ -75,19 +75,29 @@
                           @"member_passwd":_loginview.passWordText.text
                           };
     [Http_url POST:@"member_login" dict:dic showHUD:YES WithSuccessBlock:^(id data) {
-        NSMutableDictionary *userInfoDict = [[NSMutableDictionary alloc]initWithDictionary:[data objectForKey:@"data"]];
-        NSArray *arr = [userInfoDict allKeys];
-        for (NSString *key in arr){
-            if ([[userInfoDict objectForKey:key] isKindOfClass:[NSNull class]]){
-                [userInfoDict setObject:@"" forKey:key];
+        NSString *urlStr = [[data objectForKey:@"data"] objectForKey:@"joinin_url"];
+        if (kISNullString(urlStr)){
+            NSMutableDictionary *userInfoDict = [[NSMutableDictionary alloc]initWithDictionary:[data objectForKey:@"data"]];
+            NSArray *arr = [userInfoDict allKeys];
+            for (NSString *key in arr){
+                if ([[userInfoDict objectForKey:key] isKindOfClass:[NSNull class]]){
+                    [userInfoDict setObject:@"" forKey:key];
+                }
             }
+            NSLog(@"%@",userInfoDict);
+            if (userInfoDict){
+                [IFUserDefaults setObject:userInfoDict forKey:@"userInfo"];
+                [IFUserDefaults synchronize];
+            }
+            [self GotoMainTabBarVC];
+        }else{
+            ManageViewController *vc = [[ManageViewController alloc]init];
+            vc.url = urlStr;
+            vc.navTitle = @"";
+            [self.navigationController pushViewController:vc animated:YES];
+
         }
-        NSLog(@"%@",userInfoDict);
-        if (userInfoDict){
-            [IFUserDefaults setObject:userInfoDict forKey:@"userInfo"];
-            [IFUserDefaults synchronize];
-        }
-        [self GotoMainTabBarVC];
+
     } WithFailBlock:^(id data) {
         
     }];
@@ -97,7 +107,10 @@
     管理协议代理方法
  */
 - (void)protocol{
-    
+    BluetoothHelpViewController *vc = [[BluetoothHelpViewController alloc]init];
+    vc.htmlName = @"protocol";
+    vc.navTitle = @"用户协议";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 /**
     注册代理方法

@@ -13,4 +13,5 @@ pod 'UMCCommon'
 pod 'UMCPush'
 pod 'UMCSecurityPlugins'
 pod 'BRPickerView'
+pod 'JhtMarquee'
 end

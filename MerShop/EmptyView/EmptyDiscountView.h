@@ -10,6 +10,9 @@
 
 
 @interface EmptyDiscountView : UIView
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UILabel *title;
 
+@property (nonatomic ,copy)NSArray *array;
 @end
 

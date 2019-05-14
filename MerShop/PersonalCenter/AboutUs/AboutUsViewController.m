@@ -9,7 +9,7 @@
 #import "AboutUsViewController.h"
 #import "AboutView.h"
 
-@interface AboutUsViewController ()
+@interface AboutUsViewController ()<AboutViewDelegate>
 @property (weak, nonatomic)AboutView *aboutView;
 @end
 
@@ -23,11 +23,21 @@
     
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"AboutView" owner:self options:nil];
     _aboutView = [nib objectAtIndex:0];
+    _aboutView.delegate = self;
     [_aboutView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
     [self.view addSubview:_aboutView];
     
 }
 
-
+/**
+    协议按钮代理方法
+ */
+- (void)protocol{
+    BluetoothHelpViewController *vc = [[BluetoothHelpViewController alloc]init];
+    vc.htmlName = @"protocol";
+    vc.navTitle = @"用户协议";
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 
 @end

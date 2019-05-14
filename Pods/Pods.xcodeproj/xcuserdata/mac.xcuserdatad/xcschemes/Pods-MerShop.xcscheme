@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC9BD5DF09024D288B323958384CDDB9"
+               BlueprintIdentifier = "30483955A35C57CEFCE41413231482D7"
                BuildableName = "libPods-MerShop.a"
                BlueprintName = "Pods-MerShop"
                ReferencedContainer = "container:Pods.xcodeproj">

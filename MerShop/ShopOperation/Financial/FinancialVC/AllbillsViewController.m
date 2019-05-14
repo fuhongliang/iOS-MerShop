@@ -56,8 +56,9 @@
                     self.headerView.getMoneyLabel.text = [NSString stringWithFormat:@"已结算：¥%@",dic[@"y_jiesuan"]];
                     self.headerView.restMoneyLabel.text = [NSString stringWithFormat:@"待结算：¥%@",dic[@"d_jiesuan"]];
                 }
+                [self.mainTableView reloadData];
             }
-            [self.mainTableView reloadData];
+            
             
         }
         

@@ -61,7 +61,6 @@
         self.storage = [_tempDict[@"goods_storage"] integerValue];
         self.desc = _tempDict[@"goods_desc"];
         self.goodsId = [_tempDict[@"goods_id"]integerValue];
-        self.tempStr = @"编辑";
         self.switchStatus = [_tempDict[@"goods_storage"]integerValue];
         if (kISNullString(self.desc)){
             
@@ -444,34 +443,62 @@
         weakself.image_path = [NSString stringWithFormat:@"%@",[data objectForKey:@"data"]];
         NSString *postUrl;
         NSDictionary *pramadict;
+//        NSString *storage;
+
         if ([self.tempStr isEqualToString:@"编辑"]){
             postUrl = @"edit_goods";
-            pramadict = @{@"store_id":@(StoreId),
-                          @"class_id":@(weakself.catergoryId),
-                          @"goods_name":weakself.goodsName,
-                          @"goods_price":@([weakself.currentPrice floatValue]),
-                          @"origin_price":@([weakself.oldPrice floatValue]),
-                          @"goods_storage":@(weakself.switchStatus),
-                          @"goods_desc":descStr,
-                          @"img_name":weakself.image_path,
-                          @"goods_id":@(weakself.goodsId)
-                          };
+            if (self.switchStatus == 999999999){
+                pramadict = @{@"store_id":@(StoreId),
+                              @"class_id":@(weakself.catergoryId),
+                              @"goods_name":weakself.goodsName,
+                              @"goods_price":@([weakself.currentPrice floatValue]),
+                              @"origin_price":@([weakself.oldPrice floatValue]),
+                              @"goods_desc":descStr,
+                              @"img_name":weakself.image_path,
+                              @"goods_id":@(weakself.goodsId)
+                              };
+            }else{
+                pramadict = @{@"store_id":@(StoreId),
+                              @"class_id":@(weakself.catergoryId),
+                              @"goods_name":weakself.goodsName,
+                              @"goods_price":@([weakself.currentPrice floatValue]),
+                              @"origin_price":@([weakself.oldPrice floatValue]),
+                              @"goods_storage":@(weakself.switchStatus),
+                              @"goods_desc":descStr,
+                              @"img_name":weakself.image_path,
+                              @"goods_id":@(weakself.goodsId)
+                              };
+            }
+
         }else{
             postUrl = @"add_goods";
-            pramadict = @{@"store_id":@(StoreId),
-                          @"class_id":@(weakself.catergoryId),
-                          @"goods_name":weakself.goodsName,
-                          @"goods_price":@([weakself.currentPrice floatValue]),
-                          @"origin_price":@([weakself.oldPrice floatValue]),
-                          @"goods_storage":@(weakself.switchStatus),
-                          @"goods_desc":descStr,
-                          @"img_name":weakself.image_path
-                          };
+            if (self.switchStatus == 999999999){
+                pramadict = @{@"store_id":@(StoreId),
+                              @"class_id":@(weakself.catergoryId),
+                              @"goods_name":weakself.goodsName,
+                              @"goods_price":@([weakself.currentPrice floatValue]),
+                              @"origin_price":@([weakself.oldPrice floatValue]),
+                              @"goods_desc":descStr,
+                              @"img_name":weakself.image_path,
+                              @"goods_id":@(weakself.goodsId)
+                              };
+            }else{
+                pramadict = @{@"store_id":@(StoreId),
+                              @"class_id":@(weakself.catergoryId),
+                              @"goods_name":weakself.goodsName,
+                              @"goods_price":@([weakself.currentPrice floatValue]),
+                              @"origin_price":@([weakself.oldPrice floatValue]),
+                              @"goods_storage":@(weakself.switchStatus),
+                              @"goods_desc":descStr,
+                              @"img_name":weakself.image_path,
+                              @"goods_id":@(weakself.goodsId)
+                              };
+            }
         }
+        
         [Http_url POST:postUrl dict:pramadict showHUD:NO WithSuccessBlock:^(id data) {
             if ([[data objectForKey:@"code"] integerValue] == 200){
                 [weakself.navigationController popViewControllerAnimated:YES];
-                [[IFUtils share]showErrorInfo:@"保存成功"];
             }
         } WithFailBlock:^(id data) {
             

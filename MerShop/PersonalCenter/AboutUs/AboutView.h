@@ -8,10 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+@protocol AboutViewDelegate <NSObject>
 
-@interface AboutView : UIView
+- (void)protocol;
 
 @end
 
-NS_ASSUME_NONNULL_END
+@interface AboutView : UIView
+
+@property (weak ,nonatomic)id<AboutViewDelegate>delegate;
+- (IBAction)protocolAction:(id)sender;
+
+@end
+

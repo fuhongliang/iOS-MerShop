@@ -51,6 +51,10 @@
                 <constraint firstItem="gqe-r3-K1a" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="pJN-d1-sew"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="image" destination="5U0-1K-tr6" id="LCu-hI-ufz"/>
+                <outlet property="title" destination="eHF-Wm-J2a" id="EA1-9E-ygh"/>
+            </connections>
             <point key="canvasLocation" x="53.600000000000001" y="104.7976011994003"/>
         </view>
     </objects>

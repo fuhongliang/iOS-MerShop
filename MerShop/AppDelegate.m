@@ -15,7 +15,8 @@
 #import <UMPush/UMessage.h>
 #import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<AVAudioPlayerDelegate>
+@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 
 @end
 
@@ -26,22 +27,23 @@
     
     [self setUMessageRegisterEntity:launchOptions];
     
+    
+    [self setLoop];
     //集成bugtags
-    [Bugtags startWithAppKey:@"a9f3371df352d637e15d5cd13955a61c" invocationEvent:BTGInvocationEventBubble];
+//    [Bugtags startWithAppKey:@"a9f3371df352d637e15d5cd13955a61c" invocationEvent:BTGInvocationEventBubble];
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
-    NSString *token = [dict objectForKey:@"token"];
-    if (token != nil){
-        TabBarController *startVc = [TabBarController share];
-        NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:startVc];
+    NSString *token = [UserInfoDict objectForKey:@"token"];
+    if (kISNullString(token)){
+        LoginInViewController *login = [[LoginInViewController alloc]init];
+        NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:login];
         [navi.navigationBar setHidden:YES];
         [self.window setRootViewController:navi];
     }else{
-        LoginInViewController *login = [[LoginInViewController alloc]init];
-        NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:login];
+        TabBarController *startVc = [TabBarController share];
+        NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:startVc];
         [navi.navigationBar setHidden:YES];
         [self.window setRootViewController:navi];
     }
@@ -91,9 +93,58 @@
     [UNUserNotificationCenter currentNotificationCenter].delegate=self;
     [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
+            
         }else{
+            
         }
     }];
+}
+
+- (void)setLoop{
+    
+    
+}
+
+- (void)playAudio{
+    dispatch_queue_t dispatchQueue =dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(dispatchQueue, ^(void)
+                   
+    {
+        [self setLoop];
+        NSBundle *mainBundle = [NSBundle mainBundle];
+        
+        NSString *filePath = [mainBundle pathForResource:@"ring"ofType:@"mp3"];//获取音频文件
+        NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+        
+        NSError *error = nil;
+        
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithData:fileData error:&error];
+        
+        
+        if (self.audioPlayer != nil)
+            
+        {
+            
+            self.audioPlayer.delegate = self;
+            
+            if ([self.audioPlayer prepareToPlay] &&[self.audioPlayer play])
+                
+            {
+                //成功播放音乐
+            } else {
+                
+                //播放失败
+                
+            }
+        } else {
+            /*
+             
+             无法实例AVAudioPlayer
+             
+             */
+        }
+    });
 }
 
 //iOS10新增：处理前台收到通知的代理方法
@@ -104,6 +155,7 @@
             [UMessage setAutoAlert:NO];
             //应用处于前台时的远程推送接受
             //必须加这句代码
+            [self playAudio];
             [UMessage didReceiveRemoteNotification:userInfo];
         }else{
             //应用处于前台时的本地推送接受
@@ -120,6 +172,7 @@
         if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
             //应用处于后台时的远程推送接受
             //必须加这句代码
+            [self playAudio];
             [UMessage didReceiveRemoteNotification:userInfo];
         }else{
             //应用处于后台时的本地推送接受
@@ -136,7 +189,7 @@
     
     NSString *Token = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""] stringByReplacingOccurrencesOfString: @">" withString: @""] stringByReplacingOccurrencesOfString: @" " withString: @""];
     self.token = Token;
-//    [[NSNotificationCenter defaultCenter]postNotificationName:@"deviceToken" object:Token];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"deviceToken" object:Token];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

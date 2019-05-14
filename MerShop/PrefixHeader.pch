@@ -39,6 +39,12 @@
 #import "AppDelegate.h"
 #import "TimePickerView.h"
 #import "EmptyDiscountView.h"
+#import "BluetoothHelpViewController.h"
+#import <JhtMarquee/JhtVerticalMarquee.h>
+#import <JhtMarquee/JhtHorizontalMarquee.h>
+#import <AVFoundation/AVFoundation.h>
+#import "WaitDealwithViewController.h"
+#import "ManageViewController.h"
 
 
 

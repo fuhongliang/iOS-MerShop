@@ -38,7 +38,7 @@
 
 - (void)reloadListData{
     NSDictionary *dict = @{@"store_id":StoreIdString};
-    [Http_url POST:@"mamsong_list" dict:dict showHUD:NO WithSuccessBlock:^(id data) {
+    [Http_url POST:@"mamsong_list" dict:dict showHUD:YES WithSuccessBlock:^(id data) {
         NSLog(@"%@",[data objectForKey:@"data"]);
         NSArray *arr = [data objectForKey:@"data"];
         if ([[data objectForKey:@"code"] integerValue] == 200){

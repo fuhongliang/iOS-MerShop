@@ -34,14 +34,16 @@
     AFHTTPSessionManager *manager = [self getManager];
     NSString *url = [NSString stringWithFormat:@"%@%@",http_devUrlString,httpUrl];
     [manager POST:url parameters:dict success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if(show){
+            [SVProgressHUD dismiss];
+        }
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
         NSInteger code = [dic[@"code"] integerValue];
         if (code == 200){
-            if (show){
-                [SVProgressHUD dismiss];
-            }
             successBlock(dic);
         }else if (code == 3001){
+            [[IFUtils share]showErrorInfo:dic[@"msg"]];
+
             //当token失效，强制退出登录
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
@@ -49,10 +51,7 @@
             NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:loginVC];
             AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             delegate.window.rootViewController = navi;
-            if (show){
-                [SVProgressHUD dismiss];
-            }
-            [[IFUtils share]showErrorInfo:dic[@"msg"]];
+            
             successBlock(dic);
             return ;
         }else if (code == 1001){
@@ -60,16 +59,13 @@
             [[IFUtils share]showErrorInfo:dic[@"msg"]];
             return;
         }else{
-            if (show){
-                [SVProgressHUD dismiss];
-                [[IFUtils share]showErrorInfo:dic[@"msg"]];
-                return ;
-            }
+            [[IFUtils share]showErrorInfo:dic[@"msg"]];
             successBlock(dic);
+            return ;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [[IFUtils share]showErrorInfo:@"发送失败,请稍后再试!"];
         [SVProgressHUD dismiss];
+        [[IFUtils share]showErrorInfo:@"加载失败,请稍后再试!"];
         FailBlock(error);
     }];
     

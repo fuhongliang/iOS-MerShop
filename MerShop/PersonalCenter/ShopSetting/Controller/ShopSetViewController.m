@@ -326,7 +326,7 @@
             RestaurantNoticeViewController *VC = [[RestaurantNoticeViewController alloc]init];
             [self.navigationController pushViewController:VC animated:YES];
         }
-    }else{
+    }else if (indexPath.section == 1){
         if (indexPath.row == 3){
             [self.BackgroundView setHidden:NO];
             [self.pickerBgView setHidden:NO];
@@ -404,7 +404,7 @@
     UIImage *uploadImg = info[UIImagePickerControllerEditedImage];
     [Http_url POST:@"image_upload" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
         if ([[data objectForKey:@"code"] integerValue] == 200){
-            NSString *imagePath = [NSString stringWithFormat:@"%@%@",img_path,[data objectForKey:@"data"]];
+            NSString *imagePath = [NSString stringWithFormat:@"%@",[data objectForKey:@"data"]];
             NSDictionary *uploadImgDict = @{@"store_id":@(StoreId),
                                             @"avator":imagePath
                                             };

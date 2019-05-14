@@ -10,6 +10,7 @@
 
 
 @interface BluetoothHelpViewController : BasicViewController
-
+@property (nonatomic ,copy)NSString *htmlName;
+@property (nonatomic ,copy)NSString *navTitle;
 @end
 

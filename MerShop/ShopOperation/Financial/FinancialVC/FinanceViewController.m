@@ -48,15 +48,20 @@
             self.headerView.receiveMoney.text = [NSString stringWithFormat:@"%@",self.account[@"y_jiesuan"]];
             self.headerView.waitReceiveMoney.text = [NSString stringWithFormat:@"%@",self.account[@"d_jiesuan"]];
             
-            NSString *bank_type = self.account[@"account"][@"bank_type"];
-            NSString *cardStr = self.account[@"account"][@"account_number"];
-            if (kISNullString(bank_type)){//判断是否已添加银行卡
+            if (kISNullObject(self.account[@"account"])){
                 self.headerView.bankCardBtn.text = @"请添加银行卡";
             }else{
-                NSString *str = [cardStr substringFromIndex:cardStr.length-4];
-                self.headerView.bankCardBtn.text = [NSString stringWithFormat:@"%@(尾号%@)",bank_type,str];
+                if (kISNullString(self.account[@"account"][@"bank_type"])){//判断是否已添加银行卡
+                    self.headerView.bankCardBtn.text = @"请添加银行卡";
+                }else{
+                    NSString *bank_type = self.account[@"account"][@"bank_type"];
+                    NSString *cardStr = self.account[@"account"][@"account_number"];
+                    NSString *str = [cardStr substringFromIndex:cardStr.length-4];
+                    self.headerView.bankCardBtn.text = [NSString stringWithFormat:@"%@(尾号%@)",bank_type,str];
+                }
+                [self.mainTableView reloadData];
             }
-            [self.mainTableView reloadData];
+
         }
     } WithFailBlock:^(id data) {
         
@@ -71,21 +76,21 @@
     [_headerView setFrame:XFrame(0, 0, Screen_W, 246)];
     [self.mainTableView setTableHeaderView:_headerView];
     
-    UIButton *btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [btn setTitle:@"规则说明" forState:(UIControlStateNormal)];
-    [btn setTitleColor:WhiteColor forState:(UIControlStateNormal)];
-    [btn setBackgroundColor:IFThemeBlueColor];
-    [btn setImage:[UIImage imageNamed:@"icon_tixian_gz"] forState:(UIControlStateNormal)];
-    [btn.titleLabel setFont:XFont(16)];
-    [self.navigationView addSubview:btn];
-    
-    [btn makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.navigationView.right).offset(-15);
-        make.top.equalTo(self.navigationView.top).offset(StatusBar_H);
-        make.bottom.equalTo(self.navigationView.bottom).offset(0);
-    }];
-    [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, -btn.imageView.bounds.size.width-10, 0, btn.imageView.bounds.size.width)];
-    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, btn.titleLabel.bounds.size.width, 0, -btn.titleLabel.bounds.size.width)];
+//    UIButton *btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+//    [btn setTitle:@"规则说明" forState:(UIControlStateNormal)];
+//    [btn setTitleColor:WhiteColor forState:(UIControlStateNormal)];
+//    [btn setBackgroundColor:IFThemeBlueColor];
+//    [btn setImage:[UIImage imageNamed:@"icon_tixian_gz"] forState:(UIControlStateNormal)];
+//    [btn.titleLabel setFont:XFont(16)];
+//    [self.navigationView addSubview:btn];
+//
+//    [btn makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(self.navigationView.right).offset(-15);
+//        make.top.equalTo(self.navigationView.top).offset(StatusBar_H);
+//        make.bottom.equalTo(self.navigationView.bottom).offset(0);
+//    }];
+//    [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, -btn.imageView.bounds.size.width-10, 0, btn.imageView.bounds.size.width)];
+//    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, btn.titleLabel.bounds.size.width, 0, -btn.titleLabel.bounds.size.width)];
 
     
 }

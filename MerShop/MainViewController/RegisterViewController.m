@@ -70,7 +70,10 @@
     注册协议代理方法
  */
 - (void)protocol{
-    
+    BluetoothHelpViewController *vc = [[BluetoothHelpViewController alloc]init];
+    vc.htmlName = @"protocol";
+    vc.navTitle = @"用户协议";
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 /**

@@ -25,6 +25,7 @@ PODS:
     - Bugtags/Core (= 3.1.1)
   - Bugtags/Core (3.1.1)
   - IQKeyboardManager (6.2.0)
+  - JhtMarquee (1.0.5)
   - JSONModel (1.8.0)
   - JWBluetoothPrinte (1.0.0)
   - Masonry (1.1.0)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - BRPickerView
   - Bugtags
   - IQKeyboardManager
+  - JhtMarquee
   - JSONModel
   - JWBluetoothPrinte
   - Masonry
@@ -59,6 +61,7 @@ SPEC REPOS:
     - BRPickerView
     - Bugtags
     - IQKeyboardManager
+    - JhtMarquee
     - JSONModel
     - JWBluetoothPrinte
     - Masonry
@@ -74,6 +77,7 @@ SPEC CHECKSUMS:
   BRPickerView: 0590a8c5de9bd98c6b4e4f117a3dff6de287d5b2
   Bugtags: 7fe8938867b57cd2b5b04683f8a680a44d998a0c
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  JhtMarquee: 6f1118943062553c35aefea1115bdbeb0c4d7fd7
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   JWBluetoothPrinte: 3ddf7bc1128dac97c8e29de15e905441da35a6fa
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -84,6 +88,6 @@ SPEC CHECKSUMS:
   UMCPush: 1edd856027dcf905333effb4040ace5d236a7316
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
 
-PODFILE CHECKSUM: bc3159dc732858620536da32f6d78441bc5744b0
+PODFILE CHECKSUM: d8916bc576cc70cd0ed5f4cfcf9eab174b4e9540
 
 COCOAPODS: 1.6.1

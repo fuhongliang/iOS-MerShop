@@ -40,7 +40,7 @@
     [self setNaviTitle:@"订单管理"];
     [self setHideBackBtn:YES];
     [self setUI];
-    [self requet:25];
+    [self request:25];
     [self refreshHeader];
     
     //空页面
@@ -61,24 +61,25 @@
     [self.mainTableview addLegendHeaderWithRefreshingBlock:^{
         [weakself.dataSource removeAllObjects];
         if (weakself.currentIndex == 0){
-            [weakself requet:25];
+            [weakself request:25];
         }else if (weakself.currentIndex == 1){
-            [weakself requet:40];
+            [weakself request:40];
         }else{
-            [weakself requet:0];
+            [weakself request:0];
         }
         [weakself.mainTableview.legendHeader endRefreshing];
     }];
 }
 
-- (void)requet:(NSInteger )stateId{
+- (void)request:(NSInteger )stateId{
     NSInteger storeId = [[[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];
     
     [Http_url POST:@"order_list" dict:@{@"order_state":@(stateId),@"store_id":@(storeId)} showHUD:YES WithSuccessBlock:^(id data) {
         self.dictArr = [data objectForKey:@"data"];
         //每次请求数据删除，删除原有数据,判断是否是展开状态
         [self.explandArr removeAllObjects];
-        if ([[data objectForKey:@"data"] isKindOfClass:[NSNull class]]){
+        NSArray *arr = [data objectForKey:@"data"];
+        if (kISNullArray(arr)){
             [self.mainTableview setTableHeaderView:self.emptyView ];
         }else{
             [self.mainTableview setTableHeaderView:[[UIView alloc] init]];
@@ -284,11 +285,11 @@
     [self.dataSource removeAllObjects];
     _currentIndex = sender.tag;
     if (_currentIndex == 0){
-        [self requet:25];
+        [self request:25];
     }else if (_currentIndex == 1){
-        [self requet:40];
+        [self request:40];
     }else{
-        [self requet:0];
+        [self request:0];
     }
     [_lineView setFrame:XFrame(Screen_W/3*_currentIndex, IFAutoFitPx(88-4), Screen_W/3, IFAutoFitPx(4))];
     for (UIButton *btn in _btnArr){

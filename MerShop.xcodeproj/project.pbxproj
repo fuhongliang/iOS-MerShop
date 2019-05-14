@@ -15,6 +15,7 @@
 		0401611122817B6900956431 /* GBLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401611022817B6800956431 /* GBLoopView.m */; };
 		040161162281848A00956431 /* XTScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040161142281848A00956431 /* XTScrollLabelView.m */; };
 		040161172281848A00956431 /* NSString+Width.m in Sources */ = {isa = PBXBuildFile; fileRef = 040161152281848A00956431 /* NSString+Width.m */; };
+		0404B13822899AC900699106 /* ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0404B13722899AC900699106 /* ring.mp3 */; };
 		041668C72265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041668C62265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m */; };
 		041668C92265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041668C82265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib */; };
 		041668CD22672CAA00A3D2E1 /* NewGoodsTableViewCell5.m in Sources */ = {isa = PBXBuildFile; fileRef = 041668CB22672CAA00A3D2E1 /* NewGoodsTableViewCell5.m */; };
@@ -208,6 +209,7 @@
 		04F68EB12269ADE400F4DFC3 /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F68EB02269ADE400F4DFC3 /* CouponModel.m */; };
 		04F68EB52269E03F00F4DFC3 /* DiscountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F68EB42269E03F00F4DFC3 /* DiscountModel.m */; };
 		04F68EB8226ABA5A00F4DFC3 /* LimitDiscountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F68EB7226ABA5A00F4DFC3 /* LimitDiscountModel.m */; };
+		04F8459D2289520F00D1EBF7 /* protocol.html in Resources */ = {isa = PBXBuildFile; fileRef = 04F8459C2289520E00D1EBF7 /* protocol.html */; };
 		04FB88022249C7FC008BEFCB /* PhoneNumberSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB88012249C7FC008BEFCB /* PhoneNumberSettingViewController.m */; };
 		04FB88052249CE5A008BEFCB /* BusinessLicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB88042249CE5A008BEFCB /* BusinessLicenseViewController.m */; };
 		04FB880A224A1AC0008BEFCB /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB8809224A1AC0008BEFCB /* GoodsModel.m */; };
@@ -237,6 +239,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0404B1492289A3A900699106 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		040161012281245700956431 /* AllbillsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllbillsHeaderView.h; sourceTree = "<group>"; };
 		040161022281245700956431 /* AllbillsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllbillsHeaderView.m; sourceTree = "<group>"; };
@@ -252,6 +267,10 @@
 		040161132281848900956431 /* XTScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTScrollLabelView.h; sourceTree = "<group>"; };
 		040161142281848A00956431 /* XTScrollLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTScrollLabelView.m; sourceTree = "<group>"; };
 		040161152281848A00956431 /* NSString+Width.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Width.m"; sourceTree = "<group>"; };
+		0404B13722899AC900699106 /* ring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ring.mp3; sourceTree = "<group>"; };
+		0404B18D2289A87200699106 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		0404B18E2289A87200699106 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		0404B1902289A87200699106 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		041668C52265B03F00A3D2E1 /* CreateNewGoodsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateNewGoodsHeaderView.h; sourceTree = "<group>"; };
 		041668C62265B03F00A3D2E1 /* CreateNewGoodsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateNewGoodsHeaderView.m; sourceTree = "<group>"; };
 		041668C82265B04B00A3D2E1 /* CreateNewGoodsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateNewGoodsHeaderView.xib; sourceTree = "<group>"; };
@@ -580,6 +599,7 @@
 		04F68EB42269E03F00F4DFC3 /* DiscountModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscountModel.m; sourceTree = "<group>"; };
 		04F68EB6226ABA5A00F4DFC3 /* LimitDiscountModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LimitDiscountModel.h; sourceTree = "<group>"; };
 		04F68EB7226ABA5A00F4DFC3 /* LimitDiscountModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LimitDiscountModel.m; sourceTree = "<group>"; };
+		04F8459C2289520E00D1EBF7 /* protocol.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = protocol.html; sourceTree = "<group>"; };
 		04FB88002249C7FC008BEFCB /* PhoneNumberSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhoneNumberSettingViewController.h; sourceTree = "<group>"; };
 		04FB88012249C7FC008BEFCB /* PhoneNumberSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberSettingViewController.m; sourceTree = "<group>"; };
 		04FB88032249CE5A008BEFCB /* BusinessLicenseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusinessLicenseViewController.h; sourceTree = "<group>"; };
@@ -634,6 +654,16 @@
 				0401611022817B6800956431 /* GBLoopView.m */,
 			);
 			path = GBLoopView;
+			sourceTree = "<group>";
+		};
+		0404B18C2289A87200699106 /* MSNotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				0404B18D2289A87200699106 /* NotificationService.h */,
+				0404B18E2289A87200699106 /* NotificationService.m */,
+				0404B1902289A87200699106 /* Info.plist */,
+			);
+			path = MSNotificationService;
 			sourceTree = "<group>";
 		};
 		0416690422684DB000A3D2E1 /* Model */ = {
@@ -976,6 +1006,8 @@
 		046D023F22707B7100E79237 /* Webview */ = {
 			isa = PBXGroup;
 			children = (
+				0404B13722899AC900699106 /* ring.mp3 */,
+				04F8459C2289520E00D1EBF7 /* protocol.html */,
 				046D024022707B8000E79237 /* Bluetooth.html */,
 			);
 			path = Webview;
@@ -1312,6 +1344,7 @@
 				04F61DE422364E16004986E0 /* MerShop */,
 				04F61DFD22364E18004986E0 /* MerShopTests */,
 				04F61E0822364E18004986E0 /* MerShopUITests */,
+				0404B18C2289A87200699106 /* MSNotificationService */,
 				04F61DE322364E16004986E0 /* Products */,
 				A6D7332CE1581FEDF57E024C /* Pods */,
 				0AF38524FA7141748382F6F2 /* Frameworks */,
@@ -1525,6 +1558,7 @@
 				04F61DDF22364E16004986E0 /* Frameworks */,
 				04F61DE022364E16004986E0 /* Resources */,
 				C66E4282731A0E70B11E6D8F /* [CP] Copy Pods Resources */,
+				0404B1492289A3A900699106 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -1660,8 +1694,10 @@
 				04F54BD122647B6D00DE81E4 /* FullReductionCell.xib in Resources */,
 				04F5C5342276ABC300C5C218 /* AboutView.xib in Resources */,
 				046D024C2271487D00E79237 /* BlueSettingView.xib in Resources */,
+				04F8459D2289520F00D1EBF7 /* protocol.html in Resources */,
 				04A46A45225B550600511C79 /* EmptyDiscountView.xib in Resources */,
 				04235E532253531500B2FC40 /* EmptyOrderView.xib in Resources */,
+				0404B13822899AC900699106 /* ring.mp3 in Resources */,
 				04F5B7DA22390B0500E36E3C /* NewsSettingview.xib in Resources */,
 				0446EB1B223F6BFF00A86F32 /* ManageCatergoryTableViewCell.xib in Resources */,
 				04C6187E2238FC2600773B7C /* ShopSetTableViewCell4.xib in Resources */,
@@ -2134,6 +2170,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6L4S78C444;
 				INFOPLIST_FILE = MerShopTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2152,6 +2189,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6L4S78C444;
 				INFOPLIST_FILE = MerShopTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2169,6 +2207,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6L4S78C444;
 				INFOPLIST_FILE = MerShopUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2186,6 +2225,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6L4S78C444;
 				INFOPLIST_FILE = MerShopUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

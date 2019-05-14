@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNaviTitle:@"经营数据"];
+    [self setNaviTitle:self.navTitle];
     [self setUI];
     
 }

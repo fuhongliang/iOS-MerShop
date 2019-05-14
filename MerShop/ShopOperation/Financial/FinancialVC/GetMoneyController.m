@@ -38,19 +38,28 @@
     _mainview = [nib objectAtIndex:0];
     [_mainview setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
     _mainview.delegate = self;
-    if (![self.accountDict[@"account"][@"bank_type"] isEqualToString:@""]){
-        NSString *cardNumber = self.accountDict[@"account"][@"account_number"];
-
-        NSString *cashStr = [NSString stringWithFormat:@"可提现金额 ¥ %@",self.accountDict[@"y_jiesuan"]];
-
-        _mainview.accountType.text = self.accountDict[@"account"][@"bank_type"];
-        _mainview.lastFourNumber.text = [NSString stringWithFormat:@"尾号%@储蓄卡",[cardNumber substringFromIndex:cardNumber.length-4]];
-        _mainview.canGetLabel.text = cashStr;
-        [_mainview.addCardBtn setHidden:YES];
-        [_mainview.arrow setHidden:YES];
-    }else{
+    if (kISNullObject(self.accountDict[@"account"])){
         [_mainview.accountType setHidden:YES];
         [_mainview.lastFourNumber setHidden:YES];
+
+    }else{
+        if (kISNullString(self.accountDict[@"account"][@"account_number"])){
+            [_mainview.addCardBtn setHidden:NO];
+            [_mainview.arrow setHidden:NO];
+            [_mainview.accountType setHidden:YES];
+            [_mainview.lastFourNumber setHidden:YES];
+        }else{
+            NSString *cardNumber = self.accountDict[@"account"][@"account_number"];
+            
+            NSString *cashStr = [NSString stringWithFormat:@"可提现金额 ¥ %@",self.accountDict[@"y_jiesuan"]];
+            
+            _mainview.accountType.text = self.accountDict[@"account"][@"bank_type"];
+            _mainview.lastFourNumber.text = [NSString stringWithFormat:@"尾号%@储蓄卡",[cardNumber substringFromIndex:cardNumber.length-4]];
+            _mainview.canGetLabel.text = cashStr;
+            [_mainview.addCardBtn setHidden:YES];
+            [_mainview.arrow setHidden:YES];
+        }
+
     }
 
     [self.view addSubview:_mainview];

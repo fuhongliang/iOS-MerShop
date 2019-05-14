@@ -45,13 +45,13 @@
     [self setNaviTitle:@"商品管理"];
     _storeId = StoreId;
     [self setRightUI];
-    [self requestCatergory];
+//    [self requestCatergory];
     self.classID = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [self requestCatergory];
+    [self requestCatergory];
     [self requestGoods:self.classID];
 }
 
@@ -315,6 +315,7 @@
     vc.className = [self.leftDataSource[_index] objectForKey:@"stc_name"];
     vc.classId = [[self.leftDataSource[_index] objectForKey:@"stc_id"] integerValue];
     vc.tempDict = self.dataArray[cell.tag];
+    vc.tempStr = @"编辑";
     [self.navigationController pushViewController:vc animated:YES];
 }
 

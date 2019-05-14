@@ -37,7 +37,7 @@
 }
 
 - (void)requestListData{
-    [Http_url POST:@"voucher_list" dict:@{@"store_id":StoreIdString} showHUD:NO WithSuccessBlock:^(id data) {
+    [Http_url POST:@"voucher_list" dict:@{@"store_id":StoreIdString} showHUD:YES WithSuccessBlock:^(id data) {
         [self.dataArr removeAllObjects];
         NSArray *arr = [data objectForKey:@"data"];
         if ([[data objectForKey:@"code"] integerValue] == 200){

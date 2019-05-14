@@ -38,7 +38,7 @@
 
 - (void)requestData{
     LCWeakSelf(self)
-    [Http_url POST:@"bundling_list" dict:@{@"store_id":@(StoreId)} showHUD:NO WithSuccessBlock:^(id data) {
+    [Http_url POST:@"bundling_list" dict:@{@"store_id":@(StoreId)} showHUD:YES WithSuccessBlock:^(id data) {
         NSLog(@"%@",data);
         NSArray *arr = [data objectForKey:@"data"];
         [self.dataArr removeAllObjects];

@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNaviTitle:@"帮助"];
+    [self setNaviTitle:@"用户协议"];
     [self.view addSubview:self.webview];
 }
 
@@ -25,7 +25,7 @@
     if (!_webview){
         _webview = [[WKWebView alloc]init];
         [_webview setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
-        NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"Bluetooth" ofType:@"html"];
+        NSString* htmlPath = [[NSBundle mainBundle] pathForResource:self.htmlName ofType:@"html"];
         NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
         NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];
         [_webview loadHTMLString:appHtml baseURL:baseURL];

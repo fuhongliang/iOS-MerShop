@@ -37,7 +37,7 @@
 }
 
 - (void)requestData{
-    [Http_url POST:@"xianshi_list" dict:@{@"store_id":@(StoreId)} showHUD:NO WithSuccessBlock:^(id data) {
+    [Http_url POST:@"xianshi_list" dict:@{@"store_id":@(StoreId)} showHUD:YES WithSuccessBlock:^(id data) {
         
         NSLog(@"%@",data);
         [self.a removeAllObjects];

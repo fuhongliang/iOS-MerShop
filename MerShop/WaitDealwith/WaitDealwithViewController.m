@@ -26,7 +26,7 @@
 @property (nonatomic ,strong)EmptyOrderView *emptyView;
 @property (nonatomic ,strong)NSArray *noticeArray;
 @property (nonatomic ,strong)UIView *lightBgView;//跑马灯背景view
-@property (nonatomic ,strong)GBLoopView *loopView;//跑马灯view
+@property (nonatomic ,strong)JhtHorizontalMarquee *horizontalMarquee;//跑马灯view
 
 //判断每条订单是否是展开状态的数组，
 @property (nonatomic ,strong)NSMutableArray *explandArr;
@@ -44,7 +44,6 @@
     _emptyView = [nib objectAtIndex:0];
     [_emptyView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y-Tabbar_H)];
     [_emptyView setBackgroundColor:toPCcolor(@"#f5f5f5")];
-//    [self.mainTableview setTableHeaderView:nil];
     
 }
 
@@ -52,6 +51,13 @@
     [super viewWillAppear:animated];
     [self.dataArr removeAllObjects];
     [self requestData];
+    // 开启跑马灯
+    [_horizontalMarquee marqueeOfSettingWithState:MarqueeStart_H];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+
 }
 
 - (void)refreshHeader{
@@ -78,7 +84,7 @@
             NSArray *arr = [data objectForKey:@"data"][@"list"];
             
             [self.explandArr removeAllObjects];
-            if ([arr isKindOfClass:[NSNull class]]){
+            if (kISNullArray(arr)){
                 [self.mainTableview setTableHeaderView:self.emptyView];
             }else{
                 [self.mainTableview setTableHeaderView:[[UIView alloc] init]];
@@ -113,16 +119,18 @@
     _lightBgView = [[UIView alloc]init];
     [_lightBgView setBackgroundColor:toPCcolor(@"#FDF6DB")];
     [_lightBgView setFrame:XFrame(0, ViewStart_Y, Screen_W, 30)];
+    [_lightBgView setHidden:YES];
     [self.view addSubview:_lightBgView];
     
-    NSArray *loopArrs = [NSArray arrayWithObjects:@"您有一笔新订单，系统已自动接单~",nil];
+    UIImageView *voiceImg = [[UIImageView alloc]init];
+    [voiceImg setImage:[UIImage imageNamed:@"home_xt_tzz"]];
+    [voiceImg setFrame:XFrame(15, 7, 15, 15)];
+    [_lightBgView addSubview:voiceImg];
     
-    _loopView = [[GBLoopView alloc] initWithFrame:CGRectMake(0, 0,Screen_W, 30)];
-    [_loopView setDirection:GBLoopDirectionRight];
-    [_loopView setTickerArrs:loopArrs];
-    [_loopView setSpeed:60.0f];
-    [_lightBgView addSubview:_loopView];
-    [_loopView start];
+    self.horizontalMarquee.text = @"                                                                   您有一笔新订单，系统已自动接单~              ";
+    self.horizontalMarquee.textColor = toPCcolor(@"#F16A11");
+    [_lightBgView addSubview:self.horizontalMarquee];
+
     
     UIButton *closeBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [closeBtn setFrame:XFrame(Screen_W-30, 7, 15, 15)];
@@ -131,27 +139,13 @@
     [_lightBgView addSubview:closeBtn];
     
     _mainTableview = [[UITableView alloc]init];
-    [_mainTableview setFrame:XFrame(0, ViewStart_Y+30, Screen_W, Screen_H-ViewStart_Y)];
+    [_mainTableview setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
     [_mainTableview setDelegate:self];
     [_mainTableview setDataSource:self];
     [_mainTableview setBackgroundColor:toPCcolor(@"#f5f5f5")];
     [_mainTableview setRowHeight:UITableViewAutomaticDimension];
     [_mainTableview setSeparatorStyle:(UITableViewCellSeparatorStyleNone)];
     [self.view addSubview:_mainTableview];
-    
-    _bgView = [[UIView alloc]init];
-    [_bgView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
-    [_bgView setBackgroundColor:[UIColor blackColor]];
-    [_bgView setAlpha:0.5];
-    [_bgView setHidden:YES];
-    [self.view addSubview:self.bgView];
-    
-    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"refuseView" owner:self options:nil];
-    self.refuseView = [nib objectAtIndex:0];
-    [self.refuseView setFrame:XFrame(0, Screen_H-275-Tabbar_H, Screen_W, 275)];
-    [self.refuseView setHidden:YES];
-    self.refuseView.delegate = self;
-    [self.view addSubview:self.refuseView];
     
     UIButton *noticeBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [noticeBtn setImage:[UIImage imageNamed:@"home_xt_ts"] forState:(UIControlStateNormal)];
@@ -166,6 +160,13 @@
     
 }
 
+
+- (void)setLoopView{
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.lightBgView setHidden:NO];
+        [self.mainTableview setFrame:XFrame(0, ViewStart_Y+30, Screen_W, Screen_H-ViewStart_Y-30)];
+    }];
+}
 /**
     关闭顶部跑马灯
  */
@@ -192,6 +193,21 @@
     OrderModel *model = self.dataArr[c.tag];
     _refuseIndex = c.tag;
     _orderID = model.order_id;
+    
+    _bgView = [[UIView alloc]init];
+    [_bgView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
+    [_bgView setBackgroundColor:[UIColor blackColor]];
+    [_bgView setAlpha:0.4];
+    
+    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"refuseView" owner:self options:nil];
+    self.refuseView = [nib objectAtIndex:0];
+    [self.refuseView setFrame:XFrame(0, Screen_H-275, Screen_W, 275)];
+    self.refuseView.delegate = self;
+    
+    UIApplication *ap = [UIApplication sharedApplication];
+    [ap.keyWindow addSubview:self.bgView];
+    [ap.keyWindow addSubview:self.refuseView];
+    
     [self.bgView setHidden:NO];
     [self.refuseView setHidden:NO];
 }
@@ -227,6 +243,8 @@
     NewOrderTableViewCell1 *cell = (NewOrderTableViewCell1 *)data[0];
     [self.explandArr replaceObjectAtIndex:cell.tag withObject:data[1]];
     [self.mainTableview reloadData];
+
+
 }
 
 /**
@@ -311,6 +329,11 @@
     return cell;
 }
 
-
+- (JhtHorizontalMarquee *)horizontalMarquee{
+    if (!_horizontalMarquee) {
+        _horizontalMarquee = [[JhtHorizontalMarquee alloc] initWithFrame:CGRectMake(40, 0, Screen_W-75, 30) singleScrollDuration:0.0];
+    }
+    return _horizontalMarquee;
+}
 
 @end

@@ -193,6 +193,8 @@
 //跳转蓝牙帮助页面
 - (void)goHelpVC{
     BluetoothHelpViewController *vc = [[BluetoothHelpViewController alloc]init];
+    vc.navTitle = @"帮助";
+    vc.htmlName = @"Bluetooth";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
