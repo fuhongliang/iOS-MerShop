@@ -22,4 +22,10 @@
         [self.delegate performSelector:@selector(chooseCard) withObject:nil];
     }
 }
+
+- (IBAction)protocolAction:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(protocol)]){
+        [self.delegate performSelector:@selector(protocol) withObject:nil];
+    }
+}
 @end

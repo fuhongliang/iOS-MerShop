@@ -34,6 +34,7 @@
 @property (nonatomic ,copy)NSString *goods_name;
 @property (nonatomic ,copy)NSString *goods_price;
 @property (nonatomic ,copy)NSString *goods_marketprice;
+@property (nonatomic ,assign)NSInteger is_much;
 //@property (nonatomic ,assign)NSInteger goods_salenum;
 @property (nonatomic ,copy)NSString *xianshi_price;
 @property (nonatomic ,assign)NSInteger goods_storage;

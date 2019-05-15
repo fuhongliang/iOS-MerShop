@@ -28,8 +28,13 @@
 - (void)requestData{
     [Http_url POST:@"msg_list" dict:@{@"store_id":@(StoreId)} showHUD:NO WithSuccessBlock:^(id data) {
         if ([[data objectForKey:@"code"] integerValue] == 200){
-            self.dataSource = [[data objectForKey:@"data"] mutableCopy];
-            [self.mainTableView reloadData];
+            NSArray *arr = [data objectForKey:@"data"];
+            if (kISNullArray(arr)){
+                [[IFUtils share]showErrorInfo:@"暂无新通知"];
+            }else{
+                self.dataSource = [[data objectForKey:@"data"] mutableCopy];
+                [self.mainTableView reloadData];
+            }
         }
         
     } WithFailBlock:^(id data) {

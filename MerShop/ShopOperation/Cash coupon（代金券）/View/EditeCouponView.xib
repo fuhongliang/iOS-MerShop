@@ -23,10 +23,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2I-dm-Nsn">
-                                    <rect key="frame" x="15" y="14" width="113" height="20.5"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="113" id="V09-q7-URU"/>
-                                    </constraints>
+                                    <rect key="frame" x="15" y="14" width="94.5" height="20.5"/>
                                     <attributedString key="attributedText">
                                         <fragment content="代金券名称">
                                             <attributes>
@@ -43,9 +40,9 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="最多可输入20个字" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p7X-qA-Iud">
-                                    <rect key="frame" x="136" y="6" width="224" height="36.5"/>
+                                    <rect key="frame" x="124.5" y="6" width="235.5" height="36.5"/>
                                     <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                             </subviews>
@@ -53,7 +50,7 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="p7X-qA-Iud" secondAttribute="trailing" constant="15" id="78c-bW-ID5"/>
                                 <constraint firstItem="p7X-qA-Iud" firstAttribute="top" secondItem="DTd-Jo-P1Q" secondAttribute="top" constant="6" id="CVY-Mo-H41"/>
-                                <constraint firstItem="p7X-qA-Iud" firstAttribute="leading" secondItem="J2I-dm-Nsn" secondAttribute="trailing" constant="8" id="NZU-Nr-Uq0"/>
+                                <constraint firstItem="p7X-qA-Iud" firstAttribute="leading" secondItem="J2I-dm-Nsn" secondAttribute="trailing" constant="15" id="NZU-Nr-Uq0"/>
                                 <constraint firstItem="J2I-dm-Nsn" firstAttribute="top" secondItem="DTd-Jo-P1Q" secondAttribute="top" constant="14" id="YSM-fc-pAL"/>
                                 <constraint firstAttribute="bottom" secondItem="J2I-dm-Nsn" secondAttribute="bottom" constant="14" id="brE-aT-dZD"/>
                                 <constraint firstItem="J2I-dm-Nsn" firstAttribute="leading" secondItem="DTd-Jo-P1Q" secondAttribute="leading" constant="15" id="dKD-aQ-8nt"/>
@@ -118,7 +115,8 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0o-du-7Yd">
-                                    <rect key="frame" x="298" y="7" width="46" height="35"/>
+                                    <rect key="frame" x="288" y="7" width="56" height="35"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <state key="normal" title="请选择">
                                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -133,9 +131,9 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用券最低订单金额" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3a5-GA-Dci">
-                                    <rect key="frame" x="215.5" y="58" width="118.5" height="32"/>
+                                    <rect key="frame" x="191" y="58" width="143" height="32"/>
                                     <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                             </subviews>
@@ -193,7 +191,8 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14t-NF-t4X">
-                                    <rect key="frame" x="298" y="4" width="46" height="41"/>
+                                    <rect key="frame" x="292" y="4" width="52" height="41"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <state key="normal" title="请选择">
                                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -265,12 +264,12 @@
                                     </constraints>
                                 </view>
                                 <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8LO-es-y2Q">
-                                    <rect key="frame" x="313" y="14" width="47" height="25"/>
+                                    <rect key="frame" x="304" y="14" width="56" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="7dd-Ah-Go4"/>
                                     </constraints>
                                     <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPw-08-4En">
@@ -338,7 +337,7 @@
                                 <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5cl-FU-gxa">
                                     <rect key="frame" x="15" y="37" width="345" height="43"/>
                                     <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                             </subviews>

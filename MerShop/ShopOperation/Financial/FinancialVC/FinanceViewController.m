@@ -41,13 +41,25 @@
         if ([[data objectForKey:@"code"] integerValue] == 200){
             self.account = [data objectForKey:@"data"];
             NSArray *arr = data[@"data"][@"list"];
+            //判断全部账单是否为空
             if (![arr isEqual:[NSNull null]]){
                 self.dataArr = [data[@"data"][@"list"] mutableCopy];
                 NSLog(@"=======%@",self.dataArr);
             }
+            //判断是否有到账消息提醒
+            NSDictionary *message = data[@"data"][@"message"];
+            if (kISNullDict(message)){
+                [self.headerView.noticeImg setHidden:YES];
+                [self.headerView.noticeContent setHidden:YES];
+            }else{
+                NSString *noticeStr = [NSString stringWithFormat:@"%@   %@",message[@"addtime"],message[@"msg"]];
+                
+                self.headerView.noticeContent.text = noticeStr;
+            }
             self.headerView.receiveMoney.text = [NSString stringWithFormat:@"%@",self.account[@"y_jiesuan"]];
             self.headerView.waitReceiveMoney.text = [NSString stringWithFormat:@"%@",self.account[@"d_jiesuan"]];
             
+            //判断是否有添加银行卡
             if (kISNullObject(self.account[@"account"])){
                 self.headerView.bankCardBtn.text = @"请添加银行卡";
             }else{

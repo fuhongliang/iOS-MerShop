@@ -28,7 +28,6 @@
     [self setUMessageRegisterEntity:launchOptions];
     
     
-    [self setLoop];
     //集成bugtags
 //    [Bugtags startWithAppKey:@"a9f3371df352d637e15d5cd13955a61c" invocationEvent:BTGInvocationEventBubble];
     
@@ -101,50 +100,10 @@
 }
 
 - (void)setLoop{
-    
-    
-}
-
-- (void)playAudio{
-    dispatch_queue_t dispatchQueue =dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    dispatch_async(dispatchQueue, ^(void)
-                   
-    {
-        [self setLoop];
-        NSBundle *mainBundle = [NSBundle mainBundle];
-        
-        NSString *filePath = [mainBundle pathForResource:@"ring"ofType:@"mp3"];//获取音频文件
-        NSData *fileData = [NSData dataWithContentsOfFile:filePath];
-        
-        NSError *error = nil;
-        
-        self.audioPlayer = [[AVAudioPlayer alloc] initWithData:fileData error:&error];
-        
-        
-        if (self.audioPlayer != nil)
-            
-        {
-            
-            self.audioPlayer.delegate = self;
-            
-            if ([self.audioPlayer prepareToPlay] &&[self.audioPlayer play])
-                
-            {
-                //成功播放音乐
-            } else {
-                
-                //播放失败
-                
-            }
-        } else {
-            /*
-             
-             无法实例AVAudioPlayer
-             
-             */
-        }
-    });
+    UINavigationController *navi = (UINavigationController *)self.window.rootViewController;
+    TabBarController *tab = (TabBarController *)navi.viewControllers.firstObject;
+    WaitDealwithViewController *waitVc = (WaitDealwithViewController *)tab.viewControllers.firstObject;
+    [waitVc setLoopView];
 }
 
 //iOS10新增：处理前台收到通知的代理方法
@@ -190,6 +149,52 @@
     NSString *Token = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""] stringByReplacingOccurrencesOfString: @">" withString: @""] stringByReplacingOccurrencesOfString: @" " withString: @""];
     self.token = Token;
     [[NSNotificationCenter defaultCenter]postNotificationName:@"deviceToken" object:Token];
+}
+
+/**
+    播放订单推送过来的音频
+ */
+- (void)playAudio{
+    [self setLoop];
+    dispatch_queue_t dispatchQueue =dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(dispatchQueue, ^(void)
+                   
+                   {
+                       
+                       NSBundle *mainBundle = [NSBundle mainBundle];
+                       
+                       NSString *filePath = [mainBundle pathForResource:@"ring"ofType:@"mp3"];//获取音频文件
+                       NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+                       
+                       NSError *error = nil;
+                       
+                       self.audioPlayer = [[AVAudioPlayer alloc] initWithData:fileData error:&error];
+                       
+                       
+                       if (self.audioPlayer != nil)
+                           
+                       {
+                           
+                           self.audioPlayer.delegate = self;
+                           
+                           if ([self.audioPlayer prepareToPlay] &&[self.audioPlayer play])
+                               
+                           {
+                               //成功播放音乐
+                           } else {
+                               
+                               //播放失败
+                               
+                           }
+                       } else {
+                           /*
+                            
+                            无法实例AVAudioPlayer
+                            
+                            */
+                       }
+                   });
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

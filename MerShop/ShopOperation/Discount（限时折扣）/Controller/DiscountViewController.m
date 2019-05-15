@@ -12,7 +12,7 @@
 #import "EditeActivityTableViewCell.h"
 #import "AddActivityGoodsViewController.h"
 
-@interface DiscountViewController ()<UITableViewDataSource,UITableViewDelegate,ActivityHeaderViewDelegate,THDatePickerViewDelegate,EditeActivityTableViewCellDelegate>
+@interface DiscountViewController ()<UITableViewDataSource,UITableViewDelegate,ActivityHeaderViewDelegate,THDatePickerViewDelegate,EditeActivityTableViewCellDelegate,UITextFieldDelegate>
 @property (nonatomic ,strong)UITableView *mainTableView;
 @property (nonatomic ,strong)ActivityHeaderView *headerView;
 @property (nonatomic ,assign)NSInteger lowerLimitNumber;
@@ -91,7 +91,8 @@
     _headerView = [nib objectAtIndex:0];
     _headerView.delegate = self;
     _headerView.numberLab.text = [NSString stringWithFormat:@"%ld",(long)_lowerLimitNumber];
-    [_headerView setFrame:XFrame(0, 0, Screen_W, 389)];
+    _headerView.activityNameText.delegate = self;
+    [_headerView setFrame:XFrame(0, 0, Screen_W, 410)];
     
     UIButton *saveBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [saveBtn setTitle:@"提交" forState:(UIControlStateNormal)];
@@ -150,6 +151,19 @@
         [self.dateView show];
     }];
 }
+#pragma mark - TextViewDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField == self.headerView.activityNameText){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (self.headerView.activityNameText.text.length >= 20) {
+            self.headerView.activityNameText.text = [textField.text substringToIndex:20];
+            return NO;
+        }
+    }
+    return YES;
+}
+
 
 #pragma mark - THDatePickerViewDelegate
 /**

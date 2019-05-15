@@ -257,8 +257,13 @@
 }
 
 - (void)submitData{
+    if ([_changePrice.goodsPrice.text integerValue] < [_changePrice.discountPrice.text integerValue]){
+        [[IFUtils share]showErrorInfo:@"优惠价格不能大于原价"];
+        return;
+    }
     [_upView setHidden:YES];
     [_changePrice setHidden:YES];
+
     [self.selectDict setValue:_changePrice.goodsPrice.text forKey:@"goods_price"];
     [self.selectDict setValue:_changePrice.discountPrice.text forKey:@"xianshi_price"];
     /**

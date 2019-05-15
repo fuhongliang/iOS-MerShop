@@ -33,6 +33,7 @@
     [self.view addSubview:_registView];
 }
 
+#pragma mark - 键盘代理方法
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     if (kISNullString(_registView.userName.text) || kISNullString(_registView.passWord.text) || kISNullString(_registView.verificationCode.text)){
         [_registView.registBtn setBackgroundColor:toPCcolor(@"#e5e5e5")];
@@ -42,7 +43,24 @@
         [_registView.registBtn setUserInteractionEnabled:YES];
     }
 }
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField == self.registView.userName){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (self.registView.userName.text.length >= 11) {
+            self.registView.userName.text = [textField.text substringToIndex:11];
+            return NO;
+        }
+    }else if (textField == self.registView.verificationCode){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (self.registView.verificationCode.text.length >= 4) {
+            self.registView.verificationCode.text = [textField.text substringToIndex:4];
+            return NO;
+        }
+    }
+    return YES;
+}
 #pragma mark --收起键盘
 // 点击空白处收键盘
 -(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer {

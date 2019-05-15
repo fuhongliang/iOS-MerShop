@@ -8,7 +8,7 @@
 
 #import "NewCatergoryViewController.h"
 
-@interface NewCatergoryViewController ()
+@interface NewCatergoryViewController ()<UITextFieldDelegate>
 @property (nonatomic ,strong)UITextField *text;
 @property (nonatomic ,strong)NSMutableArray *classArr;
 @end
@@ -38,6 +38,7 @@
     _text = [[UITextField alloc]init];
     [_text setFrame:XFrame(IFAutoFitPx(20), IFAutoFitPx(68), Screen_W, IFAutoFitPx(68))];
     _text.placeholder = @"请输入分类名称";
+    _text.delegate = self;
     if (![self.className isKindOfClass:[NSNull class]]){
         [_text setText:_className];
     }
@@ -80,6 +81,19 @@
     }];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField == self.text){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (self.text.text.length >= 8) {
+            self.text.text = [textField.text substringToIndex:8];
+            return NO;
+        }
+    }
+    return YES;
+}
+
+#pragma mark - 懒加载
 - (NSMutableArray *)classArr{
     if (!_classArr){
         _classArr = [NSMutableArray arrayWithCapacity:0];

@@ -29,6 +29,7 @@
 @property (nonatomic ,copy)NSString *chooseClassName;
 @property (nonatomic ,assign)NSInteger catergoryId;
 @property (nonatomic ,strong)UIButton *saveBtn;
+@property (nonatomic ,assign)NSInteger yesOrNo;
 
 @end
 
@@ -39,7 +40,7 @@
     
     self.switchStatus = self.storage;
     [self setNaviTitle:@"新建商品"];
-    self.dataArr = @[@[@"商品名称*",@"商品分类*"],@[@"价格*",@"原价*",@"库存无限",
+    self.dataArr = @[@[@"商品名称*",@"商品分类*"],@[@"现价*",@"原价*",@"库存无限",
 //                                            ,@"可售时间"
 //                                            ,@"商品单位"
                                             ]];
@@ -47,7 +48,15 @@
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     [self.pickerDatasource addObjectsFromArray:[user objectForKey:@"classArray"]];
     [self setUI];
-    if (_className){//判断是否从编辑进来新建商品
+    if (kISNullDict(self.tempDict)){//判断是否从编辑进来新建商品
+        self.yesOrNo = 2;
+        if (self.pickerDatasource.count == 0){
+            
+        }else{
+            _chooseClassName = [[self.pickerDatasource objectAtIndex:0] objectForKey:@"stc_name"];
+            _catergoryId = [[[self.pickerDatasource objectAtIndex:0] objectForKey:@"stc_id"] integerValue];
+        }
+    }else{
         _chooseClassName = _className;
         _catergoryId = _classId;
         [self setNaviTitle:@"编辑商品"];
@@ -62,18 +71,12 @@
         self.desc = _tempDict[@"goods_desc"];
         self.goodsId = [_tempDict[@"goods_id"]integerValue];
         self.switchStatus = [_tempDict[@"goods_storage"]integerValue];
+        self.yesOrNo = [_tempDict[@"is_much"] integerValue];
         if (kISNullString(self.desc)){
             
         }else{
             self.textview.text = self.desc;
             self.placeHolder.alpha = 0;
-        }
-    }else{
-        if (self.pickerDatasource.count == 0){
-            
-        }else{
-            _chooseClassName = [[self.pickerDatasource objectAtIndex:0] objectForKey:@"stc_name"];
-            _catergoryId = [[[self.pickerDatasource objectAtIndex:0] objectForKey:@"stc_id"] integerValue];
         }
     }
 }
@@ -118,7 +121,7 @@
     [view1 addSubview:_textview];
     
     UILabel *placeHolder1 = [[UILabel alloc] initWithFrame:XFrame(0, IFAutoFitPx(10), Screen_W-IFAutoFitPx(60), IFAutoFitPx(44))];
-    placeHolder1.text = @"介绍一下您的产品吧，200字以内就可以哦";
+    placeHolder1.text = @"介绍一下您的产品吧，50字以内就可以哦";
     placeHolder1.textColor = toPCcolor(@"#999999");
     self.placeHolder = placeHolder1;
     placeHolder1.font = XFont(15);
@@ -228,14 +231,12 @@
         NSLog(@"打开相册");
     }];
 }
-
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker dismissViewControllerAnimated:YES completion:^{
         NSLog(@"取消");
     }];
 }
-
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera){
@@ -249,14 +250,27 @@
     
 }
 
-- (NSString *)toJsonData:(id)theData{
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:theData options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    if (jsonData.length > 0) {
-        return jsonStr;
-    }else{
-        return nil;
+#pragma mark - Textview Delegate
+- (void)textViewDidChange:(UITextView *)textView{
+    if (textView == self.textview){
+        if (!_textview.text.length){
+            self.placeHolder.alpha = 1;
+        }else{
+            self.placeHolder.alpha = 0;
+        }
     }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if (textView == self.textview){
+        if (range.length == 1 && text.length == 0) {
+            return YES;
+        }else if (self.textview.text.length >= 50) {
+            self.textview.text = [textView.text substringToIndex:50];
+            return NO;
+        }
+    }
+    return YES;
 }
 
 #pragma mark - UIPickerView
@@ -271,18 +285,6 @@
     [_pickerBgView setHidden:YES];
 }
 
-#pragma mark - textviewDelegate
-- (void)textViewDidChange:(UITextView *)textView{
-    if (textView == self.textview){
-        if (!_textview.text.length){
-            self.placeHolder.alpha = 1;
-        }else{
-            self.placeHolder.alpha = 0;
-        }
-    }
-}
-
-
 #pragma mark - tableview delegate & datasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
@@ -292,7 +294,7 @@
     if (section == 0){
         return 2;
     }else{
-        if (self.switchStatus != 999999999){
+        if (self.yesOrNo == 1){
             return 4;
         }else{
             return 3;
@@ -355,7 +357,7 @@
                 NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"NewGoodsTableViewCell3" owner:self options:nil];
                 cell3 = [nib objectAtIndex:0];
             }
-            if (_switchStatus == 999999999){
+            if (self.yesOrNo == 2){
                 [cell3.kaiguan setOn: YES];
             }else{
                 [cell3.kaiguan setOn: NO];
@@ -429,7 +431,13 @@
 
 #pragma mark - 开关代理方法
 - (void)open:(NSString *)data{
-    self.switchStatus = [data integerValue];
+    self.yesOrNo = [data integerValue];
+    if (self.yesOrNo == 2){
+        self.switchStatus = 999999999;
+    }else{
+        self.switchStatus = 0;
+    }
+    
     [self.mainTableview reloadData];
 }
 
@@ -533,6 +541,9 @@
     }else if (UIImageJPEGRepresentation(_headerview.goodsImage.image,1.0) == nil){
         [[IFUtils share]showErrorInfo:@"商品图片还未添加"];
         return;
+    }else if ([_oldPrice integerValue] < [_currentPrice integerValue]){
+        [[IFUtils share]showErrorInfo:@"现在价格不能大于原来价格"];
+        return;
     }
     [[IFUtils share]showLoadingView];
     [self uploadImage];
@@ -560,6 +571,32 @@
     }else{
         _goodsName = textField.text;
     }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField.tag == 2){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (textField.text.length >= 20) {
+            textField.text = [textField.text substringToIndex:20];
+            return NO;
+        }
+    }else if (textField.tag == 0){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (textField.text.length >= 4) {
+            textField.text = [textField.text substringToIndex:4];
+            return NO;
+        }
+    }else if (textField.tag == 1){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (textField.text.length >= 4) {
+            textField.text = [textField.text substringToIndex:4];
+            return NO;
+        }
+    }
+    return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{

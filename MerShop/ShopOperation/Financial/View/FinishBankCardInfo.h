@@ -12,6 +12,7 @@
 
 - (void)finish;
 - (void)chooseCard;
+- (void)protocol;
 
 @end
 
@@ -25,6 +26,7 @@
 @property (weak, nonatomic)id<FinishBankCardInfoDelegate>delegate;
 - (IBAction)finishAction:(id)sender;
 - (IBAction)chooseCardAction:(id)sender;
+- (IBAction)protocolAction:(id)sender;
 
 @end
 

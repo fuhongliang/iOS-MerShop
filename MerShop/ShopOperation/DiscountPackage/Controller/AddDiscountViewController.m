@@ -12,7 +12,7 @@
 #import "PackageView.h"
 #import "FooterView.h"
 
-@interface AddDiscountViewController ()<UITableViewDelegate,UITableViewDataSource,FooterViewDelegate,DiscountPackageGoodsCellDelegate>
+@interface AddDiscountViewController ()<UITableViewDelegate,UITableViewDataSource,FooterViewDelegate,DiscountPackageGoodsCellDelegate,UITextFieldDelegate>
 @property (nonatomic ,strong)UITableView *mainTableView;
 @property (nonatomic ,strong)PackageView *headView;
 @property (nonatomic ,strong)FooterView *footerView;
@@ -90,6 +90,7 @@
     _headView = [[[NSBundle mainBundle]loadNibNamed:@"PackageView" owner:self options:nil] objectAtIndex:0];
     [_headView setBackgroundColor:toPCcolor(@"#f5f5f5")];
     [_headView setFrame:XFrame(0, 0, Screen_W, 103)];
+    _headView.activityName.delegate = self;
     [self.mainTableView setTableHeaderView:_headView];
     
     UIButton *saveBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -112,6 +113,19 @@
     _footerView.discountAllPrice.text = @"";
     [self.mainTableView setTableFooterView:_footerView];
     
+}
+
+#pragma mark - TextView Delegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField == self.headView.activityName){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (self.headView.activityName.text.length >= 20) {
+            self.headView.activityName.text = [textField.text substringToIndex:20];
+            return NO;
+        }
+    }
+    return YES;
 }
 
 #pragma mark - footerview代理方法

@@ -40,9 +40,9 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="最多可输入20个字" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ux-Vg-HCP">
-                                    <rect key="frame" x="239" y="16" width="121" height="17"/>
+                                    <rect key="frame" x="107" y="14" width="253" height="21"/>
                                     <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                             </subviews>
@@ -50,6 +50,7 @@
                             <constraints>
                                 <constraint firstItem="kbk-6G-fY4" firstAttribute="leading" secondItem="Ong-Cg-kSQ" secondAttribute="leading" constant="15" id="AsG-cO-j5d"/>
                                 <constraint firstItem="kbk-6G-fY4" firstAttribute="top" secondItem="Ong-Cg-kSQ" secondAttribute="top" constant="14" id="CNo-dF-Gfu"/>
+                                <constraint firstItem="5ux-Vg-HCP" firstAttribute="leading" secondItem="kbk-6G-fY4" secondAttribute="trailing" constant="15" id="DXI-ip-wUr"/>
                                 <constraint firstAttribute="bottom" secondItem="kbk-6G-fY4" secondAttribute="bottom" constant="14" id="GNk-Kx-wlH"/>
                                 <constraint firstItem="5ux-Vg-HCP" firstAttribute="centerY" secondItem="kbk-6G-fY4" secondAttribute="centerY" id="jrd-Iw-Qyk"/>
                                 <constraint firstAttribute="trailing" secondItem="5ux-Vg-HCP" secondAttribute="trailing" constant="15" id="wjl-57-ti6"/>

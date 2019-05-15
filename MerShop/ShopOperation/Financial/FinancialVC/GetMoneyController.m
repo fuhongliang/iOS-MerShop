@@ -48,6 +48,8 @@
             [_mainview.arrow setHidden:NO];
             [_mainview.accountType setHidden:YES];
             [_mainview.lastFourNumber setHidden:YES];
+            NSString *cashStr = [NSString stringWithFormat:@"可提现金额 ¥ %@",self.accountDict[@"y_jiesuan"]];
+            _mainview.canGetLabel.text = cashStr;
         }else{
             NSString *cardNumber = self.accountDict[@"account"][@"account_number"];
             

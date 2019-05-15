@@ -194,7 +194,7 @@
 - (void)goHelpVC{
     BluetoothHelpViewController *vc = [[BluetoothHelpViewController alloc]init];
     vc.navTitle = @"帮助";
-    vc.htmlName = @"Bluetooth";
+    vc.htmlName = @"bluetooth";
     [self.navigationController pushViewController:vc animated:YES];
 }
 

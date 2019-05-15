@@ -82,6 +82,7 @@
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"EditeCouponView" owner:self options:nil];
     _editeView = [nib objectAtIndex:0];
     _editeView.delegate = self;
+    _editeView.cashCouponNameText.delegate = self;
     [_editeView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
     [self.view addSubview:self.editeView];
     
@@ -122,6 +123,19 @@
     _editeView.limitLab.text = [NSString stringWithFormat:@"%@",dict[@"voucher_eachlimit"]];
     _editeView.couponDescription.text = [NSString stringWithFormat:@"%@",dict[@"voucher_desc"]];
     self.lowerLimitNumber = [dict[@"voucher_eachlimit"] integerValue];
+}
+
+#pragma mark - TextView Delegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField == self.editeView.cashCouponNameText){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (self.editeView.cashCouponNameText.text.length >= 20) {
+            self.editeView.cashCouponNameText.text = [textField.text substringToIndex:20];
+            return NO;
+        }
+    }
+    return YES;
 }
 
 /**

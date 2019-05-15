@@ -42,9 +42,9 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="最多可输入20个字" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ymS-qD-hSm">
-                                    <rect key="frame" x="100" y="6" width="260" height="36.5"/>
+                                    <rect key="frame" x="107" y="6" width="253" height="36.5"/>
                                     <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                             </subviews>
@@ -52,7 +52,7 @@
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="ymS-qD-hSm" secondAttribute="bottom" constant="6" id="4UK-QP-TNR"/>
                                 <constraint firstItem="ymS-qD-hSm" firstAttribute="top" secondItem="ous-rA-T15" secondAttribute="top" constant="6" id="BNE-10-nI4"/>
-                                <constraint firstItem="ymS-qD-hSm" firstAttribute="leading" secondItem="Ae5-zt-M1a" secondAttribute="trailing" constant="8" id="F1L-zZ-0e4"/>
+                                <constraint firstItem="ymS-qD-hSm" firstAttribute="leading" secondItem="Ae5-zt-M1a" secondAttribute="trailing" constant="15" id="F1L-zZ-0e4"/>
                                 <constraint firstItem="Ae5-zt-M1a" firstAttribute="top" secondItem="ous-rA-T15" secondAttribute="top" constant="14" id="H0Y-gX-Wcm"/>
                                 <constraint firstItem="Ae5-zt-M1a" firstAttribute="leading" secondItem="ous-rA-T15" secondAttribute="leading" constant="15" id="fRb-gr-cMP"/>
                                 <constraint firstAttribute="trailing" secondItem="ymS-qD-hSm" secondAttribute="trailing" constant="15" id="jtf-Tn-2hF"/>
@@ -111,7 +111,8 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKw-Hs-VDC">
-                                    <rect key="frame" x="298" y="7" width="46" height="34.5"/>
+                                    <rect key="frame" x="292" y="7" width="52" height="34.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <state key="normal" title="请选择">
                                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -127,7 +128,8 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOY-cC-6Mv">
-                                    <rect key="frame" x="298" y="57.5" width="46" height="30"/>
+                                    <rect key="frame" x="292" y="56" width="52" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <state key="normal" title="请选择">
                                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>

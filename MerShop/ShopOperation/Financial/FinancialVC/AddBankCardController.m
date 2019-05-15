@@ -10,7 +10,7 @@
 #import "FinishBankCardInfo.h"
 #import "SuccessViewController.h"
 
-@interface AddBankCardController ()<FinishBankCardInfoDelegate,TimePickerViewDelegate>
+@interface AddBankCardController ()<FinishBankCardInfoDelegate,TimePickerViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic)FinishBankCardInfo *mainView;
 @property (nonatomic ,strong)UIView *bgView;
 @property (nonatomic ,weak)TimePickerView *pickerView;
@@ -41,6 +41,9 @@
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"FinishBankCardInfo" owner:self options:nil];
     _mainView = [nib objectAtIndex:0];
     [_mainView setDelegate:self];
+    _mainView.name.delegate = self;
+    _mainView.bankCardNumber.delegate = self;
+    _mainView.bankAddress.delegate = self;
     [_mainView setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
     [self.view addSubview:_mainView];
     
@@ -102,6 +105,29 @@
 
 }
 
+#pragma mark - TextView Delegate
+/**
+    限制文本框输入的字数
+ */
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField == self.mainView.name){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (self.mainView.name.text.length >= 10) {
+            self.mainView.name.text = [textField.text substringToIndex:10];
+            return NO;
+        }
+    }else if (textField == self.mainView.bankCardNumber){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (self.mainView.bankCardNumber.text.length >= 19) {
+            self.mainView.bankCardNumber.text = [textField.text substringToIndex:19];
+            return NO;
+        }
+    }
+    return YES;
+}
+
 - (void)chooseCard{
     [self.bgView setHidden:NO];
     [self.pickerView setHidden:NO];
@@ -110,6 +136,13 @@
     }];
 }
 
+//跳转用户协议
+- (void)protocol{
+    BluetoothHelpViewController *vc = [[BluetoothHelpViewController alloc]init];
+    vc.navTitle = @"用户协议";
+    vc.htmlName = @"protocol";
+    [self.navigationController pushViewController:vc animated:YES];
+}
 #pragma mark - NumberPickerViewDelegate
 - (void)cancel{
     [self.bgView setHidden:YES];
@@ -118,7 +151,6 @@
         [self.pickerView setFrame:XFrame(0, Screen_H, Screen_W, 283)];
     }];
 }
-
 - (void)ensure:(id)data{
     [self.bgView setHidden:YES];
     [self.pickerView setHidden:YES];
@@ -129,4 +161,5 @@
         [self.pickerView setFrame:XFrame(0, Screen_H, Screen_W, 283)];
     }];
 }
+
 @end

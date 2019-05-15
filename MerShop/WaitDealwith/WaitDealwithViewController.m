@@ -70,8 +70,7 @@
 }
 
 - (void)requestData{
-    NSInteger storeId = [[[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];
-    [Http_url POST:@"get_neworder" dict:@{@"store_id":@(storeId)} showHUD:NO WithSuccessBlock:^(id data) {
+    [Http_url POST:@"get_neworder" dict:@{@"store_id":@(StoreId)} showHUD:NO WithSuccessBlock:^(id data) {
         //判断logintoken是否失效
         if ([[data objectForKey:@"code"] integerValue] == 3001){
             [self tokenLost];
@@ -83,10 +82,11 @@
             self.noticeArray = [data[@"data"][@"msg"] copy];
             NSArray *arr = [data objectForKey:@"data"][@"list"];
             
-            [self.explandArr removeAllObjects];
             if (kISNullArray(arr)){
                 [self.mainTableview setTableHeaderView:self.emptyView];
             }else{
+                [self.explandArr removeAllObjects];
+                [self.dataArr removeAllObjects];
                 [self.mainTableview setTableHeaderView:[[UIView alloc] init]];
                 for (NSDictionary *dict in arr){
                     OrderModel *model = [[OrderModel alloc]initWithDictionary:dict error:nil];
@@ -127,7 +127,7 @@
     [voiceImg setFrame:XFrame(15, 7, 15, 15)];
     [_lightBgView addSubview:voiceImg];
     
-    self.horizontalMarquee.text = @"                                                                   您有一笔新订单，系统已自动接单~              ";
+    self.horizontalMarquee.text = @"                                                                             您有一笔新订单，请注意查收～                ";
     self.horizontalMarquee.textColor = toPCcolor(@"#F16A11");
     [_lightBgView addSubview:self.horizontalMarquee];
 
@@ -160,11 +160,12 @@
     
 }
 
-
+//推送消息过来，将显示跑马灯,在app delegate回调方法里
 - (void)setLoopView{
     [UIView animateWithDuration:0.3 animations:^{
         [self.lightBgView setHidden:NO];
         [self.mainTableview setFrame:XFrame(0, ViewStart_Y+30, Screen_W, Screen_H-ViewStart_Y-30)];
+        [self requestData];
     }];
 }
 /**

@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNaviTitle:@"用户协议"];
+    [self setNaviTitle:self.navTitle];
     [self.view addSubview:self.webview];
 }
 

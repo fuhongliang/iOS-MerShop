@@ -54,6 +54,18 @@
     }
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField == self.loginview.userNameText){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (self.loginview.userNameText.text.length >= 11) {
+            self.loginview.userNameText.text = [textField.text substringToIndex:11];
+            return NO;
+        }
+    }
+    return YES;
+}
+
 #pragma mark --收起键盘
 // 点击空白处收键盘
 -(void)fingerTapped:(UITapGestureRecognizer *)gestureRecognizer {
@@ -72,10 +84,16 @@
         return;
     }
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSString *deviceTokenStr;
+    if (kISNullString(delegate.token)){
+        deviceTokenStr = @"a01764f368dccf2a370379f4f908bb1a652a302ced516840077c15e958370bf7";
+    }else{
+        deviceTokenStr = delegate.token;
+    }
     NSDictionary *dic = @{@"member_name":_loginview.userNameText.text,
                           @"member_passwd":_loginview.passWordText.text,
                           @"app_type":@(2),
-                          @"device_tokens":delegate.token
+                          @"device_tokens":deviceTokenStr
                           };
     [Http_url POST:@"member_login" dict:dic showHUD:YES WithSuccessBlock:^(id data) {
         

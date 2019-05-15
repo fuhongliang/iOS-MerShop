@@ -207,6 +207,9 @@
                                     </fragment>
                                 </attributedString>
                             </state>
+                            <connections>
+                                <action selector="protocolAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="H3P-7m-d5x"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vk-Ue-Ei6">
                             <rect key="frame" x="15" y="305" width="345" height="44"/>

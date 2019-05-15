@@ -39,7 +39,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12月26日提现  788.00  已到账" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgj-nR-XIy">
-                            <rect key="frame" x="40" y="100.5" width="192.5" height="17"/>
+                            <rect key="frame" x="40" y="100.5" width="320" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -106,6 +106,7 @@
                     </subviews>
                     <color key="backgroundColor" red="0.10980392156862745" green="0.59607843137254901" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Zgj-nR-XIy" secondAttribute="trailing" constant="15" id="12r-xb-a1W"/>
                         <constraint firstItem="uxI-v2-bwy" firstAttribute="leading" secondItem="ivX-er-Vgr" secondAttribute="leading" constant="15" id="1Bd-46-Wrs"/>
                         <constraint firstAttribute="trailing" secondItem="bix-cK-JKH" secondAttribute="trailing" constant="15" id="9lq-Sj-ztp"/>
                         <constraint firstItem="bix-cK-JKH" firstAttribute="leading" secondItem="ivX-er-Vgr" secondAttribute="leading" constant="15" id="AKH-uR-620"/>
@@ -174,6 +175,8 @@
             <connections>
                 <outlet property="bankCardBtn" destination="P2L-7m-wop" id="Hvz-WQ-tjq"/>
                 <outlet property="bankCardView" destination="bix-cK-JKH" id="kwe-48-GEK"/>
+                <outlet property="noticeContent" destination="Zgj-nR-XIy" id="0lU-Vc-icl"/>
+                <outlet property="noticeImg" destination="3Mh-jf-jEK" id="rbC-k7-kxs"/>
                 <outlet property="receiveMoney" destination="uxI-v2-bwy" id="ksz-FE-K5e"/>
                 <outlet property="waitReceiveMoney" destination="TaA-Xd-XUS" id="wc8-UF-exP"/>
             </connections>

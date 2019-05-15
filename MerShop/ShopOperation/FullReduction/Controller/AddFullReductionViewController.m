@@ -169,7 +169,17 @@
     }else if (textField.tag == 3){
         _activityName = textField.text;
     }
-    
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField == self.headerView.activityText){
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }else if (self.headerView.activityText.text.length >= 20) {
+            self.headerView.activityText.text = [textField.text substringToIndex:20];
+            return NO;
+        }
+    }
+    return YES;
 }
 
 - (void)showDatePickerView:(NSString *)data{

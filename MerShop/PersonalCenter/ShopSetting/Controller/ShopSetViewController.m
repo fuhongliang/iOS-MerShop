@@ -180,7 +180,7 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -194,9 +194,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section == 0){
         return IFAutoFitPx(40);
-    }else if (section == 1){
-        return IFAutoFitPx(40);
     }
+//    else if (section == 1){
+//        return IFAutoFitPx(40);
+//    }
     return 0.1;
 }
 

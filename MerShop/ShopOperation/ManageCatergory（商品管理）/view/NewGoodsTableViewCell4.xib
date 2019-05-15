@@ -20,10 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xy5-xu-qZK">
-                        <rect key="frame" x="15" y="10" width="92" height="23.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="92" id="WRu-5e-JqT"/>
-                        </constraints>
+                        <rect key="frame" x="15" y="10" width="42" height="23.5"/>
                         <attributedString key="attributedText">
                             <fragment content="Labe">
                                 <attributes>
@@ -40,10 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="hhhhhh" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LHm-Jx-DBX">
-                        <rect key="frame" x="115" y="6" width="189" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="189" id="2dV-gw-goM"/>
-                        </constraints>
+                        <rect key="frame" x="72" y="6" width="232" height="30"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
@@ -55,6 +49,7 @@
                     <constraint firstAttribute="bottom" secondItem="LHm-Jx-DBX" secondAttribute="bottom" constant="7.5" id="MyW-98-JJO"/>
                     <constraint firstAttribute="trailing" secondItem="LHm-Jx-DBX" secondAttribute="trailing" constant="16" id="PtJ-2D-XGg"/>
                     <constraint firstItem="LHm-Jx-DBX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="SeW-8d-74r"/>
+                    <constraint firstItem="LHm-Jx-DBX" firstAttribute="leading" secondItem="Xy5-xu-qZK" secondAttribute="trailing" constant="15" id="x8h-Ot-6Hn"/>
                     <constraint firstItem="Xy5-xu-qZK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xFa-uu-TVG"/>
                 </constraints>
             </tableViewCellContentView>

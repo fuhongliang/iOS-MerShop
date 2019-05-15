@@ -247,7 +247,12 @@
         NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"GoodsTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    GoodsModel *model = self.rightDataSource[indexPath.row];
+    GoodsModel *model;
+    if (kISNullArray(self.rightDataSource)){
+        
+    }else{
+        model = self.rightDataSource[indexPath.row];
+    }
     cell.delegate = self;
     cell.tag = indexPath.row;
     [cell setDataWithModel:model];

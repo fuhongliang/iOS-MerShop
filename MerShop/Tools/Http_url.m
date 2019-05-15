@@ -32,7 +32,7 @@
         [[IFUtils share]showLoadingView];
     }
     AFHTTPSessionManager *manager = [self getManager];
-    NSString *url = [NSString stringWithFormat:@"%@%@",http_devUrlString,httpUrl];
+    NSString *url = [NSString stringWithFormat:@"%@%@",lijing,httpUrl];
     [manager POST:url parameters:dict success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if(show){
             [SVProgressHUD dismiss];
@@ -67,9 +67,12 @@
             [[IFUtils share]showErrorInfo:dic[@"msg"]];
             successBlock(dic);
             return ;
-        }else{
+        }else if (code == 1003){
             [[IFUtils share]showErrorInfo:dic[@"msg"]];
-            successBlock(dic);
+            return ;
+        }
+        else{
+            [[IFUtils share]showErrorInfo:dic[@"msg"]];
             return ;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -94,7 +97,7 @@
     }
 
     NSDictionary *param = @{@"file":UIImageJPEGRepresentation(image,1.0)};
-    NSString *url = [NSString stringWithFormat:@"%@%@",http_devUrlString,httpUrl];
+    NSString *url = [NSString stringWithFormat:@"%@%@",http_urlString,httpUrl];
     [manager POST:url parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
