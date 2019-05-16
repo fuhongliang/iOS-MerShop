@@ -55,9 +55,21 @@
                                };
         [Http_url POST:@"bundling_info" dict:dict showHUD:NO WithSuccessBlock:^(id data) {
             NSLog(@"%@",data);
-            self.dataArr = [data[@"data"][@"goods_list"] mutableCopy];
+            NSArray *arr = data[@"data"][@"goods_list"];
+            if (kISNullArray(arr)){
+                
+            }else{
+                self.dataArr = [arr mutableCopy];
+            }
             self.headView.activityName.text = data[@"data"][@"bl_name"];
             self.footerView.discountAllPrice.text = [NSString stringWithFormat:@"¥ %@",data[@"data"][@"bl_price"]];
+            if ([data[@"data"][@"bl_state"] integerValue] == 0){
+                self.stateNumber = 0;
+                [self.footerView.stateSwitch setOn:NO];
+            }else{
+                self.stateNumber = 1;
+                [self.footerView.stateSwitch setOn:YES];
+            }
             for (NSInteger i = 0;i<self.dataArr.count;i++){
                 NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithDictionary:self.dataArr[i]];
                 NSArray *arr = [dict allKeys];

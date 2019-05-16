@@ -39,12 +39,10 @@
     self.discountPrice.text = [NSString stringWithFormat:@"总优惠价格：%@",model.price];
     if (model.bl_state == 1){
         [self.stateImg setHidden:YES];
-        [self.manageBtn setHidden:NO];
         [self.discountPrice setTextColor:toPCcolor(@"#1c98f6")];
         self.packageImg.image = [UIImage imageNamed:@"yhq_bnt_xszk_tc"];
     }else{
         [self.stateImg setHidden:NO];
-        [self.manageBtn setHidden:YES];
         [self.discountPrice setTextColor:toPCcolor(@"#999999")];
         self.packageImg.image = [UIImage imageNamed:@"yhq_bnt_xszk_tc01"];
     }

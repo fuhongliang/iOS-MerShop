@@ -47,8 +47,8 @@
         NSDictionary *dict = a[i];
         UILabel *label = [[UILabel alloc]init];
         [label setText:
-         [NSString stringWithFormat:@"   满 %@ 减 %@   ",dict[@"price"],dict[@"discount"]]];
-        [label setFont:XFont(11)];
+         [NSString stringWithFormat:@" 满 %@ 减 %@ ",dict[@"price"],dict[@"discount"]]];
+        [label setFont:XFont(9)];
         
         if(model.state == 2){
             XViewLayerCB(label, 1, 0.5, toPCcolor(@"#f77a27"));
@@ -66,7 +66,7 @@
             }];
         }else{
             [label makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(lab.mas_right).offset(10);
+                make.left.equalTo(lab.mas_right).offset(4);
                 make.top.equalTo(self.limitBgview.mas_top).offset(0);
                 make.bottom.equalTo(self.limitBgview.mas_bottom).offset(0);
             }];

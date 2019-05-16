@@ -104,6 +104,14 @@
 - (void)addFullReduction{
     _fullStr = [NSString stringWithFormat:@"%@",_footerView.priceText1.text];
     _reduceStr = [NSString stringWithFormat:@"%@",_footerView.priceText2.text];
+    if (self.dataSource.count>=4){
+        [[IFUtils share]showErrorInfo:@"最多只能添加4条规则"];
+        return;
+    }
+    if ([_fullStr integerValue] <= [_reduceStr integerValue]){
+        [[IFUtils share]showErrorInfo:@"满减金额必须小于规则金额"];
+        return;
+    }
     if (_fullStr.length == 0 || _reduceStr.length == 0){
         [[IFUtils share]showErrorInfo:@"请添加满减价格"];
         return;

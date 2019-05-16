@@ -402,9 +402,11 @@
         UIImageWriteToSavedPhotosAlbum(info[UIImagePickerControllerEditedImage], nil, nil, nil);
     }
     LCWeakSelf(self)
-    UIImage *uploadImg = info[UIImagePickerControllerEditedImage];
+//    UIImage *uploadImg = info[UIImagePickerControllerEditedImage];
+    UIImage *uploadImg = [IFTools compressImageQuality:info[UIImagePickerControllerEditedImage] toByte:100];
     [Http_url POST:@"image_upload" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
         if ([[data objectForKey:@"code"] integerValue] == 200){
+            [picker dismissViewControllerAnimated:YES completion:nil];
             NSString *imagePath = [NSString stringWithFormat:@"%@",[data objectForKey:@"data"]];
             NSDictionary *uploadImgDict = @{@"store_id":@(StoreId),
                                             @"avator":imagePath
@@ -432,7 +434,6 @@
     } WithFailBlock:^(id data) {
         
     }];
-    [picker dismissViewControllerAnimated:YES completion:nil];
     
 }
 

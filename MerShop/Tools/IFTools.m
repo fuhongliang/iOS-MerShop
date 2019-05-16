@@ -35,7 +35,7 @@
 }
 
 + (UIImage *)compressImageQuality:(UIImage *)image toByte:(NSInteger)maxLength {
-    CGFloat compression = 1;
+    CGFloat compression = 0.1;
     NSData *data = UIImageJPEGRepresentation(image, compression);
     if (data.length < maxLength) return image;
     CGFloat max = 1;

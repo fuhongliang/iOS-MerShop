@@ -81,6 +81,7 @@
     _passWordText1 = [[UITextView alloc]initWithFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(_line2.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(55))];
     _passWordText1.font = XFont(17);
     _passWordText1.delegate = self;
+    _passWordText1.keyboardType = UIKeyboardTypeASCIICapable;
     [whiteBackGroundView addSubview:_passWordText1];
     
     _line3 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(30),CGRectGetMaxY(_passWordText1.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(1))];
@@ -90,6 +91,7 @@
     _passWordText2 = [[UITextView alloc]initWithFrame:XFrame(IFAutoFitPx(30), CGRectGetMaxY(_line3.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(55))];
     _passWordText2.font = XFont(17);
     _passWordText2.delegate = self;
+    _passWordText2.keyboardType = UIKeyboardTypeASCIICapable;
     [whiteBackGroundView addSubview:_passWordText2];
     
 //    _line4 = [[UIView alloc]initWithFrame:XFrame(IFAutoFitPx(30),CGRectGetMaxY(_passWordText2.frame)+IFAutoFitPx(30), Screen_W-IFAutoFitPx(30), IFAutoFitPx(1))];
@@ -194,6 +196,7 @@
         
         if (code == 200){
             [[IFUtils share]showErrorInfo:@"修改成功"];
+            [self.navigationController popViewControllerAnimated:YES];
         }
         
     } WithFailBlock:^(id data) {
@@ -215,6 +218,20 @@
         
     }];
 }
+
+#pragma mark - TextView Delegate
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if (textView == self.codeText){
+        if (range.length == 1 && text.length == 0) {
+            return YES;
+        }else if (self.codeText.text.length >= 4) {
+            self.codeText.text = [textView.text substringToIndex:4];
+            return NO;
+        }
+    }
+    return YES;
+}
+
 
 #pragma mark - 定时器 (GCD)
 - (void)createTimer {

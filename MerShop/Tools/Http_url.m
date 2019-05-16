@@ -52,7 +52,6 @@
             AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             delegate.window.rootViewController = navi;
             
-            successBlock(dic);
             return ;
         }else if (code == 1001){
             //验证手机是否注册

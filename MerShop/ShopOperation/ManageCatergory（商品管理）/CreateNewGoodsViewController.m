@@ -445,7 +445,7 @@
 - (void)uploadImage{
     LCWeakSelf(self)
     NSString *descStr = self.textview.text;
-    UIImage *uploadImg = [IFTools compressImageQuality:_headerview.goodsImage.image toByte:2048];
+    UIImage *uploadImg = [IFTools compressImageQuality:_headerview.goodsImage.image toByte:100];
     [Http_url POST:@"image_upload" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
         
         weakself.image_path = [NSString stringWithFormat:@"%@",[data objectForKey:@"data"]];
