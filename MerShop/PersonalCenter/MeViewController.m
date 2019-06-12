@@ -12,14 +12,14 @@
 #import "AccountSecurityViewController.h"
 #import "RingSettingViewController.h"
 #import "FeedbackViewController.h"
+#import "AboutUsViewController.h"
 #import "BackgroundView.h"
-#import "PhoneNumberView.h"
-#import "UIImageView+WebCache.h"
 #import "AppDelegate.h"
 #import "LoginInViewController.h"
 #import "NavigationViewController.h"
-
-
+#import "AddActivityGoodsViewController.h"
+#import "DiscountViewController.h"
+#import "PrintSettingViewController.h"
 
 @interface MeViewController ()<BackgroundViewDelegate,PhoneNumberViewDelegate>
 @property (nonatomic ,strong)UIView *clearView;
@@ -51,9 +51,6 @@
     [self createNavigationbar];
     self.bgView = [[BackgroundView alloc]initWithFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y-Tabbar_H)];
     self.bgView.delegate = self;
-    NSString *imageStr = [[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_avatar"];
-    [self.bgView.headImage sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"moren_dianpu"]];
-    [self.bgView setMyInformation:[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"]];
     [self.bgView setBackgroundColor:IFThemeBlueColor];
     [self.view addSubview:self.bgView];
     
@@ -97,15 +94,25 @@
         BusinessStatusViewController *VC = [[BusinessStatusViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];
     }else if (button.tag == 1003){
-        
+        AboutUsViewController *vc = [[AboutUsViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (button.tag == 1004){
-        
+        PrintSettingViewController *vc = [[PrintSettingViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (button.tag == 1005){
         AccountSecurityViewController *VC = [[AccountSecurityViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];
     }else if (button.tag == 1006){
-        [self.clearView setHidden:NO];
-        [self.upView setHidden:NO];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"客服电话" message:@"+86 18825110997" preferredStyle:(UIAlertControllerStyleAlert)];
+        [alert addAction:[UIAlertAction actionWithTitle:@"联系客服" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+            NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",@"18825110997"];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+            
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [self.navigationController presentViewController:alert animated:YES completion:nil];
     }else if (button.tag == 1007){
         RingSettingViewController *VC = [[RingSettingViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];
@@ -116,12 +123,30 @@
 }
 
 - (void)SignOut{
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
-    LoginInViewController *loginVC = [[LoginInViewController alloc]init];
-    NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:loginVC];
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    delegate.window.rootViewController = navi;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确定退出登录吗？" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        
+        [Http_url POST:@"member_logout" dict:@{@"store_id":@(StoreId)} showHUD:YES WithSuccessBlock:^(id data) {
+            if ([[data objectForKey:@"code"] integerValue] == 200){
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"classArray"];
+                LoginInViewController *loginVC = [[LoginInViewController alloc]init];
+                NavigationViewController *navi = [[NavigationViewController alloc]initWithRootViewController:loginVC];
+                AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                delegate.window.rootViewController = navi;
+            }
+
+        } WithFailBlock:^(id data) {
+            
+        }];
+
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [self.navigationController presentViewController:alert animated:YES completion:nil];
+
 }
 
 - (void)cancelCall:(UIButton *)sender{

@@ -23,11 +23,11 @@
 - (IBAction)openOrclose:(id)sender {
     if (self.kaiguan.isOn){
         if (self.delegate && [self.delegate respondsToSelector:@selector(open:)]){
-            [self.delegate performSelector:@selector(open:) withObject:@"99999999"];
+            [self.delegate performSelector:@selector(open:) withObject:@"2"];
         }
     }else{
         if (self.delegate && [self.delegate respondsToSelector:@selector(open:)]){
-            [self.delegate performSelector:@selector(open:) withObject:@"0"];
+            [self.delegate performSelector:@selector(open:) withObject:@"1"];
         }
     }
 }

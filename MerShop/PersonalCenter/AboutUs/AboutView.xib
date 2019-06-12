@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AboutView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7N-rk-lgm">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about_us" translatesAutoresizingMaskIntoConstraints="NO" id="lS1-eP-LEu">
+                            <rect key="frame" x="134.5" y="60" width="106" height="106"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="106" id="JSM-IK-Z9u"/>
+                                <constraint firstAttribute="height" constant="106" id="jUv-9m-nCW"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4e-de-oHk">
+                            <rect key="frame" x="129.5" y="185" width="116.5" height="23"/>
+                            <string key="text">邻邻发商家端
+</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="助力商家，高效经营" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAx-5t-55W">
+                            <rect key="frame" x="123" y="218" width="129" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.1.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtN-8W-vrG">
+                            <rect key="frame" x="170" y="255" width="35" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="深圳市前海一户科技有限公司 版权所有 粤ICP备 12067984号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="957-HF-Ugv">
+                            <rect key="frame" x="21.5" y="612.5" width="332.5" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8D-Kb-HkW">
+                            <rect key="frame" x="94.5" y="579.5" width="186" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="《邻邻发软件许可及服务协议》">
+                                <color key="titleColor" red="0.14117647059999999" green="0.63137254899999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="protocolAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="fag-Pb-13K"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="lS1-eP-LEu" firstAttribute="centerX" secondItem="y7N-rk-lgm" secondAttribute="centerX" id="22Z-AG-WxU"/>
+                        <constraint firstItem="uAx-5t-55W" firstAttribute="top" secondItem="H4e-de-oHk" secondAttribute="bottom" constant="10" id="2Cn-Hg-jdS"/>
+                        <constraint firstItem="H4e-de-oHk" firstAttribute="top" secondItem="lS1-eP-LEu" secondAttribute="bottom" constant="19" id="7VA-8D-MfJ"/>
+                        <constraint firstItem="H4e-de-oHk" firstAttribute="centerX" secondItem="lS1-eP-LEu" secondAttribute="centerX" id="GiR-Ph-G8F"/>
+                        <constraint firstItem="vtN-8W-vrG" firstAttribute="centerX" secondItem="uAx-5t-55W" secondAttribute="centerX" id="NSQ-lt-YtX"/>
+                        <constraint firstAttribute="bottom" secondItem="957-HF-Ugv" secondAttribute="bottom" constant="20" id="gNL-dC-NRj"/>
+                        <constraint firstItem="957-HF-Ugv" firstAttribute="top" secondItem="T8D-Kb-HkW" secondAttribute="bottom" constant="5" id="gaG-4r-l50"/>
+                        <constraint firstItem="T8D-Kb-HkW" firstAttribute="centerX" secondItem="957-HF-Ugv" secondAttribute="centerX" id="gnf-yE-d5a"/>
+                        <constraint firstItem="vtN-8W-vrG" firstAttribute="top" secondItem="uAx-5t-55W" secondAttribute="bottom" constant="20" id="lnx-4S-NbZ"/>
+                        <constraint firstItem="lS1-eP-LEu" firstAttribute="top" secondItem="y7N-rk-lgm" secondAttribute="top" constant="60" id="lt8-sf-fR8"/>
+                        <constraint firstItem="uAx-5t-55W" firstAttribute="centerX" secondItem="H4e-de-oHk" secondAttribute="centerX" id="p4x-4y-MCb"/>
+                        <constraint firstItem="957-HF-Ugv" firstAttribute="centerX" secondItem="vtN-8W-vrG" secondAttribute="centerX" id="xVt-L5-gHs"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="y7N-rk-lgm" secondAttribute="trailing" id="RjI-23-Ykt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="y7N-rk-lgm" secondAttribute="bottom" id="X2s-KM-zOc"/>
+                <constraint firstItem="y7N-rk-lgm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="iW0-jd-G5B"/>
+                <constraint firstItem="y7N-rk-lgm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="yLW-eE-hJi"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="about_us" width="512" height="512"/>
+    </resources>
+</document>

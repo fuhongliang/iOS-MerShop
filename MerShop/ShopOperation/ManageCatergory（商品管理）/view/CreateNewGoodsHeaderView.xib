@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CreateNewGoodsHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOJ-J1-WTR">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="etN-Ao-ZmI">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="160" id="Fr2-7O-lyM"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="bEg-qe-hEw" appends="YES" id="s4n-xQ-gJu"/>
+                            </connections>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh2-W2-jA5">
+                            <rect key="frame" x="167.5" y="45" width="40" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="Sz3-Ix-bbt"/>
+                                <constraint firstAttribute="width" constant="40" id="ucr-aB-vif"/>
+                            </constraints>
+                            <state key="normal" image="icon_spxqtp"/>
+                            <connections>
+                                <action selector="chooseImg:" destination="iN0-l3-epB" eventType="touchUpInside" id="jsv-Qg-7hw"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pyp-VQ-ELA">
+                            <rect key="frame" x="126" y="92" width="123" height="30"/>
+                            <state key="normal" title="请添加商品详情图">
+                                <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="chooseImage:" destination="iN0-l3-epB" eventType="touchUpInside" id="yar-jS-by9"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="dh2-W2-jA5" firstAttribute="centerX" secondItem="etN-Ao-ZmI" secondAttribute="centerX" id="4Wj-KO-33m"/>
+                        <constraint firstItem="etN-Ao-ZmI" firstAttribute="leading" secondItem="fOJ-J1-WTR" secondAttribute="leading" id="7Te-2i-HY5"/>
+                        <constraint firstItem="etN-Ao-ZmI" firstAttribute="top" secondItem="fOJ-J1-WTR" secondAttribute="top" id="BmK-2d-HUk"/>
+                        <constraint firstItem="Pyp-VQ-ELA" firstAttribute="centerX" secondItem="dh2-W2-jA5" secondAttribute="centerX" id="TTY-WT-8dT"/>
+                        <constraint firstAttribute="trailing" secondItem="etN-Ao-ZmI" secondAttribute="trailing" id="V47-mE-GaB"/>
+                        <constraint firstItem="etN-Ao-ZmI" firstAttribute="top" secondItem="dh2-W2-jA5" secondAttribute="bottom" constant="-80" id="g45-Sn-fru"/>
+                        <constraint firstItem="Pyp-VQ-ELA" firstAttribute="top" secondItem="dh2-W2-jA5" secondAttribute="bottom" constant="12" id="j1V-hd-KYD"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fOJ-J1-WTR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="5cp-hf-JOZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fOJ-J1-WTR" secondAttribute="trailing" id="L34-sW-tht"/>
+                <constraint firstItem="fOJ-J1-WTR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="QFP-2y-8gn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fOJ-J1-WTR" secondAttribute="bottom" id="rAp-Bl-oGa"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="btnImg" destination="dh2-W2-jA5" id="EFa-Un-thL"/>
+                <outlet property="btnText" destination="Pyp-VQ-ELA" id="gnD-GW-urd"/>
+                <outlet property="goodsImage" destination="etN-Ao-ZmI" id="ZFG-OH-oWj"/>
+            </connections>
+        </view>
+        <tapGestureRecognizer id="bEg-qe-hEw">
+            <connections>
+                <action selector="imageTap:" destination="iN0-l3-epB" id="Cvo-VQ-dDC"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="icon_spxqtp" width="40" height="34.5"/>
+    </resources>
+</document>

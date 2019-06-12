@@ -14,8 +14,8 @@
 
 @interface ManageCatergoryViewController ()<UITableViewDelegate,UITableViewDataSource,ManageCatergoryTableViewCellDelegate>
 @property (nonatomic ,strong)UITableView *tableview;
-@property (nonatomic ,strong)UIButton *bottomBtn1;
-@property (nonatomic ,strong)UIButton *bottomBtn2;
+@property (nonatomic ,strong)ZJTopImageBottomTitleButton *bottomBtn1;
+@property (nonatomic ,strong)ZJTopImageBottomTitleButton *bottomBtn2;
 @property (nonatomic ,assign)NSInteger storeId;
 @property (nonatomic ,strong)NSMutableArray *dataSource;
 
@@ -65,26 +65,21 @@
     XViewLayerCB(backgroundView, 0, 0.5, LineColor);
     [self.view addSubview:backgroundView];
     
-    
-    _bottomBtn1  = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    _bottomBtn1  = [[ZJTopImageBottomTitleButton alloc]init];
     [_bottomBtn1 setFrame:XFrame(IFAutoFitPx(30), IFAutoFitPx(14), (Screen_W-IFAutoFitPx(90))/2, IFAutoFitPx(80))];
     [_bottomBtn1 setTitle:@"排序/批量操作" forState:(UIControlStateNormal)];
-    [_bottomBtn1 setImage:[UIImage imageNamed:@"editmenu_px"] forState:(UIControlStateNormal)];
-    [_bottomBtn1.titleLabel setFont:XFont(17)];
-    [_bottomBtn1 setTitleColor:BlackColor forState:(UIControlStateNormal)];
-    XViewLayerCB(_bottomBtn1, 3, 0.5, LineColor);
-    _bottomBtn1.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    [_bottomBtn1 setImage:[UIImage imageNamed:@"editmenu_paixu2"] forState:(UIControlStateNormal)];
+    [_bottomBtn1.titleLabel setFont:XFont(12)];
+    [_bottomBtn1 setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
     [_bottomBtn1 addTarget:self action:@selector(goSortVC) forControlEvents:(UIControlEventTouchUpInside)];
     [backgroundView addSubview:_bottomBtn1];
     
-    _bottomBtn2  = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    _bottomBtn2  = [[ZJTopImageBottomTitleButton alloc]init];
     [_bottomBtn2 setFrame:XFrame(IFAutoFitPx(30)+CGRectGetMaxX(_bottomBtn1.frame), IFAutoFitPx(14), (Screen_W-IFAutoFitPx(90))/2, IFAutoFitPx(80))];
     [_bottomBtn2 setTitle:@"新建分类" forState:(UIControlStateNormal)];
-    [_bottomBtn2 setImage:[UIImage imageNamed:@"editmenu_add"] forState:(UIControlStateNormal)];
-    [_bottomBtn2.titleLabel setFont:XFont(17)];
-    [_bottomBtn2 setTitleColor:BlackColor forState:(UIControlStateNormal)];
-    XViewLayerCB(_bottomBtn2, 3, 0.5, LineColor);
-    _bottomBtn2.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    [_bottomBtn2 setImage:[UIImage imageNamed:@"editmenu_add_1"] forState:(UIControlStateNormal)];
+    [_bottomBtn2.titleLabel setFont:XFont(12)];
+    [_bottomBtn2 setTitleColor:IFThemeBlueColor forState:(UIControlStateNormal)];
     [_bottomBtn2 addTarget:self action:@selector(goCreateNewClassVC) forControlEvents:(UIControlEventTouchUpInside)];
     [backgroundView addSubview:_bottomBtn2];
 }

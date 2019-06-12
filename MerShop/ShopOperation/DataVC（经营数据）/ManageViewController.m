@@ -7,7 +7,6 @@
 //
 
 #import "ManageViewController.h"
-#import <WebKit/WebKit.h>
 
 @interface ManageViewController ()<WKUIDelegate,WKNavigationDelegate>
 @property (nonatomic ,strong)UIProgressView *progressView;
@@ -18,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNaviTitle:@"经营数据"];
+    [self setNaviTitle:self.navTitle];
     [self setUI];
     
 }

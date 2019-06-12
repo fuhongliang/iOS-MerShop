@@ -11,6 +11,7 @@
 #import "ShopSetTableViewCell2.h"
 #import "ShopSetTableViewCell3.h"
 #import "ShopSetTableViewCell4.h"
+#import "ShopSetTableViewCell5.h"
 #import "BusinessStatusViewController.h"
 #import "RestaurantNoticeViewController.h"
 #import "PhoneNumberSettingViewController.h"
@@ -18,7 +19,7 @@
 #import "UIImageView+WebCache.h"
 
 
-@interface ShopSetViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource>
+@interface ShopSetViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate>
 @property (nonatomic ,strong)UITableView *tableview;
 @property (nonatomic ,strong)UIPickerView *pickerView1;
 @property (nonatomic ,strong)UIPickerView *pickerView2;
@@ -183,16 +184,20 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0){
+    if (section == 1){
+        return 5;
+    }else{
         return 2;
     }
-    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section == 0){
         return IFAutoFitPx(40);
     }
+//    else if (section == 1){
+//        return IFAutoFitPx(40);
+//    }
     return 0.1;
 }
 
@@ -254,51 +259,62 @@
             }
             return cell;
         }
-    }
-    if (indexPath.row == 0){
-        ShopSetTableViewCell2 *cell = (ShopSetTableViewCell2 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell2"];
-        if (!cell){
-            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell2" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-        }
-        NSString *imageStr = [[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_avatar"];
-        [cell.ShopHeadIcon sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"moren_dianpu"]];
-        cell.Title.text = @"店铺头像";
-        return cell;
-    }else if (indexPath.row == 1 || indexPath.row == 3 || indexPath.row ==4){
-        ShopSetTableViewCell1 *cell = (ShopSetTableViewCell1 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell1"];
-        if (!cell){
-            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell1" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-        }
-        if (indexPath.row == 1){
-            cell.Title.text = @"餐厅电话";
-            NSDictionary *userDict = [self getUserInfo];
-            cell.SubTitle.text = [NSString stringWithFormat:@"%@",userDict[@"store_phone"]];
+    }else if (indexPath.section == 1){
+        if (indexPath.row == 0){
+            ShopSetTableViewCell2 *cell = (ShopSetTableViewCell2 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell2"];
+            if (!cell){
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell2" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
+            }
+            NSString *imageStr = [NSString stringWithFormat:@"%@%@",img_path,[[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_avatar"]];
+            [cell.ShopHeadIcon sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"moren_dianpu"]];
+            cell.Title.text = @"店铺头像";
             return cell;
-        }else if (indexPath.row == 4){
-            cell.SubTitle.text = @"";
-            cell.Title.text = @"营业资质";
-            return cell;
+        }else if (indexPath.row == 1 || indexPath.row == 3 || indexPath.row ==4){
+            ShopSetTableViewCell1 *cell = (ShopSetTableViewCell1 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell1"];
+            if (!cell){
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell1" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
+            }
+            if (indexPath.row == 1){
+                cell.Title.text = @"餐厅电话";
+                NSDictionary *userDict = [self getUserInfo];
+                cell.SubTitle.text = [NSString stringWithFormat:@"%@",userDict[@"store_phone"]];
+                return cell;
+            }else if (indexPath.row == 4){
+                cell.SubTitle.text = @"";
+                cell.Title.text = @"营业资质";
+                return cell;
+            }else{
+                NSDictionary *user = [self getUserInfo];
+                cell.SubTitle.text = [NSString stringWithFormat:@"%@~%@",user[@"work_start_time"],user[@"work_end_time"]];
+                cell.Title.text = @"营业时间";
+                return cell;
+            }
+            
         }else{
-            NSDictionary *user = [self getUserInfo];
-            cell.SubTitle.text = [NSString stringWithFormat:@"%@~%@",user[@"work_start_time"],user[@"work_end_time"]];
-            cell.Title.text = @"营业时间";
+            ShopSetTableViewCell3 *cell = (ShopSetTableViewCell3 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell3"];
+            if (!cell){
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell3" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
+            }
+            NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
+            cell.SubTitle.text = dict[@"area_info"];
+            cell.Title.text = @"餐厅地址";
             return cell;
+            
         }
-        
     }else{
-        ShopSetTableViewCell3 *cell = (ShopSetTableViewCell3 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell3"];
+        NSArray *a = @[@"自动接单",@"自动打印"];
+        ShopSetTableViewCell5 *cell = (ShopSetTableViewCell5 *)[tableView dequeueReusableCellWithIdentifier:@"ShopSetTableViewCell5"];
         if (!cell){
-            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell3" owner:self options:nil];
+            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ShopSetTableViewCell5" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
-        NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
-        cell.SubTitle.text = dict[@"area_info"];
-        cell.Title.text = @"餐厅地址";
+        cell.title.text = a[indexPath.row];
         return cell;
-        
     }
+
     return nil;
 }
 
@@ -306,12 +322,12 @@
     if (indexPath.section == 0){
         if (indexPath.row == 0){
             BusinessStatusViewController *VC = [[BusinessStatusViewController alloc]init];
-            [self.navigationController pushViewController:VC animated:NO];
+            [self.navigationController pushViewController:VC animated:YES];
         }else{
             RestaurantNoticeViewController *VC = [[RestaurantNoticeViewController alloc]init];
-            [self.navigationController pushViewController:VC animated:NO];
+            [self.navigationController pushViewController:VC animated:YES];
         }
-    }else{
+    }else if (indexPath.section == 1){
         if (indexPath.row == 3){
             [self.BackgroundView setHidden:NO];
             [self.pickerBgView setHidden:NO];
@@ -321,8 +337,104 @@
         }else if (indexPath.row == 4){
             BusinessLicenseViewController *vc = [[BusinessLicenseViewController alloc]init];
             [self.navigationController pushViewController:vc animated:YES];
+        }else if (indexPath.row == 0){
+            [self changeStoreImg];
         }
     }
+}
+
+/**
+    调用相册、相机,上传店铺头像
+ */
+- (void)changeStoreImg{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"请选择头像来源" message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *cameral = [UIAlertAction actionWithTitle:@"直接拍照" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [self openCameral];
+    }];
+    UIAlertAction *album = [UIAlertAction actionWithTitle:@"图片库" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        [self openPhotoLibrary];
+    }];
+    [alert addAction:cameral];
+    [alert addAction:album];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+//打开相机
+- (void)openCameral{
+    if ([UIImagePickerController isSourceTypeAvailable:(UIImagePickerControllerSourceTypeCamera)]){
+        //摄像头
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+        imagePicker.allowsEditing = YES;
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }else{
+        NSLog(@"无摄像头");
+    }
+}
+
+//打开相册
+- (void)openPhotoLibrary{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:^{
+        NSLog(@"打开相册");
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"取消");
+    }];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera){
+        //图片存入相册
+        UIImageWriteToSavedPhotosAlbum(info[UIImagePickerControllerEditedImage], nil, nil, nil);
+    }
+    LCWeakSelf(self)
+//    UIImage *uploadImg = info[UIImagePickerControllerEditedImage];
+    UIImage *uploadImg = [IFTools compressImageQuality:info[UIImagePickerControllerEditedImage] toByte:100];
+    [Http_url POST:@"image_upload" image: uploadImg showHUD:NO WithSuccessBlock:^(id data) {
+        if ([[data objectForKey:@"code"] integerValue] == 200){
+            [picker dismissViewControllerAnimated:YES completion:nil];
+            NSString *imagePath = [NSString stringWithFormat:@"%@",[data objectForKey:@"data"]];
+            NSDictionary *uploadImgDict = @{@"store_id":@(StoreId),
+                                            @"avator":imagePath
+                                            };
+            [Http_url POST:@"change_avator" dict:uploadImgDict showHUD:NO WithSuccessBlock:^(id data) {
+                NSLog(@"%@",data);
+                NSMutableDictionary *userInfoDict = [[NSMutableDictionary alloc]initWithDictionary:[data objectForKey:@"data"]];
+                NSArray *arr = [userInfoDict allKeys];
+                for (NSString *key in arr){
+                    if ([[userInfoDict objectForKey:key] isKindOfClass:[NSNull class]]){
+                        [userInfoDict setObject:@"" forKey:key];
+                    }
+                }
+                if (userInfoDict){
+                    [IFUserDefaults setObject:userInfoDict forKey:@"userInfo"];
+                    [IFUserDefaults synchronize];
+                    [weakself.tableview reloadData];
+                }
+                
+            } WithFailBlock:^(id data) {
+                
+            }];
+        }
+        
+    } WithFailBlock:^(id data) {
+        
+    }];
+    
 }
 
 - (void)cancel{

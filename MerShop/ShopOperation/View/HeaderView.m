@@ -27,13 +27,18 @@
 //    maskLayer.path = maskPath.CGPath;
 //
 //    self.whiteView.layer.mask = maskLayer;
-
     self.todayIncome.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"today_orderamount"]];
     self.todayOrder.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"today_ordernum"]];
     self.collectNumber.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"store_collect"]];
     self.totalGoods.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"goods_num"]];
     self.oneMonthOrder.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"30_ordernum"]];
     self.oneMonthIncome.text = [NSString stringWithFormat:@"%@",[data objectForKey:@"30_orderamount"]];
+}
+
+- (IBAction)financialBtn:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(finance:)]){
+        [self.delegate performSelector:@selector(finance:) withObject:nil];
+    }
 }
 
 - (IBAction)goodsManageBtn:(id)sender {

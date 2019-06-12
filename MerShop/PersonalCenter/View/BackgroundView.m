@@ -30,7 +30,7 @@
     titleArr = [NSMutableArray arrayWithCapacity:0];
     
     NSArray *imgarr1 = @[@"personal_ic_mdsz",@"personal_ic_dysz",@"personal_ic_xxls"];
-    NSArray *imgarr2 = @[@"personal_ic_yyzt",@"personal_ic_zhaq",@"personal_ic_yjfk"];
+    NSArray *imgarr2 = @[@"personal_ic_yyzt0",@"personal_ic_zhaq",@"personal_ic_yjfk"];
     NSArray *imgarr3 = @[@"personal_ic_gywm",@"personal_ic_kfzx"];
     NSArray *title1 = @[@"门店设置",@"打印设置",@"消息和铃声"];
     NSArray *title2 = @[@"营业状态",@"账户与安全",@"意见反馈"];
@@ -83,7 +83,7 @@
     [_describe setFont:XFont(15)];
     [self addSubview:_describe];
     
-    index = BtnTag;
+    index = 1000;
     CGFloat width_w =  (Screen_W-IFAutoFitPx(30)*4)/3;
     CGFloat point_y =  CGRectGetMaxY(_describe.frame)+IFAutoFitPx(72);
     for (NSInteger i=0; i<3; i++){
@@ -126,6 +126,7 @@
 }
 
 - (void)setMyInformation:(NSDictionary *)userinfo{
+    [self.headImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",img_path,[userinfo objectForKey:@"store_avatar"]]] placeholderImage:[UIImage imageNamed:@"moren_dianpu"]];
     self.userName.text = [userinfo objectForKey:@"store_name"];
     self.describe.text = [userinfo objectForKey:@"store_description"];
 }

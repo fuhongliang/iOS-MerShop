@@ -23,10 +23,19 @@
     // Configure the view for the selected state
 }
 
-- (void)addProduct:(NewOrderModel *)model{
+- (void)addProduct:(NewOrderModel *)model withExplandState:(NSString *)state{
+    self.expland = state;
+    
     self.number.text = [NSString stringWithFormat:@"#%ld",(long)model.order_id];
-    self.customerName.text = [NSString stringWithFormat:@"%@  %@",model.extend_order_common[@"reciver_name"],model.extend_order_common[@"phone"]];
-    self.address.text = [NSString stringWithFormat:@"地址：%@",model.extend_order_common[@"address"]];
+    
+    self.customerName.text = [NSString stringWithFormat:@"%@  ",model.extend_order_common[@"reciver_name"]];
+    
+    self.PhoneNumber = [NSString stringWithFormat:@"%@",model.extend_order_common[@"phone"]];
+    self.customerPhoneNumber.text = [NSString stringWithFormat:@"%@****%@",[self.PhoneNumber substringToIndex:3],[self.PhoneNumber substringFromIndex:self.PhoneNumber.length-4]];
+    
+    NSString *address = [NSString stringWithFormat:@"地址：%@",model.extend_order_common[@"address"]];
+    self.address.text = [address stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
     self.orderState.text = [NSString stringWithFormat:@"%@",model.order_state];
     if ([self.orderState.text isEqualToString:@"已取消"]){
         self.orderState.textColor = toPCcolor(@"#999999");
@@ -50,22 +59,34 @@
     self.allPrice.text = [NSString stringWithFormat:@"¥%@",model.total_price];
     self.serviceFee.text = [NSString stringWithFormat:@"¥%@",model.commis_price];
     self.incomeFee.text = [NSString stringWithFormat:@"¥%@",model.goods_pay_price];
-    self.allPrice.font = [UIFont fontWithName:@"PingFang-SC-Bold" size:15];
-    self.serviceFee.font = [UIFont fontWithName:@"PingFang-SC-Bold" size:15];
-    self.incomeFee.font = [UIFont fontWithName:@"PingFang-SC-Bold" size:15];
 
-    NSString *riderName = [NSString stringWithFormat:@"%@",[model.delivery objectForKey:@"name"]];
-    NSString *phoneNumber = [NSString stringWithFormat:@"%@",[model.delivery objectForKey:@"phone"]];
-    self.riderInfo.text = [NSString stringWithFormat:@"骑手：%@  %@",riderName,phoneNumber];
     NSArray *a = model.extend_order_goods;
+    NSInteger goodsCount;
+    if (a.count>2){
+        [self.explandTextBtn setHidden:NO];
+        [self.explandImgBtn setHidden:NO];
+        if ([state isEqualToString:@"0"]){
+            goodsCount = 2;
+            [self.explandTextBtn setTitle:@"展开" forState:(UIControlStateNormal)];
+            [self.explandImgBtn setImage:[UIImage imageNamed:@"icon_zhankai"] forState:(UIControlStateNormal)];
+        }else{
+            goodsCount = a.count;
+            [self.explandTextBtn setTitle:@"收起" forState:(UIControlStateNormal)];
+            [self.explandImgBtn setImage:[UIImage imageNamed:@"icon_shouqi"] forState:(UIControlStateNormal)];
+        }
+    }else{
+        [self.explandImgBtn setHidden:YES];
+        [self.explandTextBtn setHidden:YES];
+        goodsCount = a.count;
+    }
     UIView *lastView = nil;
-    for (NSInteger i=0;i<a.count;i++){
+    for (NSInteger i=0;i<goodsCount;i++){
         NSDictionary *dict = a[i];
         UIView *bgview = [[UIView alloc]init];
         [bgview setBackgroundColor:[UIColor whiteColor]];
         [self.contentBgView addSubview:bgview];
         if (i == 0) {
-            if ((a.count -1) == 0) {
+            if ((goodsCount -1) == 0) {
                 [bgview mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.left.equalTo(self.contentBgView.mas_left).offset(0);
                     make.top.equalTo(self.contentBgView.mas_top).offset(0);
@@ -80,7 +101,7 @@
                 }];
             }
             
-        }else if (i == (a.count - 1)){
+        }else if (i == (goodsCount - 1)){
             [bgview mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(self.contentBgView.mas_left).offset(0);
                 make.top.equalTo(lastView.mas_bottom).offset(10);
@@ -133,6 +154,33 @@
 }
 
 - (IBAction)printf:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(printfOrder:)]){
+        [self.delegate performSelector:@selector(printfOrder:) withObject:self];
+    }
+}
+
+- (IBAction)playCall:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(playCallAction1:)]){
+        [self.delegate performSelector:@selector(playCallAction1:) withObject:self.PhoneNumber];
+    }
+}
+
+- (IBAction)explandAction:(id)sender {
+    if ([self.expland isEqualToString:@"0"]){
+        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
+        [arr addObject:self];
+        [arr addObject:@"1"];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(finishedExplandOrder:)]){
+            [self.delegate performSelector:@selector(finishedExplandOrder:) withObject:arr];
+        }
+    }else{
+        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
+        [arr addObject:self];
+        [arr addObject:@"0"];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(finishedExplandOrder:)]){
+            [self.delegate performSelector:@selector(finishedExplandOrder:) withObject:arr];
+        }
+    }
 }
 
 @end

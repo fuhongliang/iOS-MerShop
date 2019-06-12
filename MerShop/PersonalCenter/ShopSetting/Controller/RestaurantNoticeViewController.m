@@ -42,7 +42,7 @@
 - (void)setUI{
     _text = [[UITextView alloc]init];
     [_text setFrame:XFrame(0,ViewStart_Y+IFAutoFitPx(22), Screen_W, IFAutoFitPx(320))];
-    [_text setTextColor:BlackColor];
+    [_text setTextColor:toPCcolor(@"#333333")];
     [_text setFont:XFont(17)];
     [_text setBackgroundColor:[UIColor whiteColor]];
     _text.delegate = self;
@@ -61,6 +61,10 @@
 }
 
 - (void)saveRestaurantAnnouncement{
+    if (kISNullString(self.text.text)){
+        [[IFUtils share]showErrorInfo:@"请输入餐厅公告"];
+        return;
+    }
     [self setRestaurantAnnouncementRequest:self.text.text];
 }
 
@@ -76,7 +80,7 @@
         self.text.text = str;
     }
     [placeHolder setFont:XFont(17)];
-    [placeHolder setTextColor:GrayColor];
+    [placeHolder setTextColor:toPCcolor(@"#999999")];
     [_text addSubview:placeHolder];
 }
 

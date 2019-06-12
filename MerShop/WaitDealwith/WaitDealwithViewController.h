@@ -11,5 +11,7 @@
 
 @interface WaitDealwithViewController : BasicViewController
 
+- (void)setLoopView;
+
 @end
 

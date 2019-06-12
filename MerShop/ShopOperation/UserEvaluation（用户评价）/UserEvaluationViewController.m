@@ -29,11 +29,6 @@
 
 @property (nonatomic ,strong)NSMutableArray *dataSource;
 
-//@property (nonatomic ,strong)UIButton *btn1;
-//@property (nonatomic ,strong)UIButton *btn2;
-//@property (nonatomic ,strong)UIButton *btn3;
-//@property (nonatomic ,strong)UIButton *btn4;
-
 @property (nonatomic ,copy)NSDictionary *goodCommentsRateDict;
 @property (nonatomic ,copy)NSString *allComments;
 @property (nonatomic ,copy)NSString *goodComments;
@@ -45,7 +40,10 @@
 @property (nonatomic ,strong)UITextField *replyText;
 @property (nonatomic ,assign)NSInteger commentId;
 
-
+@property (nonatomic ,strong)UILabel *goodCommentRate;
+@property (nonatomic ,strong)UIButton *btn2;
+@property (nonatomic ,strong)UIButton *btn3;
+@property (nonatomic ,strong)UIButton *btn4;
 
 
 @end
@@ -56,7 +54,7 @@
     [super viewDidLoad];
     [self setNaviTitle:@"用户评价"];
     [self requestData];
-    
+    [self setUI];
 
 }
 
@@ -65,14 +63,23 @@
     [Http_url POST:@"get_store_com" dict:@{@"store_id":@(storeId)} showHUD:YES WithSuccessBlock:^(id data) {
         NSInteger code = [[data objectForKey:@"code"] integerValue];
         NSDictionary *dict = [data objectForKey:@"data"];
-        NSLog(@"%@",dict);
         if (code == 200){
             self.goodCommentsRateDict = [dict objectForKey:@"haoping"];
+            [self setDataWithDict:self.goodCommentsRateDict];
             NSArray *arr = [dict objectForKey:@"com_list"];
-            for (NSDictionary *dict in arr){
-                [self.dataSource addObject:dict];
+            if (kISNullArray(arr)){
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"EmptyDiscountView" owner:self options:nil];
+                EmptyDiscountView *emptyView = [nib objectAtIndex:0];
+                [emptyView setArray:@[@"pingjia_queshengye",@"暂无评价"]];
+                [emptyView setFrame:XFrame(0, 0, Screen_W, Screen_H-ViewStart_Y-IFAutoFitPx(183))];
+                [self.mainTableview setTableHeaderView:emptyView];
+            }else{
+                for (NSDictionary *dict in arr){
+                    [self.dataSource addObject:dict];
+                }
+                [self.mainTableview reloadData];
+
             }
-            [self setUI];
         }
     } WithFailBlock:^(id data) {
         
@@ -82,7 +89,6 @@
 - (void)requestNoReplyData{
     NSInteger storeId = [[[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];
     NSDictionary *dict;
-    [self.dataSource removeAllObjects];
     if (_currentIndex == 0){
         dict =@{@"store_id":@(storeId)};
     }else{
@@ -95,13 +101,24 @@
         NSInteger code = [[data objectForKey:@"code"] integerValue];
         NSDictionary *dict = [data objectForKey:@"data"];
         NSLog(@"%@",dict);
+        [self.dataSource removeAllObjects];
         if (code == 200){
-            self.goodCommentsRateDict = [dict objectForKey:@"haoping"];
             NSArray *arr = [dict objectForKey:@"com_list"];
-            for (NSDictionary *dict in arr){
-                [self.dataSource addObject:dict];
+            if (kISNullArray(arr)){
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"EmptyDiscountView" owner:self options:nil];
+                EmptyDiscountView *emptyView = [nib objectAtIndex:0];
+                [emptyView setArray:@[@"pingjia_queshengye",@"暂无评价"]];
+                [emptyView setFrame:XFrame(0, 0, Screen_W, Screen_H-ViewStart_Y-IFAutoFitPx(183))];
+                [self.mainTableview setTableHeaderView:emptyView];
+                [self.mainTableview reloadData];
+            }else{
+                for (NSDictionary *dict in arr){
+                    [self.dataSource addObject:dict];
+                }
+                [self.mainTableview setTableHeaderView:[[UIView alloc] init]];
+                [self.mainTableview reloadData];
             }
-            [self.mainTableview reloadData];
+
         }
     } WithFailBlock:^(id data) {
         
@@ -109,17 +126,17 @@
 }
 
 - (void)setUI{
+    UIView *topView = [self setHeaderview:self.goodCommentsRateDict];
+    [topView setFrame:XFrame(0, ViewStart_Y, Screen_W, IFAutoFitPx(183))];
+    [self.view addSubview:topView];
+    
     _mainTableview = [[UITableView alloc]init];
-    [_mainTableview setFrame:XFrame(0, ViewStart_Y, Screen_W, Screen_H-ViewStart_Y)];
+    [_mainTableview setFrame:XFrame(0, ViewStart_Y+IFAutoFitPx(183), Screen_W, Screen_H-ViewStart_Y-IFAutoFitPx(183))];
     [_mainTableview setSeparatorStyle:(UITableViewCellSeparatorStyleNone)];
     [_mainTableview setBackgroundColor:LineColor];
     [_mainTableview setRowHeight:UITableViewAutomaticDimension];
     _mainTableview.delegate = self;
     _mainTableview.dataSource = self;
-    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"HeaderView1" owner:self options:nil];
-    HeaderView1 *view1 = [nib objectAtIndex:0];
-    [view1 setFrame:XFrame(0, 0, Screen_W, 110)];
-    _mainTableview.tableHeaderView = [self setHeaderview:self.goodCommentsRateDict];
     [self.view addSubview:_mainTableview];
     
     _replyView = [[UIView alloc]init];
@@ -154,40 +171,40 @@
     
 }
 
-- (UIView *)setHeaderview:(NSDictionary *)dict{
+- (UIView *)setHeaderview:(NSDictionary *)dataDict{
     UIView *view = [[UIView alloc]init];
     [view setFrame:XFrame(0, 0, Screen_W, IFAutoFitPx(183))];
     [view setBackgroundColor:[UIColor whiteColor]];
     
-    UILabel *goodCommentRate = [[UILabel alloc]init];
-    [goodCommentRate setFrame:XFrame(IFAutoFitPx(20), 0, IFAutoFitPx(250), IFAutoFitPx(95))];
-    [goodCommentRate setText:[NSString stringWithFormat:@"好评率：%ld %%",[[dict objectForKey:@"rate"] integerValue]*100]];
-    [goodCommentRate setFont:XFont(14)];
-    [view addSubview:goodCommentRate];
+    _goodCommentRate = [[UILabel alloc]init];
+    [_goodCommentRate setFrame:XFrame(IFAutoFitPx(20), 0, IFAutoFitPx(250), IFAutoFitPx(95))];
+    [_goodCommentRate setText:[NSString stringWithFormat:@"好评率：100 %%"]];
+    [_goodCommentRate setFont:XFont(14)];
+    [view addSubview:_goodCommentRate];
     
-    UIButton *btn2 = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [btn2 setFrame:XFrame(CGRectGetMaxX(goodCommentRate.frame), 0, (Screen_W-IFAutoFitPx(330))/3, IFAutoFitPx(95))];
-    [btn2 setTitle:[NSString stringWithFormat:@"好评(%@)",[dict objectForKey:@"haoping"]] forState:(UIControlStateNormal)];
-    [btn2 setTitleColor:BlackColor forState:(UIControlStateNormal)];
-    [btn2.titleLabel setFont:XFont(14)];
+    _btn2 = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [_btn2 setFrame:XFrame(CGRectGetMaxX(_goodCommentRate.frame), 0, (Screen_W-IFAutoFitPx(330))/3, IFAutoFitPx(95))];
+    [_btn2 setTitle:[NSString stringWithFormat:@"好评(99)"] forState:(UIControlStateNormal)];
+    [_btn2 setTitleColor:BlackColor forState:(UIControlStateNormal)];
+    [_btn2.titleLabel setFont:XFont(14)];
 //    XViewLayerCB(btn2, IFAutoFitPx(25), 0.5, BlackColor);
-    [view addSubview:btn2];
+    [view addSubview:_btn2];
     
-    UIButton *btn3 = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [btn3 setFrame:XFrame(IFAutoFitPx(20)+CGRectGetMaxX(btn2.frame), 0, (Screen_W-IFAutoFitPx(330))/3, IFAutoFitPx(95))];
-    [btn3 setTitle:[NSString stringWithFormat:@"中评(%@)",[dict objectForKey:@"zhongping"]] forState:(UIControlStateNormal)];
-    [btn3 setTitleColor:BlackColor forState:(UIControlStateNormal)];
-    [btn3.titleLabel setFont:XFont(14)];
+    _btn3 = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [_btn3 setFrame:XFrame(IFAutoFitPx(20)+CGRectGetMaxX(_btn2.frame), 0, (Screen_W-IFAutoFitPx(330))/3, IFAutoFitPx(95))];
+    [_btn3 setTitle:[NSString stringWithFormat:@"中评(1)"] forState:(UIControlStateNormal)];
+    [_btn3 setTitleColor:BlackColor forState:(UIControlStateNormal)];
+    [_btn3.titleLabel setFont:XFont(14)];
 //    XViewLayerCB(btn3, IFAutoFitPx(25), 0.5, BlackColor);
-    [view addSubview:btn3];
+    [view addSubview:_btn3];
     
-    UIButton *btn4 = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [btn4 setFrame:XFrame(IFAutoFitPx(20)+CGRectGetMaxX(btn3.frame), 0, (Screen_W-IFAutoFitPx(330))/3, IFAutoFitPx(95))];
-    [btn4 setTitle:[NSString stringWithFormat:@"差评(%@)",[dict objectForKey:@"chaping"]] forState:(UIControlStateNormal)];
-    [btn4.titleLabel setFont:XFont(14)];
+    _btn4 = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [_btn4 setFrame:XFrame(IFAutoFitPx(20)+CGRectGetMaxX(_btn3.frame), 0, (Screen_W-IFAutoFitPx(330))/3, IFAutoFitPx(95))];
+    [_btn4 setTitle:[NSString stringWithFormat:@"差评(0)"] forState:(UIControlStateNormal)];
+    [_btn4.titleLabel setFont:XFont(14)];
 //    XViewLayerCB(btn4, IFAutoFitPx(25), 0.5, BlackColor);
-    [btn4 setTitleColor:BlackColor forState:(UIControlStateNormal)];
-    [view addSubview:btn4];
+    [_btn4 setTitleColor:BlackColor forState:(UIControlStateNormal)];
+    [view addSubview:_btn4];
     
     UIView *grayView = [[UIView alloc]initWithFrame:XFrame(0, IFAutoFitPx(94), Screen_W, IFAutoFitPx(1))];
     [grayView setBackgroundColor:LineColor];
@@ -224,6 +241,13 @@
     [_topBackgroundView addSubview:_lineView];
     
     return view;
+}
+
+- (void)setDataWithDict:(NSDictionary *)dict{
+    [_goodCommentRate setText:[NSString stringWithFormat:@"好评率：%ld %%",[[dict objectForKey:@"rate"] integerValue]*100]];
+    [_btn2 setTitle:[NSString stringWithFormat:@"好评(%@)",[dict objectForKey:@"haoping"]] forState:(UIControlStateNormal)];
+    [_btn3 setTitle:[NSString stringWithFormat:@"中评(%@)",[dict objectForKey:@"zhongping"]] forState:(UIControlStateNormal)];
+    [_btn4 setTitle:[NSString stringWithFormat:@"差评(%@)",[dict objectForKey:@"chaping"]] forState:(UIControlStateNormal)];
 }
 
 - (void)sendComment{
@@ -276,7 +300,12 @@
 //    UserEvaluationTableViewCell *cell1 = (UserEvaluationTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"UserEvaluationTableViewCell"];
     NoImageTableViewCell *cell2 = (NoImageTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"NoImageTableViewCell"];
     NoImageWithReplyTableViewCell *cell3 = (NoImageWithReplyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"NoImageWithReplyTableViewCell"];
-    NSDictionary *commentData = [self.dataSource objectAtIndex:indexPath.row];
+    NSDictionary *commentData;
+    if (kISNullArray(self.dataSource)){
+        
+    }else{
+        commentData = [self.dataSource objectAtIndex:indexPath.row];
+    }
     NSString *replayStr = [commentData objectForKey:@"replay"];
     if ([replayStr isKindOfClass:[NSNull class]]){
         if (!cell2){

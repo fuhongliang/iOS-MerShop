@@ -77,7 +77,6 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
 
 
 #pragma mark - Setters
-
 + (void)setStatus:(NSString*)status {
     [[self sharedView] setStatus:status];
 }

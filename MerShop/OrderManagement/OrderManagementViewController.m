@@ -14,7 +14,7 @@
 #import <MJRefresh.h>
 #import "EmptyOrderView.h"
 
-@interface OrderManagementViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface OrderManagementViewController ()<UITableViewDelegate,UITableViewDataSource,WaitDeliveryTableViewCellDelegate,AllReadyDeliveryTableViewCellDelegate>
 @property (nonatomic ,strong)UITableView *mainTableview;
 @property (nonatomic ,strong)UIView *topBackgroundView;
 @property (nonatomic ,strong)NSMutableArray *btnArr;
@@ -26,6 +26,10 @@
 @property (nonatomic ,strong)UIView *lineView;
 @property (nonatomic ,copy)NSArray *indexArr;
 @property (nonatomic ,strong)EmptyOrderView *emptyView;
+@property (nonatomic ,copy)NSArray *dictArr;
+
+//判断每条订单是否是展开状态的数组，
+@property (nonatomic ,strong)NSMutableArray *explandArr;
 @end
 
 @implementation OrderManagementViewController
@@ -36,13 +40,13 @@
     [self setNaviTitle:@"订单管理"];
     [self setHideBackBtn:YES];
     [self setUI];
-    [self requet:25];
+    [self request:25];
     [self refreshHeader];
     
     //空页面
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"EmptyOrderView" owner:self options:nil];
     _emptyView = [nib objectAtIndex:0];
-    [_emptyView setFrame:XFrame(0, ViewStart_Y+IFAutoFitPx(88), Screen_W, Screen_H-ViewStart_Y-Tabbar_H)];
+    [_emptyView setFrame:XFrame(0, 0, Screen_W, Screen_H-ViewStart_Y-Tabbar_H-IFAutoFitPx(88))];
     [_emptyView setBackgroundColor:toPCcolor(@"#f5f5f5")];
     [self.mainTableview setTableHeaderView:_emptyView];
     
@@ -53,31 +57,36 @@
 }
 
 - (void)refreshHeader{
-    __weak typeof(self)weakself = self;
+    LCWeakSelf(self)
     [self.mainTableview addLegendHeaderWithRefreshingBlock:^{
         [weakself.dataSource removeAllObjects];
         if (weakself.currentIndex == 0){
-            [weakself requet:25];
+            [weakself request:25];
         }else if (weakself.currentIndex == 1){
-            [weakself requet:40];
+            [weakself request:40];
         }else{
-            [weakself requet:0];
+            [weakself request:0];
         }
         [weakself.mainTableview.legendHeader endRefreshing];
     }];
 }
 
-- (void)requet:(NSInteger )stateId{
+- (void)request:(NSInteger )stateId{
     NSInteger storeId = [[[[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"] objectForKey:@"store_id"] integerValue];
+    
     [Http_url POST:@"order_list" dict:@{@"order_state":@(stateId),@"store_id":@(storeId)} showHUD:YES WithSuccessBlock:^(id data) {
+        self.dictArr = [data objectForKey:@"data"];
+        //每次请求数据删除，删除原有数据,判断是否是展开状态
+        [self.explandArr removeAllObjects];
         NSArray *arr = [data objectForKey:@"data"];
-        if ([[data objectForKey:@"data"] isKindOfClass:[NSNull class]]){
+        if (kISNullArray(arr)){
             [self.mainTableview setTableHeaderView:self.emptyView ];
         }else{
-            [self.mainTableview setTableHeaderView:[[UIView alloc] init] ];
-            for (NSDictionary *dict in arr){
+            [self.mainTableview setTableHeaderView:[[UIView alloc] init]];
+            for (NSDictionary *dict in self.dictArr){
                 NewOrderModel *model = [[NewOrderModel alloc]initWithDictionary:dict error:nil];
                 [self.dataSource addObject:model];
+                [self.explandArr addObject:@"0"];
             }
         }
         [self.mainTableview reloadData];
@@ -131,7 +140,7 @@
     [_mainTableview setFrame:XFrame(0, ViewStart_Y+IFAutoFitPx(88), Screen_W, Screen_H-ViewStart_Y-IFAutoFitPx(88)-Tabbar_H)];
     [_mainTableview setRowHeight:UITableViewAutomaticDimension];
     [_mainTableview setSeparatorStyle:(UITableViewCellSeparatorStyleNone)];
-    [_mainTableview setBackgroundColor:toPCcolor(@"#E5E5E5")];
+    [_mainTableview setBackgroundColor:toPCcolor(@"#f5f5f5")];
     _mainTableview.delegate = self;
     _mainTableview.dataSource = self;
     [self.view addSubview:_mainTableview];
@@ -139,28 +148,27 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    if (_currentIndex == 0){
-//        return self.onGoingArr.count;
-//    }else if (_currentIndex == 1){
-//        return self.finishedArr.count;
-//    }else{
-//        return self.cancelArr.count;
-//    }
     return self.dataSource.count;
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     WaitDeliveryTableViewCell *cell1 = (WaitDeliveryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"WaitDeliveryTableViewCell"];
     AllReadyDeliveryTableViewCell *cell2 = (AllReadyDeliveryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"AllReadyDeliveryTableViewCell"];
-    NewOrderModel *model = self.dataSource[indexPath.row];
+    NewOrderModel *model;
+    if (self.dataSource.count > 0){
+        model = self.dataSource[indexPath.row];
+    }
     if ([model.order_state isEqualToString:@"配送中"] || [model.order_state isEqualToString:@"已完成"]){
         if (!cell2){
             NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"AllReadyDeliveryTableViewCell" owner:self options:nil];
             cell2 = [nib objectAtIndex:0];
         }
-        [cell2 addProduct:self.dataSource[indexPath.row]];
+        if (self.dataSource.count > 0){
+            [cell2 addProduct:self.dataSource[indexPath.row] withExplandState:self.explandArr[indexPath.row]];
+        }
+        cell2.tag = indexPath.row;
+        cell2.delegate = self;
         return cell2;
     }else{
         if (!cell1){
@@ -169,13 +177,68 @@
         }
         if (self.dataSource.count >0){
             NewOrderModel *model = self.dataSource[indexPath.row];
-            [cell1 addProduct:model];
+            [cell1 addProduct:model withExplandState:self.explandArr[indexPath.row]];
         }
+        cell1.tag = indexPath.row;
+        cell1.delegate = self;
         return cell1;
     }
     return nil;
 }
 
+#pragma mark - WaitDeliveryTableViewCellDelegate
+/**
+    待配送的打印订单按钮方法
+ */
+- (void)printOrder:(id)data{
+    WaitDeliveryTableViewCell *cell = (WaitDeliveryTableViewCell *)data;
+    NSInteger index = cell.tag;
+    NSDictionary *dict = self.dictArr[index];
+    [self printOrderWithDict:dict];
+    
+}
+/**
+    待配送cell展开按钮方法
+ */
+- (void)explandOrder:(id)data{
+    WaitDeliveryTableViewCell *cell = (WaitDeliveryTableViewCell *)data[0];
+    [self.explandArr replaceObjectAtIndex:cell.tag withObject:data[1]];
+    [self.mainTableview reloadData];
+}
+/**
+    待配送拨打电话
+ */
+- (void)playCallAction:(id)data{
+    [self playCellPhoneWithData:data];
+}
+
+
+#pragma mark - AllReadyDeliveryTableViewCellDelegate
+/**
+    已完成拨打用户电话
+ */
+- (void)playCallAction1:(id)data{
+    [self playCellPhoneWithData:data];
+}
+/**
+    已完成的打印订单按钮方法
+ */
+- (void)printfOrder:(id)data{
+    AllReadyDeliveryTableViewCell *cell = (AllReadyDeliveryTableViewCell *)data;
+    NSInteger index = cell.tag;
+    NSDictionary *dict = self.dictArr[index];
+    [self printOrderWithDict:dict];
+}
+/**
+    已完成cell展开按钮方法
+ */
+- (void)finishedExplandOrder:(id)data{
+    AllReadyDeliveryTableViewCell *cell = (AllReadyDeliveryTableViewCell *)data[0];
+    [self.explandArr replaceObjectAtIndex:cell.tag withObject:data[1]];
+    [self.mainTableview reloadData];
+}
+
+#pragma mark - 懒加载
 - (NSMutableArray *)dataSource{
     if (!_dataSource){
         _dataSource = [NSMutableArray arrayWithCapacity:0];
@@ -211,15 +274,22 @@
     return _finishedArr;
 }
 
+- (NSMutableArray *)explandArr{
+    if (!_explandArr){
+        _explandArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _explandArr;
+}
+
 - (void)clickBtn:(UIButton *)sender{
     [self.dataSource removeAllObjects];
     _currentIndex = sender.tag;
     if (_currentIndex == 0){
-        [self requet:25];
+        [self request:25];
     }else if (_currentIndex == 1){
-        [self requet:40];
+        [self request:40];
     }else{
-        [self requet:0];
+        [self request:0];
     }
     [_lineView setFrame:XFrame(Screen_W/3*_currentIndex, IFAutoFitPx(88-4), Screen_W/3, IFAutoFitPx(4))];
     for (UIButton *btn in _btnArr){

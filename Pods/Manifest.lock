@@ -20,49 +20,74 @@ PODS:
   - AFNetworking/UIKit (2.7.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - BRPickerView (2.2.1)
   - Bugtags (3.1.1):
     - Bugtags/Core (= 3.1.1)
   - Bugtags/Core (3.1.1)
   - IQKeyboardManager (6.2.0)
+  - JhtMarquee (1.0.5)
   - JSONModel (1.8.0)
+  - JWBluetoothPrinte (1.0.0)
   - Masonry (1.1.0)
   - MJExtension (3.0.15.1)
   - MJRefresh (1.1.0)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
+  - UMCCommon (2.0.1)
+  - UMCPush (3.2.4):
+    - UMCCommon
+  - UMCSecurityPlugins (1.0.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6)
+  - BRPickerView
   - Bugtags
   - IQKeyboardManager
+  - JhtMarquee
   - JSONModel
+  - JWBluetoothPrinte
   - Masonry
   - MJExtension
   - MJRefresh (~> 1.1.0)
   - SDWebImage
+  - UMCCommon
+  - UMCPush
+  - UMCSecurityPlugins
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - BRPickerView
     - Bugtags
     - IQKeyboardManager
+    - JhtMarquee
     - JSONModel
+    - JWBluetoothPrinte
     - Masonry
     - MJExtension
     - MJRefresh
     - SDWebImage
+    - UMCCommon
+    - UMCPush
+    - UMCSecurityPlugins
 
 SPEC CHECKSUMS:
   AFNetworking: 8dd5f9b9691e09186393069a12cc3b5ed7c8b511
+  BRPickerView: 0590a8c5de9bd98c6b4e4f117a3dff6de287d5b2
   Bugtags: 7fe8938867b57cd2b5b04683f8a680a44d998a0c
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  JhtMarquee: 6f1118943062553c35aefea1115bdbeb0c4d7fd7
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
+  JWBluetoothPrinte: 3ddf7bc1128dac97c8e29de15e905441da35a6fa
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   MJRefresh: d7bf87f0d63aa69409235f6d76eb9ec505465a7b
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  UMCCommon: 0263a057a2e1ae1da4c8308541e56904a493ce13
+  UMCPush: 1edd856027dcf905333effb4040ace5d236a7316
+  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
 
-PODFILE CHECKSUM: dcbf48f290efac7d6871b9e89cb2049ebd0abdfe
+PODFILE CHECKSUM: d8916bc576cc70cd0ed5f4cfcf9eab174b4e9540
 
 COCOAPODS: 1.6.1

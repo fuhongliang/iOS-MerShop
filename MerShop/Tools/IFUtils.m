@@ -22,7 +22,7 @@ static IFUtils *tool;
     [SVProgressHUD setBackgroundColor:[UIColor clearColor]];
 //    [SVProgressHUD setForegroundColor:RGB(203, 162, 114)];
     [SVProgressHUD setForegroundColor:GrayColor];
-    [SVProgressHUD showWithStatus:@"loading"];
+    [SVProgressHUD showWithStatus:@"加载中..."];
 }
 
 - (void)showErrorInfo:(NSString *)info{

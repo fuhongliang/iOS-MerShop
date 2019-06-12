@@ -11,8 +11,10 @@
 
 
 @interface Http_url : NSObject
-//传值 POST请求
+//POST
 + (void)POST:(NSString *)httpUrl dict:(NSDictionary *)dict  showHUD:(BOOL)show WithSuccessBlock:(void(^)(id data))successBlock WithFailBlock:(void(^)(id data))FailBlock;;
+
++ (void)POST:(NSString *)httpUrl image:(UIImage *)image showHUD:(BOOL)show WithSuccessBlock:(void(^)(id data))successBlock WithFailBlock:(void(^)(id data))FailBlock;
 
 @end
 
